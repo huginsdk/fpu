@@ -2284,7 +2284,7 @@ namespace FP300Service.UserControls
             {
                 if (checkBoxVoidEft.Checked)
                 {
-                    //response = new CPResponse(bridge.Printer.VoidEFTPayment(int.Parse(txtAcquierId.Text), int.Parse(txtBatchNo.Text), int.Parse(txtStanNo.Text)));
+                    response = new CPResponse(bridge.Printer.VoidEFTPayment(int.Parse(txtAcquierId.Text), int.Parse(txtBatchNo.Text), int.Parse(txtStanNo.Text)));
                 }
                 else
                 {
@@ -2492,7 +2492,7 @@ namespace FP300Service.UserControls
         {
             try
             {
-                //CPResponse response = new CPResponse(bridge.Printer.RefundEFTPayment(int.Parse(txtAcquierIdRefund.Text)));
+                CPResponse response = new CPResponse(bridge.Printer.RefundEFTPayment(int.Parse(txtAcquierIdRefund.Text)));
             }
             catch(Exception ex)
             {
@@ -2505,7 +2505,7 @@ namespace FP300Service.UserControls
             CPResponse response = null;
             try
             {
-                //response = new CPResponse(bridge.Printer.GetBankListOnEFT());
+                response = new CPResponse(bridge.Printer.GetBankListOnEFT());
 
                 if (response.ErrorCode == 0)
                 {
@@ -2528,7 +2528,7 @@ namespace FP300Service.UserControls
             CPResponse response = null;
             try
             {
-                //response = new CPResponse(bridge.Printer.GetSalesInfo());
+                response = new CPResponse(bridge.Printer.GetSalesInfo());
 
                 if (response.ErrorCode == 0)
                 {

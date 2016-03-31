@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;FPU,DEBUG;NEBIM_MODE;LANG_ENG;CPP</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;FPU,DEBUG;NEBIM_MODE;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -57,7 +57,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;FPU,DEBUG;NEBIM_MODE;LANG_ENG;CPP</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;FPU,DEBUG;NEBIM_MODE;</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
@@ -75,9 +75,11 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PrinterWrapper, Version=1.0.5933.27629, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\etc\PrinterWrapper.dll</HintPath>
+    <Reference Include="Hugin.Common">
+      <HintPath>..\etc\Hugin.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Hugin.POS.CompactPrinter.FP300">
+      <HintPath>..\etc\Hugin.POS.CompactPrinter.FP300.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
