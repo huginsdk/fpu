@@ -1114,14 +1114,16 @@ JNIEXPORT jstring JNICALL Java_FP300Service_PrintReceiptTotalReport
 		(int)copy));
 }
 
+
 /*
  * Class:     FP300Service
  * Method:    PrintJSONDocument
  * Signature: (Ljava/lang/String;)Ljava/lang/String;
  */
+/*
 JNIEXPORT jstring JNICALL Java_FP300Service_PrintJSONDocument
   (JNIEnv *env, jobject thisObj, jstring jsonStr)
 {
 	return HuginConvert::ToString(env, huginPrinter.PrintJSONDocument(
 		HuginConvert::ToJSONDocument(env, HuginConvert::ToVector(env, jsonStr)));
-}
+}*/

@@ -153,7 +153,7 @@ public:
 
 			if(adj2 != nullptr)
 			{
-				adj3.isNull = false;
+				/*adj3.isNull = false;
 
 				//adj3.Amount = Convert::ToDouble(adj2->Amount);
 				jfieldID fid = env->GetFieldID(cls, "Amount", "D");
@@ -176,7 +176,7 @@ public:
 						adj3.AdjType = 3;//PERCENT_DISCOUNT3;
 					else
 						adj3.AdjType = 2;//DISCOUNT3;
-				}
+				}*/
 			}
 			else
 				adj3.isNull = true;
@@ -192,7 +192,7 @@ public:
 
 			if(pi2 != nullptr)
 			{
-				pi3.isNull = false;
+				/*pi3.isNull = false;
 
 				//pi3.Type = static_cast<PaymentType3>(pi2->Type);
 				jfieldID fid = env->GetFieldID(cls, "Type", "I");
@@ -208,7 +208,7 @@ public:
 
 				//pi3.ViaByEFT = pi2->ViaByEFT;
 				fid = env->GetFieldID(cls, "ViaByEFT", "Z");
-				if(NULL != fid) pi3.ViaByEFT = (bool)env->GetIntField(pi2, fid)
+				if(NULL != fid) pi3.ViaByEFT = (bool)env->GetIntField(pi2, fid);*/
 			}
 			else
 				pi3.isNull = true;
@@ -224,7 +224,7 @@ public:
 
 			if(item2 != nullptr)
 			{
-				item3.isNull = false;
+				/*item3.isNull = false;
 
 				//item3.Id = item2->Id;
 				jfieldID fid = env->GetFieldID(cls, "Id", "I");
@@ -257,7 +257,7 @@ public:
 
 				//item3.Weighable = item2->Weighable;
 				fid = env->GetFieldID(cls, "Weighable", "I");
-				if(NULL != fid) item3.Weighable = (int)env->GetIntField(item2, fid);
+				if(NULL != fid) item3.Weighable = (int)env->GetIntField(item2, fid);*/
 			}
 			else 
 				item3.isNull = true;

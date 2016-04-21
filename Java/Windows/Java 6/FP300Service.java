@@ -103,19 +103,21 @@ public class FP300Service {
 	{
 		FP300Service fp300Service = new FP300Service();
 
-		System.out.println("Press 'T' to connect via TCP/IP,");
-		System.out.println("press 'S' to connect via serial port to server.");
 		Scanner key = new Scanner(System.in);
-		String conn = key.next();
+		
+		System.out.print("1-TCP/IP\n");
+		System.out.print("2-Serial Port\n");
+		System.out.print("Your choice: ");
+		int tcp = key.nextInt();
 
-		String IpAddress = "192.168.0.171";
-		switch(conn.toLowerCase())
+		String IpAddress = "207.46.128.217";
+		switch(tcp)
 		{
-			case "t":
-				System.out.print("IP Address(192.168.0.171): ");
+			case 1:
+				System.out.print("IP Address(207.46.128.217): ");
 				IpAddress = key.next();
-				System.out.print("Connecting to server(" + IpAddress + ":4444)...");
-				if(fp300Service.TCPConnect(IpAddress, 4444)) System.out.println("OK\n");
+				System.out.print("Connecting to server(" + IpAddress + ":5555)...");
+				if(fp300Service.TCPConnect(IpAddress, 5555)) System.out.println("OK\n");
 				else
 				{
 					System.out.println("Failed");
@@ -132,14 +134,13 @@ public class FP300Service {
 					System.out.println("Failed");
 					return;
 				}
-				break;
 		}
 
 		DeviceInfo serverInfo = new DeviceInfo();
         serverInfo.Brand = "HUGIN";
         serverInfo.IP = IpAddress;
         serverInfo.Model = "HUGIN COMPACT";
-        serverInfo.Port = 4444;
+        serverInfo.Port = 5555;
         serverInfo.TerminalNo = "FP00000010";
         serverInfo.Version = "";
         serverInfo.SerialNum  = "";
@@ -213,7 +214,7 @@ public class FP300Service {
 					System.out.println(fp300Service.GetLastLog() + "\n");	
 					break;
 				case 4:
-					fp300Service.PrintPayment(0, -1, 5.00);
+					fp300Service.PrintPayment(0, -1, 10.00);
 					System.out.println(fp300Service.GetLastLog() + "\n");	
 					break;
 				case 5:
