@@ -4,7 +4,6 @@ using System.Text;
 using System.IO.Ports;
 using System.Net.Sockets;
 using System.Net;
-using System.Threading;
 
 
 namespace FP300Service
@@ -24,21 +23,63 @@ namespace FP300Service
         object ToObject();
     }
 
-    public class SerialConnection : IConnection
+        public class MySerialPort : SerialPort
+    {
+        public MySerialPort(string portName, int baudrate) :
+            base(portName, baudrate)
+        {
+        }
+        protected override void Dispose(bool disposing)
+        {
+            // our variant for
+            // 
+            // http://social.msdn.microsoft.com/Forums/en-US/netfxnetcom/thread/8b02d5d0-b84e-447a-b028-f853d6c6c690
+            // http://connect.microsoft.com/VisualStudio/feedback/details/140018/serialport-crashes-after-disconnect-of-usb-com-port
+
+            var stream = (System.IO.Stream)typeof(SerialPort).GetField("internalSerialStream", 
+                                                                    System.Reflection.BindingFlags.Instance | 
+                                                                    System.Reflection.BindingFlags.NonPublic).GetValue(this);
+
+            if (stream != null)
+            {
+                try { stream.Dispose(); }
+                catch { }
+            }
+
+            base.Dispose(disposing);
+        }
+    }
+    public class SerialConnection : IConnection, IDisposable
     {
         private string portName = String.Empty;
         private int baudRate = 115200;
-        private SerialPort sp = null;
+        private static MySerialPort sp = null;
 
         public SerialConnection(string portName, int baudrate)
         {
             this.portName = portName;
             this.baudRate = baudrate;
+
+            try
+            {
+                if (IsOpen)
+                {
+                    Close();
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        ~SerialConnection()
+        {
+            Dispose();
         }
 
         public void Open()
         {
-            sp = new SerialPort(portName, baudRate);
+            sp = new MySerialPort(portName, baudRate);
             sp.WriteTimeout =4500;
             sp.ReadTimeout = 4500;
             sp.ReadBufferSize = 4096;
@@ -63,9 +104,10 @@ namespace FP300Service
 
         public void Close()
         {
-            if (sp != null && sp.IsOpen)
+            if (sp != null) 
             {
-                sp.Close();
+              //  if (sp.IsOpen)
+                    sp.Close();
             }
         }
 
@@ -84,6 +126,18 @@ namespace FP300Service
         public object ToObject()
         {
             return sp;
+        }
+
+        public void Dispose()
+        {
+            try
+            {
+                Close();
+                sp = null;
+            }
+            catch
+            {
+            }
         }
     }
     public class TCPConnection : IConnection, IDisposable
@@ -139,6 +193,7 @@ namespace FP300Service
             {
                 client.Shutdown(SocketShutdown.Both);
                 client.Close();
+                client.Dispose();
             }
         }
 

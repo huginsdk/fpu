@@ -131,6 +131,22 @@ namespace FP300Service.UserControls
         private TabPage tabPageBankList;
         private Button btnBankList;
         private Button btnRcptInfo;
+        private Button buttonAutoPrint;
+        private TabPage tpgSaleDept;
+        private Label lblDeptSalePrice;
+        private Label lblDeptName;
+        private Button btnSaleDept;
+        private NumericUpDown nmrDeptSalePrice;
+        private TextBox txtDeptSaleName;
+        private Label lblDeptSaleId;
+        private Label lblDeptSaleQtty;
+        private NumericUpDown nmrDeptSaleId;
+        private NumericUpDown nmrDeptSaleQtty;
+        private CheckBox cbxDeptSaleWeighable;
+        private Button btnJsonOnlyDept;
+        private CheckBox cbxVoidDept;
+        private Label lblVoidDeptName;
+        private TextBox txtVoidDeptName;
         private Button btnRefreshCredit;
 
 
@@ -364,6 +380,7 @@ namespace FP300Service.UserControls
             this.lblPlu = new System.Windows.Forms.Label();
             this.nmrQuantity = new System.Windows.Forms.NumericUpDown();
             this.tbpVoidSale = new System.Windows.Forms.TabPage();
+            this.cbxVoidDept = new System.Windows.Forms.CheckBox();
             this.lblVoidQtty = new System.Windows.Forms.Label();
             this.btnVoidSale = new System.Windows.Forms.Button();
             this.nmrVoidQtty = new System.Windows.Forms.NumericUpDown();
@@ -376,6 +393,17 @@ namespace FP300Service.UserControls
             this.lblAdjAmount = new System.Windows.Forms.Label();
             this.rbtnDiscount = new System.Windows.Forms.RadioButton();
             this.cbxPerc = new System.Windows.Forms.CheckBox();
+            this.tpgSaleDept = new System.Windows.Forms.TabPage();
+            this.cbxDeptSaleWeighable = new System.Windows.Forms.CheckBox();
+            this.lblDeptSalePrice = new System.Windows.Forms.Label();
+            this.lblDeptName = new System.Windows.Forms.Label();
+            this.btnSaleDept = new System.Windows.Forms.Button();
+            this.nmrDeptSalePrice = new System.Windows.Forms.NumericUpDown();
+            this.txtDeptSaleName = new System.Windows.Forms.TextBox();
+            this.lblDeptSaleId = new System.Windows.Forms.Label();
+            this.lblDeptSaleQtty = new System.Windows.Forms.Label();
+            this.nmrDeptSaleId = new System.Windows.Forms.NumericUpDown();
+            this.nmrDeptSaleQtty = new System.Windows.Forms.NumericUpDown();
             this.tbcPayment = new System.Windows.Forms.TabControl();
             this.tbpPay1 = new System.Windows.Forms.TabPage();
             this.lblFCurrValue = new System.Windows.Forms.Label();
@@ -422,6 +450,10 @@ namespace FP300Service.UserControls
             this.btnVoidReceipt = new System.Windows.Forms.Button();
             this.btnCloseReceipt = new System.Windows.Forms.Button();
             this.btnRcptInfo = new System.Windows.Forms.Button();
+            this.buttonAutoPrint = new System.Windows.Forms.Button();
+            this.btnJsonOnlyDept = new System.Windows.Forms.Button();
+            this.lblVoidDeptName = new System.Windows.Forms.Label();
+            this.txtVoidDeptName = new System.Windows.Forms.TextBox();
             this.tbcStartDoc.SuspendLayout();
             this.tbStrtRcpt.SuspendLayout();
             this.tbStrtInvoice.SuspendLayout();
@@ -443,6 +475,10 @@ namespace FP300Service.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.nmrVoidPlu)).BeginInit();
             this.tbpAdj.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrAdjAmount)).BeginInit();
+            this.tpgSaleDept.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrDeptSalePrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrDeptSaleId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrDeptSaleQtty)).BeginInit();
             this.tbcPayment.SuspendLayout();
             this.tbpPay1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrPaymentAmount)).BeginInit();
@@ -801,6 +837,7 @@ namespace FP300Service.UserControls
             this.tbcSale.Controls.Add(this.tbpSale);
             this.tbcSale.Controls.Add(this.tbpVoidSale);
             this.tbcSale.Controls.Add(this.tbpAdj);
+            this.tbcSale.Controls.Add(this.tpgSaleDept);
             this.tbcSale.Location = new System.Drawing.Point(11, 178);
             this.tbcSale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbcSale.Name = "tbcSale";
@@ -1058,6 +1095,9 @@ namespace FP300Service.UserControls
             // 
             // tbpVoidSale
             // 
+            this.tbpVoidSale.Controls.Add(this.lblVoidDeptName);
+            this.tbpVoidSale.Controls.Add(this.txtVoidDeptName);
+            this.tbpVoidSale.Controls.Add(this.cbxVoidDept);
             this.tbpVoidSale.Controls.Add(this.lblVoidQtty);
             this.tbpVoidSale.Controls.Add(this.btnVoidSale);
             this.tbpVoidSale.Controls.Add(this.nmrVoidQtty);
@@ -1072,10 +1112,24 @@ namespace FP300Service.UserControls
             this.tbpVoidSale.Text = "VOID SALE";
             this.tbpVoidSale.UseVisualStyleBackColor = true;
             // 
+            // cbxVoidDept
+            // 
+            this.cbxVoidDept.AutoSize = true;
+            this.cbxVoidDept.Location = new System.Drawing.Point(206, 20);
+            this.cbxVoidDept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbxVoidDept.Name = "cbxVoidDept";
+            this.cbxVoidDept.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cbxVoidDept.Size = new System.Drawing.Size(136, 21);
+            this.cbxVoidDept.TabIndex = 17;
+            this.cbxVoidDept.Text = "Void Department";
+            this.cbxVoidDept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbxVoidDept.UseVisualStyleBackColor = true;
+            this.cbxVoidDept.CheckedChanged += new System.EventHandler(this.cbxVoidDept_CheckedChanged);
+            // 
             // lblVoidQtty
             // 
             this.lblVoidQtty.AutoSize = true;
-            this.lblVoidQtty.Location = new System.Drawing.Point(328, 20);
+            this.lblVoidQtty.Location = new System.Drawing.Point(311, 50);
             this.lblVoidQtty.Name = "lblVoidQtty";
             this.lblVoidQtty.Size = new System.Drawing.Size(119, 17);
             this.lblVoidQtty.TabIndex = 16;
@@ -1095,7 +1149,7 @@ namespace FP300Service.UserControls
             // nmrVoidQtty
             // 
             this.nmrVoidQtty.DecimalPlaces = 3;
-            this.nmrVoidQtty.Location = new System.Drawing.Point(332, 41);
+            this.nmrVoidQtty.Location = new System.Drawing.Point(315, 71);
             this.nmrVoidQtty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrVoidQtty.Maximum = new decimal(new int[] {
             100000,
@@ -1114,7 +1168,7 @@ namespace FP300Service.UserControls
             // 
             // nmrVoidPlu
             // 
-            this.nmrVoidPlu.Location = new System.Drawing.Point(229, 41);
+            this.nmrVoidPlu.Location = new System.Drawing.Point(212, 71);
             this.nmrVoidPlu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrVoidPlu.Maximum = new decimal(new int[] {
             20000,
@@ -1139,7 +1193,7 @@ namespace FP300Service.UserControls
             // lblVoidPlu
             // 
             this.lblVoidPlu.AutoSize = true;
-            this.lblVoidPlu.Location = new System.Drawing.Point(228, 20);
+            this.lblVoidPlu.Location = new System.Drawing.Point(211, 50);
             this.lblVoidPlu.Name = "lblVoidPlu";
             this.lblVoidPlu.Size = new System.Drawing.Size(39, 17);
             this.lblVoidPlu.TabIndex = 14;
@@ -1239,6 +1293,152 @@ namespace FP300Service.UserControls
             this.cbxPerc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbxPerc.UseVisualStyleBackColor = true;
             this.cbxPerc.CheckedChanged += new System.EventHandler(this.cbxPerc_CheckedChanged);
+            // 
+            // tpgSaleDept
+            // 
+            this.tpgSaleDept.Controls.Add(this.cbxDeptSaleWeighable);
+            this.tpgSaleDept.Controls.Add(this.lblDeptSalePrice);
+            this.tpgSaleDept.Controls.Add(this.lblDeptName);
+            this.tpgSaleDept.Controls.Add(this.btnSaleDept);
+            this.tpgSaleDept.Controls.Add(this.nmrDeptSalePrice);
+            this.tpgSaleDept.Controls.Add(this.txtDeptSaleName);
+            this.tpgSaleDept.Controls.Add(this.lblDeptSaleId);
+            this.tpgSaleDept.Controls.Add(this.lblDeptSaleQtty);
+            this.tpgSaleDept.Controls.Add(this.nmrDeptSaleId);
+            this.tpgSaleDept.Controls.Add(this.nmrDeptSaleQtty);
+            this.tpgSaleDept.Location = new System.Drawing.Point(4, 25);
+            this.tpgSaleDept.Name = "tpgSaleDept";
+            this.tpgSaleDept.Padding = new System.Windows.Forms.Padding(3);
+            this.tpgSaleDept.Size = new System.Drawing.Size(611, 143);
+            this.tpgSaleDept.TabIndex = 3;
+            this.tpgSaleDept.Text = "DEPT SALE";
+            this.tpgSaleDept.UseVisualStyleBackColor = true;
+            // 
+            // cbxDeptSaleWeighable
+            // 
+            this.cbxDeptSaleWeighable.Location = new System.Drawing.Point(446, 55);
+            this.cbxDeptSaleWeighable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbxDeptSaleWeighable.Name = "cbxDeptSaleWeighable";
+            this.cbxDeptSaleWeighable.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cbxDeptSaleWeighable.Size = new System.Drawing.Size(139, 21);
+            this.cbxDeptSaleWeighable.TabIndex = 38;
+            this.cbxDeptSaleWeighable.Text = "WEIGHABLE";
+            this.cbxDeptSaleWeighable.UseVisualStyleBackColor = true;
+            // 
+            // lblDeptSalePrice
+            // 
+            this.lblDeptSalePrice.AutoSize = true;
+            this.lblDeptSalePrice.Location = new System.Drawing.Point(187, 87);
+            this.lblDeptSalePrice.Name = "lblDeptSalePrice";
+            this.lblDeptSalePrice.Size = new System.Drawing.Size(48, 17);
+            this.lblDeptSalePrice.TabIndex = 37;
+            this.lblDeptSalePrice.Text = "PRICE";
+            // 
+            // lblDeptName
+            // 
+            this.lblDeptName.AutoSize = true;
+            this.lblDeptName.Location = new System.Drawing.Point(367, 22);
+            this.lblDeptName.Name = "lblDeptName";
+            this.lblDeptName.Size = new System.Drawing.Size(88, 17);
+            this.lblDeptName.TabIndex = 27;
+            this.lblDeptName.Text = "DEPT NAME";
+            // 
+            // btnSaleDept
+            // 
+            this.btnSaleDept.Location = new System.Drawing.Point(5, 25);
+            this.btnSaleDept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSaleDept.Name = "btnSaleDept";
+            this.btnSaleDept.Size = new System.Drawing.Size(147, 46);
+            this.btnSaleDept.TabIndex = 30;
+            this.btnSaleDept.Text = "SALE";
+            this.btnSaleDept.UseVisualStyleBackColor = true;
+            this.btnSaleDept.Click += new System.EventHandler(this.btnSaleDept_Click);
+            // 
+            // nmrDeptSalePrice
+            // 
+            this.nmrDeptSalePrice.DecimalPlaces = 2;
+            this.nmrDeptSalePrice.Location = new System.Drawing.Point(245, 81);
+            this.nmrDeptSalePrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nmrDeptSalePrice.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nmrDeptSalePrice.Name = "nmrDeptSalePrice";
+            this.nmrDeptSalePrice.Size = new System.Drawing.Size(83, 22);
+            this.nmrDeptSalePrice.TabIndex = 35;
+            this.nmrDeptSalePrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nmrDeptSalePrice.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // txtDeptSaleName
+            // 
+            this.txtDeptSaleName.Location = new System.Drawing.Point(466, 18);
+            this.txtDeptSaleName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDeptSaleName.MaxLength = 20;
+            this.txtDeptSaleName.Name = "txtDeptSaleName";
+            this.txtDeptSaleName.Size = new System.Drawing.Size(119, 22);
+            this.txtDeptSaleName.TabIndex = 26;
+            // 
+            // lblDeptSaleId
+            // 
+            this.lblDeptSaleId.AutoSize = true;
+            this.lblDeptSaleId.Location = new System.Drawing.Point(178, 21);
+            this.lblDeptSaleId.Name = "lblDeptSaleId";
+            this.lblDeptSaleId.Size = new System.Drawing.Size(57, 17);
+            this.lblDeptSaleId.TabIndex = 25;
+            this.lblDeptSaleId.Text = "DEP. ID";
+            // 
+            // lblDeptSaleQtty
+            // 
+            this.lblDeptSaleQtty.AutoSize = true;
+            this.lblDeptSaleQtty.Location = new System.Drawing.Point(157, 53);
+            this.lblDeptSaleQtty.Name = "lblDeptSaleQtty";
+            this.lblDeptSaleQtty.Size = new System.Drawing.Size(82, 17);
+            this.lblDeptSaleQtty.TabIndex = 34;
+            this.lblDeptSaleQtty.Text = "QUANTITY:";
+            // 
+            // nmrDeptSaleId
+            // 
+            this.nmrDeptSaleId.Location = new System.Drawing.Point(247, 17);
+            this.nmrDeptSaleId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nmrDeptSaleId.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.nmrDeptSaleId.Name = "nmrDeptSaleId";
+            this.nmrDeptSaleId.Size = new System.Drawing.Size(83, 22);
+            this.nmrDeptSaleId.TabIndex = 24;
+            this.nmrDeptSaleId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nmrDeptSaleId.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nmrDeptSaleQtty
+            // 
+            this.nmrDeptSaleQtty.DecimalPlaces = 3;
+            this.nmrDeptSaleQtty.Location = new System.Drawing.Point(247, 46);
+            this.nmrDeptSaleQtty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nmrDeptSaleQtty.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nmrDeptSaleQtty.Name = "nmrDeptSaleQtty";
+            this.nmrDeptSaleQtty.Size = new System.Drawing.Size(83, 22);
+            this.nmrDeptSaleQtty.TabIndex = 33;
+            this.nmrDeptSaleQtty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nmrDeptSaleQtty.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // tbcPayment
             // 
@@ -1648,7 +1848,7 @@ namespace FP300Service.UserControls
             this.tabRefund.Controls.Add(this.label6);
             this.tabRefund.Controls.Add(this.btnRefund);
             this.tabRefund.Location = new System.Drawing.Point(4, 25);
-            this.tabRefund.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabRefund.Margin = new System.Windows.Forms.Padding(4);
             this.tabRefund.Name = "tabRefund";
             this.tabRefund.Size = new System.Drawing.Size(613, 105);
             this.tabRefund.TabIndex = 3;
@@ -1688,7 +1888,7 @@ namespace FP300Service.UserControls
             // 
             this.tabPageBankList.Controls.Add(this.btnBankList);
             this.tabPageBankList.Location = new System.Drawing.Point(4, 25);
-            this.tabPageBankList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageBankList.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageBankList.Name = "tabPageBankList";
             this.tabPageBankList.Size = new System.Drawing.Size(613, 105);
             this.tabPageBankList.TabIndex = 4;
@@ -1719,7 +1919,7 @@ namespace FP300Service.UserControls
             // 
             // btnCorrect
             // 
-            this.btnCorrect.Location = new System.Drawing.Point(636, 308);
+            this.btnCorrect.Location = new System.Drawing.Point(636, 369);
             this.btnCorrect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCorrect.Name = "btnCorrect";
             this.btnCorrect.Size = new System.Drawing.Size(147, 43);
@@ -1730,7 +1930,7 @@ namespace FP300Service.UserControls
             // 
             // btnSubtotal
             // 
-            this.btnSubtotal.Location = new System.Drawing.Point(636, 258);
+            this.btnSubtotal.Location = new System.Drawing.Point(636, 319);
             this.btnSubtotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubtotal.Name = "btnSubtotal";
             this.btnSubtotal.Size = new System.Drawing.Size(147, 43);
@@ -1741,7 +1941,7 @@ namespace FP300Service.UserControls
             // 
             // btnVoidReceipt
             // 
-            this.btnVoidReceipt.Location = new System.Drawing.Point(636, 417);
+            this.btnVoidReceipt.Location = new System.Drawing.Point(636, 478);
             this.btnVoidReceipt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVoidReceipt.Name = "btnVoidReceipt";
             this.btnVoidReceipt.Size = new System.Drawing.Size(147, 43);
@@ -1752,7 +1952,7 @@ namespace FP300Service.UserControls
             // 
             // btnCloseReceipt
             // 
-            this.btnCloseReceipt.Location = new System.Drawing.Point(636, 368);
+            this.btnCloseReceipt.Location = new System.Drawing.Point(636, 429);
             this.btnCloseReceipt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCloseReceipt.Name = "btnCloseReceipt";
             this.btnCloseReceipt.Size = new System.Drawing.Size(147, 43);
@@ -1772,10 +1972,54 @@ namespace FP300Service.UserControls
             this.btnRcptInfo.UseVisualStyleBackColor = true;
             this.btnRcptInfo.Click += new System.EventHandler(this.btnRcptInfo_Click);
             // 
+            // buttonAutoPrint
+            // 
+            this.buttonAutoPrint.Location = new System.Drawing.Point(636, 114);
+            this.buttonAutoPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAutoPrint.Name = "buttonAutoPrint";
+            this.buttonAutoPrint.Size = new System.Drawing.Size(147, 43);
+            this.buttonAutoPrint.TabIndex = 32;
+            this.buttonAutoPrint.Text = "AUTO PRINT";
+            this.buttonAutoPrint.UseVisualStyleBackColor = true;
+            this.buttonAutoPrint.Click += new System.EventHandler(this.buttonAutoPrint_Click);
+            // 
+            // btnJsonOnlyDept
+            // 
+            this.btnJsonOnlyDept.Location = new System.Drawing.Point(636, 261);
+            this.btnJsonOnlyDept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnJsonOnlyDept.Name = "btnJsonOnlyDept";
+            this.btnJsonOnlyDept.Size = new System.Drawing.Size(147, 46);
+            this.btnJsonOnlyDept.TabIndex = 33;
+            this.btnJsonOnlyDept.Text = "PRINT JSON DEPT";
+            this.btnJsonOnlyDept.UseVisualStyleBackColor = true;
+            this.btnJsonOnlyDept.Click += new System.EventHandler(this.btnJsonOnlyDept_Click);
+            // 
+            // lblVoidDeptName
+            // 
+            this.lblVoidDeptName.AutoSize = true;
+            this.lblVoidDeptName.Location = new System.Drawing.Point(449, 49);
+            this.lblVoidDeptName.Name = "lblVoidDeptName";
+            this.lblVoidDeptName.Size = new System.Drawing.Size(88, 17);
+            this.lblVoidDeptName.TabIndex = 29;
+            this.lblVoidDeptName.Text = "DEPT NAME";
+            this.lblVoidDeptName.Visible = false;
+            // 
+            // txtVoidDeptName
+            // 
+            this.txtVoidDeptName.Location = new System.Drawing.Point(452, 71);
+            this.txtVoidDeptName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtVoidDeptName.MaxLength = 20;
+            this.txtVoidDeptName.Name = "txtVoidDeptName";
+            this.txtVoidDeptName.Size = new System.Drawing.Size(137, 22);
+            this.txtVoidDeptName.TabIndex = 28;
+            this.txtVoidDeptName.Visible = false;
+            // 
             // SaleUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnJsonOnlyDept);
+            this.Controls.Add(this.buttonAutoPrint);
             this.Controls.Add(this.btnRcptInfo);
             this.Controls.Add(this.tbcStartDoc);
             this.Controls.Add(this.tbcFooter);
@@ -1819,6 +2063,11 @@ namespace FP300Service.UserControls
             this.tbpAdj.ResumeLayout(false);
             this.tbpAdj.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrAdjAmount)).EndInit();
+            this.tpgSaleDept.ResumeLayout(false);
+            this.tpgSaleDept.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrDeptSalePrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrDeptSaleId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrDeptSaleQtty)).EndInit();
             this.tbcPayment.ResumeLayout(false);
             this.tbpPay1.ResumeLayout(false);
             this.tbpPay1.PerformLayout();
@@ -2091,7 +2340,16 @@ namespace FP300Service.UserControls
                 decimal quantity = nmrVoidQtty.Value;
 
                 // SEND COMMAND
-                CPResponse response = new CPResponse(bridge.Printer.Void(pluNo, quantity));
+                CPResponse response = null;
+
+                if (cbxVoidDept.Checked)
+                {
+                    response = new CPResponse(bridge.Printer.VoidDepartment(pluNo, txtVoidDeptName.Text,quantity));
+                } 
+                else
+                {
+                    response = new CPResponse(bridge.Printer.Void(pluNo, quantity));
+                }
 
                 if (response.ErrorCode == 0)
                 {
@@ -2284,7 +2542,9 @@ namespace FP300Service.UserControls
             {
                 if (checkBoxVoidEft.Checked)
                 {
+#if !CPP
                     response = new CPResponse(bridge.Printer.VoidEFTPayment(int.Parse(txtAcquierId.Text), int.Parse(txtBatchNo.Text), int.Parse(txtStanNo.Text)));
+#endif
                 }
                 else
                 {
@@ -2492,7 +2752,9 @@ namespace FP300Service.UserControls
         {
             try
             {
+#if !CPP
                 CPResponse response = new CPResponse(bridge.Printer.RefundEFTPayment(int.Parse(txtAcquierIdRefund.Text)));
+#endif
             }
             catch(Exception ex)
             {
@@ -2505,7 +2767,9 @@ namespace FP300Service.UserControls
             CPResponse response = null;
             try
             {
+#if !CPP
                 response = new CPResponse(bridge.Printer.GetBankListOnEFT());
+#endif
 
                 if (response.ErrorCode == 0)
                 {
@@ -2528,7 +2792,9 @@ namespace FP300Service.UserControls
             CPResponse response = null;
             try
             {
+#if !CPP
                 response = new CPResponse(bridge.Printer.GetSalesInfo());
+#endif
 
                 if (response.ErrorCode == 0)
                 {
@@ -2563,6 +2829,132 @@ namespace FP300Service.UserControls
             }
 
 
+        }
+
+        static System.Threading.Thread printJSONThread = null;
+        private void buttonAutoPrint_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (buttonAutoPrint.Text == "AUTO PRINT")
+                {
+                    printJSONThread = new System.Threading.Thread(PrintJSONLoop);
+                    printJSONThread.Start();
+                    buttonAutoPrint.Text = "STOP PRINT";
+                }
+                else
+                {
+                    printJSONThread.Abort();
+                    buttonAutoPrint.Text = "AUTO PRINT";
+                }
+
+            }
+            catch(Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+        }
+
+        static string jsonStr = String.Empty;
+        private void PrintJSONLoop()
+        {
+            if (String.IsNullOrEmpty(jsonStr))
+            {
+                string jsonFileName = System.Configuration.ConfigurationSettings.AppSettings["JSONDocName"];
+                if (!File.Exists(jsonFileName))
+                {
+                    bridge.Log(FormMessage.JSON_FILE_NOT_EXISTS);
+                    return;
+                }
+
+                jsonStr = File.ReadAllText(jsonFileName);
+            }
+            int docCounter = 1;
+            while (true)
+            {
+                try
+                {
+                    bridge.Log(String.Format("AUTO PRINT DOC COUNTER: {0}", docCounter++));
+                    CPResponse response = new CPResponse(bridge.Printer.PrintDocumentHeader());
+                    if (response.ErrorCode == 0)
+                        response = new CPResponse(bridge.Printer.PrintJSONDocument(jsonStr));
+                    else
+                    {
+                        buttonAutoPrint.Text = "AUTO PRINT"; 
+                        break;
+                    }
+                    System.Threading.Thread.Sleep(2000);
+                }
+                catch(Exception ex)
+                {
+                    bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+                    buttonAutoPrint.Text = "AUTO PRINT";
+                    break;
+                }
+            }
+        }
+
+        private void btnSaleDept_Click(object sender, EventArgs e)
+        {
+            int weighable = cbxDeptSaleWeighable.Checked ? 1 : 0;
+            
+
+            try
+            {
+                CPResponse response = new CPResponse(bridge.Printer.PrintDepartment((int)nmrDeptSaleId.Value, 
+                                                                                    nmrDeptSaleQtty.Value,
+                                                                                    nmrDeptSalePrice.Value,
+                                                                                    txtDeptSaleName.Text,
+                                                                                    weighable));
+
+                if (response.ErrorCode == 0)
+                {
+                    bridge.Log(String.Format(FormMessage.SUBTOTAL.PadRight(12, ' ') + ":{0}", response.GetNextParam()));
+                }
+            }
+            catch
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS);
+            }
+        }
+
+        private void btnJsonOnlyDept_Click(object sender, EventArgs e)
+        {
+            string jsonFileName = System.Configuration.ConfigurationSettings.AppSettings["JSONDocName"];
+            string jsonStr = "";
+            if (!File.Exists(jsonFileName))
+            {
+                bridge.Log(FormMessage.JSON_FILE_NOT_EXISTS);
+                return;
+            }
+
+            try
+            {
+                jsonStr = File.ReadAllText(jsonFileName);
+
+                CPResponse response = new CPResponse(bridge.Printer.PrintJSONDocumentDeptOnly(jsonStr));
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + " : " + ex.Message);
+            }
+        }
+
+        private void cbxVoidDept_CheckedChanged(object sender, EventArgs e)
+        {
+            lblVoidDeptName.Visible = cbxVoidDept.Checked;
+            txtVoidDeptName.Visible = cbxVoidDept.Checked;
+
+            if (cbxVoidDept.Checked)
+            {
+                nmrVoidPlu.Maximum = 8;
+                lblVoidPlu.Text = FormMessage.DEPT_ID;
+            } 
+            else
+            {
+                nmrVoidPlu.Maximum = 200000;
+                lblVoidPlu.Text = FormMessage.PLU;
+            }
         }
     }
 }

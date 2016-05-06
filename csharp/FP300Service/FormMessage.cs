@@ -47,6 +47,8 @@ namespace FP300Service
         public const String PRICE = "PRICE";
         public const String BARCODE = "BARCODE";
         public const String SUB_CATEGORY = "SUB CATEGORY";
+        public const String DEPT_ID = "DEPT ID";
+        public const String VOID_DEPARTMENT = "VOID DEPARTMENT";
 
         public const String CREDIT = "CREDIT";
         public const String CREDIT_DEFINITION = "CREDIT DEFINITION";
@@ -401,6 +403,8 @@ namespace FP300Service
         public const String PRICE = "FİYAT";
         public const String BARCODE = "BARKOD";
         public const String SUB_CATEGORY = "ALT KATEGORİ";
+        public const String DEPT_ID = "DEPT NO";
+        public const String VOID_DEPARTMENT = "DEPARTMAN İPTALİ";
 
         public const String CREDIT = "KREDİ";
         public const String CREDIT_DEFINITION = "KREDİ TANIMLAMA";

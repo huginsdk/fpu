@@ -136,8 +136,8 @@ namespace FP300Service
             // 
             // lvievMenu
             // 
-            this.lvievMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.lvievMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lvievMenu.BackColor = System.Drawing.Color.White;
             this.lvievMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvievMenu.FullRowSelect = true;
@@ -149,9 +149,10 @@ namespace FP300Service
             listViewItem5,
             listViewItem6});
             this.lvievMenu.LargeImageList = this.imgLstMenus;
-            this.lvievMenu.Location = new System.Drawing.Point(6, 60);
+            this.lvievMenu.Location = new System.Drawing.Point(8, 74);
+            this.lvievMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lvievMenu.Name = "lvievMenu";
-            this.lvievMenu.Size = new System.Drawing.Size(153, 495);
+            this.lvievMenu.Size = new System.Drawing.Size(203, 609);
             this.lvievMenu.SmallImageList = this.imgLstMenus;
             this.lvievMenu.TabIndex = 4;
             this.lvievMenu.UseCompatibleStateImageBehavior = false;
@@ -160,53 +161,55 @@ namespace FP300Service
             // 
             // pnlMain
             // 
-            this.pnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMain.BackColor = System.Drawing.Color.White;
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMain.Location = new System.Drawing.Point(159, 60);
+            this.pnlMain.Location = new System.Drawing.Point(212, 74);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(605, 495);
+            this.pnlMain.Size = new System.Drawing.Size(806, 609);
             this.pnlMain.TabIndex = 3;
             // 
             // txtLog
             // 
-            this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLog.BackColor = System.Drawing.Color.Black;
             this.txtLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLog.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtLog.ForeColor = System.Drawing.Color.White;
-            this.txtLog.Location = new System.Drawing.Point(769, 60);
-            this.txtLog.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLog.Location = new System.Drawing.Point(1025, 74);
+            this.txtLog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(455, 496);
+            this.txtLog.Size = new System.Drawing.Size(605, 610);
             this.txtLog.TabIndex = 5;
             this.txtLog.Text = "";
             // 
             // pnlHeader
             // 
-            this.pnlHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeader.BackColor = System.Drawing.Color.White;
             this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlHeader.Controls.Add(this.btnConnect);
             this.pnlHeader.Controls.Add(this.label2);
             this.pnlHeader.Controls.Add(this.txtFiscalId);
             this.pnlHeader.Controls.Add(this.tabConn);
-            this.pnlHeader.Location = new System.Drawing.Point(127, 0);
+            this.pnlHeader.Location = new System.Drawing.Point(169, 0);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1097, 54);
+            this.pnlHeader.Size = new System.Drawing.Size(1462, 66);
             this.pnlHeader.TabIndex = 4;
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(410, 2);
-            this.btnConnect.Margin = new System.Windows.Forms.Padding(2);
+            this.btnConnect.Location = new System.Drawing.Point(547, 2);
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(110, 41);
+            this.btnConnect.Size = new System.Drawing.Size(147, 50);
             this.btnConnect.TabIndex = 7;
             this.btnConnect.Text = "CONNECT";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -215,19 +218,18 @@ namespace FP300Service
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(299, 3);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(399, 4);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.Size = new System.Drawing.Size(79, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "FISCAL ID :";
             // 
             // txtFiscalId
             // 
-            this.txtFiscalId.Location = new System.Drawing.Point(302, 24);
-            this.txtFiscalId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFiscalId.Location = new System.Drawing.Point(403, 30);
+            this.txtFiscalId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFiscalId.Name = "txtFiscalId";
-            this.txtFiscalId.Size = new System.Drawing.Size(83, 20);
+            this.txtFiscalId.Size = new System.Drawing.Size(109, 22);
             this.txtFiscalId.TabIndex = 5;
             this.txtFiscalId.Text = "111";
             // 
@@ -239,12 +241,12 @@ namespace FP300Service
             this.tabConn.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabConn.ItemSize = new System.Drawing.Size(25, 120);
             this.tabConn.Location = new System.Drawing.Point(0, 0);
-            this.tabConn.Margin = new System.Windows.Forms.Padding(2);
+            this.tabConn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabConn.Multiline = true;
             this.tabConn.Name = "tabConn";
             this.tabConn.Padding = new System.Drawing.Point(0, 0);
             this.tabConn.SelectedIndex = 0;
-            this.tabConn.Size = new System.Drawing.Size(294, 118);
+            this.tabConn.Size = new System.Drawing.Size(392, 145);
             this.tabConn.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabConn.TabIndex = 2;
             this.tabConn.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabConn_DrawItem);
@@ -256,10 +258,10 @@ namespace FP300Service
             this.tabTCP.Controls.Add(this.lblIP);
             this.tabTCP.Controls.Add(this.txtTCPIP);
             this.tabTCP.Location = new System.Drawing.Point(124, 4);
-            this.tabTCP.Margin = new System.Windows.Forms.Padding(2);
+            this.tabTCP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabTCP.Name = "tabTCP";
-            this.tabTCP.Padding = new System.Windows.Forms.Padding(2);
-            this.tabTCP.Size = new System.Drawing.Size(166, 110);
+            this.tabTCP.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabTCP.Size = new System.Drawing.Size(264, 137);
             this.tabTCP.TabIndex = 0;
             this.tabTCP.Text = "TCP/IP";
             this.tabTCP.UseVisualStyleBackColor = true;
@@ -267,38 +269,36 @@ namespace FP300Service
             // lblPort
             // 
             this.lblPort.AutoSize = true;
-            this.lblPort.Location = new System.Drawing.Point(15, 24);
-            this.lblPort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPort.Location = new System.Drawing.Point(20, 30);
             this.lblPort.Name = "lblPort";
-            this.lblPort.Size = new System.Drawing.Size(32, 13);
+            this.lblPort.Size = new System.Drawing.Size(42, 17);
             this.lblPort.TabIndex = 3;
             this.lblPort.Text = "Port :";
             // 
             // txtTcpPort
             // 
-            this.txtTcpPort.Location = new System.Drawing.Point(76, 24);
-            this.txtTcpPort.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTcpPort.Location = new System.Drawing.Point(101, 30);
+            this.txtTcpPort.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTcpPort.Name = "txtTcpPort";
-            this.txtTcpPort.Size = new System.Drawing.Size(108, 20);
+            this.txtTcpPort.Size = new System.Drawing.Size(143, 22);
             this.txtTcpPort.TabIndex = 2;
             this.txtTcpPort.Text = "4444";
             // 
             // lblIP
             // 
             this.lblIP.AutoSize = true;
-            this.lblIP.Location = new System.Drawing.Point(15, 7);
-            this.lblIP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblIP.Location = new System.Drawing.Point(20, 9);
             this.lblIP.Name = "lblIP";
-            this.lblIP.Size = new System.Drawing.Size(23, 13);
+            this.lblIP.Size = new System.Drawing.Size(28, 17);
             this.lblIP.TabIndex = 1;
             this.lblIP.Text = "IP :";
             // 
             // txtTCPIP
             // 
-            this.txtTCPIP.Location = new System.Drawing.Point(76, 5);
-            this.txtTCPIP.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTCPIP.Location = new System.Drawing.Point(101, 6);
+            this.txtTCPIP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTCPIP.Name = "txtTCPIP";
-            this.txtTCPIP.Size = new System.Drawing.Size(108, 20);
+            this.txtTCPIP.Size = new System.Drawing.Size(143, 22);
             this.txtTCPIP.TabIndex = 0;
             this.txtTCPIP.Text = "127.0.0.1";
             // 
@@ -309,10 +309,10 @@ namespace FP300Service
             this.tabComPort.Controls.Add(this.txtBaudrate);
             this.tabComPort.Controls.Add(this.lblComport);
             this.tabComPort.Location = new System.Drawing.Point(124, 4);
-            this.tabComPort.Margin = new System.Windows.Forms.Padding(2);
+            this.tabComPort.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabComPort.Name = "tabComPort";
-            this.tabComPort.Padding = new System.Windows.Forms.Padding(2);
-            this.tabComPort.Size = new System.Drawing.Size(166, 110);
+            this.tabComPort.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabComPort.Size = new System.Drawing.Size(264, 137);
             this.tabComPort.TabIndex = 1;
             this.tabComPort.Text = "SERIAL PORT";
             this.tabComPort.UseVisualStyleBackColor = true;
@@ -320,39 +320,37 @@ namespace FP300Service
             // cmbPorts
             // 
             this.cmbPorts.FormattingEnabled = true;
-            this.cmbPorts.Location = new System.Drawing.Point(76, 5);
-            this.cmbPorts.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbPorts.Location = new System.Drawing.Point(101, 6);
+            this.cmbPorts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPorts.Name = "cmbPorts";
-            this.cmbPorts.Size = new System.Drawing.Size(92, 21);
+            this.cmbPorts.Size = new System.Drawing.Size(121, 24);
             this.cmbPorts.TabIndex = 8;
             this.cmbPorts.DropDown += new System.EventHandler(this.cmbPorts_DropDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 28);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(5, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.Size = new System.Drawing.Size(91, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "BAUDRATE :";
             // 
             // txtBaudrate
             // 
-            this.txtBaudrate.Location = new System.Drawing.Point(76, 24);
-            this.txtBaudrate.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBaudrate.Location = new System.Drawing.Point(101, 30);
+            this.txtBaudrate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBaudrate.Name = "txtBaudrate";
-            this.txtBaudrate.Size = new System.Drawing.Size(92, 20);
+            this.txtBaudrate.Size = new System.Drawing.Size(121, 22);
             this.txtBaudrate.TabIndex = 6;
             this.txtBaudrate.Text = "115200";
             // 
             // lblComport
             // 
             this.lblComport.AutoSize = true;
-            this.lblComport.Location = new System.Drawing.Point(15, 7);
-            this.lblComport.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblComport.Location = new System.Drawing.Point(20, 9);
             this.lblComport.Name = "lblComport";
-            this.lblComport.Size = new System.Drawing.Size(43, 13);
+            this.lblComport.Size = new System.Drawing.Size(55, 17);
             this.lblComport.TabIndex = 5;
             this.lblComport.Text = "PORT :";
             // 
@@ -362,22 +360,23 @@ namespace FP300Service
             this.pnlLogo.BackgroundImage = global::FP300Service.Properties.Resources.FP300_All_mini;
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlLogo.Location = new System.Drawing.Point(6, 0);
+            this.pnlLogo.Location = new System.Drawing.Point(8, 0);
+            this.pnlLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(120, 54);
+            this.pnlLogo.Size = new System.Drawing.Size(159, 66);
             this.pnlLogo.TabIndex = 4;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1225, 556);
+            this.ClientSize = new System.Drawing.Size(1633, 684);
             this.Controls.Add(this.pnlLogo);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.lvievMenu);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "FP300 Servis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -578,87 +577,103 @@ namespace FP300Service
             }
 
         }
-        
+
+        private delegate void LogDelegate(String log);
         public void Log(string log)
         {
-            txtLog.AppendText("# " + log + "\r\n");
-            txtLog.SelectionStart = txtLog.Text.Length;
-            txtLog.ScrollToCaret();
+            if (txtLog.InvokeRequired)
+            {
+                txtLog.Invoke(new LogDelegate(Log), log);
+            }
+            else
+            {
+                txtLog.AppendText("# " + log + "\r\n");
+                txtLog.SelectionStart = txtLog.Text.Length;
+                txtLog.ScrollToCaret();
+            }
         }
 
+        private delegate void LogDelegate2();
         public void Log()
         {
-            // 1 Command
-            // 2 Sequnce Number
-            // 3 FPU State
-            // 4 Error Code
-            // 5 Error Message
-
-            if (printer != null)
+            if (txtLog.InvokeRequired)
             {
-                string lastlog = printer.GetLastLog();
+                txtLog.Invoke(new LogDelegate2(Log));
+            }
+            else
+            {
+                // 1 Command
+                // 2 Sequnce Number
+                // 3 FPU State
+                // 4 Error Code
+                // 5 Error Message
 
-                txtLog.SelectionColor = Color.CornflowerBlue;
-                txtLog.AppendText("***************************************************" + Environment.NewLine);
-
-                if (!String.IsNullOrEmpty(lastlog))
+                if (printer != null)
                 {
-                    if (!lastlog.Contains("|"))
+                    string lastlog = printer.GetLastLog();
+
+                    txtLog.SelectionColor = Color.CornflowerBlue;
+                    txtLog.AppendText("***************************************************" + Environment.NewLine);
+
+                    if (!String.IsNullOrEmpty(lastlog))
                     {
-                        Log(lastlog);
-                        return;
-                    }
-
-                    string[] parsedLog = lastlog.Split('|');
-
-                    if (parsedLog.Length == 5)
-                    {
-
-                        string command = parsedLog[0];
-                        string sequnce = parsedLog[1];
-                        string state = parsedLog[2];
-                        string errorCode = parsedLog[3];
-                        string errorMsg = parsedLog[4];
-
-                        if (command != "NULL")
+                        if (!lastlog.Contains("|"))
                         {
-                            txtLog.SelectionColor = Color.White;
-                            if(sequnce.Length == 1)
-                                txtLog.AppendText(String.Format("{0} {1}:", sequnce, FormMessage.COMMAND.PadRight(12, ' ')));
-                            else if(sequnce.Length == 2)
-                                txtLog.AppendText(String.Format("{0} {1}:", sequnce, FormMessage.COMMAND.PadRight(11, ' ')));
-                            else
-                                txtLog.AppendText(String.Format("{0} {1}:", sequnce, FormMessage.COMMAND.PadRight(10, ' ')));
-
-
-                            txtLog.SelectionColor = Color.Red;
-                            txtLog.AppendText(command + "\t" + Environment.NewLine);
-
-                            txtLog.SelectionColor = Color.White;
-                            txtLog.AppendText("  "+FormMessage.FPU_STATE.PadRight(12, ' ')+":");
-                            txtLog.SelectionColor = Color.LightSkyBlue;
-                            txtLog.AppendText(state + "\t" + Environment.NewLine);
+                            Log(lastlog);
+                            return;
                         }
-                        txtLog.SelectionColor = Color.White;
-                        txtLog.AppendText("  "+FormMessage.RESPONSE.PadRight(12, ' ')+":");
 
-                        Color responseColor = Color.LimeGreen;
+                        string[] parsedLog = lastlog.Split('|');
 
-                        if (errorCode != "0")
+                        if (parsedLog.Length == 5)
                         {
-                            responseColor = Color.Red;
-                            if (state == FormMessage.NEED_SERVICE && errorCode != "3")
+
+                            string command = parsedLog[0];
+                            string sequnce = parsedLog[1];
+                            string state = parsedLog[2];
+                            string errorCode = parsedLog[3];
+                            string errorMsg = parsedLog[4];
+
+                            if (command != "NULL")
                             {
-                                responseColor = Color.Yellow;
+                                txtLog.SelectionColor = Color.White;
+                                if (sequnce.Length == 1)
+                                    txtLog.AppendText(String.Format("{0} {1}:", sequnce, FormMessage.COMMAND.PadRight(12, ' ')));
+                                else if (sequnce.Length == 2)
+                                    txtLog.AppendText(String.Format("{0} {1}:", sequnce, FormMessage.COMMAND.PadRight(11, ' ')));
+                                else
+                                    txtLog.AppendText(String.Format("{0} {1}:", sequnce, FormMessage.COMMAND.PadRight(10, ' ')));
+
+
+                                txtLog.SelectionColor = Color.Red;
+                                txtLog.AppendText(command + "\t" + Environment.NewLine);
+
+                                txtLog.SelectionColor = Color.White;
+                                txtLog.AppendText("  " + FormMessage.FPU_STATE.PadRight(12, ' ') + ":");
+                                txtLog.SelectionColor = Color.LightSkyBlue;
+                                txtLog.AppendText(state + "\t" + Environment.NewLine);
                             }
+                            txtLog.SelectionColor = Color.White;
+                            txtLog.AppendText("  " + FormMessage.RESPONSE.PadRight(12, ' ') + ":");
+
+                            Color responseColor = Color.LimeGreen;
+
+                            if (errorCode != "0")
+                            {
+                                responseColor = Color.Red;
+                                if (state == FormMessage.NEED_SERVICE && errorCode != "3")
+                                {
+                                    responseColor = Color.Yellow;
+                                }
+                            }
+
+                            txtLog.SelectionColor = responseColor;
+                            txtLog.AppendText(errorMsg + Environment.NewLine);
+
+                            txtLog.SelectionStart = txtLog.Text.Length;
+                            txtLog.ScrollToCaret();
+                            txtLog.SelectionColor = Color.White;
                         }
-
-                        txtLog.SelectionColor = responseColor;
-                        txtLog.AppendText(errorMsg + Environment.NewLine);
-
-                        txtLog.SelectionStart = txtLog.Text.Length;
-                        txtLog.ScrollToCaret();
-                        txtLog.SelectionColor = Color.White;
                     }
                 }
             }
@@ -749,7 +764,8 @@ namespace FP300Service
                 if (!conn)
                 {
                     this.Log(FormMessage.CONNECTING + "... (" + FormMessage.PLEASE_WAIT + ")");
-                    printer = new PrinterWrapper.CompactPrinterWrapper();
+                    if(printer == null)
+                        printer = new PrinterWrapper.CompactPrinterWrapper();
 
                     if (tabConn.SelectedTab == tabComPort)
                     {
@@ -764,6 +780,7 @@ namespace FP300Service
                 }
                 else
                 {
+                    printer.DeleteCompactPrinterWrapper();
                     conn = false;
                     this.Log(FormMessage.DISCONNECTED);
                     btnConnect.Text = FormMessage.CONNECT;
@@ -862,6 +879,8 @@ namespace FP300Service
             return motherBoard;
         }
 
+
+        private static bool isMatchedBefore = false;
         private void MatchExDevice()
         {
             MainForm.SetFiscalId(txtFiscalId.Text);
@@ -875,6 +894,11 @@ namespace FP300Service
             serverInfo.IPProtocol = IPProtocol.IPV4;
 #endif
             serverInfo.Brand = "HUGIN";
+
+            if (!String.IsNullOrEmpty(System.Configuration.ConfigurationSettings.AppSettings["Brand"]))
+            {
+                serverInfo.Brand = System.Configuration.ConfigurationSettings.AppSettings["Brand"];
+            }
             
             serverInfo.Model = "HUGIN COMPACT";
             serverInfo.Port = Convert.ToInt32(txtTcpPort.Text);
@@ -901,6 +925,11 @@ namespace FP300Service
 #else
             if (conn.IsOpen)
             {
+                if (isMatchedBefore)
+                {
+                    printer.SetCommObject(conn.ToObject());
+                    return;
+                }
                 try
                 {
                     printer = new CompactPrinter();
@@ -928,6 +957,8 @@ namespace FP300Service
                     {
                         throw new OperationCanceledException(FormMessage.UNABLE_TO_MATCH);
                     }
+
+                    isMatchedBefore = true;
                 }
                 catch (Exception ex)
                 {

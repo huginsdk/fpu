@@ -1967,6 +1967,8 @@ namespace FP300Service.UserControls
                             MainForm.SetCredit(i, name);
                         }
                     }
+                    else
+                        dgvCredits.Rows[i].Cells[clmnCreditName.Name].Value = "";
                 }
                 catch (TimeoutException)
                 {
