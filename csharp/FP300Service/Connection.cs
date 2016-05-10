@@ -29,6 +29,7 @@ namespace FP300Service
             base(portName, baudrate)
         {
         }
+#if ON_RDP
         protected override void Dispose(bool disposing)
         {
             // our variant for
@@ -48,8 +49,14 @@ namespace FP300Service
 
             base.Dispose(disposing);
         }
+#endif
     }
+
+#if ON_RDP
     public class SerialConnection : IConnection, IDisposable
+#else
+    public class SerialConnection : IConnection
+#endif
     {
         private string portName = String.Empty;
         private int baudRate = 115200;
@@ -72,10 +79,12 @@ namespace FP300Service
             }
         }
 
+#if ON_RDP
         ~SerialConnection()
         {
             Dispose();
         }
+#endif
 
         public void Open()
         {
@@ -128,6 +137,7 @@ namespace FP300Service
             return sp;
         }
 
+#if ON_RDP
         public void Dispose()
         {
             try
@@ -139,6 +149,7 @@ namespace FP300Service
             {
             }
         }
+#endif
     }
     public class TCPConnection : IConnection, IDisposable
     {
