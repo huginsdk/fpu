@@ -15,12 +15,12 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;FPU,DEBUG;NEBIM_MODE;LANG_ENG;CPP</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;FPU,DEBUG;NEBIM_MODE;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -75,6 +75,12 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hugin.Common">
+      <HintPath>..\etc\Hugin.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Hugin.POS.CompactPrinter.FP300">
+      <HintPath>..\etc\Hugin.POS.CompactPrinter.FP300.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
@@ -176,15 +182,6 @@
     <EmbeddedResource Include="UserControls\UtililtyFuncsUC.resx">
       <DependentUpon>UtililtyFuncsUC.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Certificates\Kurumsal-s1.crt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Certificates\OKC-S1-SIL.crl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Certificates\OKC-S1.cer">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Properties\App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -208,19 +205,10 @@
   <ItemGroup>
     <None Include="Resources\FP300 All mini.png" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Hugin.Common\Hugin.Common.csproj">
-      <Project>{0DDD777B-8D96-4D27-8FCE-4448BFD18A44}</Project>
-      <Name>Hugin.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Hugin.POS.CompactPrinter.FP300\Hugin.POS.CompactPrinter.FP300.csproj">
-      <Project>{CBBA05A0-53F2-494D-BB6E-3825610BF762}</Project>
-      <Name>Hugin.POS.CompactPrinter.FP300</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>"C:\Program Files\TortoiseSVN\bin\SubWCRev.exe" "$(SolutionDir)\" "$(ProjectDir)Properties\SVNTemplate.cs" "$(ProjectDir)Properties\AssemblyInfo.cs"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
