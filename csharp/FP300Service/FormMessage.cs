@@ -206,7 +206,8 @@ namespace FP300Service
         public const String RECEIPT = "RECEIPT";
         public const String INVOICE_TYPES = "INVOICE TYPES";
         public const String PAID_DOCUMENTS = "PAID DOCUMENTS";
-        public const String PARKING = "OTOPARK";
+        public const String PARKING = "PARKING";
+        public const string ADVANCE = "ADVANCE";
 
         public const String VOIDED_DOC_ID = "VOIDED DOC. ID";
         public const String PAID_TOTAL = "ÖDEME TOPLAMI";
@@ -364,6 +365,12 @@ namespace FP300Service
         public const String SAVE = "SAVE";
 
         #endregion
+
+        public const string TCKN = "TCKN";
+        public const string CUSTOMER_NAME = "CUSTOMER NAME";
+        public const string COLLECTION_DOC = "COLLECTION INVOICE";
+        public const string PLU_DEFINITION = "PLU DEFINITION";
+        public const string END_DAY_REPORT = "END DAY REPORT";
 #else
         #region FiscalInfoUC
 
@@ -566,6 +573,7 @@ namespace FP300Service
         public const String INVOICE_TYPES = "FAT/EFAT/EARS";
         public const String PAID_DOCUMENTS = "TUTAR GİRİŞLİ BELGE";
         public const String PARKING = "OTOPARK";
+        public const string ADVANCE = "AVANS";
 
         public const String VOIDED_DOC_ID = "İPTAL BELGE NO";
         public const String PAID_TOTAL = "ÖDEME TOPLAMI";
@@ -575,7 +583,6 @@ namespace FP300Service
         public const String INVOICE = "FATURA";
         public const String E_INVOICE = "E-FATURA";
         public const string E_ARCHIVE = "E-ARŞİV";
-        public const String ADVANCE = "AVANS";
         public const string FOOD_DOC = "YEMEK FİŞİ";
         public const String CURRENCIES = "DÖVİZLER";
 
@@ -725,5 +732,17 @@ namespace FP300Service
 
         #endregion
 #endif
+
+
+
+        public const string TCKN = "TCKN";
+
+        public const string CUSTOMER_NAME = "MÜŞTERİ ADI";
+
+        public const string COLLECTION_DOC = "FATURA TAHSİLAT";
+
+        public const string PLU_DEFINITION = "PLU TANIMLAMA";
+
+        public const string END_DAY_REPORT = "GÜN SONU RAPORU";
     }
 }

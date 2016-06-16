@@ -89,6 +89,9 @@ namespace FP300Service.UserControls
         private Label lblEJPerDailyDate;
         private RadioButton rbtnEJPerByDaily;
         private RadioButton rbtnReceiptTotalReport;
+        private TableLayoutPanel tableLayoutPanelReportUC;
+        private TableLayoutPanel tableLayoutPanelReportUCLeftSide;
+        private RadioButton rbtnEndDay;
         private Button btnPrintEJSingReport;
 
         internal static TestUC Instance(IBridge iBridge)
@@ -171,6 +174,7 @@ namespace FP300Service.UserControls
             this.rbtnFiscDateReport.Text = FormMessage.FM_REPORT_DATE;
             this.rbtnFiscZZReport.Text = FormMessage.FM_REPORT_ZZ;
             this.rbtnZReport.Text = FormMessage.Z_REPORT;
+            this.rbtnEndDay.Text = FormMessage.END_DAY_REPORT;
             this.btnPrintZReport.Text = FormMessage.GET_REPORT;
             this.tabEJSingle.Text = FormMessage.EJ_SINGLE_REPORT;
             this.lblZCopyZno.Text = FormMessage.Z_ID;
@@ -262,6 +266,9 @@ namespace FP300Service.UserControls
             this.rbtnEJPerByDate = new System.Windows.Forms.RadioButton();
             this.rbtnEJPerByNo = new System.Windows.Forms.RadioButton();
             this.btnPrintEJPerReport = new System.Windows.Forms.Button();
+            this.tableLayoutPanelReportUC = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelReportUCLeftSide = new System.Windows.Forms.TableLayoutPanel();
+            this.rbtnEndDay = new System.Windows.Forms.RadioButton();
             this.grpPrintArea.SuspendLayout();
             this.tbcReports.SuspendLayout();
             this.tabXReports.SuspendLayout();
@@ -279,17 +286,20 @@ namespace FP300Service.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.nmrEJPerLastZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrEJPerFirstDoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrEJPerFirstZ)).BeginInit();
+            this.tableLayoutPanelReportUC.SuspendLayout();
+            this.tableLayoutPanelReportUCLeftSide.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpPrintArea
             // 
             this.grpPrintArea.Controls.Add(this.cbxSoft);
             this.grpPrintArea.Controls.Add(this.cbxHard);
-            this.grpPrintArea.Location = new System.Drawing.Point(5, 7);
+            this.grpPrintArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpPrintArea.Location = new System.Drawing.Point(2, 2);
             this.grpPrintArea.Margin = new System.Windows.Forms.Padding(2);
             this.grpPrintArea.Name = "grpPrintArea";
             this.grpPrintArea.Padding = new System.Windows.Forms.Padding(2);
-            this.grpPrintArea.Size = new System.Drawing.Size(238, 34);
+            this.grpPrintArea.Size = new System.Drawing.Size(285, 38);
             this.grpPrintArea.TabIndex = 2;
             this.grpPrintArea.TabStop = false;
             // 
@@ -321,34 +331,31 @@ namespace FP300Service.UserControls
             // 
             // txtResult
             // 
-            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResult.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtResult.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtResult.Location = new System.Drawing.Point(254, 0);
+            this.txtResult.Location = new System.Drawing.Point(297, 2);
             this.txtResult.Margin = new System.Windows.Forms.Padding(2);
             this.txtResult.Name = "txtResult";
             this.txtResult.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(338, 428);
+            this.txtResult.Size = new System.Drawing.Size(292, 423);
             this.txtResult.TabIndex = 1;
             this.txtResult.Text = "";
             // 
             // tbcReports
             // 
-            this.tbcReports.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
             this.tbcReports.Controls.Add(this.tabXReports);
             this.tbcReports.Controls.Add(this.tabZReports);
             this.tbcReports.Controls.Add(this.tabEJSingle);
             this.tbcReports.Controls.Add(this.tabEJPeriyot);
+            this.tbcReports.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcReports.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbcReports.Location = new System.Drawing.Point(2, 45);
+            this.tbcReports.Location = new System.Drawing.Point(2, 44);
             this.tbcReports.Margin = new System.Windows.Forms.Padding(2);
             this.tbcReports.Multiline = true;
             this.tbcReports.Name = "tbcReports";
             this.tbcReports.SelectedIndex = 0;
-            this.tbcReports.Size = new System.Drawing.Size(244, 365);
+            this.tbcReports.Size = new System.Drawing.Size(285, 375);
             this.tbcReports.TabIndex = 0;
             // 
             // tabXReports
@@ -366,7 +373,7 @@ namespace FP300Service.UserControls
             this.tabXReports.Margin = new System.Windows.Forms.Padding(2);
             this.tabXReports.Name = "tabXReports";
             this.tabXReports.Padding = new System.Windows.Forms.Padding(2);
-            this.tabXReports.Size = new System.Drawing.Size(236, 323);
+            this.tabXReports.Size = new System.Drawing.Size(277, 333);
             this.tabXReports.TabIndex = 0;
             this.tabXReports.Text = "X REPORTS";
             this.tabXReports.UseVisualStyleBackColor = true;
@@ -502,6 +509,7 @@ namespace FP300Service.UserControls
             // 
             // tabZReports
             // 
+            this.tabZReports.Controls.Add(this.rbtnEndDay);
             this.tabZReports.Controls.Add(this.cbxFFZZDetailed);
             this.tabZReports.Controls.Add(this.cbxFFDateDetailed);
             this.tabZReports.Controls.Add(this.dtZZLastDate);
@@ -520,7 +528,7 @@ namespace FP300Service.UserControls
             this.tabZReports.Margin = new System.Windows.Forms.Padding(2);
             this.tabZReports.Name = "tabZReports";
             this.tabZReports.Padding = new System.Windows.Forms.Padding(2);
-            this.tabZReports.Size = new System.Drawing.Size(236, 323);
+            this.tabZReports.Size = new System.Drawing.Size(277, 333);
             this.tabZReports.TabIndex = 1;
             this.tabZReports.Text = "Z REPORTS";
             this.tabZReports.UseVisualStyleBackColor = true;
@@ -528,7 +536,7 @@ namespace FP300Service.UserControls
             // cbxFFZZDetailed
             // 
             this.cbxFFZZDetailed.AutoSize = true;
-            this.cbxFFZZDetailed.Location = new System.Drawing.Point(118, 136);
+            this.cbxFFZZDetailed.Location = new System.Drawing.Point(118, 158);
             this.cbxFFZZDetailed.Margin = new System.Windows.Forms.Padding(2);
             this.cbxFFZZDetailed.Name = "cbxFFZZDetailed";
             this.cbxFFZZDetailed.Size = new System.Drawing.Size(92, 18);
@@ -589,7 +597,7 @@ namespace FP300Service.UserControls
             // 
             // nmrFFZFirst
             // 
-            this.nmrFFZFirst.Location = new System.Drawing.Point(118, 89);
+            this.nmrFFZFirst.Location = new System.Drawing.Point(118, 112);
             this.nmrFFZFirst.Margin = new System.Windows.Forms.Padding(2);
             this.nmrFFZFirst.Maximum = new decimal(new int[] {
             4000,
@@ -614,7 +622,7 @@ namespace FP300Service.UserControls
             // lblFFZLast
             // 
             this.lblFFZLast.AutoSize = true;
-            this.lblFFZLast.Location = new System.Drawing.Point(32, 115);
+            this.lblFFZLast.Location = new System.Drawing.Point(32, 137);
             this.lblFFZLast.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFFZLast.Name = "lblFFZLast";
             this.lblFFZLast.Size = new System.Drawing.Size(66, 14);
@@ -623,7 +631,7 @@ namespace FP300Service.UserControls
             // 
             // nmrFFZLast
             // 
-            this.nmrFFZLast.Location = new System.Drawing.Point(118, 113);
+            this.nmrFFZLast.Location = new System.Drawing.Point(118, 135);
             this.nmrFFZLast.Margin = new System.Windows.Forms.Padding(2);
             this.nmrFFZLast.Maximum = new decimal(new int[] {
             4000,
@@ -648,7 +656,7 @@ namespace FP300Service.UserControls
             // lblFFZFirst
             // 
             this.lblFFZFirst.AutoSize = true;
-            this.lblFFZFirst.Location = new System.Drawing.Point(32, 91);
+            this.lblFFZFirst.Location = new System.Drawing.Point(32, 114);
             this.lblFFZFirst.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFFZFirst.Name = "lblFFZFirst";
             this.lblFFZFirst.Size = new System.Drawing.Size(68, 14);
@@ -671,7 +679,7 @@ namespace FP300Service.UserControls
             // 
             this.rbtnFiscZZReport.AutoSize = true;
             this.rbtnFiscZZReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnFiscZZReport.Location = new System.Drawing.Point(16, 64);
+            this.rbtnFiscZZReport.Location = new System.Drawing.Point(16, 91);
             this.rbtnFiscZZReport.Margin = new System.Windows.Forms.Padding(2);
             this.rbtnFiscZZReport.Name = "rbtnFiscZZReport";
             this.rbtnFiscZZReport.Size = new System.Drawing.Size(208, 17);
@@ -725,7 +733,7 @@ namespace FP300Service.UserControls
             this.tabEJSingle.Margin = new System.Windows.Forms.Padding(2);
             this.tabEJSingle.Name = "tabEJSingle";
             this.tabEJSingle.Padding = new System.Windows.Forms.Padding(2);
-            this.tabEJSingle.Size = new System.Drawing.Size(236, 323);
+            this.tabEJSingle.Size = new System.Drawing.Size(277, 333);
             this.tabEJSingle.TabIndex = 2;
             this.tabEJSingle.Text = "EJ SINGLE REPORT";
             this.tabEJSingle.UseVisualStyleBackColor = true;
@@ -962,7 +970,7 @@ namespace FP300Service.UserControls
             this.tabEJPeriyot.Margin = new System.Windows.Forms.Padding(2);
             this.tabEJPeriyot.Name = "tabEJPeriyot";
             this.tabEJPeriyot.Padding = new System.Windows.Forms.Padding(2);
-            this.tabEJPeriyot.Size = new System.Drawing.Size(236, 323);
+            this.tabEJPeriyot.Size = new System.Drawing.Size(277, 333);
             this.tabEJPeriyot.TabIndex = 3;
             this.tabEJPeriyot.Text = "EJ PERIODIC";
             this.tabEJPeriyot.UseVisualStyleBackColor = true;
@@ -1254,13 +1262,55 @@ namespace FP300Service.UserControls
             this.btnPrintEJPerReport.UseVisualStyleBackColor = true;
             this.btnPrintEJPerReport.Click += new System.EventHandler(this.btnPrintEJPerReport_Click);
             // 
+            // tableLayoutPanelReportUC
+            // 
+            this.tableLayoutPanelReportUC.ColumnCount = 2;
+            this.tableLayoutPanelReportUC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelReportUC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelReportUC.Controls.Add(this.txtResult, 1, 0);
+            this.tableLayoutPanelReportUC.Controls.Add(this.tableLayoutPanelReportUCLeftSide, 0, 0);
+            this.tableLayoutPanelReportUC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelReportUC.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelReportUC.Name = "tableLayoutPanelReportUC";
+            this.tableLayoutPanelReportUC.RowCount = 1;
+            this.tableLayoutPanelReportUC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelReportUC.Size = new System.Drawing.Size(591, 427);
+            this.tableLayoutPanelReportUC.TabIndex = 3;
+            // 
+            // tableLayoutPanelReportUCLeftSide
+            // 
+            this.tableLayoutPanelReportUCLeftSide.ColumnCount = 1;
+            this.tableLayoutPanelReportUCLeftSide.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelReportUCLeftSide.Controls.Add(this.grpPrintArea, 0, 0);
+            this.tableLayoutPanelReportUCLeftSide.Controls.Add(this.tbcReports, 0, 1);
+            this.tableLayoutPanelReportUCLeftSide.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelReportUCLeftSide.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelReportUCLeftSide.Name = "tableLayoutPanelReportUCLeftSide";
+            this.tableLayoutPanelReportUCLeftSide.RowCount = 2;
+            this.tableLayoutPanelReportUCLeftSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanelReportUCLeftSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanelReportUCLeftSide.Size = new System.Drawing.Size(289, 421);
+            this.tableLayoutPanelReportUCLeftSide.TabIndex = 2;
+            // 
+            // rbtnEndDay
+            // 
+            this.rbtnEndDay.AutoSize = true;
+            this.rbtnEndDay.Checked = true;
+            this.rbtnEndDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbtnEndDay.Location = new System.Drawing.Point(16, 52);
+            this.rbtnEndDay.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnEndDay.Name = "rbtnEndDay";
+            this.rbtnEndDay.Size = new System.Drawing.Size(135, 17);
+            this.rbtnEndDay.TabIndex = 26;
+            this.rbtnEndDay.TabStop = true;
+            this.rbtnEndDay.Text = "END DAY REPORT";
+            this.rbtnEndDay.UseVisualStyleBackColor = true;
+            // 
             // ReportUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.grpPrintArea);
-            this.Controls.Add(this.txtResult);
-            this.Controls.Add(this.tbcReports);
+            this.Controls.Add(this.tableLayoutPanelReportUC);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ReportUC";
             this.grpPrintArea.ResumeLayout(false);
@@ -1285,6 +1335,8 @@ namespace FP300Service.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.nmrEJPerLastZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrEJPerFirstDoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrEJPerFirstZ)).EndInit();
+            this.tableLayoutPanelReportUC.ResumeLayout(false);
+            this.tableLayoutPanelReportUCLeftSide.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1338,6 +1390,10 @@ namespace FP300Service.UserControls
                 if (rbtnZReport.Checked)
                 {
                     response = new CPResponse(bridge.Printer.PrintZReport());
+                }
+                else if (rbtnEndDay.Checked)
+                {
+                    response = new CPResponse(bridge.Printer.PrintEndDayReport());
                 }
                 else if (rbtnFiscZZReport.Checked)
                 {

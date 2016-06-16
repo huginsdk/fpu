@@ -64,6 +64,8 @@ namespace FP300Service
         private TextBox txtFiscalId;
         private Button btnConnect;
         private Panel pnlLogo;
+        private TableLayoutPanel tableLayoutPanelMain;
+        private TableLayoutPanel tableLayoutPanelScreens;
         #region Windows Form Designer generated code
         /// <summary>
         /// Required designer variable.
@@ -116,10 +118,14 @@ namespace FP300Service
             this.txtBaudrate = new System.Windows.Forms.TextBox();
             this.lblComport = new System.Windows.Forms.Label();
             this.pnlLogo = new System.Windows.Forms.Panel();
+            this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelScreens = new System.Windows.Forms.TableLayoutPanel();
             this.pnlHeader.SuspendLayout();
             this.tabConn.SuspendLayout();
             this.tabTCP.SuspendLayout();
             this.tabComPort.SuspendLayout();
+            this.tableLayoutPanelMain.SuspendLayout();
+            this.tableLayoutPanelScreens.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgLstMenus
@@ -136,10 +142,9 @@ namespace FP300Service
             // 
             // lvievMenu
             // 
-            this.lvievMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.lvievMenu.BackColor = System.Drawing.Color.White;
             this.lvievMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvievMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvievMenu.FullRowSelect = true;
             this.lvievMenu.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
@@ -149,10 +154,9 @@ namespace FP300Service
             listViewItem5,
             listViewItem6});
             this.lvievMenu.LargeImageList = this.imgLstMenus;
-            this.lvievMenu.Location = new System.Drawing.Point(8, 74);
-            this.lvievMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvievMenu.Location = new System.Drawing.Point(3, 66);
             this.lvievMenu.Name = "lvievMenu";
-            this.lvievMenu.Size = new System.Drawing.Size(203, 609);
+            this.lvievMenu.Size = new System.Drawing.Size(169, 516);
             this.lvievMenu.SmallImageList = this.imgLstMenus;
             this.lvievMenu.TabIndex = 4;
             this.lvievMenu.UseCompatibleStateImageBehavior = false;
@@ -161,55 +165,49 @@ namespace FP300Service
             // 
             // pnlMain
             // 
-            this.pnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMain.BackColor = System.Drawing.Color.White;
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMain.Location = new System.Drawing.Point(212, 74);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(3, 3);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(806, 609);
+            this.pnlMain.Size = new System.Drawing.Size(595, 510);
             this.pnlMain.TabIndex = 3;
             // 
             // txtLog
             // 
-            this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLog.BackColor = System.Drawing.Color.Black;
             this.txtLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtLog.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtLog.ForeColor = System.Drawing.Color.White;
-            this.txtLog.Location = new System.Drawing.Point(1025, 74);
-            this.txtLog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtLog.Location = new System.Drawing.Point(603, 2);
+            this.txtLog.Margin = new System.Windows.Forms.Padding(2);
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(605, 610);
+            this.txtLog.Size = new System.Drawing.Size(439, 512);
             this.txtLog.TabIndex = 5;
             this.txtLog.Text = "";
             // 
             // pnlHeader
             // 
-            this.pnlHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeader.BackColor = System.Drawing.Color.White;
             this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlHeader.Controls.Add(this.btnConnect);
             this.pnlHeader.Controls.Add(this.label2);
             this.pnlHeader.Controls.Add(this.txtFiscalId);
             this.pnlHeader.Controls.Add(this.tabConn);
-            this.pnlHeader.Location = new System.Drawing.Point(169, 0);
-            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlHeader.Location = new System.Drawing.Point(178, 3);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1462, 66);
+            this.pnlHeader.Size = new System.Drawing.Size(1044, 57);
             this.pnlHeader.TabIndex = 4;
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(547, 2);
-            this.btnConnect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnConnect.Location = new System.Drawing.Point(470, 10);
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(2);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(147, 50);
+            this.btnConnect.Size = new System.Drawing.Size(110, 41);
             this.btnConnect.TabIndex = 7;
             this.btnConnect.Text = "CONNECT";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -218,18 +216,19 @@ namespace FP300Service
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(399, 4);
+            this.label2.Location = new System.Drawing.Point(343, 5);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 17);
+            this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "FISCAL ID :";
             // 
             // txtFiscalId
             // 
-            this.txtFiscalId.Location = new System.Drawing.Point(403, 30);
-            this.txtFiscalId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFiscalId.Location = new System.Drawing.Point(346, 24);
+            this.txtFiscalId.Margin = new System.Windows.Forms.Padding(2);
             this.txtFiscalId.Name = "txtFiscalId";
-            this.txtFiscalId.Size = new System.Drawing.Size(109, 22);
+            this.txtFiscalId.Size = new System.Drawing.Size(83, 20);
             this.txtFiscalId.TabIndex = 5;
             this.txtFiscalId.Text = "111";
             // 
@@ -240,13 +239,13 @@ namespace FP300Service
             this.tabConn.Controls.Add(this.tabComPort);
             this.tabConn.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabConn.ItemSize = new System.Drawing.Size(25, 120);
-            this.tabConn.Location = new System.Drawing.Point(0, 0);
-            this.tabConn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabConn.Location = new System.Drawing.Point(1, 3);
+            this.tabConn.Margin = new System.Windows.Forms.Padding(2);
             this.tabConn.Multiline = true;
             this.tabConn.Name = "tabConn";
             this.tabConn.Padding = new System.Drawing.Point(0, 0);
             this.tabConn.SelectedIndex = 0;
-            this.tabConn.Size = new System.Drawing.Size(392, 145);
+            this.tabConn.Size = new System.Drawing.Size(322, 55);
             this.tabConn.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabConn.TabIndex = 2;
             this.tabConn.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabConn_DrawItem);
@@ -258,10 +257,10 @@ namespace FP300Service
             this.tabTCP.Controls.Add(this.lblIP);
             this.tabTCP.Controls.Add(this.txtTCPIP);
             this.tabTCP.Location = new System.Drawing.Point(124, 4);
-            this.tabTCP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabTCP.Margin = new System.Windows.Forms.Padding(2);
             this.tabTCP.Name = "tabTCP";
-            this.tabTCP.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabTCP.Size = new System.Drawing.Size(264, 137);
+            this.tabTCP.Padding = new System.Windows.Forms.Padding(2);
+            this.tabTCP.Size = new System.Drawing.Size(194, 47);
             this.tabTCP.TabIndex = 0;
             this.tabTCP.Text = "TCP/IP";
             this.tabTCP.UseVisualStyleBackColor = true;
@@ -269,36 +268,38 @@ namespace FP300Service
             // lblPort
             // 
             this.lblPort.AutoSize = true;
-            this.lblPort.Location = new System.Drawing.Point(20, 30);
+            this.lblPort.Location = new System.Drawing.Point(15, 24);
+            this.lblPort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPort.Name = "lblPort";
-            this.lblPort.Size = new System.Drawing.Size(42, 17);
+            this.lblPort.Size = new System.Drawing.Size(32, 13);
             this.lblPort.TabIndex = 3;
             this.lblPort.Text = "Port :";
             // 
             // txtTcpPort
             // 
-            this.txtTcpPort.Location = new System.Drawing.Point(101, 30);
-            this.txtTcpPort.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTcpPort.Location = new System.Drawing.Point(76, 24);
+            this.txtTcpPort.Margin = new System.Windows.Forms.Padding(2);
             this.txtTcpPort.Name = "txtTcpPort";
-            this.txtTcpPort.Size = new System.Drawing.Size(143, 22);
+            this.txtTcpPort.Size = new System.Drawing.Size(108, 20);
             this.txtTcpPort.TabIndex = 2;
             this.txtTcpPort.Text = "4444";
             // 
             // lblIP
             // 
             this.lblIP.AutoSize = true;
-            this.lblIP.Location = new System.Drawing.Point(20, 9);
+            this.lblIP.Location = new System.Drawing.Point(15, 7);
+            this.lblIP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIP.Name = "lblIP";
-            this.lblIP.Size = new System.Drawing.Size(28, 17);
+            this.lblIP.Size = new System.Drawing.Size(23, 13);
             this.lblIP.TabIndex = 1;
             this.lblIP.Text = "IP :";
             // 
             // txtTCPIP
             // 
-            this.txtTCPIP.Location = new System.Drawing.Point(101, 6);
-            this.txtTCPIP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTCPIP.Location = new System.Drawing.Point(76, 5);
+            this.txtTCPIP.Margin = new System.Windows.Forms.Padding(2);
             this.txtTCPIP.Name = "txtTCPIP";
-            this.txtTCPIP.Size = new System.Drawing.Size(143, 22);
+            this.txtTCPIP.Size = new System.Drawing.Size(108, 20);
             this.txtTCPIP.TabIndex = 0;
             this.txtTCPIP.Text = "127.0.0.1";
             // 
@@ -309,10 +310,10 @@ namespace FP300Service
             this.tabComPort.Controls.Add(this.txtBaudrate);
             this.tabComPort.Controls.Add(this.lblComport);
             this.tabComPort.Location = new System.Drawing.Point(124, 4);
-            this.tabComPort.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabComPort.Margin = new System.Windows.Forms.Padding(2);
             this.tabComPort.Name = "tabComPort";
-            this.tabComPort.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabComPort.Size = new System.Drawing.Size(264, 137);
+            this.tabComPort.Padding = new System.Windows.Forms.Padding(2);
+            this.tabComPort.Size = new System.Drawing.Size(194, 47);
             this.tabComPort.TabIndex = 1;
             this.tabComPort.Text = "SERIAL PORT";
             this.tabComPort.UseVisualStyleBackColor = true;
@@ -320,37 +321,39 @@ namespace FP300Service
             // cmbPorts
             // 
             this.cmbPorts.FormattingEnabled = true;
-            this.cmbPorts.Location = new System.Drawing.Point(101, 6);
-            this.cmbPorts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbPorts.Location = new System.Drawing.Point(76, 5);
+            this.cmbPorts.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPorts.Name = "cmbPorts";
-            this.cmbPorts.Size = new System.Drawing.Size(121, 24);
+            this.cmbPorts.Size = new System.Drawing.Size(92, 21);
             this.cmbPorts.TabIndex = 8;
             this.cmbPorts.DropDown += new System.EventHandler(this.cmbPorts_DropDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 34);
+            this.label1.Location = new System.Drawing.Point(4, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 17);
+            this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "BAUDRATE :";
             // 
             // txtBaudrate
             // 
-            this.txtBaudrate.Location = new System.Drawing.Point(101, 30);
-            this.txtBaudrate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBaudrate.Location = new System.Drawing.Point(76, 24);
+            this.txtBaudrate.Margin = new System.Windows.Forms.Padding(2);
             this.txtBaudrate.Name = "txtBaudrate";
-            this.txtBaudrate.Size = new System.Drawing.Size(121, 22);
+            this.txtBaudrate.Size = new System.Drawing.Size(92, 20);
             this.txtBaudrate.TabIndex = 6;
             this.txtBaudrate.Text = "115200";
             // 
             // lblComport
             // 
             this.lblComport.AutoSize = true;
-            this.lblComport.Location = new System.Drawing.Point(20, 9);
+            this.lblComport.Location = new System.Drawing.Point(15, 7);
+            this.lblComport.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblComport.Name = "lblComport";
-            this.lblComport.Size = new System.Drawing.Size(55, 17);
+            this.lblComport.Size = new System.Drawing.Size(43, 13);
             this.lblComport.TabIndex = 5;
             this.lblComport.Text = "PORT :";
             // 
@@ -360,26 +363,57 @@ namespace FP300Service
             this.pnlLogo.BackgroundImage = global::FP300Service.Properties.Resources.FP300_All_mini;
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlLogo.Location = new System.Drawing.Point(8, 0);
-            this.pnlLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlLogo.Location = new System.Drawing.Point(3, 3);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(159, 66);
+            this.pnlLogo.Size = new System.Drawing.Size(169, 57);
             this.pnlLogo.TabIndex = 4;
+            // 
+            // tableLayoutPanelMain
+            // 
+            this.tableLayoutPanelMain.ColumnCount = 2;
+            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.36735F));
+            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.63265F));
+            this.tableLayoutPanelMain.Controls.Add(this.pnlHeader, 1, 0);
+            this.tableLayoutPanelMain.Controls.Add(this.pnlLogo, 0, 0);
+            this.tableLayoutPanelMain.Controls.Add(this.lvievMenu, 0, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.tableLayoutPanelScreens, 1, 1);
+            this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelMain.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
+            this.tableLayoutPanelMain.RowCount = 2;
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.94017F));
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.05983F));
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(1225, 585);
+            this.tableLayoutPanelMain.TabIndex = 6;
+            // 
+            // tableLayoutPanelScreens
+            // 
+            this.tableLayoutPanelScreens.ColumnCount = 2;
+            this.tableLayoutPanelScreens.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.66283F));
+            this.tableLayoutPanelScreens.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.33717F));
+            this.tableLayoutPanelScreens.Controls.Add(this.txtLog, 1, 0);
+            this.tableLayoutPanelScreens.Controls.Add(this.pnlMain, 0, 0);
+            this.tableLayoutPanelScreens.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelScreens.Location = new System.Drawing.Point(178, 66);
+            this.tableLayoutPanelScreens.Name = "tableLayoutPanelScreens";
+            this.tableLayoutPanelScreens.RowCount = 1;
+            this.tableLayoutPanelScreens.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelScreens.Size = new System.Drawing.Size(1044, 516);
+            this.tableLayoutPanelScreens.TabIndex = 5;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1633, 684);
-            this.Controls.Add(this.pnlLogo);
-            this.Controls.Add(this.pnlHeader);
-            this.Controls.Add(this.pnlMain);
-            this.Controls.Add(this.txtLog);
-            this.Controls.Add(this.lvievMenu);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(1225, 585);
+            this.Controls.Add(this.tableLayoutPanelMain);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "FP300 Servis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             this.tabConn.ResumeLayout(false);
@@ -387,6 +421,8 @@ namespace FP300Service
             this.tabTCP.PerformLayout();
             this.tabComPort.ResumeLayout(false);
             this.tabComPort.PerformLayout();
+            this.tableLayoutPanelMain.ResumeLayout(false);
+            this.tableLayoutPanelScreens.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -460,6 +496,8 @@ namespace FP300Service
 
         public MainForm()
         {
+
+            this.WindowState = FormWindowState.Maximized;
             
             if (!String.IsNullOrEmpty(System.Configuration.ConfigurationSettings.AppSettings["Language"]))
             {
@@ -552,7 +590,7 @@ namespace FP300Service
                     uc = UserControls.ProgramUC.Instance(this);
                     break;
                 case FormMessage.SALE://Sale
-                    uc = UserControls.SaleUC.Instance(this);                    
+                    uc = UserControls.SaleUC.Instance(this);
                     break;
                 case FormMessage.REPORTS://Report
                     uc = UserControls.ReportUC.Instance(this);      
@@ -1002,6 +1040,29 @@ namespace FP300Service
 #endif
 
             Dispose();
+        }
+
+
+        int currentWidth = 1366;
+        int currentHeight = 768;
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            Rectangle clientResolution = new Rectangle();
+
+            clientResolution = Screen.GetBounds(clientResolution);
+
+            float widthRatio = (float)clientResolution.Width / (float)currentWidth;
+            float heightRatio = (float)clientResolution.Height / (float)currentHeight;
+
+            SizeF ratioSize = new SizeF(widthRatio, heightRatio);
+
+            this.Scale(ratioSize);
+
+            foreach (Control c in pnlMain.Controls)
+            {
+                c.Scale(ratioSize);
+            }
+
         }
     }
 }

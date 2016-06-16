@@ -112,6 +112,10 @@ namespace FP300Service.UserControls
         private MaskedTextBox mtbxTSMIp;
         private GroupBox gbxLog;
         private DateTimePicker dtpLog;
+        private TableLayoutPanel tableLayoutPanelServiceUC;
+        private TableLayoutPanel tableLayoutPanelServiceLeft;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
         private static IBridge bridge = null;
 
         internal static TestUC Instance(IBridge iBridge)
@@ -134,12 +138,16 @@ namespace FP300Service.UserControls
         {
             this.tcntService = new System.Windows.Forms.TabControl();
             this.tabSRVOperation = new System.Windows.Forms.TabPage();
-            this.gbxLog = new System.Windows.Forms.GroupBox();
-            this.dtpLog = new System.Windows.Forms.DateTimePicker();
-            this.btnPrintLogs = new System.Windows.Forms.Button();
+            this.tableLayoutPanelServiceUC = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelServiceLeft = new System.Windows.Forms.TableLayoutPanel();
             this.gbxServiceMode = new System.Windows.Forms.GroupBox();
             this.lblOrderNum = new System.Windows.Forms.Label();
             this.btnOrderNum = new System.Windows.Forms.Button();
+            this.gbxServiceInOut = new System.Windows.Forms.GroupBox();
+            this.btnEnterService = new System.Windows.Forms.Button();
+            this.btnExitService = new System.Windows.Forms.Button();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblPass = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtFileName = new System.Windows.Forms.TextBox();
             this.lblFileName = new System.Windows.Forms.Label();
@@ -150,24 +158,16 @@ namespace FP300Service.UserControls
             this.dtFPTime = new System.Windows.Forms.DateTimePicker();
             this.dtFPDate = new System.Windows.Forms.DateTimePicker();
             this.btnSetDateTime = new System.Windows.Forms.Button();
-            this.gbxServiceInOut = new System.Windows.Forms.GroupBox();
-            this.btnEnterService = new System.Windows.Forms.Button();
-            this.btnExitService = new System.Windows.Forms.Button();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.lblPass = new System.Windows.Forms.Label();
             this.gbxExtDevice = new System.Windows.Forms.GroupBox();
             this.lblPort = new System.Windows.Forms.Label();
             this.lblIP = new System.Windows.Forms.Label();
             this.tbxPort = new System.Windows.Forms.TextBox();
             this.mtbxIP = new System.Windows.Forms.MaskedTextBox();
             this.btnSetExternalSettings = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnStartFMTest = new System.Windows.Forms.Button();
-            this.btnCreateDB = new System.Windows.Forms.Button();
-            this.btnCloseFM = new System.Windows.Forms.Button();
-            this.btnFatorySettings = new System.Windows.Forms.Button();
-            this.btnFormatDailyMem = new System.Windows.Forms.Button();
-            this.btnEJInit = new System.Windows.Forms.Button();
+            this.gbxFiscalMode = new System.Windows.Forms.GroupBox();
+            this.txtPrgmPass = new System.Windows.Forms.TextBox();
+            this.lblPrgrmPass = new System.Windows.Forms.Label();
+            this.btnFiscalMode = new System.Windows.Forms.Button();
             this.gbxFirmUpdate = new System.Windows.Forms.GroupBox();
             this.btnTestServer = new System.Windows.Forms.Button();
             this.lblServPort = new System.Windows.Forms.Label();
@@ -175,10 +175,17 @@ namespace FP300Service.UserControls
             this.txtServerPort = new System.Windows.Forms.TextBox();
             this.mtbxServerIp = new System.Windows.Forms.MaskedTextBox();
             this.btnUpdateFirmware = new System.Windows.Forms.Button();
-            this.gbxFiscalMode = new System.Windows.Forms.GroupBox();
-            this.txtPrgmPass = new System.Windows.Forms.TextBox();
-            this.lblPrgrmPass = new System.Windows.Forms.Label();
-            this.btnFiscalMode = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.gbxLog = new System.Windows.Forms.GroupBox();
+            this.dtpLog = new System.Windows.Forms.DateTimePicker();
+            this.btnPrintLogs = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnStartFMTest = new System.Windows.Forms.Button();
+            this.btnCreateDB = new System.Windows.Forms.Button();
+            this.btnCloseFM = new System.Windows.Forms.Button();
+            this.btnFatorySettings = new System.Windows.Forms.Button();
+            this.btnFormatDailyMem = new System.Windows.Forms.Button();
+            this.btnEJInit = new System.Windows.Forms.Button();
             this.tabSRVTest = new System.Windows.Forms.TabPage();
             this.gbxTestGmp = new System.Windows.Forms.GroupBox();
             this.lblTsmIp = new System.Windows.Forms.Label();
@@ -188,19 +195,24 @@ namespace FP300Service.UserControls
             this.btnGMPPort = new System.Windows.Forms.Button();
             this.cmbGmpCmds = new System.Windows.Forms.ComboBox();
             this.btnTestGmp = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tcntService.SuspendLayout();
             this.tabSRVOperation.SuspendLayout();
-            this.gbxLog.SuspendLayout();
+            this.tableLayoutPanelServiceUC.SuspendLayout();
+            this.tableLayoutPanelServiceLeft.SuspendLayout();
             this.gbxServiceMode.SuspendLayout();
+            this.gbxServiceInOut.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbxDateTime.SuspendLayout();
-            this.gbxServiceInOut.SuspendLayout();
             this.gbxExtDevice.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.gbxFirmUpdate.SuspendLayout();
             this.gbxFiscalMode.SuspendLayout();
+            this.gbxFirmUpdate.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.gbxLog.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabSRVTest.SuspendLayout();
             this.gbxTestGmp.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcntService
@@ -217,15 +229,7 @@ namespace FP300Service.UserControls
             // 
             // tabSRVOperation
             // 
-            this.tabSRVOperation.Controls.Add(this.gbxLog);
-            this.tabSRVOperation.Controls.Add(this.gbxServiceMode);
-            this.tabSRVOperation.Controls.Add(this.groupBox2);
-            this.tabSRVOperation.Controls.Add(this.gbxDateTime);
-            this.tabSRVOperation.Controls.Add(this.gbxServiceInOut);
-            this.tabSRVOperation.Controls.Add(this.gbxExtDevice);
-            this.tabSRVOperation.Controls.Add(this.groupBox1);
-            this.tabSRVOperation.Controls.Add(this.gbxFirmUpdate);
-            this.tabSRVOperation.Controls.Add(this.gbxFiscalMode);
+            this.tabSRVOperation.Controls.Add(this.tableLayoutPanelServiceUC);
             this.tabSRVOperation.Location = new System.Drawing.Point(4, 22);
             this.tabSRVOperation.Margin = new System.Windows.Forms.Padding(2);
             this.tabSRVOperation.Name = "tabSRVOperation";
@@ -235,48 +239,56 @@ namespace FP300Service.UserControls
             this.tabSRVOperation.Text = "SERVICE OPERATIONS";
             this.tabSRVOperation.UseVisualStyleBackColor = true;
             // 
-            // gbxLog
+            // tableLayoutPanelServiceUC
             // 
-            this.gbxLog.Controls.Add(this.dtpLog);
-            this.gbxLog.Controls.Add(this.btnPrintLogs);
-            this.gbxLog.Location = new System.Drawing.Point(410, 5);
-            this.gbxLog.Margin = new System.Windows.Forms.Padding(2);
-            this.gbxLog.Name = "gbxLog";
-            this.gbxLog.Padding = new System.Windows.Forms.Padding(2);
-            this.gbxLog.Size = new System.Drawing.Size(160, 87);
-            this.gbxLog.TabIndex = 28;
-            this.gbxLog.TabStop = false;
+            this.tableLayoutPanelServiceUC.ColumnCount = 2;
+            this.tableLayoutPanelServiceUC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.32988F));
+            this.tableLayoutPanelServiceUC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.67012F));
+            this.tableLayoutPanelServiceUC.Controls.Add(this.tableLayoutPanelServiceLeft, 0, 0);
+            this.tableLayoutPanelServiceUC.Controls.Add(this.tableLayoutPanel1, 1, 0);
+            this.tableLayoutPanelServiceUC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelServiceUC.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanelServiceUC.Name = "tableLayoutPanelServiceUC";
+            this.tableLayoutPanelServiceUC.RowCount = 1;
+            this.tableLayoutPanelServiceUC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelServiceUC.Size = new System.Drawing.Size(579, 397);
+            this.tableLayoutPanelServiceUC.TabIndex = 29;
             // 
-            // dtpLog
+            // tableLayoutPanelServiceLeft
             // 
-            this.dtpLog.CustomFormat = "dd-MM-yyyy";
-            this.dtpLog.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpLog.Location = new System.Drawing.Point(14, 16);
-            this.dtpLog.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpLog.Name = "dtpLog";
-            this.dtpLog.Size = new System.Drawing.Size(95, 20);
-            this.dtpLog.TabIndex = 37;
-            // 
-            // btnPrintLogs
-            // 
-            this.btnPrintLogs.Location = new System.Drawing.Point(4, 43);
-            this.btnPrintLogs.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPrintLogs.Name = "btnPrintLogs";
-            this.btnPrintLogs.Size = new System.Drawing.Size(110, 30);
-            this.btnPrintLogs.TabIndex = 6;
-            this.btnPrintLogs.Text = "PRINT LOGS";
-            this.btnPrintLogs.UseVisualStyleBackColor = true;
-            this.btnPrintLogs.Click += new System.EventHandler(this.btnPrintLogs_Click);
+            this.tableLayoutPanelServiceLeft.ColumnCount = 1;
+            this.tableLayoutPanelServiceLeft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelServiceLeft.Controls.Add(this.gbxServiceMode, 0, 0);
+            this.tableLayoutPanelServiceLeft.Controls.Add(this.gbxServiceInOut, 0, 1);
+            this.tableLayoutPanelServiceLeft.Controls.Add(this.groupBox2, 0, 6);
+            this.tableLayoutPanelServiceLeft.Controls.Add(this.gbxDateTime, 0, 2);
+            this.tableLayoutPanelServiceLeft.Controls.Add(this.gbxExtDevice, 0, 3);
+            this.tableLayoutPanelServiceLeft.Controls.Add(this.gbxFiscalMode, 0, 5);
+            this.tableLayoutPanelServiceLeft.Controls.Add(this.gbxFirmUpdate, 0, 4);
+            this.tableLayoutPanelServiceLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelServiceLeft.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelServiceLeft.Name = "tableLayoutPanelServiceLeft";
+            this.tableLayoutPanelServiceLeft.RowCount = 7;
+            this.tableLayoutPanelServiceLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.02046F));
+            this.tableLayoutPanelServiceLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.04348F));
+            this.tableLayoutPanelServiceLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.11253F));
+            this.tableLayoutPanelServiceLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.11253F));
+            this.tableLayoutPanelServiceLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.62404F));
+            this.tableLayoutPanelServiceLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.04348F));
+            this.tableLayoutPanelServiceLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.78772F));
+            this.tableLayoutPanelServiceLeft.Size = new System.Drawing.Size(407, 391);
+            this.tableLayoutPanelServiceLeft.TabIndex = 0;
             // 
             // gbxServiceMode
             // 
             this.gbxServiceMode.Controls.Add(this.lblOrderNum);
             this.gbxServiceMode.Controls.Add(this.btnOrderNum);
-            this.gbxServiceMode.Location = new System.Drawing.Point(4, 5);
+            this.gbxServiceMode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbxServiceMode.Location = new System.Drawing.Point(2, 2);
             this.gbxServiceMode.Margin = new System.Windows.Forms.Padding(2);
             this.gbxServiceMode.Name = "gbxServiceMode";
             this.gbxServiceMode.Padding = new System.Windows.Forms.Padding(2);
-            this.gbxServiceMode.Size = new System.Drawing.Size(400, 44);
+            this.gbxServiceMode.Size = new System.Drawing.Size(403, 43);
             this.gbxServiceMode.TabIndex = 19;
             this.gbxServiceMode.TabStop = false;
             // 
@@ -300,16 +312,74 @@ namespace FP300Service.UserControls
             this.btnOrderNum.UseVisualStyleBackColor = true;
             this.btnOrderNum.Click += new System.EventHandler(this.btnOrderNum_Click);
             // 
+            // gbxServiceInOut
+            // 
+            this.gbxServiceInOut.Controls.Add(this.btnEnterService);
+            this.gbxServiceInOut.Controls.Add(this.btnExitService);
+            this.gbxServiceInOut.Controls.Add(this.txtPassword);
+            this.gbxServiceInOut.Controls.Add(this.lblPass);
+            this.gbxServiceInOut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbxServiceInOut.Location = new System.Drawing.Point(2, 49);
+            this.gbxServiceInOut.Margin = new System.Windows.Forms.Padding(2);
+            this.gbxServiceInOut.Name = "gbxServiceInOut";
+            this.gbxServiceInOut.Padding = new System.Windows.Forms.Padding(2);
+            this.gbxServiceInOut.Size = new System.Drawing.Size(403, 47);
+            this.gbxServiceInOut.TabIndex = 26;
+            this.gbxServiceInOut.TabStop = false;
+            // 
+            // btnEnterService
+            // 
+            this.btnEnterService.Location = new System.Drawing.Point(6, 13);
+            this.btnEnterService.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEnterService.Name = "btnEnterService";
+            this.btnEnterService.Size = new System.Drawing.Size(110, 37);
+            this.btnEnterService.TabIndex = 6;
+            this.btnEnterService.Text = "ENTER SERVICE MODE";
+            this.btnEnterService.UseVisualStyleBackColor = true;
+            this.btnEnterService.Click += new System.EventHandler(this.btnEnterService_Click);
+            // 
+            // btnExitService
+            // 
+            this.btnExitService.Location = new System.Drawing.Point(150, 13);
+            this.btnExitService.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExitService.Name = "btnExitService";
+            this.btnExitService.Size = new System.Drawing.Size(110, 37);
+            this.btnExitService.TabIndex = 7;
+            this.btnExitService.Text = "EXIT SERVICE MODE";
+            this.btnExitService.UseVisualStyleBackColor = true;
+            this.btnExitService.Click += new System.EventHandler(this.btnExitService_Click);
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(275, 27);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPassword.MaxLength = 10;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(70, 20);
+            this.txtPassword.TabIndex = 12;
+            // 
+            // lblPass
+            // 
+            this.lblPass.AutoSize = true;
+            this.lblPass.Location = new System.Drawing.Point(272, 15);
+            this.lblPass.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPass.Name = "lblPass";
+            this.lblPass.Size = new System.Drawing.Size(76, 13);
+            this.lblPass.TabIndex = 11;
+            this.lblPass.Text = "PASSWORD :";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtFileName);
             this.groupBox2.Controls.Add(this.lblFileName);
             this.groupBox2.Controls.Add(this.btnxFer);
-            this.groupBox2.Location = new System.Drawing.Point(4, 337);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(2, 342);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(400, 51);
+            this.groupBox2.Size = new System.Drawing.Size(403, 47);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
             // 
@@ -350,11 +420,12 @@ namespace FP300Service.UserControls
             this.gbxDateTime.Controls.Add(this.dtFPTime);
             this.gbxDateTime.Controls.Add(this.dtFPDate);
             this.gbxDateTime.Controls.Add(this.btnSetDateTime);
-            this.gbxDateTime.Location = new System.Drawing.Point(4, 92);
+            this.gbxDateTime.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbxDateTime.Location = new System.Drawing.Point(2, 100);
             this.gbxDateTime.Margin = new System.Windows.Forms.Padding(2);
             this.gbxDateTime.Name = "gbxDateTime";
             this.gbxDateTime.Padding = new System.Windows.Forms.Padding(2);
-            this.gbxDateTime.Size = new System.Drawing.Size(400, 56);
+            this.gbxDateTime.Size = new System.Drawing.Size(403, 59);
             this.gbxDateTime.TabIndex = 20;
             this.gbxDateTime.TabStop = false;
             // 
@@ -418,62 +489,6 @@ namespace FP300Service.UserControls
             this.btnSetDateTime.UseVisualStyleBackColor = true;
             this.btnSetDateTime.Click += new System.EventHandler(this.btnSetDateTime_Click);
             // 
-            // gbxServiceInOut
-            // 
-            this.gbxServiceInOut.Controls.Add(this.btnEnterService);
-            this.gbxServiceInOut.Controls.Add(this.btnExitService);
-            this.gbxServiceInOut.Controls.Add(this.txtPassword);
-            this.gbxServiceInOut.Controls.Add(this.lblPass);
-            this.gbxServiceInOut.Location = new System.Drawing.Point(4, 38);
-            this.gbxServiceInOut.Margin = new System.Windows.Forms.Padding(2);
-            this.gbxServiceInOut.Name = "gbxServiceInOut";
-            this.gbxServiceInOut.Padding = new System.Windows.Forms.Padding(2);
-            this.gbxServiceInOut.Size = new System.Drawing.Size(400, 54);
-            this.gbxServiceInOut.TabIndex = 26;
-            this.gbxServiceInOut.TabStop = false;
-            // 
-            // btnEnterService
-            // 
-            this.btnEnterService.Location = new System.Drawing.Point(6, 13);
-            this.btnEnterService.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEnterService.Name = "btnEnterService";
-            this.btnEnterService.Size = new System.Drawing.Size(110, 37);
-            this.btnEnterService.TabIndex = 6;
-            this.btnEnterService.Text = "ENTER SERVICE MODE";
-            this.btnEnterService.UseVisualStyleBackColor = true;
-            this.btnEnterService.Click += new System.EventHandler(this.btnEnterService_Click);
-            // 
-            // btnExitService
-            // 
-            this.btnExitService.Location = new System.Drawing.Point(150, 13);
-            this.btnExitService.Margin = new System.Windows.Forms.Padding(2);
-            this.btnExitService.Name = "btnExitService";
-            this.btnExitService.Size = new System.Drawing.Size(110, 37);
-            this.btnExitService.TabIndex = 7;
-            this.btnExitService.Text = "EXIT SERVICE MODE";
-            this.btnExitService.UseVisualStyleBackColor = true;
-            this.btnExitService.Click += new System.EventHandler(this.btnExitService_Click);
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(275, 27);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPassword.MaxLength = 10;
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(70, 20);
-            this.txtPassword.TabIndex = 12;
-            // 
-            // lblPass
-            // 
-            this.lblPass.AutoSize = true;
-            this.lblPass.Location = new System.Drawing.Point(272, 15);
-            this.lblPass.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPass.Name = "lblPass";
-            this.lblPass.Size = new System.Drawing.Size(76, 13);
-            this.lblPass.TabIndex = 11;
-            this.lblPass.Text = "PASSWORD :";
-            // 
             // gbxExtDevice
             // 
             this.gbxExtDevice.Controls.Add(this.lblPort);
@@ -481,11 +496,12 @@ namespace FP300Service.UserControls
             this.gbxExtDevice.Controls.Add(this.tbxPort);
             this.gbxExtDevice.Controls.Add(this.mtbxIP);
             this.gbxExtDevice.Controls.Add(this.btnSetExternalSettings);
-            this.gbxExtDevice.Location = new System.Drawing.Point(4, 150);
+            this.gbxExtDevice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbxExtDevice.Location = new System.Drawing.Point(2, 163);
             this.gbxExtDevice.Margin = new System.Windows.Forms.Padding(2);
             this.gbxExtDevice.Name = "gbxExtDevice";
             this.gbxExtDevice.Padding = new System.Windows.Forms.Padding(2);
-            this.gbxExtDevice.Size = new System.Drawing.Size(400, 68);
+            this.gbxExtDevice.Size = new System.Drawing.Size(403, 59);
             this.gbxExtDevice.TabIndex = 22;
             this.gbxExtDevice.TabStop = false;
             // 
@@ -541,88 +557,50 @@ namespace FP300Service.UserControls
             this.btnSetExternalSettings.UseVisualStyleBackColor = true;
             this.btnSetExternalSettings.Click += new System.EventHandler(this.btnSetExternalSettings_Click);
             // 
-            // groupBox1
+            // gbxFiscalMode
             // 
-            this.groupBox1.Controls.Add(this.btnStartFMTest);
-            this.groupBox1.Controls.Add(this.btnCreateDB);
-            this.groupBox1.Controls.Add(this.btnCloseFM);
-            this.groupBox1.Controls.Add(this.btnFatorySettings);
-            this.groupBox1.Controls.Add(this.btnFormatDailyMem);
-            this.groupBox1.Controls.Add(this.btnEJInit);
-            this.groupBox1.Location = new System.Drawing.Point(410, 92);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(160, 297);
-            this.groupBox1.TabIndex = 25;
-            this.groupBox1.TabStop = false;
+            this.gbxFiscalMode.Controls.Add(this.txtPrgmPass);
+            this.gbxFiscalMode.Controls.Add(this.lblPrgrmPass);
+            this.gbxFiscalMode.Controls.Add(this.btnFiscalMode);
+            this.gbxFiscalMode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbxFiscalMode.Location = new System.Drawing.Point(2, 291);
+            this.gbxFiscalMode.Margin = new System.Windows.Forms.Padding(2);
+            this.gbxFiscalMode.Name = "gbxFiscalMode";
+            this.gbxFiscalMode.Padding = new System.Windows.Forms.Padding(2);
+            this.gbxFiscalMode.Size = new System.Drawing.Size(403, 47);
+            this.gbxFiscalMode.TabIndex = 24;
+            this.gbxFiscalMode.TabStop = false;
             // 
-            // btnStartFMTest
+            // txtPrgmPass
             // 
-            this.btnStartFMTest.Location = new System.Drawing.Point(4, 180);
-            this.btnStartFMTest.Margin = new System.Windows.Forms.Padding(2);
-            this.btnStartFMTest.Name = "btnStartFMTest";
-            this.btnStartFMTest.Size = new System.Drawing.Size(110, 48);
-            this.btnStartFMTest.TabIndex = 10;
-            this.btnStartFMTest.Text = "START FM TEST";
-            this.btnStartFMTest.UseVisualStyleBackColor = true;
-            this.btnStartFMTest.Click += new System.EventHandler(this.btnStartFMTest_Click);
+            this.txtPrgmPass.Location = new System.Drawing.Point(216, 20);
+            this.txtPrgmPass.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPrgmPass.MaxLength = 10;
+            this.txtPrgmPass.Name = "txtPrgmPass";
+            this.txtPrgmPass.PasswordChar = '*';
+            this.txtPrgmPass.Size = new System.Drawing.Size(62, 20);
+            this.txtPrgmPass.TabIndex = 14;
             // 
-            // btnCreateDB
+            // lblPrgrmPass
             // 
-            this.btnCreateDB.Location = new System.Drawing.Point(4, 132);
-            this.btnCreateDB.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCreateDB.Name = "btnCreateDB";
-            this.btnCreateDB.Size = new System.Drawing.Size(110, 44);
-            this.btnCreateDB.TabIndex = 9;
-            this.btnCreateDB.Text = "CREATE SALE DB";
-            this.btnCreateDB.UseVisualStyleBackColor = true;
-            this.btnCreateDB.Click += new System.EventHandler(this.btnCreateDB_Click);
+            this.lblPrgrmPass.AutoSize = true;
+            this.lblPrgrmPass.Location = new System.Drawing.Point(136, 23);
+            this.lblPrgrmPass.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPrgrmPass.Name = "lblPrgrmPass";
+            this.lblPrgrmPass.Size = new System.Drawing.Size(76, 13);
+            this.lblPrgrmPass.TabIndex = 13;
+            this.lblPrgrmPass.Text = "PASSWORD :";
             // 
-            // btnCloseFM
+            // btnFiscalMode
             // 
-            this.btnCloseFM.Location = new System.Drawing.Point(4, 96);
-            this.btnCloseFM.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCloseFM.Name = "btnCloseFM";
-            this.btnCloseFM.Size = new System.Drawing.Size(110, 32);
-            this.btnCloseFM.TabIndex = 6;
-            this.btnCloseFM.Text = "CLOSE FM";
-            this.btnCloseFM.UseVisualStyleBackColor = true;
-            this.btnCloseFM.Click += new System.EventHandler(this.btnCloseFM_Click);
-            // 
-            // btnFatorySettings
-            // 
-            this.btnFatorySettings.Location = new System.Drawing.Point(4, 54);
-            this.btnFatorySettings.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFatorySettings.Name = "btnFatorySettings";
-            this.btnFatorySettings.Size = new System.Drawing.Size(110, 38);
-            this.btnFatorySettings.TabIndex = 7;
-            this.btnFatorySettings.Text = "FACTORY SETTINGS";
-            this.btnFatorySettings.UseVisualStyleBackColor = true;
-            this.btnFatorySettings.Click += new System.EventHandler(this.btnFatorySettings_Click);
-            // 
-            // btnFormatDailyMem
-            // 
-            this.btnFormatDailyMem.Location = new System.Drawing.Point(4, 11);
-            this.btnFormatDailyMem.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFormatDailyMem.Name = "btnFormatDailyMem";
-            this.btnFormatDailyMem.Size = new System.Drawing.Size(110, 38);
-            this.btnFormatDailyMem.TabIndex = 6;
-            this.btnFormatDailyMem.Text = "FORMAT DAILY MEMORY";
-            this.btnFormatDailyMem.UseVisualStyleBackColor = true;
-            this.btnFormatDailyMem.Click += new System.EventHandler(this.btnFormatDailyMem_Click);
-            // 
-            // btnEJInit
-            // 
-            this.btnEJInit.Location = new System.Drawing.Point(4, 232);
-            this.btnEJInit.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEJInit.Name = "btnEJInit";
-            this.btnEJInit.Size = new System.Drawing.Size(110, 39);
-            this.btnEJInit.TabIndex = 8;
-            this.btnEJInit.Text = "INITIALIZE EJ";
-            this.btnEJInit.UseVisualStyleBackColor = true;
-            this.btnEJInit.Visible = false;
-            this.btnEJInit.Click += new System.EventHandler(this.btnEJInit_Click);
+            this.btnFiscalMode.Location = new System.Drawing.Point(6, 8);
+            this.btnFiscalMode.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFiscalMode.Name = "btnFiscalMode";
+            this.btnFiscalMode.Size = new System.Drawing.Size(110, 41);
+            this.btnFiscalMode.TabIndex = 7;
+            this.btnFiscalMode.Text = "FISCAL MODE NOW";
+            this.btnFiscalMode.UseVisualStyleBackColor = true;
+            this.btnFiscalMode.Click += new System.EventHandler(this.btnFiscalMode_Click);
             // 
             // gbxFirmUpdate
             // 
@@ -632,11 +610,12 @@ namespace FP300Service.UserControls
             this.gbxFirmUpdate.Controls.Add(this.txtServerPort);
             this.gbxFirmUpdate.Controls.Add(this.mtbxServerIp);
             this.gbxFirmUpdate.Controls.Add(this.btnUpdateFirmware);
-            this.gbxFirmUpdate.Location = new System.Drawing.Point(4, 216);
+            this.gbxFirmUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbxFirmUpdate.Location = new System.Drawing.Point(2, 226);
             this.gbxFirmUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.gbxFirmUpdate.Name = "gbxFirmUpdate";
             this.gbxFirmUpdate.Padding = new System.Windows.Forms.Padding(2);
-            this.gbxFirmUpdate.Size = new System.Drawing.Size(400, 68);
+            this.gbxFirmUpdate.Size = new System.Drawing.Size(403, 61);
             this.gbxFirmUpdate.TabIndex = 23;
             this.gbxFirmUpdate.TabStop = false;
             // 
@@ -703,49 +682,136 @@ namespace FP300Service.UserControls
             this.btnUpdateFirmware.UseVisualStyleBackColor = true;
             this.btnUpdateFirmware.Click += new System.EventHandler(this.btnUpdateFirmware_Click);
             // 
-            // gbxFiscalMode
+            // tableLayoutPanel1
             // 
-            this.gbxFiscalMode.Controls.Add(this.txtPrgmPass);
-            this.gbxFiscalMode.Controls.Add(this.lblPrgrmPass);
-            this.gbxFiscalMode.Controls.Add(this.btnFiscalMode);
-            this.gbxFiscalMode.Location = new System.Drawing.Point(4, 284);
-            this.gbxFiscalMode.Margin = new System.Windows.Forms.Padding(2);
-            this.gbxFiscalMode.Name = "gbxFiscalMode";
-            this.gbxFiscalMode.Padding = new System.Windows.Forms.Padding(2);
-            this.gbxFiscalMode.Size = new System.Drawing.Size(400, 51);
-            this.gbxFiscalMode.TabIndex = 24;
-            this.gbxFiscalMode.TabStop = false;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.gbxLog, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(416, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.28514F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.71486F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(160, 391);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // txtPrgmPass
+            // gbxLog
             // 
-            this.txtPrgmPass.Location = new System.Drawing.Point(216, 20);
-            this.txtPrgmPass.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPrgmPass.MaxLength = 10;
-            this.txtPrgmPass.Name = "txtPrgmPass";
-            this.txtPrgmPass.PasswordChar = '*';
-            this.txtPrgmPass.Size = new System.Drawing.Size(62, 20);
-            this.txtPrgmPass.TabIndex = 14;
+            this.gbxLog.Controls.Add(this.dtpLog);
+            this.gbxLog.Controls.Add(this.btnPrintLogs);
+            this.gbxLog.Location = new System.Drawing.Point(2, 2);
+            this.gbxLog.Margin = new System.Windows.Forms.Padding(2);
+            this.gbxLog.Name = "gbxLog";
+            this.gbxLog.Padding = new System.Windows.Forms.Padding(2);
+            this.gbxLog.Size = new System.Drawing.Size(156, 79);
+            this.gbxLog.TabIndex = 28;
+            this.gbxLog.TabStop = false;
             // 
-            // lblPrgrmPass
+            // dtpLog
             // 
-            this.lblPrgrmPass.AutoSize = true;
-            this.lblPrgrmPass.Location = new System.Drawing.Point(136, 23);
-            this.lblPrgrmPass.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPrgrmPass.Name = "lblPrgrmPass";
-            this.lblPrgrmPass.Size = new System.Drawing.Size(76, 13);
-            this.lblPrgrmPass.TabIndex = 13;
-            this.lblPrgrmPass.Text = "PASSWORD :";
+            this.dtpLog.CustomFormat = "dd-MM-yyyy";
+            this.dtpLog.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpLog.Location = new System.Drawing.Point(33, 13);
+            this.dtpLog.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpLog.Name = "dtpLog";
+            this.dtpLog.Size = new System.Drawing.Size(95, 20);
+            this.dtpLog.TabIndex = 37;
             // 
-            // btnFiscalMode
+            // btnPrintLogs
             // 
-            this.btnFiscalMode.Location = new System.Drawing.Point(6, 8);
-            this.btnFiscalMode.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFiscalMode.Name = "btnFiscalMode";
-            this.btnFiscalMode.Size = new System.Drawing.Size(110, 41);
-            this.btnFiscalMode.TabIndex = 7;
-            this.btnFiscalMode.Text = "FISCAL MODE NOW";
-            this.btnFiscalMode.UseVisualStyleBackColor = true;
-            this.btnFiscalMode.Click += new System.EventHandler(this.btnFiscalMode_Click);
+            this.btnPrintLogs.Location = new System.Drawing.Point(33, 37);
+            this.btnPrintLogs.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPrintLogs.Name = "btnPrintLogs";
+            this.btnPrintLogs.Size = new System.Drawing.Size(110, 30);
+            this.btnPrintLogs.TabIndex = 6;
+            this.btnPrintLogs.Text = "PRINT LOGS";
+            this.btnPrintLogs.UseVisualStyleBackColor = true;
+            this.btnPrintLogs.Click += new System.EventHandler(this.btnPrintLogs_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tableLayoutPanel2);
+            this.groupBox1.Location = new System.Drawing.Point(2, 85);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(156, 297);
+            this.groupBox1.TabIndex = 25;
+            this.groupBox1.TabStop = false;
+            // 
+            // btnStartFMTest
+            // 
+            this.btnStartFMTest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnStartFMTest.Location = new System.Drawing.Point(2, 90);
+            this.btnStartFMTest.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStartFMTest.Name = "btnStartFMTest";
+            this.btnStartFMTest.Size = new System.Drawing.Size(148, 40);
+            this.btnStartFMTest.TabIndex = 10;
+            this.btnStartFMTest.Text = "START FM TEST";
+            this.btnStartFMTest.UseVisualStyleBackColor = true;
+            this.btnStartFMTest.Click += new System.EventHandler(this.btnStartFMTest_Click);
+            // 
+            // btnCreateDB
+            // 
+            this.btnCreateDB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCreateDB.Location = new System.Drawing.Point(2, 46);
+            this.btnCreateDB.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCreateDB.Name = "btnCreateDB";
+            this.btnCreateDB.Size = new System.Drawing.Size(148, 40);
+            this.btnCreateDB.TabIndex = 9;
+            this.btnCreateDB.Text = "CREATE SALE DB";
+            this.btnCreateDB.UseVisualStyleBackColor = true;
+            this.btnCreateDB.Click += new System.EventHandler(this.btnCreateDB_Click);
+            // 
+            // btnCloseFM
+            // 
+            this.btnCloseFM.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCloseFM.Location = new System.Drawing.Point(2, 2);
+            this.btnCloseFM.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCloseFM.Name = "btnCloseFM";
+            this.btnCloseFM.Size = new System.Drawing.Size(148, 40);
+            this.btnCloseFM.TabIndex = 6;
+            this.btnCloseFM.Text = "CLOSE FM";
+            this.btnCloseFM.UseVisualStyleBackColor = true;
+            this.btnCloseFM.Click += new System.EventHandler(this.btnCloseFM_Click);
+            // 
+            // btnFatorySettings
+            // 
+            this.btnFatorySettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnFatorySettings.Location = new System.Drawing.Point(2, 222);
+            this.btnFatorySettings.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFatorySettings.Name = "btnFatorySettings";
+            this.btnFatorySettings.Size = new System.Drawing.Size(148, 56);
+            this.btnFatorySettings.TabIndex = 7;
+            this.btnFatorySettings.Text = "FACTORY SETTINGS";
+            this.btnFatorySettings.UseVisualStyleBackColor = true;
+            this.btnFatorySettings.Click += new System.EventHandler(this.btnFatorySettings_Click);
+            // 
+            // btnFormatDailyMem
+            // 
+            this.btnFormatDailyMem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnFormatDailyMem.Location = new System.Drawing.Point(2, 134);
+            this.btnFormatDailyMem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFormatDailyMem.Name = "btnFormatDailyMem";
+            this.btnFormatDailyMem.Size = new System.Drawing.Size(148, 40);
+            this.btnFormatDailyMem.TabIndex = 6;
+            this.btnFormatDailyMem.Text = "FORMAT DAILY MEMORY";
+            this.btnFormatDailyMem.UseVisualStyleBackColor = true;
+            this.btnFormatDailyMem.Click += new System.EventHandler(this.btnFormatDailyMem_Click);
+            // 
+            // btnEJInit
+            // 
+            this.btnEJInit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEJInit.Location = new System.Drawing.Point(2, 178);
+            this.btnEJInit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEJInit.Name = "btnEJInit";
+            this.btnEJInit.Size = new System.Drawing.Size(148, 40);
+            this.btnEJInit.TabIndex = 8;
+            this.btnEJInit.Text = "INITIALIZE EJ";
+            this.btnEJInit.UseVisualStyleBackColor = true;
+            this.btnEJInit.Click += new System.EventHandler(this.btnEJInit_Click);
             // 
             // tabSRVTest
             // 
@@ -864,6 +930,29 @@ namespace FP300Service.UserControls
             this.btnTestGmp.UseVisualStyleBackColor = true;
             this.btnTestGmp.Click += new System.EventHandler(this.btnTestGmp_Click);
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.btnCloseFM, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnFatorySettings, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.btnEJInit, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.btnStartFMTest, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.btnCreateDB, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnFormatDailyMem, 0, 3);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 15);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 6;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(152, 280);
+            this.tableLayoutPanel2.TabIndex = 11;
+            // 
             // ServiceUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -873,24 +962,28 @@ namespace FP300Service.UserControls
             this.Name = "ServiceUC";
             this.tcntService.ResumeLayout(false);
             this.tabSRVOperation.ResumeLayout(false);
-            this.gbxLog.ResumeLayout(false);
+            this.tableLayoutPanelServiceUC.ResumeLayout(false);
+            this.tableLayoutPanelServiceLeft.ResumeLayout(false);
             this.gbxServiceMode.ResumeLayout(false);
+            this.gbxServiceInOut.ResumeLayout(false);
+            this.gbxServiceInOut.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.gbxDateTime.ResumeLayout(false);
             this.gbxDateTime.PerformLayout();
-            this.gbxServiceInOut.ResumeLayout(false);
-            this.gbxServiceInOut.PerformLayout();
             this.gbxExtDevice.ResumeLayout(false);
             this.gbxExtDevice.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.gbxFirmUpdate.ResumeLayout(false);
-            this.gbxFirmUpdate.PerformLayout();
             this.gbxFiscalMode.ResumeLayout(false);
             this.gbxFiscalMode.PerformLayout();
+            this.gbxFirmUpdate.ResumeLayout(false);
+            this.gbxFirmUpdate.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.gbxLog.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.tabSRVTest.ResumeLayout(false);
             this.gbxTestGmp.ResumeLayout(false);
             this.gbxTestGmp.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

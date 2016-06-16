@@ -15,12 +15,12 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;FPU,DEBUG;NEBIM_MODE;</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;FPU,DEBUG;NEBIM_MODE;LANG_ENG;CPP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -75,10 +75,12 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Hugin.Common">
+    <Reference Include="Hugin.Common, Version=1.0.0.399, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\etc\Hugin.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Hugin.POS.CompactPrinter.FP300">
+    <Reference Include="Hugin.POS.CompactPrinter.FP300, Version=1.0.0.399, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\etc\Hugin.POS.CompactPrinter.FP300.dll</HintPath>
     </Reference>
     <Reference Include="System" />
