@@ -10,10 +10,10 @@ public class DateTime {
   public int Minute = 0;
   public int Second = 0;
 
-  DateTime() {
+  public DateTime() {
   }
 
-  DateTime(Calendar calendar) {
+  public DateTime(Calendar calendar) {
     Year = calendar.get(Calendar.YEAR);
     Month = calendar.get(Calendar.MONTH);
     Day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -22,7 +22,7 @@ public class DateTime {
     Second = calendar.get(Calendar.SECOND);
   }
 
-  Calendar ToCalendar() {
+  public Calendar ToCalendar() {
     return new GregorianCalendar(Year, Month, Day, Hour, Minute, Second);
   }
 };
