@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import java.io.FileInputStream;
 
 import Hugin.DeviceInfo;
 import Hugin.FP300Service;
@@ -115,6 +116,7 @@ public class ECRTest {
         System.out.println(indx++ + " - CHECK PRINTER STATUS");
         System.out.println(indx++ + " - PRINT SUBTOTAL");
         System.out.println(indx++ + " - AUTO ORDER TEST");
+        System.out.println(indx++ + " - LOAD GRAPHIC LOGO");
 		
 		System.out.print("Select Menu : ");
         dec = key.nextInt();
@@ -177,8 +179,7 @@ public class ECRTest {
             break;
           case 13:
             response = fp300Service.PrintSubtotal(true);
-            break;
-			
+            break;			
           case 14:
 		  int autoOrderRes=0;
 		  int loopCount =1;
@@ -193,7 +194,10 @@ public class ECRTest {
 				}
 				loopCount++;
 			}
-            break;
+            break;			
+		case 15:
+            response = fp300Service.LoadGraphicLogo(readFileAllBytes("logo1.bmp"));
+			break;
 
         }
 
@@ -248,12 +252,12 @@ public class ECRTest {
 																	"REMARK LINE 3",
 																	"REMARK LINE 4"}));
 	}
-	/*
+	/**/
 	if(0 == res)
 	{
 		res = getErrorCode(fp300Service.PrintReceiptBarcode("123456789012"));
 	}
-	*/
+	
 	if(0 == res)
 	{
 		res = getErrorCode(fp300Service.CloseReceipt(false));
@@ -303,4 +307,20 @@ public class ECRTest {
     }
     return content;
   }
+  
+  	private static byte[] readFileAllBytes(String fileName)
+	{
+		byte [] content = null;
+		try {
+			File file = new File(fileName);
+			content = new byte[(int) file.length()];
+			FileInputStream fileStream=new FileInputStream(file);
+			
+			fileStream.read(content,0,content.length);
+			fileStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return content;
+	} 
 }

@@ -114,6 +114,7 @@ public class FP300Service {
    public native String GetBankListOnEFT();
    public native String GetSalesInfo();
 	public DateTime GetNewDateTime() { return new DateTime(); }
+	public native String LoadGraphicLogo(byte[] monochromeBitmapData);
    
 };
 
