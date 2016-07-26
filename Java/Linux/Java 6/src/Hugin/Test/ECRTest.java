@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import java.io.FileInputStream;
 
 import Hugin.DeviceInfo;
 import Hugin.FP300Service;
@@ -101,19 +102,23 @@ public class ECRTest {
 
       try {
         System.out.println(indx++ + " - EXIT");
-        System.out.println(indx++ + " - Start Receipt");
-        System.out.println(indx++ + " - Sale Product");
-        System.out.println(indx++ + " - Sale Department");
-        System.out.println(indx++ + " - Sale from JSON File");
-        System.out.println(indx++ + " - Adjust Product");
-        System.out.println(indx++ + " - Pay");
-        System.out.println(indx++ + " - Close Receipt");
-        System.out.println(indx++ + " - Void Receipt");
-        System.out.println(indx++ + " - Print Remark");
-        System.out.println(indx++ + " - Clear Error");
-        System.out.println(indx++ + " - Check Printer Status");
-        System.out.println(indx++ + " - Print Subtotal");
-
+        System.out.println(indx++ + " - START RECEIPT");
+        System.out.println(indx++ + " - SALE PRODUCT");
+        System.out.println(indx++ + " - Sale DEPARTMENT");
+        System.out.println(indx++ + " - SALE FROM JSON FILE");
+        System.out.println(indx++ + " - ADJUST PRODUCT");
+        System.out.println(indx++ + " - PAY");
+        System.out.println(indx++ + " - PAY by CREDIT CARD");
+        System.out.println(indx++ + " - CLOSE RECEIPT");
+        System.out.println(indx++ + " - VOID RECEIPT");
+        System.out.println(indx++ + " - PRINT REMARK");
+        System.out.println(indx++ + " - CLEAR ERROR");
+        System.out.println(indx++ + " - CHECK PRINTER STATUS");
+        System.out.println(indx++ + " - PRINT SUBTOTAL");
+        System.out.println(indx++ + " - AUTO ORDER TEST");
+        System.out.println(indx++ + " - LOAD GRAPHIC LOGO");
+		
+		System.out.print("Select Menu : ");
         dec = key.nextInt();
         if (dec == 0)
           break;
@@ -135,32 +140,64 @@ public class ECRTest {
           case 5:
             response = fp300Service.PrintAdjustment(1, 0.15, 5);
             break;
-          case 6:
+          case 6: //PAY
             System.out.print("Amount: ");
             int amount = key.nextInt();
             response = fp300Service.PrintPayment(0, -1, amount);
             break;
-          case 7:
+			
+          case 7: //PAY BY CREDIT
+            System.out.print("Amount: ");
+            double ccAmount = key.nextDouble();
+            response = fp300Service.GetEFTAuthorisation(ccAmount, 1, "");
+            break;
+			
+          case 8:
             response = fp300Service.CloseReceipt(false);
             break;
-          case 8:
+          case 9:
             response = fp300Service.VoidReceipt();
             break;
-          case 9:
+          case 10:
             //System.out.print("Enter Remark: ");
 			String s = "ğüşiöçĞÜŞİÖÇ";//key.next();
 										
-			response = fp300Service.PrintRemarkLine(new String[]{s});
-            break;
-          case 10:
-            response = fp300Service.ClearError();
+			response = fp300Service.PrintRemarkLine(new String[]{"REMARK LINE 1",
+																	"REMARK LINE 2",
+																	"REMARK LINE 3",
+																	"REMARK LINE 3",
+																	"REMARK LINE 3",
+																	"REMARK LINE 3",
+																	"REMARK LINE 3",
+																	"REMARK LINE 4"});
             break;
           case 11:
-            response = fp300Service.CheckPrinterStatus();
+            response = fp300Service.ClearError();
             break;
           case 12:
-            response = fp300Service.PrintSubtotal(true);
+            response = fp300Service.CheckPrinterStatus();
             break;
+          case 13:
+            response = fp300Service.PrintSubtotal(true);
+            break;			
+          case 14:
+		  int autoOrderRes=0;
+		  int loopCount =1;
+		    while(autoOrderRes == 0)
+			{
+				System.out.println("Count :" + loopCount);
+				autoOrderRes = testOrder(fp300Service);
+				try {
+				  Thread.sleep(200);
+				} catch (InterruptedException ie) {
+					//Handle exception
+				}
+				loopCount++;
+			}
+            break;			
+		case 15:
+            response = fp300Service.LoadGraphicLogo(readFileAllBytes("logo1.bmp"));
+			break;
 
         }
 
@@ -173,16 +210,85 @@ public class ECRTest {
     }
 
   }
+  
+  private static int testOrder(FP300Service fp300Service)
+  {
+	int res = getErrorCode(fp300Service.CheckPrinterStatus());
 
-  private static void printResponse(String response) {
+	if(0 == res)
+	{
+		res = getErrorCode(fp300Service.PrintDocumentHeader());
+	}
+	if(0 == res)
+	{
+		res = getErrorCode(fp300Service.PrintDepartment(1, 1, 12.25, "DEPT 1", 1));
+	}
+	
+	if(0 == res)
+	{
+		res = getErrorCode(fp300Service.PrintDepartment(2, 1, 14.25, "DEPT 2", 1));
+	}
+	
+	if(0 == res)
+	{
+		res = getErrorCode(fp300Service.PrintDepartment(3, 2, 16.25, "DEPT 3", 1));
+	}
+	if(0 == res)
+	{
+		res = getErrorCode(fp300Service.PrintDepartment(4, 1, 18.25, "DEPT 4", 1));
+	}
+	if(0 == res)
+	{
+		res = getErrorCode(fp300Service.PrintAdjustment(1, 0.15, 5));
+	}
+	if(0 == res)
+	{
+		res = getErrorCode(fp300Service.PrintPayment(0, -1, 78.16));
+	}
+	if(0 == res)
+	{
+		res = getErrorCode(fp300Service.PrintRemarkLine(new String[]{"REMARK LINE 1",
+																	"REMARK LINE 2",
+																	"REMARK LINE 3",
+																	"REMARK LINE 4"}));
+	}
+	/**/
+	if(0 == res)
+	{
+		res = getErrorCode(fp300Service.PrintReceiptBarcode("123456789012"));
+	}
+	
+	if(0 == res)
+	{
+		res = getErrorCode(fp300Service.CloseReceipt(false));
+	}
+	
+      System.out.println("Error Code    : " + Utility.GetErrorMessage(res));
+	  
+	  return res;
+  }
+  
+  private static int getErrorCode(String response) {
+	int res = 6;
     String[] splitted = response.split("\\|", 0);
-
     if (splitted.length >= 2) {
-      System.out.println("Error Code    : " + Utility.GetErrorMessage(Integer.parseInt(splitted[0])));
+		res = Integer.parseInt(splitted[0]);
+    }
+	
+	return res;
+  }
+  
+  private static int printResponse(String response) {
+	int res = 6;
+    String[] splitted = response.split("\\|", 0);
+    if (splitted.length >= 2) {
+		res = Integer.parseInt(splitted[0]);
+      System.out.println("Error Code    : " + Utility.GetErrorMessage(res));
       System.out.println("State         : " + Utility.GetStateMessage(Integer.parseInt(splitted[1])));
     }
 
     System.out.println("Full Response : " + response);
+	return res;
   }
 
   private static String readFile(String fileName) {
@@ -201,4 +307,20 @@ public class ECRTest {
     }
     return content;
   }
+  
+  	private static byte[] readFileAllBytes(String fileName)
+	{
+		byte [] content = null;
+		try {
+			File file = new File(fileName);
+			content = new byte[(int) file.length()];
+			FileInputStream fileStream=new FileInputStream(file);
+			
+			fileStream.read(content,0,content.length);
+			fileStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return content;
+	} 
 }
