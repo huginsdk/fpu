@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 import java.io.FileInputStream;
+import java.util.Date;
 
 import Hugin.DeviceInfo;
 import Hugin.FP300Service;
@@ -50,12 +51,12 @@ public class ECRTest {
     serverInfo.IP = IpAddress;
     serverInfo.Model = "HUGIN COMPACT";
     serverInfo.Port = 5555;
-    serverInfo.TerminalNo = "FP00000010";
+    serverInfo.TerminalNo = "FP11004397";
     serverInfo.Version = "";
     serverInfo.SerialNum = "";
 
     System.out.print("Connecting to printer...");
-    if (fp300Service.Connect(serverInfo, "FP00000010", "")) System.out.println("OK\n");
+    if (fp300Service.Connect(serverInfo, serverInfo.TerminalNo, "")) System.out.println("OK\n");
     else {
       System.out.println("Failed");
       return;
@@ -117,6 +118,7 @@ public class ECRTest {
         System.out.println(indx++ + " - PRINT SUBTOTAL");
         System.out.println(indx++ + " - AUTO ORDER TEST");
         System.out.println(indx++ + " - LOAD GRAPHIC LOGO");
+        System.out.println(indx++ + " - START DOCUMENT");
 		
 		System.out.print("Select Menu : ");
         dec = key.nextInt();
@@ -132,7 +134,7 @@ public class ECRTest {
           case 3:
             System.out.print("Price: ");
             int deptPrice = key.nextInt();
-            response = fp300Service.PrintDepartment(1, 1, deptPrice, "SAMPLE DEPARTMENT", 1);
+            response = fp300Service.PrintDepartment(1, 5, deptPrice, "SAMPLE DEPARTMENT", 1);
             break;
           case 4:
             response = fp300Service.PrintJSONDocumentDeptOnly(readFile("order.txt"));
@@ -197,6 +199,12 @@ public class ECRTest {
             break;			
 		case 15:
             response = fp300Service.LoadGraphicLogo(readFileAllBytes("logo1.bmp"));
+			break;	
+		case 16:
+            System.out.print("1-Invoice\n2-E-Invoice\n3- E-Archive\n4-Food\n5-Parking\n6-Advenced Payment\nDocType : ");
+            int docType = key.nextInt();
+            //response = fp300Service.PrintDocumentHeader(docType, "11111111111", "HG-125789", fp300Service.GetNewDateTime());
+			response = fp300Service.PrintAdvanceDocumentHeader("11111111111", "CENK TOSUN", 5);
 			break;
 
         }

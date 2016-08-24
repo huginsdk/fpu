@@ -45,7 +45,11 @@ public class FP300Service {
 	public native String GetProgramOptions(int progEnum);
 	public native String SaveProgramOptions(int progEnum, String progValue);
 	public native String PrintDocumentHeader();
-	public native String PrintDocumentHeader(String tckn_vkn, double amount, int docType);
+	public native String PrintDocumentHeader(String tckn_vkn, double amount, int docType);	
+	public native String PrintDocumentHeader(int docType, String tckn_vkn, String invoiceSerial, DateTime invoiceDateTime);
+	public native String PrintAdvanceDocumentHeader(String tckn, String name, double amount);
+	public native String PrintCollectionDocumentHeader(String invoiceSerial, DateTime invoiceDate, double amount, String subscriberNo, String institutionName, double comissionAmount);
+	public native String PrintFoodDocumentHeader();
 	public native String PrintParkDocument(String plate, DateTime entrenceDate);
 	public native String PrintItem(int PLUNo, double quantity, double amount, String name, 
 		int deptId, int weighable);
