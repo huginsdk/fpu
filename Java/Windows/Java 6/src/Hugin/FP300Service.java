@@ -4,7 +4,9 @@ public class FP300Service {
 	static {
  		if (System.getProperty("os.name", "generic").startsWith("Windows"))
  		{
- 			System.loadLibrary("libgcc_s_dw2-1");
+ 			System.loadLibrary("libeay32");
+			System.loadLibrary("libssl32");
+			System.loadLibrary("libgcc_s_dw2-1");
 			System.loadLibrary("libstdc++-6");
 			System.loadLibrary("printerlib"); 
  		}
