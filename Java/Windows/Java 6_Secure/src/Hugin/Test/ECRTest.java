@@ -50,12 +50,12 @@ public class ECRTest {
     serverInfo.IP = IpAddress;
     serverInfo.Model = "HUGIN COMPACT";
     serverInfo.Port = 5555;
-    serverInfo.TerminalNo = "FP00000010";
+    serverInfo.TerminalNo = "FP11004397";
     serverInfo.Version = "";
     serverInfo.SerialNum = "";
 
     System.out.print("Connecting to printer...");
-    if (fp300Service.Connect(serverInfo, "FP00000010", "")) System.out.println("OK\n");
+    if (fp300Service.Connect(serverInfo, serverInfo.TerminalNo, "")) System.out.println("OK\n");
     else {
       System.out.println("Failed");
       return;
@@ -117,6 +117,7 @@ public class ECRTest {
         System.out.println(indx++ + " - PRINT SUBTOTAL");
         System.out.println(indx++ + " - AUTO ORDER TEST");
         System.out.println(indx++ + " - LOAD GRAPHIC LOGO");
+        System.out.println(indx++ + " - PAIR with NGCR");
 		
 		System.out.print("Select Menu : ");
         dec = key.nextInt();
@@ -197,6 +198,14 @@ public class ECRTest {
             break;			
 		case 15:
             response = fp300Service.LoadGraphicLogo(readFileAllBytes("logo1.bmp"));
+			break;	
+		case 16:
+		    System.out.print("Pairing...");
+			if (fp300Service.Connect(serverInfo, serverInfo.TerminalNo, "")) System.out.println("OK\n");
+			else {
+			  System.out.println("Failed");
+			  return;
+			}
 			break;
 
         }
