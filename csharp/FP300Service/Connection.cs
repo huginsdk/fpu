@@ -21,6 +21,7 @@ namespace FP300Service
         void Close();
         int FPUTimeout { get; set; }
         object ToObject();
+        int BufferSize { get; set; }
     }
 
         public class MySerialPort : SerialPort
@@ -61,6 +62,7 @@ namespace FP300Service
         private string portName = String.Empty;
         private int baudRate = 115200;
         private static MySerialPort sp = null;
+        private static int supportedBufferSize = ProgramConfig.DEFAULT_BUFFER_SIZE;
 
         public SerialConnection(string portName, int baudrate)
         {
@@ -91,7 +93,8 @@ namespace FP300Service
             sp = new MySerialPort(portName, baudRate);
             sp.WriteTimeout =4500;
             sp.ReadTimeout = 4500;
-            sp.ReadBufferSize = 4096;
+            sp.ReadBufferSize = supportedBufferSize;
+            sp.WriteBufferSize = supportedBufferSize;
             sp.Encoding = MainForm.DefaultEncoding;
             sp.Open();
         }
@@ -113,10 +116,9 @@ namespace FP300Service
 
         public void Close()
         {
-            if (sp != null) 
+            if (sp != null)
             {
-              //  if (sp.IsOpen)
-                    sp.Close();
+                sp.Close();
             }
         }
 
@@ -150,6 +152,24 @@ namespace FP300Service
             }
         }
 #endif
+
+
+        public int BufferSize
+        {
+            get
+            {
+                return sp.ReadBufferSize;
+            }
+            set
+            {
+                // Close the connection
+                Close();
+                // Set new buffer size
+                supportedBufferSize = value;
+                // Re-open the connection
+                Open();
+            }
+        }
     }
     public class TCPConnection : IConnection, IDisposable
     {
@@ -177,10 +197,12 @@ namespace FP300Service
             IPEndPoint ipep = new IPEndPoint(IPAddress.Parse(this.ipAddress), this.port);
             client = new Socket(AddressFamily.InterNetwork,
                               SocketType.Stream, ProtocolType.Tcp);
+            // Set initalize values
             client.ReceiveTimeout = 4500;
+            client.ReceiveBufferSize = ProgramConfig.DEFAULT_BUFFER_SIZE;
+            client.SendBufferSize = ProgramConfig.DEFAULT_BUFFER_SIZE;
+            // Connect to destination
             client.Connect(ipep);
-
-
         }
 
         public bool IsOpen
@@ -217,6 +239,20 @@ namespace FP300Service
             set
             {
                 client.ReceiveTimeout = value;
+            }
+        }
+        
+        public int BufferSize
+        {
+            get
+            {
+                return client.SendBufferSize;
+            }
+            set
+            {
+                // Set new buffer size
+                client.SendBufferSize = value;
+                client.ReceiveBufferSize = value;
             }
         }
 

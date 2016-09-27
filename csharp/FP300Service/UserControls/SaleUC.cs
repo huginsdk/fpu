@@ -56,8 +56,6 @@ namespace FP300Service.UserControls
         private static IBridge bridge = null;
         private CheckBox cbxSaveAndSale;
         private Label lblFCurrValue;
-        private TextBox txtRcptBarcode;
-        private Button btnRcptBarcode;
         private Label lblNFTotal;
         private NumericUpDown nmrAdvanceAmount;
         private TextBox txtTCKN_VKN;
@@ -129,7 +127,7 @@ namespace FP300Service.UserControls
         private TabPage tabPageBankList;
         private Button btnBankList;
         private Button btnRcptInfo;
-        private Button buttonAutoPrint;
+        private Button buttonAutoPrintPLU;
         private TabPage tpgSaleDept;
         private Label lblDeptSalePrice;
         private Label lblDeptName;
@@ -201,6 +199,11 @@ namespace FP300Service.UserControls
         private Label labelSlpCpyBatchNo;
         private TextBox textBoxSlpCpyAcquirId;
         private Label label17;
+        private Button buttonAutoPrintDEPT;
+        private TabPage tabPageBarcode;
+        private TextBox txtRcptBarcode;
+        private Button btnRcptBarcode;
+        private Button buttonPrintSalesDocument;
         private Button btnRefreshCredit;
 
 
@@ -302,6 +305,7 @@ namespace FP300Service.UserControls
             this.labelAdvanceName.Text = FormMessage.CUSTOMER_NAME;
             this.tabPageCollection.Text = FormMessage.COLLECTION_DOC;
             this.tabPageFood.Text = FormMessage.FOOD_DOC;
+            this.buttonPrintSalesDocument.Text = FormMessage.PRINT_SALES_DOCUMENT;
             
         }
 
@@ -445,12 +449,13 @@ namespace FP300Service.UserControls
             this.buttonStartCllctnDoc = new System.Windows.Forms.Button();
             this.tbcFooter = new System.Windows.Forms.TabControl();
             this.tbpNotes = new System.Windows.Forms.TabPage();
-            this.txtRcptBarcode = new System.Windows.Forms.TextBox();
             this.btnRemark = new System.Windows.Forms.Button();
-            this.btnRcptBarcode = new System.Windows.Forms.Button();
             this.txtRemarkLine = new System.Windows.Forms.TextBox();
             this.tbpExtra = new System.Windows.Forms.TabPage();
             this.btnOpenDrawer = new System.Windows.Forms.Button();
+            this.tabPageBarcode = new System.Windows.Forms.TabPage();
+            this.txtRcptBarcode = new System.Windows.Forms.TextBox();
+            this.btnRcptBarcode = new System.Windows.Forms.Button();
             this.tbcSale = new System.Windows.Forms.TabControl();
             this.tbpSale = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -565,11 +570,13 @@ namespace FP300Service.UserControls
             this.btnVoidReceipt = new System.Windows.Forms.Button();
             this.btnCloseReceipt = new System.Windows.Forms.Button();
             this.btnRcptInfo = new System.Windows.Forms.Button();
-            this.buttonAutoPrint = new System.Windows.Forms.Button();
+            this.buttonAutoPrintPLU = new System.Windows.Forms.Button();
             this.btnJsonOnlyDept = new System.Windows.Forms.Button();
             this.tableLayoutPanelSaleUc = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelSaleUCLeft = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelSaleUCRight = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonAutoPrintDEPT = new System.Windows.Forms.Button();
+            this.buttonPrintSalesDocument = new System.Windows.Forms.Button();
             this.tbcStartDoc.SuspendLayout();
             this.tbStrtRcpt.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -590,6 +597,7 @@ namespace FP300Service.UserControls
             this.tbcFooter.SuspendLayout();
             this.tbpNotes.SuspendLayout();
             this.tbpExtra.SuspendLayout();
+            this.tabPageBarcode.SuspendLayout();
             this.tbcSale.SuspendLayout();
             this.tbpSale.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -1281,6 +1289,7 @@ namespace FP300Service.UserControls
             // 
             this.tbcFooter.Controls.Add(this.tbpNotes);
             this.tbcFooter.Controls.Add(this.tbpExtra);
+            this.tbcFooter.Controls.Add(this.tabPageBarcode);
             this.tbcFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcFooter.Location = new System.Drawing.Point(2, 392);
             this.tbcFooter.Margin = new System.Windows.Forms.Padding(2);
@@ -1291,9 +1300,7 @@ namespace FP300Service.UserControls
             // 
             // tbpNotes
             // 
-            this.tbpNotes.Controls.Add(this.txtRcptBarcode);
             this.tbpNotes.Controls.Add(this.btnRemark);
-            this.tbpNotes.Controls.Add(this.btnRcptBarcode);
             this.tbpNotes.Controls.Add(this.txtRemarkLine);
             this.tbpNotes.Location = new System.Drawing.Point(4, 22);
             this.tbpNotes.Margin = new System.Windows.Forms.Padding(2);
@@ -1304,44 +1311,25 @@ namespace FP300Service.UserControls
             this.tbpNotes.Text = "FOOTER NOTES";
             this.tbpNotes.UseVisualStyleBackColor = true;
             // 
-            // txtRcptBarcode
-            // 
-            this.txtRcptBarcode.Location = new System.Drawing.Point(155, 39);
-            this.txtRcptBarcode.Margin = new System.Windows.Forms.Padding(2);
-            this.txtRcptBarcode.MaxLength = 25;
-            this.txtRcptBarcode.Name = "txtRcptBarcode";
-            this.txtRcptBarcode.Size = new System.Drawing.Size(226, 20);
-            this.txtRcptBarcode.TabIndex = 12;
-            // 
             // btnRemark
             // 
             this.btnRemark.Location = new System.Drawing.Point(8, 12);
             this.btnRemark.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemark.Name = "btnRemark";
-            this.btnRemark.Size = new System.Drawing.Size(110, 23);
+            this.btnRemark.Size = new System.Drawing.Size(110, 48);
             this.btnRemark.TabIndex = 6;
             this.btnRemark.Text = "REMARK";
             this.btnRemark.UseVisualStyleBackColor = true;
             this.btnRemark.Click += new System.EventHandler(this.btnRemark_Click);
             // 
-            // btnRcptBarcode
-            // 
-            this.btnRcptBarcode.Location = new System.Drawing.Point(8, 36);
-            this.btnRcptBarcode.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRcptBarcode.Name = "btnRcptBarcode";
-            this.btnRcptBarcode.Size = new System.Drawing.Size(110, 23);
-            this.btnRcptBarcode.TabIndex = 10;
-            this.btnRcptBarcode.Text = "BARCODE";
-            this.btnRcptBarcode.UseVisualStyleBackColor = true;
-            this.btnRcptBarcode.Click += new System.EventHandler(this.btnRcptBarcode_Click);
-            // 
             // txtRemarkLine
             // 
-            this.txtRemarkLine.Location = new System.Drawing.Point(155, 14);
+            this.txtRemarkLine.Location = new System.Drawing.Point(131, 4);
             this.txtRemarkLine.Margin = new System.Windows.Forms.Padding(2);
             this.txtRemarkLine.MaxLength = 45;
+            this.txtRemarkLine.Multiline = true;
             this.txtRemarkLine.Name = "txtRemarkLine";
-            this.txtRemarkLine.Size = new System.Drawing.Size(226, 20);
+            this.txtRemarkLine.Size = new System.Drawing.Size(319, 64);
             this.txtRemarkLine.TabIndex = 9;
             // 
             // tbpExtra
@@ -1366,6 +1354,38 @@ namespace FP300Service.UserControls
             this.btnOpenDrawer.Text = "OPEN DRAWER";
             this.btnOpenDrawer.UseVisualStyleBackColor = true;
             this.btnOpenDrawer.Click += new System.EventHandler(this.btnOpenDrawer_Click);
+            // 
+            // tabPageBarcode
+            // 
+            this.tabPageBarcode.Controls.Add(this.txtRcptBarcode);
+            this.tabPageBarcode.Controls.Add(this.btnRcptBarcode);
+            this.tabPageBarcode.Location = new System.Drawing.Point(4, 22);
+            this.tabPageBarcode.Name = "tabPageBarcode";
+            this.tabPageBarcode.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageBarcode.Size = new System.Drawing.Size(461, 72);
+            this.tabPageBarcode.TabIndex = 2;
+            this.tabPageBarcode.Text = "BARCODE";
+            this.tabPageBarcode.UseVisualStyleBackColor = true;
+            // 
+            // txtRcptBarcode
+            // 
+            this.txtRcptBarcode.Location = new System.Drawing.Point(168, 28);
+            this.txtRcptBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRcptBarcode.MaxLength = 25;
+            this.txtRcptBarcode.Name = "txtRcptBarcode";
+            this.txtRcptBarcode.Size = new System.Drawing.Size(233, 20);
+            this.txtRcptBarcode.TabIndex = 14;
+            // 
+            // btnRcptBarcode
+            // 
+            this.btnRcptBarcode.Location = new System.Drawing.Point(21, 25);
+            this.btnRcptBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRcptBarcode.Name = "btnRcptBarcode";
+            this.btnRcptBarcode.Size = new System.Drawing.Size(117, 23);
+            this.btnRcptBarcode.TabIndex = 13;
+            this.btnRcptBarcode.Text = "BARCODE";
+            this.btnRcptBarcode.UseVisualStyleBackColor = true;
+            this.btnRcptBarcode.Click += new System.EventHandler(this.btnRcptBarcode_Click);
             // 
             // tbcSale
             // 
@@ -2048,6 +2068,11 @@ namespace FP300Service.UserControls
             this.nmrDeptSaleId.Margin = new System.Windows.Forms.Padding(2);
             this.nmrDeptSaleId.Maximum = new decimal(new int[] {
             8,
+            0,
+            0,
+            0});
+            this.nmrDeptSaleId.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -2847,17 +2872,17 @@ namespace FP300Service.UserControls
             this.btnRcptInfo.UseVisualStyleBackColor = true;
             this.btnRcptInfo.Click += new System.EventHandler(this.btnRcptInfo_Click);
             // 
-            // buttonAutoPrint
+            // buttonAutoPrintPLU
             // 
-            this.buttonAutoPrint.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonAutoPrint.Location = new System.Drawing.Point(2, 51);
-            this.buttonAutoPrint.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonAutoPrint.Name = "buttonAutoPrint";
-            this.buttonAutoPrint.Size = new System.Drawing.Size(116, 45);
-            this.buttonAutoPrint.TabIndex = 32;
-            this.buttonAutoPrint.Text = "AUTO PRINT";
-            this.buttonAutoPrint.UseVisualStyleBackColor = true;
-            this.buttonAutoPrint.Click += new System.EventHandler(this.buttonAutoPrint_Click);
+            this.buttonAutoPrintPLU.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAutoPrintPLU.Location = new System.Drawing.Point(2, 51);
+            this.buttonAutoPrintPLU.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAutoPrintPLU.Name = "buttonAutoPrintPLU";
+            this.buttonAutoPrintPLU.Size = new System.Drawing.Size(116, 45);
+            this.buttonAutoPrintPLU.TabIndex = 32;
+            this.buttonAutoPrintPLU.Text = "AUTO PRINT    JSON PLU";
+            this.buttonAutoPrintPLU.UseVisualStyleBackColor = true;
+            this.buttonAutoPrintPLU.Click += new System.EventHandler(this.buttonAutoPrint_Click);
             // 
             // btnJsonOnlyDept
             // 
@@ -2909,7 +2934,8 @@ namespace FP300Service.UserControls
             // 
             this.tableLayoutPanelSaleUCRight.ColumnCount = 1;
             this.tableLayoutPanelSaleUCRight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSaleUCRight.Controls.Add(this.buttonAutoPrint, 0, 1);
+            this.tableLayoutPanelSaleUCRight.Controls.Add(this.buttonPrintSalesDocument, 0, 9);
+            this.tableLayoutPanelSaleUCRight.Controls.Add(this.buttonAutoPrintPLU, 0, 1);
             this.tableLayoutPanelSaleUCRight.Controls.Add(this.btnVoidReceipt, 0, 8);
             this.tableLayoutPanelSaleUCRight.Controls.Add(this.btnCorrect, 0, 6);
             this.tableLayoutPanelSaleUCRight.Controls.Add(this.btnCloseReceipt, 0, 7);
@@ -2917,6 +2943,7 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelSaleUCRight.Controls.Add(this.btnSubtotal, 0, 5);
             this.tableLayoutPanelSaleUCRight.Controls.Add(this.btnRcptInfo, 0, 2);
             this.tableLayoutPanelSaleUCRight.Controls.Add(this.bntPrintJSONDoc, 0, 3);
+            this.tableLayoutPanelSaleUCRight.Controls.Add(this.buttonAutoPrintDEPT, 0, 0);
             this.tableLayoutPanelSaleUCRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSaleUCRight.Location = new System.Drawing.Point(482, 3);
             this.tableLayoutPanelSaleUCRight.Name = "tableLayoutPanelSaleUCRight";
@@ -2933,6 +2960,30 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelSaleUCRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanelSaleUCRight.Size = new System.Drawing.Size(120, 492);
             this.tableLayoutPanelSaleUCRight.TabIndex = 1;
+            // 
+            // buttonAutoPrintDEPT
+            // 
+            this.buttonAutoPrintDEPT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAutoPrintDEPT.Location = new System.Drawing.Point(2, 2);
+            this.buttonAutoPrintDEPT.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAutoPrintDEPT.Name = "buttonAutoPrintDEPT";
+            this.buttonAutoPrintDEPT.Size = new System.Drawing.Size(116, 45);
+            this.buttonAutoPrintDEPT.TabIndex = 34;
+            this.buttonAutoPrintDEPT.Text = "AUTO PRINT    JSON DEPT";
+            this.buttonAutoPrintDEPT.UseVisualStyleBackColor = true;
+            this.buttonAutoPrintDEPT.Click += new System.EventHandler(this.buttonAutoPrintDEPT_Click);
+            // 
+            // buttonPrintSalesDocument
+            // 
+            this.buttonPrintSalesDocument.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonPrintSalesDocument.Location = new System.Drawing.Point(2, 443);
+            this.buttonPrintSalesDocument.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPrintSalesDocument.Name = "buttonPrintSalesDocument";
+            this.buttonPrintSalesDocument.Size = new System.Drawing.Size(116, 47);
+            this.buttonPrintSalesDocument.TabIndex = 35;
+            this.buttonPrintSalesDocument.Text = "PRINT SALE DOCUMENT";
+            this.buttonPrintSalesDocument.UseVisualStyleBackColor = true;
+            this.buttonPrintSalesDocument.Click += new System.EventHandler(this.buttonPrintSalesDocument_Click);
             // 
             // SaleUC
             // 
@@ -2969,6 +3020,8 @@ namespace FP300Service.UserControls
             this.tbpNotes.ResumeLayout(false);
             this.tbpNotes.PerformLayout();
             this.tbpExtra.ResumeLayout(false);
+            this.tabPageBarcode.ResumeLayout(false);
+            this.tabPageBarcode.PerformLayout();
             this.tbcSale.ResumeLayout(false);
             this.tbpSale.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -3282,7 +3335,13 @@ namespace FP300Service.UserControls
 
                 if (cbxVoidDept.Checked)
                 {
-                    response = new CPResponse(bridge.Printer.VoidDepartment(pluNo, txtVoidDeptName.Text,quantity));
+                    if (String.IsNullOrEmpty(txtVoidDeptName.Text))
+                    {
+                        bridge.Log(FormMessage.FILL_DEPT_NAME);
+                        return;
+                    }
+                    else
+                        response = new CPResponse(bridge.Printer.VoidDepartment(pluNo, txtVoidDeptName.Text,quantity));
                 } 
                 else
                 {
@@ -3306,14 +3365,18 @@ namespace FP300Service.UserControls
             {
                 List<byte> bytes = new List<byte>();
 
-                //REMARK
-                string line = txtRemarkLine.Text.PadRight(ProgramConfig.LOGO_LINE_LENGTH - 3, ' ');
-                // SEND COMMAND
-#if CPP 
-                CPResponse response = new CPResponse(bridge.Printer.PrintRemarkLine( line ));
-#else
-                CPResponse response = new CPResponse(bridge.Printer.PrintRemarkLine(new string[]{line}));
-#endif
+                string[] remarkLines = txtRemarkLine.Lines;
+
+                if (remarkLines.Length > 0)
+                {
+                    for (int i = 0; i < remarkLines.Length; i++)
+                    {
+                        remarkLines[i] = remarkLines[i].PadRight(ProgramConfig.LOGO_LINE_LENGTH - 3, ' ');
+                    }
+
+                    // SEND COMMAND
+                    CPResponse response = new CPResponse(bridge.Printer.PrintRemarkLine(remarkLines));
+                }
             }
             catch (System.Exception ex)
             {
@@ -3365,7 +3428,7 @@ namespace FP300Service.UserControls
             }
             for (int i = 0; i < 4; i++)
             {
-                cbxSubPayments.Items.Add(String.Format("{0} - {1}",MainForm.Currencies[i].Name , MainForm.Currencies[i].Rate));
+                cbxSubPayments.Items.Add(String.Format("{0}  {1}",MainForm.Currencies[i].Name , MainForm.Currencies[i].Rate));
             }
             cbxSubPayments.SelectedIndex = 0;
         }
@@ -3560,13 +3623,22 @@ namespace FP300Service.UserControls
 
                 if (response.ErrorCode == 0)
                 {
-                    bridge.Log(String.Format("Aratoplam      :{0}", response.GetNextParam()));
-                    bridge.Log(String.Format("Provizyon kodu :{0}", response.GetNextParam()));
-                    bridge.Log(String.Format("Ödeme Toplamı  :{0}", response.GetNextParam()));
-                    bridge.Log(String.Format("Taksit sayısı  :{0}", response.GetNextParam()));
-                    bridge.Log(String.Format("ACQUIRER ID    :{0}", response.GetNextParam()));
-                    bridge.Log(String.Format("BIN            :{0}", response.GetNextParam()));
-                    bridge.Log(String.Format("ISSUERER ID    :{0}", response.GetNextParam()));
+                    string totalAmount      = response.GetNextParam();
+                    string provisionCode    = response.GetNextParam();
+                    string paidAmount       = response.GetNextParam();
+                    string installmentCount = response.GetNextParam();
+                    string acquirerId       = response.GetNextParam();
+                    string bin              = response.GetNextParam();
+                    string issuerId         = response.GetNextParam();
+
+                    bridge.Log(String.Format("İşlem Tutarı   :{0}", nmrEFTAmount.Value.ToString()));
+                    bridge.Log(String.Format("Ödeme Toplamı  :{0}", paidAmount)); 
+                    bridge.Log(String.Format("Belge Tutarı   :{0}", totalAmount));
+                    bridge.Log(String.Format("Taksit sayısı  :{0}", installmentCount)); 
+                    bridge.Log(String.Format("Provizyon kodu :{0}", provisionCode));                                                                                       
+                    bridge.Log(String.Format("ACQUIRER ID    :{0}", acquirerId));
+                    bridge.Log(String.Format("BIN            :{0}", bin));
+                    bridge.Log(String.Format("ISSUERER ID    :{0}", issuerId));
                     
                 }
 
@@ -3628,9 +3700,15 @@ namespace FP300Service.UserControls
 
         private void btnStartParkDoc_Click(object sender, EventArgs e)
         {
+            DateTime entranceDT = new DateTime(dtParkDate.Value.Year,
+                                                dtParkDate.Value.Month,
+                                                dtParkDate.Value.Day,
+                                                dtParkTime.Value.Hour,
+                                                dtParkTime.Value.Minute,
+                                                dtParkTime.Value.Second);
             try
             {
-                CPResponse response = new CPResponse(bridge.Printer.PrintParkDocument(txtPlate.Text, dtParkDate.Value));
+                CPResponse response = new CPResponse(bridge.Printer.PrintParkDocument(txtPlate.Text, entranceDT));
                 if (response.ErrorCode == 0)
                 {
                     bridge.Log(FormMessage.DOCUMENT_ID + "  :" + response.GetNextParam());
@@ -3779,16 +3857,16 @@ namespace FP300Service.UserControls
         {
             try
             {
-                if (buttonAutoPrint.Text == "AUTO PRINT")
+                if (buttonAutoPrintPLU.Text == "AUTO PRINT    JSON PLU")
                 {
-                    printJSONThread = new System.Threading.Thread(PrintJSONLoop);
+                    printJSONThread = new System.Threading.Thread(()=>PrintJSONLoop(false));
                     printJSONThread.Start();
-                    buttonAutoPrint.Text = "STOP PRINT";
+                    buttonAutoPrintPLU.Text = "STOP PRINT";
                 }
                 else
                 {
                     printJSONThread.Abort();
-                    buttonAutoPrint.Text = "AUTO PRINT";
+                    buttonAutoPrintPLU.Text = "AUTO PRINT    JSON PLU";
                 }
 
             }
@@ -3799,40 +3877,72 @@ namespace FP300Service.UserControls
         }
 
         static string jsonStr = String.Empty;
-        private void PrintJSONLoop()
-        {
-            if (String.IsNullOrEmpty(jsonStr))
-            {
-                string jsonFileName = System.Configuration.ConfigurationSettings.AppSettings["JSONDocName"];
-                if (!File.Exists(jsonFileName))
-                {
-                    bridge.Log(FormMessage.JSON_FILE_NOT_EXISTS);
-                    return;
-                }
 
-                jsonStr = File.ReadAllText(jsonFileName);
-            }
-            int docCounter = 1;
-            while (true)
+        private delegate void PrintJSONLoopDelegate(bool isDeptSale);
+        private void PrintJSONLoop(bool isDeptSale)
+        {
+            if (buttonAutoPrintDEPT.InvokeRequired)
             {
-                try
+                buttonAutoPrintDEPT.Invoke(new PrintJSONLoopDelegate(PrintJSONLoop), isDeptSale);
+            }
+            else if (buttonAutoPrintPLU.InvokeRequired)
+            {
+                buttonAutoPrintPLU.Invoke(new PrintJSONLoopDelegate(PrintJSONLoop), isDeptSale);
+            }
+            else
+            {
+                int GetZRepAt = Int32.Parse(System.Configuration.ConfigurationSettings.AppSettings["GetZReportAt"]);
+
+                if (String.IsNullOrEmpty(jsonStr))
                 {
-                    bridge.Log(String.Format("AUTO PRINT DOC COUNTER: {0}", docCounter++));
-                    CPResponse response = new CPResponse(bridge.Printer.PrintDocumentHeader());
-                    if (response.ErrorCode == 0)
-                        response = new CPResponse(bridge.Printer.PrintJSONDocument(jsonStr));
-                    else
+                    string jsonFileName = System.Configuration.ConfigurationSettings.AppSettings["JSONDocName"];
+                    if (!File.Exists(jsonFileName))
                     {
-                        buttonAutoPrint.Text = "AUTO PRINT"; 
+                        bridge.Log(FormMessage.JSON_FILE_NOT_EXISTS);
+                        return;
+                    }
+
+                    jsonStr = File.ReadAllText(jsonFileName);
+                }
+                int docCounter = 1;
+                while (true)
+                {
+                    try
+                    {
+                        bridge.Log(String.Format("AUTO PRINT DOC COUNTER: {0}", docCounter));
+                        CPResponse response = new CPResponse(bridge.Printer.PrintDocumentHeader());
+                        if (response.ErrorCode == 0)
+                            if (isDeptSale)
+                                response = new CPResponse(bridge.Printer.PrintJSONDocumentDeptOnly(jsonStr));
+                            else
+                                response = new CPResponse(bridge.Printer.PrintJSONDocument(jsonStr));
+                        else
+                        {
+                            if (isDeptSale)
+                                buttonAutoPrintDEPT.Text = "AUTO PRINT    JSON DEPT";
+                            else
+                                buttonAutoPrintPLU.Text = "AUTO PRINT    JSON PLU";
+                            break;
+                        }
+                        System.Threading.Thread.Sleep(500);
+
+                        if (docCounter % GetZRepAt == 0)
+                        {
+                            bridge.Log(String.Format("AUTO PRINT: Z PRINTING... AT {0}", docCounter));
+                            response = new CPResponse(bridge.Printer.PrintZReport());
+                        }
+
+                        docCounter++;
+                    }
+                    catch (Exception ex)
+                    {
+                        bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+                        if (isDeptSale)
+                            buttonAutoPrintDEPT.Text = "AUTO PRINT    JSON DEPT";
+                        else
+                            buttonAutoPrintPLU.Text = "AUTO PRINT    JSON PLU";
                         break;
                     }
-                    System.Threading.Thread.Sleep(2000);
-                }
-                catch(Exception ex)
-                {
-                    bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
-                    buttonAutoPrint.Text = "AUTO PRINT";
-                    break;
                 }
             }
         }
@@ -4022,6 +4132,51 @@ namespace FP300Service.UserControls
 
                 response = new CPResponse(bridge.Printer.GetEFTSlipCopy(acquierId, bNo, sNo, zNo, rNo));
 
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + " : " + ex.Message);
+            }
+        }
+
+        private void buttonAutoPrintDEPT_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (buttonAutoPrintDEPT.Text == "AUTO PRINT    JSON DEPT")
+                {
+                    printJSONThread = new System.Threading.Thread(()=>PrintJSONLoop(true));
+                    printJSONThread.Start();
+                    buttonAutoPrintDEPT.Text = "STOP PRINT";
+                }
+                else
+                {
+                    printJSONThread.Abort();
+                    buttonAutoPrintDEPT.Text = "AUTO PRINT    JSON DEPT";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+        }
+
+        private void buttonPrintSalesDocument_Click(object sender, EventArgs e)
+        {
+            string jsonFileName = System.Configuration.ConfigurationSettings.AppSettings["JSONDocName"];
+            string jsonStr = "";
+            if (!File.Exists(jsonFileName))
+            {
+                bridge.Log(FormMessage.JSON_FILE_NOT_EXISTS);
+                return;
+            }
+
+            try
+            {
+                jsonStr = File.ReadAllText(jsonFileName);
+
+                CPResponse response = new CPResponse(bridge.Printer.PrintSalesDocument(jsonStr));
             }
             catch (Exception ex)
             {

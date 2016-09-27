@@ -3121,13 +3121,10 @@ namespace FP300Service.UserControls
 
         private void btnSendBitmap_Click(object sender, EventArgs e)
         {
+            bridge.Log(FormMessage.SAVE_BITMAP_MESSAGE);
             try
             {
-#if CPP 
-
-#else
                 CPResponse response = new CPResponse(bridge.Printer.LoadGraphicLogo(pbxLogo.Image));
-#endif
             }
             catch (Exception ex)
             {

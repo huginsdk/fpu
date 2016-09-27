@@ -37,5 +37,7 @@ namespace FP300Service
         public const int MAX_CASHIER_COUNT = 10;
 
         public const int AMOUNT_LENGTH = 5;
+        public const int DEFAULT_BUFFER_SIZE = 2048;
+        public const int TEMP_BUFFER_SIZE = 250;
     }
 }

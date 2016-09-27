@@ -217,7 +217,6 @@ namespace FP300Service
         public const String INVOICE = "INVOICE";
         public const String E_INVOICE = "E-INVOICE";
         public const string E_ARCHIVE = "E-ARCHIVE";
-        public const String ADVANCE = "ADVANCE";
         public const string FOOD_DOC = "MEAL TICKET";
         public const String CURRENCIES = "CURRENCIES";
 
@@ -371,6 +370,9 @@ namespace FP300Service
         public const string COLLECTION_DOC = "COLLECTION INVOICE";
         public const string PLU_DEFINITION = "PLU DEFINITION";
         public const string END_DAY_REPORT = "END DAY REPORT";
+        public const string SAVE_BITMAP_MESSAGE = "PLEASE WAIT. BITMAP LOGO SAVING..";
+        public const string FILL_DEPT_NAME = "PLEASE FILL THE DEPARTMAN NAME AREA";
+        public const string PRINT_SALES_DOCUMENT = "PRINT SALES DOCUMENT";
 #else
         #region FiscalInfoUC
 
@@ -730,8 +732,6 @@ namespace FP300Service
         public const String PRINT = "YAZDIR";
         public const String SAVE = "KAYDET";
 
-        #endregion
-#endif
 
 
 
@@ -744,5 +744,15 @@ namespace FP300Service
         public const string PLU_DEFINITION = "PLU TANIMLAMA";
 
         public const string END_DAY_REPORT = "GÜN SONU RAPORU";
+
+        public const string SAVE_BITMAP_MESSAGE = "LÜTFEN BEKLEYİNİZ.LOGO KAYDEDİLİYOR..";
+
+        public const string FILL_DEPT_NAME = "DEPARTMAN ADI ALANINI DOLDURUNUZ";
+
+        public const string PRINT_SALES_DOCUMENT = "TÜM BELGE YAZDIR";
+
+        #endregion
+
+#endif
     }
 }

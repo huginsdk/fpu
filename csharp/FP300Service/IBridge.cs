@@ -19,7 +19,7 @@ namespace FP300Service
         PrinterWrapper.CompactPrinterWrapper Printer { get; }
         BridgeConn Connection { get; set; }
 #else
-        IConnection Connection { get; set; }
+        IConnection Connection { get; }
         void Log(String log);
         void Log();
         ICompactPrinter Printer { get; }

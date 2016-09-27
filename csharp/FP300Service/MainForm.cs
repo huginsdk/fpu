@@ -524,21 +524,7 @@ namespace FP300Service
 #if EJ_READER
             this.Text = "EKÜ OKUYUCU - HUGIN";
 #endif
-
-
-            try
-            {
-                if (System.Configuration.ConfigurationSettings.AppSettings["CommLog"] == "ON")
-                {
-                    LogForm lf = new LogForm();
-                    lf.Show();
-                }
-            }
-            catch (System.Exception ex)
-            {
-
-            }
-
+            
             try
             {
                 if (!String.IsNullOrEmpty(System.Configuration.ConfigurationSettings.AppSettings["FiscalId"]))
@@ -994,6 +980,15 @@ namespace FP300Service
 #endif
                     {
                         throw new OperationCanceledException(FormMessage.UNABLE_TO_MATCH);
+                    }
+
+                    // Check supported printer size and set if it is different
+                    if (printer.PrinterBufferSize != conn.BufferSize)
+                    {
+                        conn.BufferSize = printer.PrinterBufferSize;
+
+                        if (!printer.Connect(conn.ToObject(), serverInfo))
+                            throw new OperationCanceledException(FormMessage.UNABLE_TO_MATCH);
                     }
 
                     isMatchedBefore = true;
