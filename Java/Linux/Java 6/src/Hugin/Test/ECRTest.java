@@ -15,6 +15,11 @@ public class ECRTest {
   public static void main(String[] args) {
     FP300Service fp300Service = new FP300Service();
 
+	// Get the version of the library
+	System.out.println("**************************");
+	System.out.println("Library version : " + fp300Service.LibraryVersion());	
+	System.out.println("**************************");
+	
     Scanner key = new Scanner(System.in);
 
     System.out.print("1-TCP/IP\n");
@@ -50,14 +55,18 @@ public class ECRTest {
     serverInfo.IP = IpAddress;
     serverInfo.Model = "HUGIN COMPACT";
     serverInfo.Port = 5555;
-    serverInfo.TerminalNo = "FP00000010";
+    serverInfo.TerminalNo = "FP11004397";
     serverInfo.Version = "";
     serverInfo.SerialNum = "";
 
-    System.out.print("Connecting to printer...");
-    if (fp300Service.Connect(serverInfo, "FP00000010", "")) System.out.println("OK\n");
-    else {
-      System.out.println("Failed");
+    System.out.print("Connecting to printer... : " + serverInfo.TerminalNo);
+    if (fp300Service.Connect(serverInfo, serverInfo.TerminalNo, "")) 
+	{
+		System.out.println(" OK\n");
+	}
+    else 
+	{
+      System.out.println(" Failed");
       return;
     }
 
@@ -96,6 +105,9 @@ public class ECRTest {
 		}
 		fp300Service.SetFPUTimeout(tmp);
 	*/
+
+	fp300Service.SetDebugLevel(FP300Service.LogLevel.HIDE_BUG.getValue());
+
     while (true) {
       int indx = 0;
       String response = "";
@@ -117,6 +129,7 @@ public class ECRTest {
         System.out.println(indx++ + " - PRINT SUBTOTAL");
         System.out.println(indx++ + " - AUTO ORDER TEST");
         System.out.println(indx++ + " - LOAD GRAPHIC LOGO");
+        System.out.println(indx++ + " - PAIR with NGCR");
 		
 		System.out.print("Select Menu : ");
         dec = key.nextInt();
@@ -127,22 +140,22 @@ public class ECRTest {
             response = fp300Service.PrintDocumentHeader();
             break;
           case 2:
-            response = fp300Service.PrintItem(1, 15, 3.00, "SAMPLE PRODUCT", 1, 1);
+            response = fp300Service.PrintItem(1, 15, 3.00, "SAMPLE PRODUCT", "", 1, 1);
             break;
           case 3:
             System.out.print("Price: ");
-            int deptPrice = key.nextInt();
+            double deptPrice = key.nextDouble();
             response = fp300Service.PrintDepartment(1, 1, deptPrice, "SAMPLE DEPARTMENT", 1);
             break;
           case 4:
-            response = fp300Service.PrintJSONDocumentDeptOnly(readFile("order.txt"));
+            response = fp300Service.PrintJSONDocumentDeptOnly(readFile("./samples/order.txt"));
             break;
           case 5:
             response = fp300Service.PrintAdjustment(1, 0.15, 5);
             break;
           case 6: //PAY
             System.out.print("Amount: ");
-            int amount = key.nextInt();
+            double amount = key.nextDouble();
             response = fp300Service.PrintPayment(0, -1, amount);
             break;
 			
@@ -151,7 +164,6 @@ public class ECRTest {
             double ccAmount = key.nextDouble();
             response = fp300Service.GetEFTAuthorisation(ccAmount, 1, "");
             break;
-			
           case 8:
             response = fp300Service.CloseReceipt(false);
             break;
@@ -159,9 +171,6 @@ public class ECRTest {
             response = fp300Service.VoidReceipt();
             break;
           case 10:
-            //System.out.print("Enter Remark: ");
-			String s = "ğüşiöçĞÜŞİÖÇ";//key.next();
-										
 			response = fp300Service.PrintRemarkLine(new String[]{"REMARK LINE 1",
 																	"REMARK LINE 2",
 																	"REMARK LINE 3",
@@ -196,8 +205,17 @@ public class ECRTest {
 			}
             break;			
 		case 15:
-            response = fp300Service.LoadGraphicLogo(readFileAllBytes("logo1.bmp"));
+            response = fp300Service.LoadGraphicLogo(readFileAllBytes("./samples/logo1.bmp"));
+			break;	
+		case 16:
+		    System.out.println("Pairing with " + serverInfo.TerminalNo);
+			if (fp300Service.Connect(serverInfo, serverInfo.TerminalNo, "")) 
+				System.out.println("OK\n");
+			else 
+			  System.out.println("Failed");
+		  
 			break;
+
 
         }
 
@@ -250,12 +268,12 @@ public class ECRTest {
 		res = getErrorCode(fp300Service.PrintRemarkLine(new String[]{"REMARK LINE 1",
 																	"REMARK LINE 2",
 																	"REMARK LINE 3",
-																	"REMARK LINE 4"}));
+																	"REMARK LINE 3"}));
 	}
-	/**/
+	
 	if(0 == res)
 	{
-		res = getErrorCode(fp300Service.PrintReceiptBarcode("123456789012"));
+		res = getErrorCode(fp300Service.PrintReceiptBarcode("123456789000"));
 	}
 	
 	if(0 == res)

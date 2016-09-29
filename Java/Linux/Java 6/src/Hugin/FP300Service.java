@@ -6,6 +6,8 @@ public class FP300Service {
  		{
  			System.loadLibrary("libgcc_s_dw2-1");
 			System.loadLibrary("libstdc++-6");
+			System.loadLibrary("libeay32");
+			System.loadLibrary("ssleay32");
 			System.loadLibrary("printerlib"); 
  		}
  		else		// (Unixes)  
@@ -13,7 +15,30 @@ public class FP300Service {
  			System.loadLibrary("printerlib"); 
  		}	
 	}
+
+		public enum LogLevel
+		{
+			FATAL		(1),
+			ERROR		(2),
+			WARN		(3),
+			INFO		(4),
+			DEBUG		(5),
+			HIDE_BUG	(6);
+
+			private int value;    
+
+			private LogLevel(int value) {
+				this.value = value;
+			}
+
+			public int getValue() {
+				return value;
+			}
+		}
  
+	public native void SetDebugLevel(int level);
+	public native void SetDebugFolder(String path);
+	public native String LibraryVersion();
 	public native boolean SerialConnect(String portName, int baudRate);
 	public native boolean TCPConnect(String serverIp, int port);
 	public native int GetTimeout();
@@ -44,11 +69,16 @@ public class FP300Service {
 	public native String SaveGMPConnectionInfo(String ip, int port);
 	public native String GetProgramOptions(int progEnum);
 	public native String SaveProgramOptions(int progEnum, String progValue);
+	
 	public native String PrintDocumentHeader();
 	public native String PrintDocumentHeader(String tckn_vkn, double amount, int docType);
+	public native String PrintDocumentHeader(int docType, String tckn_vkn, String docSerial, DateTime docDateTime);
 	public native String PrintParkDocument(String plate, DateTime entrenceDate);
-	public native String PrintItem(int PLUNo, double quantity, double amount, String name, 
-		int deptId, int weighable);
+	public native String PrintAdvanceDocumentHeader(String tckn, String name, double amount);
+	public native String PrintCollectionDocumentHeader(String invoiceSerial, DateTime invoiceDate, double amount, String subscriberNo, String institutionName, double comissionAmount);
+	public native String PrintFoodDocumentHeader();
+
+	public native String PrintItem(int PLUNo, double quantity, double amount, String name, String barcode,	int deptId, int weighable);
 	public native String PrintAdjustment(int adjustmentType, double amount, int percentage);
 	public native String Correct();
 	public native String Void(int PLUNo, double quantity);
