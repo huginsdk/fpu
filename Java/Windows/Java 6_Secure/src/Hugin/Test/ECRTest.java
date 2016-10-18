@@ -33,7 +33,7 @@ public class ECRTest {
         System.out.print("IP Address(207.46.128.217): ");
         IpAddress = key.next();
         System.out.print("Connecting to server(" + IpAddress + ":5555)...");
-        if (fp300Service.TCPConnect(IpAddress, 5555)) System.out.println("OK\n");
+        if (fp300Service.TCPConnect(IpAddress, 4444)) System.out.println("OK\n");
         else {
           System.out.println("Failed");
           return;
@@ -54,7 +54,7 @@ public class ECRTest {
     serverInfo.Brand = "HUGIN";
     serverInfo.IP = IpAddress;
     serverInfo.Model = "HUGIN COMPACT";
-    serverInfo.Port = 5555;
+    serverInfo.Port = 4444;
     serverInfo.TerminalNo = "FP11004397";
     serverInfo.Version = "";
     serverInfo.SerialNum = "";
