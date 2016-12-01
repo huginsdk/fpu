@@ -117,7 +117,7 @@ public class ECRTest {
           case 2: // Sale Product
             response = fp300Service.PrintItem(1, 15, 3.00, "SAMPLE PRODUCT", "", 1, 1);
             break;
-          case 3:
+          case 3: // Sale Department 
             System.out.print("Price: ");
             double deptPrice = key.nextDouble();
             response = fp300Service.PrintDepartment(1, 1, deptPrice, "SAMPLE DEPARTMENT", 1);
