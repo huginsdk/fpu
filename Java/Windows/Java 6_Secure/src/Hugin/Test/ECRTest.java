@@ -104,7 +104,7 @@ public class ECRTest {
         System.out.println(indx++ + " - LOAD GRAPHIC LOGO");
         System.out.println(indx++ + " - PAIR with NGCR");
         System.out.println(indx++ + " - PRINT Z REPORT");
-        System.out.println(indx++ + " - CHANGE RECEIPT LIMIT AS 950,00 TRY");
+        System.out.println(indx++ + " - SET RECEIPT LIMIT");
     
 		System.out.print("Select Menu : ");
         dec = key.nextInt();
@@ -195,7 +195,8 @@ public class ECRTest {
           break;
 
           case 18:
-            response = fp300Service.SaveProgramOptions(2, "950,00");
+            double rcpLimit = key.nextDouble();
+            response = fp300Service.SaveProgramOptions(2, rcpLimit);
           break;
 
 
