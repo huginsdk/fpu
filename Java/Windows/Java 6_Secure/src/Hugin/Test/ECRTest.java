@@ -111,7 +111,7 @@ public class ECRTest {
         if (dec == 0)
           break;
         switch (dec) {
-          case 1:
+          case 1: // Print Receipt Header
             response = fp300Service.PrintDocumentHeader();
             break;
           case 2:
