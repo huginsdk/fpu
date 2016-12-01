@@ -114,7 +114,7 @@ public class ECRTest {
           case 1: // Print Receipt Header
             response = fp300Service.PrintDocumentHeader();
             break;
-          case 2:
+          case 2: // Sale Product
             response = fp300Service.PrintItem(1, 15, 3.00, "SAMPLE PRODUCT", "", 1, 1);
             break;
           case 3:
