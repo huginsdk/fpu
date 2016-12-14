@@ -98,6 +98,7 @@
     <Compile Include="Connection.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ErrorCode.cs" />
     <Compile Include="FormMessage.cs" />
     <Compile Include="IBridge.cs">
       <SubType>Code</SubType>
@@ -115,6 +116,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="StatusCode.cs" />
     <Compile Include="TestServer.cs">
       <SubType>Form</SubType>
     </Compile>
