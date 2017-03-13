@@ -51,13 +51,16 @@ public class ECRTest {
     }
 
     DeviceInfo serverInfo = new DeviceInfo();
+    // Get Fiscal Id
     serverInfo.Brand = "HUGIN";
     serverInfo.IP = IpAddress;
     serverInfo.Model = "HUGIN COMPACT";
     serverInfo.Port = 4444;
-    serverInfo.TerminalNo = "FP11004397";
     serverInfo.Version = "";
     serverInfo.SerialNum = "";
+
+    System.out.print("Fiscal Id (Ex. FR11004390): ");
+    serverInfo.TerminalNo = key.next();
 
     System.out.print("Connecting to printer... : " + serverInfo.TerminalNo);
     if (fp300Service.Connect(serverInfo, serverInfo.TerminalNo, "")) 
