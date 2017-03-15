@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
+using System.ComponentModel;
 
 namespace FP300Service
 {
@@ -36,6 +38,73 @@ namespace FP300Service
                 return paramList;
             }
         }
+
+        public ErrorCode EnumErrorCode
+        {
+            get
+            {
+                return (ErrorCode)errorCode;
+            }
+        }
+
+        public StatusCode EnumStatusCode
+        {
+            get
+            {
+                return (StatusCode)statusCode;
+            }
+        }
+
+        public string ErrorMessage
+        {
+            get
+            {
+                string result = string.Empty;
+                try
+                {
+                    ErrorCode enumError = (ErrorCode)this.errorCode;
+                    result = DescriptionAttr(enumError);
+                    return result;
+                }
+                catch (Exception ex)
+                {
+
+                }
+                return result;
+            }
+        }
+
+
+        public string StatusMessage
+        {
+            get
+            {
+                string result = string.Empty;
+                try
+                {
+                    StatusCode enumStatus = (StatusCode)this.statusCode;
+                    result = DescriptionAttr(enumStatus);
+                }
+                catch (Exception ex)
+                {
+
+                }
+                return result;
+            }
+        }
+
+        private static string DescriptionAttr<T>(T source)
+        {
+            string result = string.Empty;
+            FieldInfo fieldInfo = source.GetType().GetField(source.ToString());
+
+            DescriptionAttribute[] attributes = (DescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+            if (attributes != null && attributes.Length > 0)
+                result = attributes[0].Description;
+            return result;
+        }
+
 
         public int CurrentParamIndex
         {

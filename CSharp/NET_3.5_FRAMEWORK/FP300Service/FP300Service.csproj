@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;FPU,DEBUG;NEBIM_MODE;LANG_ENG;CPP</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;FPU,DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -57,7 +57,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;FPU,DEBUG;NEBIM_MODE;</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;FPU,DEBUG;</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
@@ -66,7 +66,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;FPU;NEBIM_MODE;</DefineConstants>
+    <DefineConstants>TRACE;LANG_ENG</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -75,15 +75,16 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Hugin.Common, Version=1.0.0.346, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Hugin.Common, Version=1.0.0.426, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\etc\Hugin.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Hugin.POS.CompactPrinter.FP300, Version=1.0.0.346, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Hugin.POS.CompactPrinter.FP300, Version=1.0.0.426, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\etc\Hugin.POS.CompactPrinter.FP300.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -98,6 +99,7 @@
     <Compile Include="Connection.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ErrorCode.cs" />
     <Compile Include="FormMessage.cs" />
     <Compile Include="IBridge.cs">
       <SubType>Code</SubType>
@@ -115,6 +117,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="StatusCode.cs" />
     <Compile Include="TestServer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,7 +178,10 @@
     <EmbeddedResource Include="UserControls\UtililtyFuncsUC.resx">
       <DependentUpon>UtililtyFuncsUC.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="Properties\App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -200,6 +206,7 @@
     <PreBuildEvent>
     </PreBuildEvent>
   </PropertyGroup>
+
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

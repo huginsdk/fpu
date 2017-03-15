@@ -17,6 +17,33 @@ namespace FP300Service.UserControls
         Discount,
         PercentDiscount
     }
+
+    public enum SubOperationType
+    {
+        SATIS = 1,
+        YBELGE = 10,
+        TAKSITLI_SATIS = 04,
+        VADE_FARKLI_SATIS = 03,
+        PUANLI_SATIS = 16,
+        E_IADE = 20,
+        KISMI_IADE = 22,
+        KONTOR_SATIS = 13,
+        PUAN_SORGU = 14,
+        KK_BORC_ODEME = 05,
+        PREPAID_NAKIT_YUKLEME = 29,
+        PREPAID_KARTLI_YUKLEME = 30,
+        CASHBACK = 12
+    }
+    
+    public enum InfoReceiptPaymentType
+    {
+        CASH = 1,
+        CREDIT,
+        CHECK,
+        EFT_POS,
+        FOREIGN_CURRENCY
+    }
+
     public class SaleUC : TestUC
     {
         private Button btnSale;
@@ -212,6 +239,20 @@ namespace FP300Service.UserControls
         private Timer timer1;
         private IContainer components;
         private Timer timer2;
+        private TabPage tabPageCrrAccountCollctn;
+        private TableLayoutPanel tableLayoutPanel18;
+        private Button btnPrintCurrAccHeader;
+        private TableLayoutPanel tableLayoutPanel19;
+        private NumericUpDown numericUpDownCrrAccAmount;
+        private TextBox textBoxCrrAccDocSerial;
+        private TextBox textBoxCrrAccCustName;
+        private TextBox textBoxCrrAccTcknVkn;
+        private Label labelCrrAccTcknVkn;
+        private Label labelCrrAccCustName;
+        private Label labelCrrAccSerial;
+        private Label labelCrrAccAmount;
+        private Label labelCrrAccDate;
+        private DateTimePicker dateTimePickerCrrAccDate;
         private Button btnRefreshCredit;
 
 
@@ -319,6 +360,12 @@ namespace FP300Service.UserControls
             this.buttonPrintSalesDocument.Text = FormMessage.PRINT_SALES_DOCUMENT;
             this.labelBarcodeType.Text = FormMessage.BARCODE_TYPE;
             this.labelBarcode.Text = FormMessage.BARCODE;
+            this.btnPrintCurrAccHeader.Text = FormMessage.START_DOCUMENT;
+            this.labelCrrAccAmount.Text = FormMessage.AMOUNT;
+            this.labelCrrAccCustName.Text = FormMessage.CUSTOMER_NAME;
+            this.labelCrrAccSerial.Text = FormMessage.DOCUMENT_SERIAL;
+            this.tabPageCrrAccountCollctn.Text = FormMessage.CURRENT_ACCOUNT_COLLECTION_DOC;
+            this.labelCrrAccDate.Text = FormMessage.DATE;
             
         }
 
@@ -461,6 +508,20 @@ namespace FP300Service.UserControls
             this.textBoxCllctnSerial = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.buttonStartCllctnDoc = new System.Windows.Forms.Button();
+            this.tabPageCrrAccountCollctn = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnPrintCurrAccHeader = new System.Windows.Forms.Button();
+            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelCrrAccDate = new System.Windows.Forms.Label();
+            this.numericUpDownCrrAccAmount = new System.Windows.Forms.NumericUpDown();
+            this.textBoxCrrAccDocSerial = new System.Windows.Forms.TextBox();
+            this.textBoxCrrAccCustName = new System.Windows.Forms.TextBox();
+            this.textBoxCrrAccTcknVkn = new System.Windows.Forms.TextBox();
+            this.labelCrrAccTcknVkn = new System.Windows.Forms.Label();
+            this.labelCrrAccCustName = new System.Windows.Forms.Label();
+            this.labelCrrAccSerial = new System.Windows.Forms.Label();
+            this.labelCrrAccAmount = new System.Windows.Forms.Label();
+            this.dateTimePickerCrrAccDate = new System.Windows.Forms.DateTimePicker();
             this.tbcFooter = new System.Windows.Forms.TabControl();
             this.tbpNotes = new System.Windows.Forms.TabPage();
             this.btnRemark = new System.Windows.Forms.Button();
@@ -615,6 +676,10 @@ namespace FP300Service.UserControls
             this.tabPageCollection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownComission)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCllctnAmount)).BeginInit();
+            this.tabPageCrrAccountCollctn.SuspendLayout();
+            this.tableLayoutPanel18.SuspendLayout();
+            this.tableLayoutPanel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCrrAccAmount)).BeginInit();
             this.tbcFooter.SuspendLayout();
             this.tbpNotes.SuspendLayout();
             this.tbpExtra.SuspendLayout();
@@ -670,6 +735,7 @@ namespace FP300Service.UserControls
             this.tbcStartDoc.Controls.Add(this.tbpStartParking);
             this.tbcStartDoc.Controls.Add(this.tabPageFood);
             this.tbcStartDoc.Controls.Add(this.tabPageCollection);
+            this.tbcStartDoc.Controls.Add(this.tabPageCrrAccountCollctn);
             this.tbcStartDoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcStartDoc.Location = new System.Drawing.Point(2, 2);
             this.tbcStartDoc.Margin = new System.Windows.Forms.Padding(2);
@@ -1307,6 +1373,179 @@ namespace FP300Service.UserControls
             this.buttonStartCllctnDoc.Text = "START DOCUMENT";
             this.buttonStartCllctnDoc.UseVisualStyleBackColor = true;
             this.buttonStartCllctnDoc.Click += new System.EventHandler(this.buttonStartCllctnDoc_Click);
+            // 
+            // tabPageCrrAccountCollctn
+            // 
+            this.tabPageCrrAccountCollctn.Controls.Add(this.tableLayoutPanel18);
+            this.tabPageCrrAccountCollctn.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCrrAccountCollctn.Name = "tabPageCrrAccountCollctn";
+            this.tabPageCrrAccountCollctn.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCrrAccountCollctn.Size = new System.Drawing.Size(461, 100);
+            this.tabPageCrrAccountCollctn.TabIndex = 6;
+            this.tabPageCrrAccountCollctn.Text = "CUURENT ACCOUNT COLLECTION DOC";
+            this.tabPageCrrAccountCollctn.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel18
+            // 
+            this.tableLayoutPanel18.ColumnCount = 2;
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 353F));
+            this.tableLayoutPanel18.Controls.Add(this.btnPrintCurrAccHeader, 0, 0);
+            this.tableLayoutPanel18.Controls.Add(this.tableLayoutPanel19, 1, 0);
+            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
+            this.tableLayoutPanel18.RowCount = 1;
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(455, 94);
+            this.tableLayoutPanel18.TabIndex = 0;
+            // 
+            // btnPrintCurrAccHeader
+            // 
+            this.btnPrintCurrAccHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPrintCurrAccHeader.Location = new System.Drawing.Point(3, 3);
+            this.btnPrintCurrAccHeader.Name = "btnPrintCurrAccHeader";
+            this.btnPrintCurrAccHeader.Size = new System.Drawing.Size(96, 88);
+            this.btnPrintCurrAccHeader.TabIndex = 0;
+            this.btnPrintCurrAccHeader.Text = "START DOCUMENT";
+            this.btnPrintCurrAccHeader.UseVisualStyleBackColor = true;
+            this.btnPrintCurrAccHeader.Click += new System.EventHandler(this.btnPrintCurrAccHeader_Click);
+            // 
+            // tableLayoutPanel19
+            // 
+            this.tableLayoutPanel19.ColumnCount = 2;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel19.Controls.Add(this.labelCrrAccDate, 0, 4);
+            this.tableLayoutPanel19.Controls.Add(this.numericUpDownCrrAccAmount, 1, 3);
+            this.tableLayoutPanel19.Controls.Add(this.textBoxCrrAccDocSerial, 1, 2);
+            this.tableLayoutPanel19.Controls.Add(this.textBoxCrrAccCustName, 1, 1);
+            this.tableLayoutPanel19.Controls.Add(this.textBoxCrrAccTcknVkn, 1, 0);
+            this.tableLayoutPanel19.Controls.Add(this.labelCrrAccTcknVkn, 0, 0);
+            this.tableLayoutPanel19.Controls.Add(this.labelCrrAccCustName, 0, 1);
+            this.tableLayoutPanel19.Controls.Add(this.labelCrrAccSerial, 0, 2);
+            this.tableLayoutPanel19.Controls.Add(this.labelCrrAccAmount, 0, 3);
+            this.tableLayoutPanel19.Controls.Add(this.dateTimePickerCrrAccDate, 1, 4);
+            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(105, 3);
+            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            this.tableLayoutPanel19.RowCount = 5;
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(347, 88);
+            this.tableLayoutPanel19.TabIndex = 1;
+            // 
+            // labelCrrAccDate
+            // 
+            this.labelCrrAccDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelCrrAccDate.AutoSize = true;
+            this.labelCrrAccDate.Location = new System.Drawing.Point(68, 71);
+            this.labelCrrAccDate.Name = "labelCrrAccDate";
+            this.labelCrrAccDate.Size = new System.Drawing.Size(36, 13);
+            this.labelCrrAccDate.TabIndex = 29;
+            this.labelCrrAccDate.Text = "DATE";
+            // 
+            // numericUpDownCrrAccAmount
+            // 
+            this.numericUpDownCrrAccAmount.DecimalPlaces = 2;
+            this.numericUpDownCrrAccAmount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numericUpDownCrrAccAmount.Location = new System.Drawing.Point(175, 53);
+            this.numericUpDownCrrAccAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownCrrAccAmount.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDownCrrAccAmount.Name = "numericUpDownCrrAccAmount";
+            this.numericUpDownCrrAccAmount.Size = new System.Drawing.Size(170, 20);
+            this.numericUpDownCrrAccAmount.TabIndex = 28;
+            this.numericUpDownCrrAccAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownCrrAccAmount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // textBoxCrrAccDocSerial
+            // 
+            this.textBoxCrrAccDocSerial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxCrrAccDocSerial.Location = new System.Drawing.Point(175, 36);
+            this.textBoxCrrAccDocSerial.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCrrAccDocSerial.MaxLength = 48;
+            this.textBoxCrrAccDocSerial.Name = "textBoxCrrAccDocSerial";
+            this.textBoxCrrAccDocSerial.Size = new System.Drawing.Size(170, 20);
+            this.textBoxCrrAccDocSerial.TabIndex = 27;
+            // 
+            // textBoxCrrAccCustName
+            // 
+            this.textBoxCrrAccCustName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxCrrAccCustName.Location = new System.Drawing.Point(175, 19);
+            this.textBoxCrrAccCustName.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCrrAccCustName.MaxLength = 48;
+            this.textBoxCrrAccCustName.Name = "textBoxCrrAccCustName";
+            this.textBoxCrrAccCustName.Size = new System.Drawing.Size(170, 20);
+            this.textBoxCrrAccCustName.TabIndex = 26;
+            // 
+            // textBoxCrrAccTcknVkn
+            // 
+            this.textBoxCrrAccTcknVkn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxCrrAccTcknVkn.Location = new System.Drawing.Point(175, 2);
+            this.textBoxCrrAccTcknVkn.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCrrAccTcknVkn.MaxLength = 11;
+            this.textBoxCrrAccTcknVkn.Name = "textBoxCrrAccTcknVkn";
+            this.textBoxCrrAccTcknVkn.Size = new System.Drawing.Size(170, 20);
+            this.textBoxCrrAccTcknVkn.TabIndex = 25;
+            // 
+            // labelCrrAccTcknVkn
+            // 
+            this.labelCrrAccTcknVkn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelCrrAccTcknVkn.AutoSize = true;
+            this.labelCrrAccTcknVkn.Location = new System.Drawing.Point(55, 2);
+            this.labelCrrAccTcknVkn.Name = "labelCrrAccTcknVkn";
+            this.labelCrrAccTcknVkn.Size = new System.Drawing.Size(63, 13);
+            this.labelCrrAccTcknVkn.TabIndex = 0;
+            this.labelCrrAccTcknVkn.Text = "TCKN/VKN";
+            // 
+            // labelCrrAccCustName
+            // 
+            this.labelCrrAccCustName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelCrrAccCustName.AutoSize = true;
+            this.labelCrrAccCustName.Location = new System.Drawing.Point(35, 19);
+            this.labelCrrAccCustName.Name = "labelCrrAccCustName";
+            this.labelCrrAccCustName.Size = new System.Drawing.Size(102, 13);
+            this.labelCrrAccCustName.TabIndex = 1;
+            this.labelCrrAccCustName.Text = "CUSTOMER NAME";
+            // 
+            // labelCrrAccSerial
+            // 
+            this.labelCrrAccSerial.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelCrrAccSerial.AutoSize = true;
+            this.labelCrrAccSerial.Location = new System.Drawing.Point(64, 36);
+            this.labelCrrAccSerial.Name = "labelCrrAccSerial";
+            this.labelCrrAccSerial.Size = new System.Drawing.Size(45, 13);
+            this.labelCrrAccSerial.TabIndex = 2;
+            this.labelCrrAccSerial.Text = "SERIAL";
+            // 
+            // labelCrrAccAmount
+            // 
+            this.labelCrrAccAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelCrrAccAmount.AutoSize = true;
+            this.labelCrrAccAmount.Location = new System.Drawing.Point(59, 53);
+            this.labelCrrAccAmount.Name = "labelCrrAccAmount";
+            this.labelCrrAccAmount.Size = new System.Drawing.Size(54, 13);
+            this.labelCrrAccAmount.TabIndex = 3;
+            this.labelCrrAccAmount.Text = "AMOUNT";
+            // 
+            // dateTimePickerCrrAccDate
+            // 
+            this.dateTimePickerCrrAccDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePickerCrrAccDate.Location = new System.Drawing.Point(176, 71);
+            this.dateTimePickerCrrAccDate.Name = "dateTimePickerCrrAccDate";
+            this.dateTimePickerCrrAccDate.Size = new System.Drawing.Size(168, 20);
+            this.dateTimePickerCrrAccDate.TabIndex = 43;
             // 
             // tbcFooter
             // 
@@ -3109,6 +3348,11 @@ namespace FP300Service.UserControls
             this.tabPageCollection.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownComission)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCllctnAmount)).EndInit();
+            this.tabPageCrrAccountCollctn.ResumeLayout(false);
+            this.tableLayoutPanel18.ResumeLayout(false);
+            this.tableLayoutPanel19.ResumeLayout(false);
+            this.tableLayoutPanel19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCrrAccAmount)).EndInit();
             this.tbcFooter.ResumeLayout(false);
             this.tbpNotes.ResumeLayout(false);
             this.tbpNotes.PerformLayout();
@@ -3186,7 +3430,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3220,9 +3464,9 @@ namespace FP300Service.UserControls
                     bridge.Log(String.Format(FormMessage.SUBTOTAL.PadRight(12, ' ') + ":{0}", response.GetNextParam()));
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3254,9 +3498,9 @@ namespace FP300Service.UserControls
                     bridge.Log(FormMessage.DOCUMENT_ID.PadRight(12, ' ') + ":" + response.GetNextParam());
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3292,7 +3536,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3330,7 +3574,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3385,7 +3629,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
 
         }
@@ -3403,7 +3647,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3442,7 +3686,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3467,7 +3711,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message); ;
             }
         }
 
@@ -3606,7 +3850,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3623,7 +3867,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3652,7 +3896,7 @@ namespace FP300Service.UserControls
 
         private void bntPrintJSONDoc_Click(object sender, EventArgs e)
         {
-            string jsonFileName = System.Configuration.ConfigurationSettings.AppSettings["JSONDocName"];
+            string jsonFileName = System.Configuration.ConfigurationManager.AppSettings["JSONDocName"];
             string jsonStr = "";
             if (!File.Exists(jsonFileName))
             {
@@ -3701,7 +3945,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3714,29 +3958,40 @@ namespace FP300Service.UserControls
 
                 if (response.ErrorCode == 0)
                 {
-                    string totalAmount      = response.GetNextParam();
-                    string provisionCode    = response.GetNextParam();
-                    string paidAmount       = response.GetNextParam();
+                    string totalAmount = response.GetNextParam();
+                    string provisionCode = response.GetNextParam();
+                    string paidAmount = response.GetNextParam();
                     string installmentCount = response.GetNextParam();
-                    string acquirerId       = response.GetNextParam();
-                    string bin              = response.GetNextParam();
-                    string issuerId         = response.GetNextParam();
+                    string acquirerId = response.GetNextParam();
+                    string bin = response.GetNextParam();
+                    string issuerId = response.GetNextParam();
+                    string subOprtType = response.GetNextParam();
 
                     bridge.Log(String.Format("İşlem Tutarı   :{0}", nmrEFTAmount.Value.ToString()));
-                    bridge.Log(String.Format("Ödeme Toplamı  :{0}", paidAmount)); 
+                    bridge.Log(String.Format("Ödeme Toplamı  :{0}", paidAmount));
                     bridge.Log(String.Format("Belge Tutarı   :{0}", totalAmount));
-                    bridge.Log(String.Format("Taksit sayısı  :{0}", installmentCount)); 
-                    bridge.Log(String.Format("Provizyon kodu :{0}", provisionCode));                                                                                       
+                    bridge.Log(String.Format("Taksit sayısı  :{0}", installmentCount));
+                    bridge.Log(String.Format("Provizyon kodu :{0}", provisionCode));
                     bridge.Log(String.Format("ACQUIRER ID    :{0}", acquirerId));
                     bridge.Log(String.Format("BIN            :{0}", bin));
                     bridge.Log(String.Format("ISSUERER ID    :{0}", issuerId));
-                    
+
+                    if (subOprtType == null)
+                    {
+                        subOprtType = SubOperationType.SATIS.ToString();
+                    }
+                    else
+                    {
+                        subOprtType = Enum.GetName(typeof(SubOperationType), int.Parse(subOprtType));
+                    }
+                    bridge.Log(String.Format("Alt İşlem Tipi :{0}", subOprtType));
+
                 }
 
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3762,7 +4017,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3785,7 +4040,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3807,7 +4062,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3861,7 +4116,7 @@ namespace FP300Service.UserControls
             }
             catch(Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3923,7 +4178,9 @@ namespace FP300Service.UserControls
                         bridge.Log(String.Format("PAYMENT COUNT : {0}", payCount));
                         for (int i = 0; i < payCount; i++)
                         {
-                            bridge.Log(String.Format("PAY TYPE   : {0}", response.GetNextParam()));
+                            string payType = response.GetNextParam();
+                            payType = Enum.GetName(typeof(InfoReceiptPaymentType), int.Parse(payType));
+                            bridge.Log(String.Format("PAY TYPE   : {0}", payType));
                             bridge.Log(String.Format("PAY INDEX  : {0}", response.GetNextParam()));
                             bridge.Log(String.Format("PAY AMOUNT : {0}", response.GetNextParam()));
                             bridge.Log(String.Format("PAY DETAIL : {0}", response.GetNextParam()));
@@ -4019,7 +4276,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -4058,7 +4315,7 @@ namespace FP300Service.UserControls
             }
             catch (System.Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -4242,7 +4499,7 @@ namespace FP300Service.UserControls
             }
         }
 
-        static int GetZRepAt = Int32.Parse(System.Configuration.ConfigurationManager.AppSettings["GetZReportAt"]);
+        static int GetZRepAt;
         static string jsonStr = String.Empty;
         static int docCounter = 1;
         private void timer_Tick(object sender, EventArgs e, bool isDeptSale)
@@ -4302,6 +4559,29 @@ namespace FP300Service.UserControls
 
             if (wTime <= 0)
                 timer2.Enabled = false;
+        }
+
+        private void btnPrintCurrAccHeader_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string tcknVkn = textBoxCrrAccTcknVkn.Text;
+                string name = textBoxCrrAccCustName.Text;
+                string serial = textBoxCrrAccDocSerial.Text;
+                decimal amount = numericUpDownCrrAccAmount.Value;
+                DateTime date = dateTimePickerCrrAccDate.Value;
+
+                CPResponse response = new CPResponse(bridge.Printer.PrintCurrentAccountCollectionDocumentHeader(tcknVkn, name, serial, date, amount));
+                if (response.ErrorCode == 0)
+                {
+                    bridge.Log(FormMessage.DOCUMENT_ID + "  :" + response.GetNextParam());
+                }
+            }
+            catch(Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+            
         }
     }
 }

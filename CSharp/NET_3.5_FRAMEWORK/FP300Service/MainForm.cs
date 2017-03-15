@@ -66,6 +66,12 @@ namespace FP300Service
         private Panel pnlLogo;
         private TableLayoutPanel tableLayoutPanelMain;
         private TableLayoutPanel tableLayoutPanelScreens;
+        private TableLayoutPanel tableLayoutMainPanel;
+        private TableLayoutPanel tableLayoutConnection;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tableLayoutPanel3;
+        private TableLayoutPanel tableLayoutPanel4;
         #region Windows Form Designer generated code
         /// <summary>
         /// Required designer variable.
@@ -101,11 +107,7 @@ namespace FP300Service
             this.imgLstMenus = new System.Windows.Forms.ImageList(this.components);
             this.lvievMenu = new System.Windows.Forms.ListView();
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.txtLog = new System.Windows.Forms.RichTextBox();
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.btnConnect = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtFiscalId = new System.Windows.Forms.TextBox();
+            this.tableLayoutMainPanel = new System.Windows.Forms.TableLayoutPanel();
             this.tabConn = new System.Windows.Forms.TabControl();
             this.tabTCP = new System.Windows.Forms.TabPage();
             this.lblPort = new System.Windows.Forms.Label();
@@ -117,15 +119,31 @@ namespace FP300Service
             this.label1 = new System.Windows.Forms.Label();
             this.txtBaudrate = new System.Windows.Forms.TextBox();
             this.lblComport = new System.Windows.Forms.Label();
+            this.txtLog = new System.Windows.Forms.RichTextBox();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.btnConnect = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtFiscalId = new System.Windows.Forms.TextBox();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelScreens = new System.Windows.Forms.TableLayoutPanel();
-            this.pnlHeader.SuspendLayout();
+            this.tableLayoutConnection = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.pnlMain.SuspendLayout();
             this.tabConn.SuspendLayout();
             this.tabTCP.SuspendLayout();
             this.tabComPort.SuspendLayout();
+            this.pnlHeader.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
             this.tableLayoutPanelScreens.SuspendLayout();
+            this.tableLayoutConnection.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgLstMenus
@@ -156,7 +174,7 @@ namespace FP300Service
             this.lvievMenu.LargeImageList = this.imgLstMenus;
             this.lvievMenu.Location = new System.Drawing.Point(3, 66);
             this.lvievMenu.Name = "lvievMenu";
-            this.lvievMenu.Size = new System.Drawing.Size(169, 516);
+            this.lvievMenu.Size = new System.Drawing.Size(170, 516);
             this.lvievMenu.SmallImageList = this.imgLstMenus;
             this.lvievMenu.TabIndex = 4;
             this.lvievMenu.UseCompatibleStateImageBehavior = false;
@@ -167,11 +185,152 @@ namespace FP300Service
             // 
             this.pnlMain.BackColor = System.Drawing.Color.White;
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMain.Controls.Add(this.tableLayoutMainPanel);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(3, 3);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(595, 510);
             this.pnlMain.TabIndex = 3;
+            // 
+            // tableLayoutMainPanel
+            // 
+            this.tableLayoutMainPanel.ColumnCount = 1;
+            this.tableLayoutMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutMainPanel.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutMainPanel.Name = "tableLayoutMainPanel";
+            this.tableLayoutMainPanel.RowCount = 1;
+            this.tableLayoutMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutMainPanel.Size = new System.Drawing.Size(593, 508);
+            this.tableLayoutMainPanel.TabIndex = 0;
+            // 
+            // tabConn
+            // 
+            this.tabConn.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.tabConn.Controls.Add(this.tabTCP);
+            this.tabConn.Controls.Add(this.tabComPort);
+            this.tabConn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabConn.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabConn.ItemSize = new System.Drawing.Size(25, 120);
+            this.tabConn.Location = new System.Drawing.Point(2, 2);
+            this.tabConn.Margin = new System.Windows.Forms.Padding(2);
+            this.tabConn.Multiline = true;
+            this.tabConn.Name = "tabConn";
+            this.tabConn.Padding = new System.Drawing.Point(0, 0);
+            this.tabConn.SelectedIndex = 0;
+            this.tabConn.Size = new System.Drawing.Size(594, 51);
+            this.tabConn.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            this.tabConn.TabIndex = 2;
+            this.tabConn.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabConn_DrawItem);
+            // 
+            // tabTCP
+            // 
+            this.tabTCP.Controls.Add(this.tableLayoutPanel4);
+            this.tabTCP.Location = new System.Drawing.Point(244, 4);
+            this.tabTCP.Margin = new System.Windows.Forms.Padding(2);
+            this.tabTCP.Name = "tabTCP";
+            this.tabTCP.Padding = new System.Windows.Forms.Padding(2);
+            this.tabTCP.Size = new System.Drawing.Size(346, 43);
+            this.tabTCP.TabIndex = 0;
+            this.tabTCP.Text = "TCP/IP";
+            this.tabTCP.UseVisualStyleBackColor = true;
+            // 
+            // lblPort
+            // 
+            this.lblPort.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblPort.AutoSize = true;
+            this.lblPort.Location = new System.Drawing.Point(69, 22);
+            this.lblPort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPort.Name = "lblPort";
+            this.lblPort.Size = new System.Drawing.Size(32, 13);
+            this.lblPort.TabIndex = 3;
+            this.lblPort.Text = "Port :";
+            // 
+            // txtTcpPort
+            // 
+            this.txtTcpPort.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTcpPort.Location = new System.Drawing.Point(173, 21);
+            this.txtTcpPort.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTcpPort.Name = "txtTcpPort";
+            this.txtTcpPort.Size = new System.Drawing.Size(167, 20);
+            this.txtTcpPort.TabIndex = 2;
+            this.txtTcpPort.Text = "4444";
+            // 
+            // lblIP
+            // 
+            this.lblIP.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblIP.AutoSize = true;
+            this.lblIP.Location = new System.Drawing.Point(74, 3);
+            this.lblIP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblIP.Name = "lblIP";
+            this.lblIP.Size = new System.Drawing.Size(23, 13);
+            this.lblIP.TabIndex = 1;
+            this.lblIP.Text = "IP :";
+            // 
+            // txtTCPIP
+            // 
+            this.txtTCPIP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTCPIP.Location = new System.Drawing.Point(173, 2);
+            this.txtTCPIP.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTCPIP.Name = "txtTCPIP";
+            this.txtTCPIP.Size = new System.Drawing.Size(167, 20);
+            this.txtTCPIP.TabIndex = 0;
+            this.txtTCPIP.Text = "127.0.0.1";
+            // 
+            // tabComPort
+            // 
+            this.tabComPort.Controls.Add(this.tableLayoutPanel3);
+            this.tabComPort.Location = new System.Drawing.Point(244, 4);
+            this.tabComPort.Margin = new System.Windows.Forms.Padding(2);
+            this.tabComPort.Name = "tabComPort";
+            this.tabComPort.Padding = new System.Windows.Forms.Padding(2);
+            this.tabComPort.Size = new System.Drawing.Size(268, 43);
+            this.tabComPort.TabIndex = 1;
+            this.tabComPort.Text = "SERIAL PORT";
+            this.tabComPort.UseVisualStyleBackColor = true;
+            // 
+            // cmbPorts
+            // 
+            this.cmbPorts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbPorts.FormattingEnabled = true;
+            this.cmbPorts.Location = new System.Drawing.Point(134, 2);
+            this.cmbPorts.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbPorts.Name = "cmbPorts";
+            this.cmbPorts.Size = new System.Drawing.Size(128, 21);
+            this.cmbPorts.TabIndex = 8;
+            this.cmbPorts.DropDown += new System.EventHandler(this.cmbPorts_DropDown);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(30, 22);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "BAUDRATE :";
+            // 
+            // txtBaudrate
+            // 
+            this.txtBaudrate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtBaudrate.Location = new System.Drawing.Point(134, 21);
+            this.txtBaudrate.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBaudrate.Name = "txtBaudrate";
+            this.txtBaudrate.Size = new System.Drawing.Size(128, 20);
+            this.txtBaudrate.TabIndex = 6;
+            this.txtBaudrate.Text = "115200";
+            // 
+            // lblComport
+            // 
+            this.lblComport.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblComport.AutoSize = true;
+            this.lblComport.Location = new System.Drawing.Point(44, 3);
+            this.lblComport.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblComport.Name = "lblComport";
+            this.lblComport.Size = new System.Drawing.Size(43, 13);
+            this.lblComport.TabIndex = 5;
+            this.lblComport.Text = "PORT :";
             // 
             // txtLog
             // 
@@ -184,7 +343,7 @@ namespace FP300Service
             this.txtLog.Margin = new System.Windows.Forms.Padding(2);
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(439, 512);
+            this.txtLog.Size = new System.Drawing.Size(438, 512);
             this.txtLog.TabIndex = 5;
             this.txtLog.Text = "";
             // 
@@ -192,22 +351,20 @@ namespace FP300Service
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.White;
             this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlHeader.Controls.Add(this.btnConnect);
-            this.pnlHeader.Controls.Add(this.label2);
-            this.pnlHeader.Controls.Add(this.txtFiscalId);
-            this.pnlHeader.Controls.Add(this.tabConn);
+            this.pnlHeader.Controls.Add(this.tableLayoutConnection);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlHeader.Location = new System.Drawing.Point(178, 3);
+            this.pnlHeader.Location = new System.Drawing.Point(179, 3);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1044, 57);
+            this.pnlHeader.Size = new System.Drawing.Size(1043, 57);
             this.pnlHeader.TabIndex = 4;
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(470, 10);
+            this.btnConnect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnConnect.Location = new System.Drawing.Point(220, 2);
             this.btnConnect.Margin = new System.Windows.Forms.Padding(2);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(110, 41);
+            this.btnConnect.Size = new System.Drawing.Size(215, 45);
             this.btnConnect.TabIndex = 7;
             this.btnConnect.Text = "CONNECT";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -216,146 +373,23 @@ namespace FP300Service
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(343, 5);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(2, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.Size = new System.Drawing.Size(208, 21);
             this.label2.TabIndex = 6;
             this.label2.Text = "FISCAL ID :";
             // 
             // txtFiscalId
             // 
-            this.txtFiscalId.Location = new System.Drawing.Point(346, 24);
+            this.txtFiscalId.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtFiscalId.Location = new System.Drawing.Point(2, 23);
             this.txtFiscalId.Margin = new System.Windows.Forms.Padding(2);
             this.txtFiscalId.Name = "txtFiscalId";
-            this.txtFiscalId.Size = new System.Drawing.Size(83, 20);
+            this.txtFiscalId.Size = new System.Drawing.Size(208, 20);
             this.txtFiscalId.TabIndex = 5;
             this.txtFiscalId.Text = "111";
-            // 
-            // tabConn
-            // 
-            this.tabConn.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.tabConn.Controls.Add(this.tabTCP);
-            this.tabConn.Controls.Add(this.tabComPort);
-            this.tabConn.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabConn.ItemSize = new System.Drawing.Size(25, 120);
-            this.tabConn.Location = new System.Drawing.Point(1, 3);
-            this.tabConn.Margin = new System.Windows.Forms.Padding(2);
-            this.tabConn.Multiline = true;
-            this.tabConn.Name = "tabConn";
-            this.tabConn.Padding = new System.Drawing.Point(0, 0);
-            this.tabConn.SelectedIndex = 0;
-            this.tabConn.Size = new System.Drawing.Size(322, 55);
-            this.tabConn.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabConn.TabIndex = 2;
-            this.tabConn.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabConn_DrawItem);
-            // 
-            // tabTCP
-            // 
-            this.tabTCP.Controls.Add(this.lblPort);
-            this.tabTCP.Controls.Add(this.txtTcpPort);
-            this.tabTCP.Controls.Add(this.lblIP);
-            this.tabTCP.Controls.Add(this.txtTCPIP);
-            this.tabTCP.Location = new System.Drawing.Point(124, 4);
-            this.tabTCP.Margin = new System.Windows.Forms.Padding(2);
-            this.tabTCP.Name = "tabTCP";
-            this.tabTCP.Padding = new System.Windows.Forms.Padding(2);
-            this.tabTCP.Size = new System.Drawing.Size(194, 47);
-            this.tabTCP.TabIndex = 0;
-            this.tabTCP.Text = "TCP/IP";
-            this.tabTCP.UseVisualStyleBackColor = true;
-            // 
-            // lblPort
-            // 
-            this.lblPort.AutoSize = true;
-            this.lblPort.Location = new System.Drawing.Point(15, 24);
-            this.lblPort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPort.Name = "lblPort";
-            this.lblPort.Size = new System.Drawing.Size(32, 13);
-            this.lblPort.TabIndex = 3;
-            this.lblPort.Text = "Port :";
-            // 
-            // txtTcpPort
-            // 
-            this.txtTcpPort.Location = new System.Drawing.Point(76, 24);
-            this.txtTcpPort.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTcpPort.Name = "txtTcpPort";
-            this.txtTcpPort.Size = new System.Drawing.Size(108, 20);
-            this.txtTcpPort.TabIndex = 2;
-            this.txtTcpPort.Text = "4444";
-            // 
-            // lblIP
-            // 
-            this.lblIP.AutoSize = true;
-            this.lblIP.Location = new System.Drawing.Point(15, 7);
-            this.lblIP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblIP.Name = "lblIP";
-            this.lblIP.Size = new System.Drawing.Size(23, 13);
-            this.lblIP.TabIndex = 1;
-            this.lblIP.Text = "IP :";
-            // 
-            // txtTCPIP
-            // 
-            this.txtTCPIP.Location = new System.Drawing.Point(76, 5);
-            this.txtTCPIP.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTCPIP.Name = "txtTCPIP";
-            this.txtTCPIP.Size = new System.Drawing.Size(108, 20);
-            this.txtTCPIP.TabIndex = 0;
-            this.txtTCPIP.Text = "127.0.0.1";
-            // 
-            // tabComPort
-            // 
-            this.tabComPort.Controls.Add(this.cmbPorts);
-            this.tabComPort.Controls.Add(this.label1);
-            this.tabComPort.Controls.Add(this.txtBaudrate);
-            this.tabComPort.Controls.Add(this.lblComport);
-            this.tabComPort.Location = new System.Drawing.Point(124, 4);
-            this.tabComPort.Margin = new System.Windows.Forms.Padding(2);
-            this.tabComPort.Name = "tabComPort";
-            this.tabComPort.Padding = new System.Windows.Forms.Padding(2);
-            this.tabComPort.Size = new System.Drawing.Size(194, 47);
-            this.tabComPort.TabIndex = 1;
-            this.tabComPort.Text = "SERIAL PORT";
-            this.tabComPort.UseVisualStyleBackColor = true;
-            // 
-            // cmbPorts
-            // 
-            this.cmbPorts.FormattingEnabled = true;
-            this.cmbPorts.Location = new System.Drawing.Point(76, 5);
-            this.cmbPorts.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbPorts.Name = "cmbPorts";
-            this.cmbPorts.Size = new System.Drawing.Size(92, 21);
-            this.cmbPorts.TabIndex = 8;
-            this.cmbPorts.DropDown += new System.EventHandler(this.cmbPorts_DropDown);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 28);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "BAUDRATE :";
-            // 
-            // txtBaudrate
-            // 
-            this.txtBaudrate.Location = new System.Drawing.Point(76, 24);
-            this.txtBaudrate.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBaudrate.Name = "txtBaudrate";
-            this.txtBaudrate.Size = new System.Drawing.Size(92, 20);
-            this.txtBaudrate.TabIndex = 6;
-            this.txtBaudrate.Text = "115200";
-            // 
-            // lblComport
-            // 
-            this.lblComport.AutoSize = true;
-            this.lblComport.Location = new System.Drawing.Point(15, 7);
-            this.lblComport.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblComport.Name = "lblComport";
-            this.lblComport.Size = new System.Drawing.Size(43, 13);
-            this.lblComport.TabIndex = 5;
-            this.lblComport.Text = "PORT :";
             // 
             // pnlLogo
             // 
@@ -366,7 +400,7 @@ namespace FP300Service
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlLogo.Location = new System.Drawing.Point(3, 3);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(169, 57);
+            this.pnlLogo.Size = new System.Drawing.Size(170, 57);
             this.pnlLogo.TabIndex = 4;
             // 
             // tableLayoutPanelMain
@@ -395,12 +429,93 @@ namespace FP300Service
             this.tableLayoutPanelScreens.Controls.Add(this.txtLog, 1, 0);
             this.tableLayoutPanelScreens.Controls.Add(this.pnlMain, 0, 0);
             this.tableLayoutPanelScreens.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelScreens.Location = new System.Drawing.Point(178, 66);
+            this.tableLayoutPanelScreens.Location = new System.Drawing.Point(179, 66);
             this.tableLayoutPanelScreens.Name = "tableLayoutPanelScreens";
             this.tableLayoutPanelScreens.RowCount = 1;
             this.tableLayoutPanelScreens.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelScreens.Size = new System.Drawing.Size(1044, 516);
+            this.tableLayoutPanelScreens.Size = new System.Drawing.Size(1043, 516);
             this.tableLayoutPanelScreens.TabIndex = 5;
+            // 
+            // tableLayoutConnection
+            // 
+            this.tableLayoutConnection.ColumnCount = 2;
+            this.tableLayoutConnection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.54082F));
+            this.tableLayoutConnection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.45918F));
+            this.tableLayoutConnection.Controls.Add(this.tabConn, 0, 0);
+            this.tableLayoutConnection.Controls.Add(this.tableLayoutPanel1, 1, 0);
+            this.tableLayoutConnection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutConnection.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutConnection.Name = "tableLayoutConnection";
+            this.tableLayoutConnection.RowCount = 1;
+            this.tableLayoutConnection.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutConnection.Size = new System.Drawing.Size(1041, 55);
+            this.tableLayoutConnection.TabIndex = 8;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.btnConnect, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(601, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(437, 49);
+            this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txtFiscalId, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(212, 43);
+            this.tableLayoutPanel2.TabIndex = 8;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.cmbPorts, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.txtBaudrate, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.lblComport, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(264, 39);
+            this.tableLayoutPanel3.TabIndex = 8;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.lblIP, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.txtTcpPort, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.lblPort, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.txtTCPIP, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(342, 39);
+            this.tableLayoutPanel4.TabIndex = 4;
             // 
             // MainForm
             // 
@@ -414,15 +529,21 @@ namespace FP300Service
             this.Text = "FP300 Servis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.pnlHeader.ResumeLayout(false);
-            this.pnlHeader.PerformLayout();
+            this.pnlMain.ResumeLayout(false);
             this.tabConn.ResumeLayout(false);
             this.tabTCP.ResumeLayout(false);
-            this.tabTCP.PerformLayout();
             this.tabComPort.ResumeLayout(false);
-            this.tabComPort.PerformLayout();
+            this.pnlHeader.ResumeLayout(false);
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.tableLayoutPanelScreens.ResumeLayout(false);
+            this.tableLayoutConnection.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -499,9 +620,9 @@ namespace FP300Service
 
             this.WindowState = FormWindowState.Maximized;
             
-            if (!String.IsNullOrEmpty(System.Configuration.ConfigurationSettings.AppSettings["Language"]))
+            if (!String.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["Language"]))
             {
-                string code = System.Configuration.ConfigurationSettings.AppSettings["Language"];
+                string code = System.Configuration.ConfigurationManager.AppSettings["Language"];
                 switch (code)
                 {
                     case "TR":
@@ -527,22 +648,23 @@ namespace FP300Service
             
             try
             {
-                if (!String.IsNullOrEmpty(System.Configuration.ConfigurationSettings.AppSettings["FiscalId"]))
+                if (!String.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["FiscalId"]))
                 {
-                    txtFiscalId.Text = System.Configuration.ConfigurationSettings.AppSettings["FiscalId"];
+                    txtFiscalId.Text = System.Configuration.ConfigurationManager.AppSettings["FiscalId"];
                 }
-                if (!String.IsNullOrEmpty(System.Configuration.ConfigurationSettings.AppSettings["IP"]))
+                if (!String.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["IP"]))
                 {
-                    txtTCPIP.Text = System.Configuration.ConfigurationSettings.AppSettings["IP"];
+                    txtTCPIP.Text = System.Configuration.ConfigurationManager.AppSettings["IP"];
                 }
-                if (!String.IsNullOrEmpty(System.Configuration.ConfigurationSettings.AppSettings["Port"]))
+                if (!String.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["Port"]))
                 {
-                    txtTcpPort.Text = System.Configuration.ConfigurationSettings.AppSettings["Port"];
+                    txtTcpPort.Text = System.Configuration.ConfigurationManager.AppSettings["Port"];
                 }             
             }
             catch { }
 
-            this.Text = "ECR TEST";
+            string version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            this.Text = String.Format("ECR TEST v{0}", version.Substring(version.Length-3));
         }
 
         private void SetLanguageOption()
@@ -565,9 +687,12 @@ namespace FP300Service
         private void lvievMenu_MouseClick(object sender, MouseEventArgs e)
         {
             if (((ListView)sender).FocusedItem == null) return;
-            
-            if (pnlMain.Controls.Count > 0 && pnlMain.Controls[0] is TestUC)
-                ((TestUC)pnlMain.Controls[0]).CloseUC();
+
+            //if (pnlMain.Controls.Count > 0 && pnlMain.Controls[0] is TestUC)
+            //    ((TestUC)pnlMain.Controls[0]).CloseUC();
+
+            if (tableLayoutMainPanel.Controls.Count > 0 && tableLayoutMainPanel.Controls[0] is TestUC)
+                ((TestUC)tableLayoutMainPanel.Controls[0]).CloseUC();
 
             TestUC uc = null;
             switch (((ListView)sender).FocusedItem.Text)
@@ -596,8 +721,8 @@ namespace FP300Service
             if (uc != null)
             {
                 uc.Dock = DockStyle.Fill;
-                pnlMain.Controls.Clear();
-                pnlMain.Controls.Add(uc);
+                tableLayoutMainPanel.Controls.Clear();
+                tableLayoutMainPanel.Controls.Add(uc);
             }
 
         }
@@ -919,9 +1044,9 @@ namespace FP300Service
 #endif
             serverInfo.Brand = "HUGIN";
 
-            if (!String.IsNullOrEmpty(System.Configuration.ConfigurationSettings.AppSettings["Brand"]))
+            if (!String.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["Brand"]))
             {
-                serverInfo.Brand = System.Configuration.ConfigurationSettings.AppSettings["Brand"];
+                serverInfo.Brand = System.Configuration.ConfigurationManager.AppSettings["Brand"];
             }
             
             serverInfo.Model = "HUGIN COMPACT";
@@ -962,22 +1087,21 @@ namespace FP300Service
                     try
                     {
                         //Optional 
-                        if (!String.IsNullOrEmpty(System.Configuration.ConfigurationSettings.AppSettings["LogDirectory"]))
+                        if (!String.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["LogDirectory"]))
                         {
-                            printer.LogDirectory = System.Configuration.ConfigurationSettings.AppSettings["LogDirectory"];
+                            printer.LogDirectory = System.Configuration.ConfigurationManager.AppSettings["LogDirectory"];
                         }
                         //Optional .
-                        printer.LogerLevel = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["LogLevel"]);
+                        printer.LogerLevel = int.Parse(System.Configuration.ConfigurationManager.AppSettings["LogLevel"]);
                     }
                     catch (System.Exception ex)
                     {
                     	
                     }
-#if NEBIM_MODE
+
                     if (!printer.Connect(conn.ToObject(), serverInfo))
-#else
-                    if (!printer.Connect(conn.ToObject(), serverInfo, System.Configuration.ConfigurationSettings.AppSettings["LicenseKey"]))
-#endif
+                    // Authorozition with licence key
+                    //if (!printer.Connect(conn.ToObject(), serverInfo, System.Configuration.ConfigurationSettings.AppSettings["LicenseKey"]))
                     {
                         throw new OperationCanceledException(FormMessage.UNABLE_TO_MATCH);
                     }
@@ -987,7 +1111,7 @@ namespace FP300Service
                     {
                         conn.BufferSize = printer.PrinterBufferSize;
                     }
-
+                    printer.SetCommObject(conn.ToObject());
                     isMatchedBefore = true;
                 }
                 catch (Exception ex)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace FP300Service
 {
@@ -210,7 +211,7 @@ namespace FP300Service
         public const string ADVANCE = "ADVANCE";
 
         public const String VOIDED_DOC_ID = "VOIDED DOC. ID";
-        public const String PAID_TOTAL = "ÖDEME TOPLAMI";
+        public const String PAID_TOTAL = "PAID TOTAL";
 
         public const String CASH = "CASH";
         public const String CHECK = "CHECK";
@@ -373,7 +374,21 @@ namespace FP300Service
         public const string SAVE_BITMAP_MESSAGE = "PLEASE WAIT. BITMAP LOGO SAVING..";
         public const string FILL_DEPT_NAME = "PLEASE FILL THE DEPARTMAN NAME AREA";
         public const string PRINT_SALES_DOCUMENT = "PRINT SALES DOCUMENT";
+
         public const string BARCODE_TYPE = "BARCODE TYPE";
+        public const string BARCODE_EAN = "EAN";
+        public const string BARCODE_QRN = "QRN";
+        public const string BARCODE_CO39 = "CO39";
+        public const string BARCODE_C128 = "C128";
+        public const string BARCODE_NONE = "NONE";
+
+        public const string DOCUMENT_SERIAL = "DOCUMENT SERIAL";
+        public const string CURRENT_ACCOUNT_COLLECTION_DOC = "CUURENT ACCOUNT COLLECTION DOCUMENT";
+
+        public const string END_OF_RECEIPT_NOTE = "END OF RECEIPT NOTE";
+        public const string LINE = "LINE";
+        public const string GET = "GET";
+        public const string SET = "SET";
 #else
         #region FiscalInfoUC
 
@@ -758,6 +773,14 @@ namespace FP300Service
         public const string BARCODE_CO39 = "CO39";
         public const string BARCODE_C128 = "C128";
         public const string BARCODE_NONE = "NONE";
+
+        public const string DOCUMENT_SERIAL = "BELGE SERİ NO";
+        public const string CURRENT_ACCOUNT_COLLECTION_DOC = "CARİ HESAP TAHSİLAT FİŞİ";
+
+        public const string END_OF_RECEIPT_NOTE = "FİŞ SONU NOTU";
+        public const string LINE = "SATIR";
+        public const string GET = "GETİR";
+        public const string SET = "KAYDET";
 
         #endregion
 
