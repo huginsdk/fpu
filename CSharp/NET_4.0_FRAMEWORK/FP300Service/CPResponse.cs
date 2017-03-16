@@ -38,7 +38,6 @@ namespace FP300Service
                 return paramList;
             }
         }
-
         public ErrorCode EnumErrorCode
         {
             get
@@ -104,7 +103,6 @@ namespace FP300Service
                 result = attributes[0].Description;
             return result;
         }
-
 
         public int CurrentParamIndex
         {
