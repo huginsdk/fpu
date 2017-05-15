@@ -147,7 +147,6 @@ private:
 
     vector<unsigned char> Read();
 
-
 public:
 	HuginPrinter(void);
 
