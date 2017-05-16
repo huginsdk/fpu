@@ -62,13 +62,15 @@ public class ECRTest {
     serverInfo.Version = "";
     serverInfo.SerialNum = "";
 
+    fp300Service.SetDebugLevel(FP300Service.LogLevel.HIDE_BUG.getValue());
+
     System.out.print("Connecting to printer... : " + serverInfo.TerminalNo);
     if (fp300Service.Connect(serverInfo, serverInfo.TerminalNo, "")) 
-	{
-		System.out.println(" OK\n");
-	}
+  	{
+  		System.out.println(" OK\n");
+  	}
     else 
-	{
+	  {
       System.out.println(" Failed");
       return;
     }
@@ -108,8 +110,6 @@ public class ECRTest {
 		}
 		fp300Service.SetFPUTimeout(tmp);
 	*/
-
-	fp300Service.SetDebugLevel(FP300Service.LogLevel.HIDE_BUG.getValue());
 
     while (true) {
       int indx = 0;
