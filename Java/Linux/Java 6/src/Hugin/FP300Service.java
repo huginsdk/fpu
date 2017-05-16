@@ -141,6 +141,7 @@ public class FP300Service {
    public native String GetEFTCardInfo(double amount);
    public native String VoidEFTPayment(int acquierID, int batchNo, int stanNo);
    public native String RefundEFTPayment(int acquierID);
+   public native String RefundEFTPayment(int acquierID, double amount);
    public native String GetBankListOnEFT();
    public native String GetSalesInfo();
 	public DateTime GetNewDateTime() { return new DateTime(); }

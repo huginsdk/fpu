@@ -50,12 +50,15 @@ public class ECRTest {
         }
     }
 
+    System.out.print("Enter Fiscal Id: ");
+    String fiscalId= key.next();
+    
     DeviceInfo serverInfo = new DeviceInfo();
     serverInfo.Brand = "HUGIN";
     serverInfo.IP = IpAddress;
     serverInfo.Model = "HUGIN COMPACT";
     serverInfo.Port = 5555;
-    serverInfo.TerminalNo = "FP11004397";
+    serverInfo.TerminalNo = fiscalId;// "FP11004397";
     serverInfo.Version = "";
     serverInfo.SerialNum = "";
 
@@ -130,6 +133,8 @@ public class ECRTest {
         System.out.println(indx++ + " - AUTO ORDER TEST");
         System.out.println(indx++ + " - LOAD GRAPHIC LOGO");
         System.out.println(indx++ + " - PAIR with NGCR");
+        System.out.println(indx++ + " - VOID EFT PAYMENT");
+        System.out.println(indx++ + " - REFUND EFT PAYMENT");
 		
 		System.out.print("Select Menu : ");
         dec = key.nextInt();
@@ -215,7 +220,24 @@ public class ECRTest {
 			  System.out.println("Failed");
 		  
 			break;
+    
+    case 17:
 
+            System.out.print("Enter Acquirer ID: ");
+            int voidAcquirerId = key.nextInt();
+            System.out.print("Enter Batch No: ");
+            int batch = key.nextInt();
+            System.out.print("Enter Stan No: ");
+            int stan = key.nextInt();
+            response = fp300Service.VoidEFTPayment(voidAcquirerId, batch, stan);
+      break;      
+    case 18:
+            System.out.print("Enter Acquirer ID: ");
+            int refundAcquirerId = key.nextInt();
+            System.out.print("Enter Amount: ");
+            double eftRefundAmount = key.nextDouble();
+            response = fp300Service.RefundEFTPayment(refundAcquirerId, eftRefundAmount);
+      break;  
 
         }
 
