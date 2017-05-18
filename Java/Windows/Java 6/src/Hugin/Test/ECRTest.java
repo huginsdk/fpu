@@ -33,7 +33,7 @@ public class ECRTest {
         System.out.print("IP Address(207.46.128.217): ");
         IpAddress = key.next();
         System.out.print("Connecting to server(" + IpAddress + ":5555)...");
-        if (fp300Service.TCPConnect(IpAddress, 4444)) System.out.println("OK\n");
+        if (fp300Service.TCPConnect(IpAddress, 5555)) System.out.println("OK\n");
         else {
           System.out.println("Failed");
           return;
@@ -50,25 +50,27 @@ public class ECRTest {
         }
     }
 
+    System.out.print("Enter Fiscal Id: ");
+    String fiscalId= key.next();
+    
     DeviceInfo serverInfo = new DeviceInfo();
-    // Get Fiscal Id
     serverInfo.Brand = "HUGIN";
     serverInfo.IP = IpAddress;
     serverInfo.Model = "HUGIN COMPACT";
-    serverInfo.Port = 4444;
+    serverInfo.Port = 5555;
+    serverInfo.TerminalNo = fiscalId;// "FP11004397";
     serverInfo.Version = "";
     serverInfo.SerialNum = "";
 
-    System.out.print("Fiscal Id (Ex. FR11004390): ");
-    serverInfo.TerminalNo = key.next();
+    fp300Service.SetDebugLevel(FP300Service.LogLevel.HIDE_BUG.getValue());
 
     System.out.print("Connecting to printer... : " + serverInfo.TerminalNo);
     if (fp300Service.Connect(serverInfo, serverInfo.TerminalNo, "")) 
-	{
-		System.out.println(" OK\n");
-	}
+  	{
+  		System.out.println(" OK\n");
+  	}
     else 
-	{
+	  {
       System.out.println(" Failed");
       return;
     }
@@ -77,12 +79,37 @@ public class ECRTest {
     System.out.println(fp300Service.CheckPrinterStatus());
     System.out.println(fp300Service.GetLastLog() + "\n");
 
-    System.out.println("Tesing SignInCashier(9, 14710)...");
-    System.out.println(fp300Service.SignInCashier(9, "14710"));
+    System.out.println("Tesing SignInCashier(6, 1357)...");
+    System.out.println(fp300Service.SignInCashier(6, "1357"));
     System.out.println(fp300Service.GetLastLog() + "\n");
     int dec;
+/*
+    System.out.println("Tesing Cash_In(amount)...");
+		System.out.print("Amount: ");
+		double amount = key.nextDouble();
+		fp300Service.CashIn(amount);
+		System.out.println(fp300Service.GetLastLog() + "\n");
 
-	fp300Service.SetDebugLevel(FP300Service.LogLevel.HIDE_BUG.getValue());
+		int tmp = fp300Service.GetTimeout();
+		System.out.println("Get Report?");
+		System.out.println("1-X Report");
+		System.out.println("2-Z Report");
+		System.out.print("Input: ");
+		dec = key.nextInt();
+
+		fp300Service.SetFPUTimeout(30000);
+		if(dec == 1)
+		{
+			fp300Service.PrintXReport(2);
+			System.out.println(fp300Service.GetLastLog() + "\n");
+		} 
+		if(dec == 2)
+		{
+			fp300Service.PrintZReport();
+			System.out.println(fp300Service.GetLastLog() + "\n");
+		}
+		fp300Service.SetFPUTimeout(tmp);
+	*/
 
     while (true) {
       int indx = 0;
@@ -106,9 +133,9 @@ public class ECRTest {
         System.out.println(indx++ + " - AUTO ORDER TEST");
         System.out.println(indx++ + " - LOAD GRAPHIC LOGO");
         System.out.println(indx++ + " - PAIR with NGCR");
-        System.out.println(indx++ + " - PRINT Z REPORT");
-        System.out.println(indx++ + " - CHANGE RECEIPT LIMIT AS 950,00 TRY");
-    
+        System.out.println(indx++ + " - VOID EFT PAYMENT");
+        System.out.println(indx++ + " - REFUND EFT PAYMENT");
+		
 		System.out.print("Select Menu : ");
         dec = key.nextInt();
         if (dec == 0)
@@ -149,14 +176,14 @@ public class ECRTest {
             response = fp300Service.VoidReceipt();
             break;
           case 10:
-      			response = fp300Service.PrintRemarkLine(new String[]{"REMARK LINE 1",
-      																	"REMARK LINE 2",
-      																	"REMARK LINE 3",
-      																	"REMARK LINE 3",
-      																	"REMARK LINE 3",
-      																	"REMARK LINE 3",
-      																	"REMARK LINE 3",
-      																	"REMARK LINE 4"});
+			response = fp300Service.PrintRemarkLine(new String[]{"REMARK LINE 1",
+																	"REMARK LINE 2",
+																	"REMARK LINE 3",
+																	"REMARK LINE 3",
+																	"REMARK LINE 3",
+																	"REMARK LINE 3",
+																	"REMARK LINE 3",
+																	"REMARK LINE 4"});
             break;
           case 11:
             response = fp300Service.ClearError();
@@ -168,39 +195,49 @@ public class ECRTest {
             response = fp300Service.PrintSubtotal(true);
             break;			
           case 14:
-      		  int autoOrderRes=0;
-      		  int loopCount =1;
-      		  while(autoOrderRes == 0)
-      			{
-      				System.out.println("Count :" + loopCount);
-      				autoOrderRes = testOrder(fp300Service);
-      				try {
-      				  Thread.sleep(200);
-      				} catch (InterruptedException ie) {
-      					//Handle exception
-      				}
-      				loopCount++;
-      			}
-                  break;			
-      		case 15:
-                  response = fp300Service.LoadGraphicLogo(readFileAllBytes("./samples/logo1.bmp"));
-      			break;	
-      		case 16:
-      		    System.out.println("Pairing with " + serverInfo.TerminalNo);
-        			if (fp300Service.Connect(serverInfo, serverInfo.TerminalNo, "")) 
-        				System.out.println("OK\n");
-        			else 
-        			  System.out.println("Failed");
-      		  
-      			break;
-          case 17:
-            response = fp300Service.PrintZReport();
-          break;
+		  int autoOrderRes=0;
+		  int loopCount =1;
+		    while(autoOrderRes == 0)
+			{
+				System.out.println("Count :" + loopCount);
+				autoOrderRes = testOrder(fp300Service);
+				try {
+				  Thread.sleep(200);
+				} catch (InterruptedException ie) {
+					//Handle exception
+				}
+				loopCount++;
+			}
+            break;			
+		case 15:
+            response = fp300Service.LoadGraphicLogo(readFileAllBytes("./samples/logo1.bmp"));
+			break;	
+		case 16:
+		    System.out.println("Pairing with " + serverInfo.TerminalNo);
+			if (fp300Service.Connect(serverInfo, serverInfo.TerminalNo, "")) 
+				System.out.println("OK\n");
+			else 
+			  System.out.println("Failed");
+		  
+			break;
+    
+    case 17:
 
-          case 18:
-            response = fp300Service.SaveProgramOptions(2, "950,00");
-          break;
-
+            System.out.print("Enter Acquirer ID: ");
+            int voidAcquirerId = key.nextInt();
+            System.out.print("Enter Batch No: ");
+            int batch = key.nextInt();
+            System.out.print("Enter Stan No: ");
+            int stan = key.nextInt();
+            response = fp300Service.VoidEFTPayment(voidAcquirerId, batch, stan);
+      break;      
+    case 18:
+            System.out.print("Enter Acquirer ID: ");
+            int refundAcquirerId = key.nextInt();
+            System.out.print("Enter Amount: ");
+            double eftRefundAmount = key.nextDouble();
+            response = fp300Service.RefundEFTPayment(refundAcquirerId, eftRefundAmount);
+      break;  
 
         }
 
@@ -271,8 +308,7 @@ public class ECRTest {
 	  return res;
   }
   
-  private static int getErrorCode(String response) 
-  {
+  private static int getErrorCode(String response) {
 	int res = 6;
     String[] splitted = response.split("\\|", 0);
     if (splitted.length >= 2) {
@@ -282,8 +318,7 @@ public class ECRTest {
 	return res;
   }
   
-  private static int printResponse(String response) 
-  {
+  private static int printResponse(String response) {
 	int res = 6;
     String[] splitted = response.split("\\|", 0);
     if (splitted.length >= 2) {
@@ -296,8 +331,7 @@ public class ECRTest {
 	return res;
   }
 
-  private static String readFile(String fileName) 
-  {
+  private static String readFile(String fileName) {
     String content = null;
     File file = new File(fileName); //for ex foo.txt
     FileReader reader;
@@ -314,7 +348,7 @@ public class ECRTest {
     return content;
   }
   
-  private static byte[] readFileAllBytes(String fileName)
+  	private static byte[] readFileAllBytes(String fileName)
 	{
 		byte [] content = null;
 		try {
