@@ -133,8 +133,9 @@ public class ECRTest {
         System.out.println(indx++ + " - AUTO ORDER TEST");
         System.out.println(indx++ + " - LOAD GRAPHIC LOGO");
         System.out.println(indx++ + " - PAIR with NGCR");
-        System.out.println(indx++ + " - VOID EFT PAYMENT");
-        System.out.println(indx++ + " - REFUND EFT PAYMENT");
+        System.out.println(indx++ + " - EFT: VOID PAYMENT");
+        System.out.println(indx++ + " - EFT: REFUND PAYMENT");
+        System.out.println(indx++ + " - EFT: GET BANK LIST");
 		
 		System.out.print("Select Menu : ");
         dec = key.nextInt();
@@ -237,6 +238,9 @@ public class ECRTest {
             System.out.print("Enter Amount: ");
             double eftRefundAmount = key.nextDouble();
             response = fp300Service.RefundEFTPayment(refundAcquirerId, eftRefundAmount);
+      break; 
+    case 19:
+            response = fp300Service.GetBankListOnEFT();
       break;  
 
         }
