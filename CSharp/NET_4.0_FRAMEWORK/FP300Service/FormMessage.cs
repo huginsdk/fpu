@@ -241,6 +241,8 @@ namespace FP300Service
         public const String BANK_LIST = "BANK LIST";
         public const String GET_BANK_LIST = "GET BANK LIST";
 
+        public const String PRINT_EDOCUMENT_SAMPLE = "PRINT E-DOCUMENT SAMPLE";
+
         #endregion
 
         #region ServiceUC
@@ -389,6 +391,10 @@ namespace FP300Service
         public const string LINE = "LINE";
         public const string GET = "GET";
         public const string SET = "SET";
+
+        public const string VERSION_INFO = "VERSION INFO";
+        public const string ECR_INFO = "ECR INFO";
+        public const string LIBRARY_INFO = "LIBRARY INFO";
 #else
         #region FiscalInfoUC
 
@@ -624,6 +630,8 @@ namespace FP300Service
         public const String BANK_LIST = "BANKA LİSTESİ";
         public const String GET_BANK_LIST = "BANKA LİSTESİ GETİR";
 
+        public const String PRINT_EDOCUMENT_SAMPLE = "E-BELGE ÖRNEĞİ YAZDIR";
+
         #endregion
 
         #region ServiceUC
@@ -781,6 +789,10 @@ namespace FP300Service
         public const string LINE = "SATIR";
         public const string GET = "GETİR";
         public const string SET = "KAYDET";
+
+        public const string VERSION_INFO = "VERSİYON BİLGİSİ";
+        public const string ECR_INFO = "ÖKC BİLGİLERİ";
+        public const string LIBRARY_INFO = "KÜTÜPHANE BİLGİLERİ";
 
         #endregion
 

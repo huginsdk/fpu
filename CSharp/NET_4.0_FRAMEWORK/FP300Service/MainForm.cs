@@ -1053,7 +1053,15 @@ namespace FP300Service
             serverInfo.Port = Convert.ToInt32(txtTcpPort.Text);
             serverInfo.TerminalNo = txtFiscalId.Text.PadLeft(8, '0');
             serverInfo.Version = new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).LastWriteTime.ToShortDateString();
-            serverInfo.SerialNum  = CreateMD5(GetMBId()).Substring(0, 8);
+            try
+            {
+                serverInfo.SerialNum = CreateMD5(GetMBId()).Substring(0, 8);
+            }
+            catch
+            {
+                serverInfo.SerialNum = "ABCD1234";
+            }
+
 
 #if CPP
             if (conn)
