@@ -10,7 +10,8 @@ namespace FP300Service
         public static string[] Payments = { FormMessage.CASH, FormMessage.CREDIT, FormMessage.CHECK, FormMessage.CURRENCY };
         public static string[] InvDocTypes = { FormMessage.INVOICE, FormMessage.E_INVOICE, FormMessage.E_ARCHIVE };
         public static string[] PaidDocTypes = { FormMessage.ADVANCE, FormMessage.FOOD_DOC};
-        public static string[] BarcodeTypes = { FormMessage.BARCODE_NONE, FormMessage.BARCODE_EAN, FormMessage.BARCODE_QRN, FormMessage.BARCODE_CO39, FormMessage.BARCODE_C128 }; 
+        public static string[] BarcodeTypes = { FormMessage.BARCODE_NONE, FormMessage.BARCODE_EAN, FormMessage.BARCODE_QRN, FormMessage.BARCODE_CO39, FormMessage.BARCODE_C128 };
+        public static string[] EDocumentTypes = { FormMessage.E_ARCHIVE, FormMessage.E_INVOICE };
     }
 
     public class FCurrency

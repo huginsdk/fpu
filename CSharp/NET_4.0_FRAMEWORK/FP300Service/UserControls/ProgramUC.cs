@@ -39,11 +39,7 @@ namespace FP300Service.UserControls
         private TextBox txtPluAddress;
         private Label lblInfoPLU;
         private TabPage tbpCategory;
-        private Label lblSubCategory;
         private Label lblMainGrup;
-        private Button btnSaveSubcategory;
-        private Button btnGetSubcategory;
-        private DataGridView dgvSubCategory;
         private Button btnSaveMainCategory;
         private Button btnGetMainCategory;
         private DataGridView dgvMainCategory;
@@ -56,10 +52,6 @@ namespace FP300Service.UserControls
         private DataGridViewTextBoxColumn clmnCashierName;
         private DataGridViewTextBoxColumn clmnCashierPassword;
         private DataGridViewCheckBoxColumn clmnCashierSelect;
-        private DataGridViewTextBoxColumn clmnSubcatNo;
-        private DataGridViewTextBoxColumn clmnSubcatName;
-        private DataGridViewTextBoxColumn clmnSubcatMainNo;
-        private DataGridViewCheckBoxColumn clmnSubcatSelect;
         private DataGridViewTextBoxColumn clmnMainGrupNo;
         private DataGridViewTextBoxColumn clmnMainGrupName;
         private DataGridViewCheckBoxColumn clmnMainGrupSelect;
@@ -112,15 +104,6 @@ namespace FP300Service.UserControls
         private DataGridView dgvVATDefine;
         private DataGridViewTextBoxColumn clmnVatGroupNum;
         private DataGridViewTextBoxColumn clmnVatRate;
-        private TabPage tabCCList;
-        private Label lblBINGroup;
-        private Button btnSaveCardList;
-        private DataGridView dgvCardInfoList;
-        private DataGridViewTextBoxColumn clmnCCID;
-        private DataGridViewTextBoxColumn clmnCCName;
-        private DataGridViewTextBoxColumn clmnBIN;
-        private DataGridViewCheckBoxColumn clmnCardInfoSelect;
-        private Button btnOpenCVS;
         private TableLayoutPanel tableLayoutPanelTabDepartment;
         private TableLayoutPanel tableLayoutPanelDptButtons;
         private TableLayoutPanel tableLayoutPanelTabPLU;
@@ -138,14 +121,12 @@ namespace FP300Service.UserControls
         private TableLayoutPanel tableLayoutPanelFCurrencyButtons;
         private TableLayoutPanel tableLayoutPanelTabCategory;
         private TableLayoutPanel tableLayoutPanelMainGrBttns;
-        private TableLayoutPanel tableLayoutPanelSubCatBttns;
         private TableLayoutPanel tableLayoutPanelTabCashier;
         private TableLayoutPanel tableLayoutPanelCashierBttns;
         private TableLayoutPanel tableLayoutPanelProgOpt;
         private TableLayoutPanel tableLayoutPanelProgOptBttns;
         private TableLayoutPanel tableLayoutPanelVAT;
         private TableLayoutPanel tableLayoutPanelVATBttns;
-        private TableLayoutPanel tableLayoutPanelCCList;
         private DataGridViewTextBoxColumn clmnDeptNo;
         private DataGridViewTextBoxColumn clmnDeptName;
         private DataGridViewTextBoxColumn clmnDeptVatId;
@@ -304,10 +285,6 @@ namespace FP300Service.UserControls
             this.lblVAT.Text = FormMessage.DEFINE_VAT;
             this.btnSaveVat.Text = FormMessage.SAVE_VAT;
             this.btnGetVat.Text = FormMessage.GET_VAT;
-            this.tabCCList.Text = FormMessage.CC_LIST;
-            this.btnOpenCVS.Text = FormMessage.OPEN_CSV;
-            this.lblBINGroup.Text = FormMessage.BIN_LIST;
-            this.btnSaveCardList.Text = FormMessage.SAVE_CARD_LIST;
             this.tbpDepTax.Text = FormMessage.DEPARTMENT;
             this.lblDepartment.Text = FormMessage.DEPARTMENT_DEFINITION;
             this.btnSaveDepartment.Text = FormMessage.SAVE_DEPARTMENT;
@@ -326,15 +303,7 @@ namespace FP300Service.UserControls
             this.btnSaveCredits.Text = FormMessage.SAVE_CREDIT;
             this.btnGetCredits.Text = FormMessage.GET_CREDIT;
             this.tbpCategory.Text = FormMessage.CATEGORY;
-            this.lblSubCategory.Text = FormMessage.SUB_CATEGORY;
             this.lblMainGrup.Text = FormMessage.MAIN_GROUP;
-            this.btnSaveSubcategory.Text = FormMessage.SAVE_SUB_CATEGORY;
-            this.btnGetSubcategory.Text = FormMessage.GET_SUB_CATEGORY; 
-        
-            this.clmnSubcatNo.HeaderText = FormMessage.SUBCATEGORY_ID;
-            this.clmnSubcatName.HeaderText = FormMessage.SUBCAT_NAME;
-            this.clmnSubcatMainNo.HeaderText = FormMessage.MAIN_GROUP;
-            this.clmnSubcatSelect.HeaderText = FormMessage.COMMIT;
             this.clmnMainGrupNo.HeaderText = FormMessage.MAIN_CAT_ID;
             this.clmnMainGrupName.HeaderText = FormMessage.MAIN_CAT_NAME;
             this.clmnMainGrupSelect.HeaderText = FormMessage.COMMIT;
@@ -349,10 +318,6 @@ namespace FP300Service.UserControls
             this.clmnVatGroupNum.HeaderText = FormMessage.VAT_ID;
             this.clmnVatRate.HeaderText = FormMessage.VAT_RATE;
             this.clmnSelectedVat.HeaderText = FormMessage.COMMIT;
-            this.clmnCCID.HeaderText = FormMessage.CC_ID;
-            this.clmnCCName.HeaderText = FormMessage.CC_NAME;
-            this.clmnBIN.HeaderText = FormMessage.BIN;
-            this.clmnCardInfoSelect.HeaderText = FormMessage.COMMIT;
             this.clmnDeptNo.HeaderText = FormMessage.DEPARTMENT_ID;
             this.clmnDeptName.HeaderText = FormMessage.DEPARTMENT_NAME;
             this.clmnDeptVatId.HeaderText = FormMessage.VAT_GROUP_ID;
@@ -403,33 +368,28 @@ namespace FP300Service.UserControls
         }
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbcProgram = new System.Windows.Forms.TabControl();
             this.tbpDepTax = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelTabDepartment = new System.Windows.Forms.TableLayoutPanel();
@@ -485,22 +445,13 @@ namespace FP300Service.UserControls
             this.tbpCategory = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelTabCategory = new System.Windows.Forms.TableLayoutPanel();
             this.lblMainGrup = new System.Windows.Forms.Label();
-            this.lblSubCategory = new System.Windows.Forms.Label();
             this.dgvMainCategory = new System.Windows.Forms.DataGridView();
             this.clmnMainGrupNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmnMainGrupName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmnMainGrupSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dgvSubCategory = new System.Windows.Forms.DataGridView();
-            this.clmnSubcatNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnSubcatName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnSubcatMainNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnSubcatSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tableLayoutPanelMainGrBttns = new System.Windows.Forms.TableLayoutPanel();
             this.btnGetMainCategory = new System.Windows.Forms.Button();
             this.btnSaveMainCategory = new System.Windows.Forms.Button();
-            this.tableLayoutPanelSubCatBttns = new System.Windows.Forms.TableLayoutPanel();
-            this.btnGetSubcategory = new System.Windows.Forms.Button();
-            this.btnSaveSubcategory = new System.Windows.Forms.Button();
             this.tbpCashier = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelTabCashier = new System.Windows.Forms.TableLayoutPanel();
             this.lblCashier = new System.Windows.Forms.Label();
@@ -555,16 +506,6 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelVATBttns = new System.Windows.Forms.TableLayoutPanel();
             this.btnGetVat = new System.Windows.Forms.Button();
             this.btnSaveVat = new System.Windows.Forms.Button();
-            this.tabCCList = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanelCCList = new System.Windows.Forms.TableLayoutPanel();
-            this.lblBINGroup = new System.Windows.Forms.Label();
-            this.dgvCardInfoList = new System.Windows.Forms.DataGridView();
-            this.clmnCCID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnCCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnBIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnCardInfoSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnSaveCardList = new System.Windows.Forms.Button();
-            this.btnOpenCVS = new System.Windows.Forms.Button();
             this.tabPageSendProduct = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -624,9 +565,7 @@ namespace FP300Service.UserControls
             this.tbpCategory.SuspendLayout();
             this.tableLayoutPanelTabCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainCategory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSubCategory)).BeginInit();
             this.tableLayoutPanelMainGrBttns.SuspendLayout();
-            this.tableLayoutPanelSubCatBttns.SuspendLayout();
             this.tbpCashier.SuspendLayout();
             this.tableLayoutPanelTabCashier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCashier)).BeginInit();
@@ -643,9 +582,6 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelVAT.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVATDefine)).BeginInit();
             this.tableLayoutPanelVATBttns.SuspendLayout();
-            this.tabCCList.SuspendLayout();
-            this.tableLayoutPanelCCList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCardInfoList)).BeginInit();
             this.tabPageSendProduct.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -672,7 +608,6 @@ namespace FP300Service.UserControls
             this.tbcProgram.Controls.Add(this.tbpNetwork);
             this.tbcProgram.Controls.Add(this.tabSRVLogo);
             this.tbcProgram.Controls.Add(this.tabSRVVAT);
-            this.tbcProgram.Controls.Add(this.tabCCList);
             this.tbcProgram.Controls.Add(this.tabPageSendProduct);
             this.tbcProgram.Controls.Add(this.tabPageEndOfReceiptNote);
             this.tbcProgram.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -730,23 +665,23 @@ namespace FP300Service.UserControls
             // 
             this.dgvDepDefine.AllowUserToAddRows = false;
             this.dgvDepDefine.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDepDefine.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDepDefine.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDepDefine.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDepDefine.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDepDefine.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDepDefine.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDepDefine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDepDefine.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmnDeptNo,
@@ -756,21 +691,21 @@ namespace FP300Service.UserControls
             this.clmnDeptLimit,
             this.clmnDeptWeighable,
             this.clmnSelectDepartment});
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDepDefine.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDepDefine.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDepDefine.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDepDefine.Location = new System.Drawing.Point(30, 61);
             this.dgvDepDefine.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDepDefine.Name = "dgvDepDefine";
             this.dgvDepDefine.RowHeadersVisible = false;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDepDefine.RowsDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDepDefine.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDepDefine.RowTemplate.Height = 24;
             this.dgvDepDefine.Size = new System.Drawing.Size(517, 273);
             this.dgvDepDefine.TabIndex = 7;
@@ -912,21 +847,21 @@ namespace FP300Service.UserControls
             // 
             this.dgvPLUDefine.AllowUserToAddRows = false;
             this.dgvPLUDefine.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvPLUDefine.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvPLUDefine.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPLUDefine.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPLUDefine.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvPLUDefine.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPLUDefine.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPLUDefine.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPLUDefine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPLUDefine.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmnPLUNo,
@@ -937,14 +872,14 @@ namespace FP300Service.UserControls
             this.clmnPLUSubCat,
             this.clmnPLUWeighable,
             this.clmnPLUSelected});
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPLUDefine.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPLUDefine.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvPLUDefine.Location = new System.Drawing.Point(2, 39);
             this.dgvPLUDefine.Margin = new System.Windows.Forms.Padding(2);
             this.dgvPLUDefine.Name = "dgvPLUDefine";
@@ -1165,8 +1100,8 @@ namespace FP300Service.UserControls
             // 
             this.dgvFCurrency.AllowUserToAddRows = false;
             this.dgvFCurrency.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvFCurrency.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvFCurrency.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvFCurrency.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFCurrency.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvFCurrency.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1175,14 +1110,14 @@ namespace FP300Service.UserControls
             this.clmnFCurrName,
             this.clmnFCurrRate,
             this.clmnFCurrSelected});
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFCurrency.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFCurrency.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvFCurrency.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFCurrency.Location = new System.Drawing.Point(2, 40);
             this.dgvFCurrency.Margin = new System.Windows.Forms.Padding(2);
@@ -1221,8 +1156,8 @@ namespace FP300Service.UserControls
             // 
             this.dgvCredits.AllowUserToAddRows = false;
             this.dgvCredits.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvCredits.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvCredits.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvCredits.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCredits.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvCredits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1230,14 +1165,14 @@ namespace FP300Service.UserControls
             this.clmnIndex,
             this.clmnCreditName,
             this.clmnSelected});
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCredits.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCredits.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvCredits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCredits.Location = new System.Drawing.Point(291, 40);
             this.dgvCredits.Margin = new System.Windows.Forms.Padding(2);
@@ -1365,22 +1300,20 @@ namespace FP300Service.UserControls
             // 
             // tableLayoutPanelTabCategory
             // 
-            this.tableLayoutPanelTabCategory.ColumnCount = 2;
-            this.tableLayoutPanelTabCategory.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.2228F));
-            this.tableLayoutPanelTabCategory.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.7772F));
-            this.tableLayoutPanelTabCategory.Controls.Add(this.lblMainGrup, 0, 0);
-            this.tableLayoutPanelTabCategory.Controls.Add(this.lblSubCategory, 1, 0);
-            this.tableLayoutPanelTabCategory.Controls.Add(this.dgvMainCategory, 0, 1);
-            this.tableLayoutPanelTabCategory.Controls.Add(this.dgvSubCategory, 1, 1);
-            this.tableLayoutPanelTabCategory.Controls.Add(this.tableLayoutPanelMainGrBttns, 0, 2);
-            this.tableLayoutPanelTabCategory.Controls.Add(this.tableLayoutPanelSubCatBttns, 1, 2);
+            this.tableLayoutPanelTabCategory.ColumnCount = 3;
+            this.tableLayoutPanelTabCategory.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelTabCategory.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanelTabCategory.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelTabCategory.Controls.Add(this.lblMainGrup, 1, 0);
+            this.tableLayoutPanelTabCategory.Controls.Add(this.dgvMainCategory, 1, 1);
+            this.tableLayoutPanelTabCategory.Controls.Add(this.tableLayoutPanelMainGrBttns, 1, 2);
             this.tableLayoutPanelTabCategory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelTabCategory.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanelTabCategory.Name = "tableLayoutPanelTabCategory";
             this.tableLayoutPanelTabCategory.RowCount = 3;
-            this.tableLayoutPanelTabCategory.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.60202F));
-            this.tableLayoutPanelTabCategory.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 74.05541F));
-            this.tableLayoutPanelTabCategory.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.09068F));
+            this.tableLayoutPanelTabCategory.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.63637F));
+            this.tableLayoutPanelTabCategory.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 74.24242F));
+            this.tableLayoutPanelTabCategory.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.12121F));
             this.tableLayoutPanelTabCategory.Size = new System.Drawing.Size(579, 397);
             this.tableLayoutPanelTabCategory.TabIndex = 20;
             // 
@@ -1389,31 +1322,19 @@ namespace FP300Service.UserControls
             this.lblMainGrup.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMainGrup.AutoSize = true;
             this.lblMainGrup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblMainGrup.Location = new System.Drawing.Point(95, 19);
+            this.lblMainGrup.Location = new System.Drawing.Point(241, 19);
             this.lblMainGrup.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMainGrup.Name = "lblMainGrup";
             this.lblMainGrup.Size = new System.Drawing.Size(94, 15);
             this.lblMainGrup.TabIndex = 18;
             this.lblMainGrup.Text = "MAIN GROUP";
             // 
-            // lblSubCategory
-            // 
-            this.lblSubCategory.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblSubCategory.AutoSize = true;
-            this.lblSubCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblSubCategory.Location = new System.Drawing.Point(376, 19);
-            this.lblSubCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSubCategory.Name = "lblSubCategory";
-            this.lblSubCategory.Size = new System.Drawing.Size(111, 15);
-            this.lblSubCategory.TabIndex = 19;
-            this.lblSubCategory.Text = "SUB CATEGORY";
-            // 
             // dgvMainCategory
             // 
             this.dgvMainCategory.AllowUserToAddRows = false;
             this.dgvMainCategory.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvMainCategory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvMainCategory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvMainCategory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMainCategory.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvMainCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1421,21 +1342,21 @@ namespace FP300Service.UserControls
             this.clmnMainGrupNo,
             this.clmnMainGrupName,
             this.clmnMainGrupSelect});
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMainCategory.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMainCategory.DefaultCellStyle = dataGridViewCellStyle13;
             this.dgvMainCategory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMainCategory.Location = new System.Drawing.Point(2, 56);
+            this.dgvMainCategory.Location = new System.Drawing.Point(117, 56);
             this.dgvMainCategory.Margin = new System.Windows.Forms.Padding(2);
             this.dgvMainCategory.Name = "dgvMainCategory";
             this.dgvMainCategory.RowHeadersVisible = false;
             this.dgvMainCategory.RowTemplate.Height = 24;
-            this.dgvMainCategory.Size = new System.Drawing.Size(281, 290);
+            this.dgvMainCategory.Size = new System.Drawing.Size(343, 290);
             this.dgvMainCategory.TabIndex = 12;
             // 
             // clmnMainGrupNo
@@ -1456,65 +1377,6 @@ namespace FP300Service.UserControls
             this.clmnMainGrupSelect.HeaderText = "COMMIT?";
             this.clmnMainGrupSelect.Name = "clmnMainGrupSelect";
             // 
-            // dgvSubCategory
-            // 
-            this.dgvSubCategory.AllowUserToAddRows = false;
-            this.dgvSubCategory.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvSubCategory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle41;
-            this.dgvSubCategory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvSubCategory.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvSubCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSubCategory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmnSubcatNo,
-            this.clmnSubcatName,
-            this.clmnSubcatMainNo,
-            this.clmnSubcatSelect});
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSubCategory.DefaultCellStyle = dataGridViewCellStyle42;
-            this.dgvSubCategory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSubCategory.Location = new System.Drawing.Point(287, 56);
-            this.dgvSubCategory.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvSubCategory.Name = "dgvSubCategory";
-            this.dgvSubCategory.RowHeadersVisible = false;
-            this.dgvSubCategory.RowTemplate.Height = 24;
-            this.dgvSubCategory.Size = new System.Drawing.Size(290, 290);
-            this.dgvSubCategory.TabIndex = 15;
-            // 
-            // clmnSubcatNo
-            // 
-            this.clmnSubcatNo.HeaderText = "SUBCATEGORY ID";
-            this.clmnSubcatNo.MaxInputLength = 2;
-            this.clmnSubcatNo.Name = "clmnSubcatNo";
-            this.clmnSubcatNo.ReadOnly = true;
-            // 
-            // clmnSubcatName
-            // 
-            this.clmnSubcatName.HeaderText = "SUBCATEGORY NAME";
-            this.clmnSubcatName.MaxInputLength = 20;
-            this.clmnSubcatName.Name = "clmnSubcatName";
-            // 
-            // clmnSubcatMainNo
-            // 
-            this.clmnSubcatMainNo.HeaderText = "MAIN GROUP";
-            this.clmnSubcatMainNo.MaxInputLength = 2;
-            this.clmnSubcatMainNo.Name = "clmnSubcatMainNo";
-            this.clmnSubcatMainNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmnSubcatMainNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clmnSubcatSelect
-            // 
-            this.clmnSubcatSelect.HeaderText = "COMMIT?";
-            this.clmnSubcatSelect.Name = "clmnSubcatSelect";
-            this.clmnSubcatSelect.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmnSubcatSelect.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // tableLayoutPanelMainGrBttns
             // 
             this.tableLayoutPanelMainGrBttns.ColumnCount = 5;
@@ -1526,20 +1388,20 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelMainGrBttns.Controls.Add(this.btnGetMainCategory, 1, 0);
             this.tableLayoutPanelMainGrBttns.Controls.Add(this.btnSaveMainCategory, 3, 0);
             this.tableLayoutPanelMainGrBttns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelMainGrBttns.Location = new System.Drawing.Point(3, 351);
+            this.tableLayoutPanelMainGrBttns.Location = new System.Drawing.Point(118, 351);
             this.tableLayoutPanelMainGrBttns.Name = "tableLayoutPanelMainGrBttns";
             this.tableLayoutPanelMainGrBttns.RowCount = 1;
             this.tableLayoutPanelMainGrBttns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelMainGrBttns.Size = new System.Drawing.Size(279, 43);
+            this.tableLayoutPanelMainGrBttns.Size = new System.Drawing.Size(341, 43);
             this.tableLayoutPanelMainGrBttns.TabIndex = 20;
             // 
             // btnGetMainCategory
             // 
             this.btnGetMainCategory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnGetMainCategory.Location = new System.Drawing.Point(21, 2);
+            this.btnGetMainCategory.Location = new System.Drawing.Point(25, 2);
             this.btnGetMainCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetMainCategory.Name = "btnGetMainCategory";
-            this.btnGetMainCategory.Size = new System.Drawing.Size(107, 39);
+            this.btnGetMainCategory.Size = new System.Drawing.Size(132, 39);
             this.btnGetMainCategory.TabIndex = 13;
             this.btnGetMainCategory.Text = "GET MAIN CAT.";
             this.btnGetMainCategory.UseVisualStyleBackColor = true;
@@ -1548,56 +1410,14 @@ namespace FP300Service.UserControls
             // btnSaveMainCategory
             // 
             this.btnSaveMainCategory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSaveMainCategory.Location = new System.Drawing.Point(148, 2);
+            this.btnSaveMainCategory.Location = new System.Drawing.Point(181, 2);
             this.btnSaveMainCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveMainCategory.Name = "btnSaveMainCategory";
-            this.btnSaveMainCategory.Size = new System.Drawing.Size(107, 39);
+            this.btnSaveMainCategory.Size = new System.Drawing.Size(132, 39);
             this.btnSaveMainCategory.TabIndex = 14;
             this.btnSaveMainCategory.Text = "SAVE MAIN CAT.";
             this.btnSaveMainCategory.UseVisualStyleBackColor = true;
             this.btnSaveMainCategory.Click += new System.EventHandler(this.btnSaveMainCategory_Click);
-            // 
-            // tableLayoutPanelSubCatBttns
-            // 
-            this.tableLayoutPanelSubCatBttns.ColumnCount = 5;
-            this.tableLayoutPanelSubCatBttns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.tableLayoutPanelSubCatBttns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanelSubCatBttns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6F));
-            this.tableLayoutPanelSubCatBttns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanelSubCatBttns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.tableLayoutPanelSubCatBttns.Controls.Add(this.btnGetSubcategory, 1, 0);
-            this.tableLayoutPanelSubCatBttns.Controls.Add(this.btnSaveSubcategory, 3, 0);
-            this.tableLayoutPanelSubCatBttns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSubCatBttns.Location = new System.Drawing.Point(288, 351);
-            this.tableLayoutPanelSubCatBttns.Name = "tableLayoutPanelSubCatBttns";
-            this.tableLayoutPanelSubCatBttns.RowCount = 1;
-            this.tableLayoutPanelSubCatBttns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSubCatBttns.Size = new System.Drawing.Size(288, 43);
-            this.tableLayoutPanelSubCatBttns.TabIndex = 21;
-            // 
-            // btnGetSubcategory
-            // 
-            this.btnGetSubcategory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnGetSubcategory.Location = new System.Drawing.Point(22, 2);
-            this.btnGetSubcategory.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGetSubcategory.Name = "btnGetSubcategory";
-            this.btnGetSubcategory.Size = new System.Drawing.Size(111, 39);
-            this.btnGetSubcategory.TabIndex = 16;
-            this.btnGetSubcategory.Text = "GET SUBCATEGORY";
-            this.btnGetSubcategory.UseVisualStyleBackColor = true;
-            this.btnGetSubcategory.Click += new System.EventHandler(this.btnGetSubcategory_Click);
-            // 
-            // btnSaveSubcategory
-            // 
-            this.btnSaveSubcategory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSaveSubcategory.Location = new System.Drawing.Point(154, 2);
-            this.btnSaveSubcategory.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSaveSubcategory.Name = "btnSaveSubcategory";
-            this.btnSaveSubcategory.Size = new System.Drawing.Size(111, 39);
-            this.btnSaveSubcategory.TabIndex = 17;
-            this.btnSaveSubcategory.Text = "SAVE SUBCATEGORY";
-            this.btnSaveSubcategory.UseVisualStyleBackColor = true;
-            this.btnSaveSubcategory.Click += new System.EventHandler(this.btnSaveSubcategory_Click);
             // 
             // tbpCashier
             // 
@@ -1646,32 +1466,32 @@ namespace FP300Service.UserControls
             // 
             this.dgvCashier.AllowUserToAddRows = false;
             this.dgvCashier.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvCashier.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvCashier.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvCashier.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCashier.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCashier.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCashier.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvCashier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCashier.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmnCashierIndex,
             this.clmnCashierName,
             this.clmnCashierPassword,
             this.clmnCashierSelect});
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle45.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCashier.DefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCashier.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgvCashier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCashier.Location = new System.Drawing.Point(59, 44);
             this.dgvCashier.Margin = new System.Windows.Forms.Padding(2);
@@ -1794,32 +1614,32 @@ namespace FP300Service.UserControls
             // 
             this.dgvPrmOption.AllowUserToAddRows = false;
             this.dgvPrmOption.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvPrmOption.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvPrmOption.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvPrmOption.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPrmOption.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrmOption.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrmOption.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvPrmOption.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrmOption.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmnPONo,
             this.clmnPOName,
             this.clmnPOValue,
             this.clmnPOSelect});
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle48.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrmOption.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrmOption.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgvPrmOption.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPrmOption.Location = new System.Drawing.Point(59, 47);
             this.dgvPrmOption.Margin = new System.Windows.Forms.Padding(2);
@@ -2197,36 +2017,36 @@ namespace FP300Service.UserControls
             // 
             this.dgvVATDefine.AllowUserToAddRows = false;
             this.dgvVATDefine.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle49.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle49.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVATDefine.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVATDefine.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dgvVATDefine.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvVATDefine.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle50.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVATDefine.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVATDefine.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvVATDefine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVATDefine.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmnVatGroupNum,
             this.clmnVatRate,
             this.clmnSelectedVat});
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle51.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle51.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle51.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVATDefine.DefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVATDefine.DefaultCellStyle = dataGridViewCellStyle22;
             this.dgvVATDefine.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvVATDefine.Location = new System.Drawing.Point(59, 47);
             this.dgvVATDefine.Margin = new System.Windows.Forms.Padding(2);
@@ -2295,137 +2115,6 @@ namespace FP300Service.UserControls
             this.btnSaveVat.Text = "SAVE VAT";
             this.btnSaveVat.UseVisualStyleBackColor = true;
             this.btnSaveVat.Click += new System.EventHandler(this.btnSaveVat_Click);
-            // 
-            // tabCCList
-            // 
-            this.tabCCList.Controls.Add(this.tableLayoutPanelCCList);
-            this.tabCCList.Controls.Add(this.btnOpenCVS);
-            this.tabCCList.Location = new System.Drawing.Point(4, 22);
-            this.tabCCList.Margin = new System.Windows.Forms.Padding(2);
-            this.tabCCList.Name = "tabCCList";
-            this.tabCCList.Padding = new System.Windows.Forms.Padding(2);
-            this.tabCCList.Size = new System.Drawing.Size(583, 401);
-            this.tabCCList.TabIndex = 9;
-            this.tabCCList.Text = "CC LIST";
-            this.tabCCList.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanelCCList
-            // 
-            this.tableLayoutPanelCCList.ColumnCount = 3;
-            this.tableLayoutPanelCCList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanelCCList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanelCCList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanelCCList.Controls.Add(this.lblBINGroup, 1, 0);
-            this.tableLayoutPanelCCList.Controls.Add(this.dgvCardInfoList, 1, 1);
-            this.tableLayoutPanelCCList.Controls.Add(this.btnSaveCardList, 1, 2);
-            this.tableLayoutPanelCCList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelCCList.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanelCCList.Name = "tableLayoutPanelCCList";
-            this.tableLayoutPanelCCList.RowCount = 3;
-            this.tableLayoutPanelCCList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.09068F));
-            this.tableLayoutPanelCCList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.79597F));
-            this.tableLayoutPanelCCList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.86146F));
-            this.tableLayoutPanelCCList.Size = new System.Drawing.Size(579, 397);
-            this.tableLayoutPanelCCList.TabIndex = 24;
-            // 
-            // lblBINGroup
-            // 
-            this.lblBINGroup.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblBINGroup.AutoSize = true;
-            this.lblBINGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblBINGroup.Location = new System.Drawing.Point(257, 16);
-            this.lblBINGroup.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBINGroup.Name = "lblBINGroup";
-            this.lblBINGroup.Size = new System.Drawing.Size(63, 15);
-            this.lblBINGroup.TabIndex = 22;
-            this.lblBINGroup.Text = "BIN LIST";
-            // 
-            // dgvCardInfoList
-            // 
-            dataGridViewCellStyle52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvCardInfoList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle52;
-            this.dgvCardInfoList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCardInfoList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle53.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCardInfoList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle53;
-            this.dgvCardInfoList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCardInfoList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmnCCID,
-            this.clmnCCName,
-            this.clmnBIN,
-            this.clmnCardInfoSelect});
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle54.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCardInfoList.DefaultCellStyle = dataGridViewCellStyle54;
-            this.dgvCardInfoList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvCardInfoList.Location = new System.Drawing.Point(59, 50);
-            this.dgvCardInfoList.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvCardInfoList.Name = "dgvCardInfoList";
-            this.dgvCardInfoList.RowHeadersVisible = false;
-            this.dgvCardInfoList.RowTemplate.Height = 24;
-            this.dgvCardInfoList.Size = new System.Drawing.Size(459, 285);
-            this.dgvCardInfoList.TabIndex = 20;
-            // 
-            // clmnCCID
-            // 
-            this.clmnCCID.HeaderText = "CC ID";
-            this.clmnCCID.MaxInputLength = 8;
-            this.clmnCCID.Name = "clmnCCID";
-            // 
-            // clmnCCName
-            // 
-            this.clmnCCName.HeaderText = "CC NAME";
-            this.clmnCCName.MaxInputLength = 20;
-            this.clmnCCName.Name = "clmnCCName";
-            // 
-            // clmnBIN
-            // 
-            this.clmnBIN.HeaderText = "BIN";
-            this.clmnBIN.MaxInputLength = 8;
-            this.clmnBIN.Name = "clmnBIN";
-            this.clmnBIN.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmnBIN.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clmnCardInfoSelect
-            // 
-            this.clmnCardInfoSelect.HeaderText = "COMMIT?";
-            this.clmnCardInfoSelect.Name = "clmnCardInfoSelect";
-            this.clmnCardInfoSelect.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmnCardInfoSelect.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // btnSaveCardList
-            // 
-            this.btnSaveCardList.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSaveCardList.Location = new System.Drawing.Point(217, 345);
-            this.btnSaveCardList.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSaveCardList.Name = "btnSaveCardList";
-            this.btnSaveCardList.Size = new System.Drawing.Size(142, 44);
-            this.btnSaveCardList.TabIndex = 21;
-            this.btnSaveCardList.Text = "SAVE CARD LIST";
-            this.btnSaveCardList.UseVisualStyleBackColor = true;
-            this.btnSaveCardList.Click += new System.EventHandler(this.btnSaveCardList_Click);
-            // 
-            // btnOpenCVS
-            // 
-            this.btnOpenCVS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOpenCVS.Location = new System.Drawing.Point(16, 418);
-            this.btnOpenCVS.Name = "btnOpenCVS";
-            this.btnOpenCVS.Size = new System.Drawing.Size(175, 38);
-            this.btnOpenCVS.TabIndex = 23;
-            this.btnOpenCVS.Text = "OPEN .CSV";
-            this.btnOpenCVS.UseVisualStyleBackColor = true;
-            this.btnOpenCVS.Click += new System.EventHandler(this.btnOpenCVS_Click);
             // 
             // tabPageSendProduct
             // 
@@ -2960,9 +2649,7 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelTabCategory.ResumeLayout(false);
             this.tableLayoutPanelTabCategory.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainCategory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSubCategory)).EndInit();
             this.tableLayoutPanelMainGrBttns.ResumeLayout(false);
-            this.tableLayoutPanelSubCatBttns.ResumeLayout(false);
             this.tbpCashier.ResumeLayout(false);
             this.tableLayoutPanelTabCashier.ResumeLayout(false);
             this.tableLayoutPanelTabCashier.PerformLayout();
@@ -2984,10 +2671,6 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelVAT.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVATDefine)).EndInit();
             this.tableLayoutPanelVATBttns.ResumeLayout(false);
-            this.tabCCList.ResumeLayout(false);
-            this.tableLayoutPanelCCList.ResumeLayout(false);
-            this.tableLayoutPanelCCList.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCardInfoList)).EndInit();
             this.tabPageSendProduct.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -3467,78 +3150,6 @@ namespace FP300Service.UserControls
         }
 
         #endregion MAIN_CATEGORY
-
-        #region SUBCATEGORY
-
-        private void btnGetSubcategory_Click(object sender, EventArgs e)
-        {
-            dgvSubCategory.Rows.Clear();
-            for (int i = 0; i < ProgramConfig.MAX_SUB_CAT_COUNT; i++)
-            {
-                try
-                {
-                    if (dgvSubCategory.Rows.Count % 10 == 0)
-                    {
-                        Application.DoEvents();
-                    }
-
-                    CPResponse response = new CPResponse(bridge.Printer.GetSubCategory(i));
-
-                    if (response.ErrorCode == 0)
-                    {
-                        int index = dgvSubCategory.Rows.Add();
-                        dgvSubCategory.Rows[index].Cells[clmnSubcatNo.Index].Value = i + 1;
-                        dgvSubCategory.Rows[index].Cells[clmnSubcatName.Index].Value = response.GetNextParam();
-                        dgvSubCategory.Rows[index].Cells[clmnSubcatMainNo.Index].Value = response.GetNextParam();
-                    }
-                }
-                catch (System.Exception)
-                {
-                    bridge.Log(FormMessage.SUBCAT_NOT_GET);
-                }
-            }
-        }
-
-        private void btnSaveSubcategory_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < dgvSubCategory.Rows.Count; i++)
-            {
-                try
-                {
-                    DataGridViewCheckBoxCell selected = (DataGridViewCheckBoxCell)dgvSubCategory.Rows[i].Cells[clmnSubcatSelect.Index];
-                    if (selected.Value != null && (bool)selected.Value == true)
-                    {
-                        //NAME
-                        String name = (String)dgvSubCategory.Rows[i].Cells[clmnSubcatName.Index].Value;
-
-                        //MAIN CAT ID
-                        int mainCatId = Convert.ToInt32(dgvSubCategory.Rows[i].Cells[clmnSubcatMainNo.Index].Value);
-
-                        CPResponse response = new CPResponse(bridge.Printer.SetSubCategory(i, name, mainCatId));
-
-                        if (response.ErrorCode == 0)
-                        {
-                            int scCatNo = i + 1;
-                            string scName = response.GetNextParam();
-                            string scMainCatNo = response.GetNextParam();
-                            bridge.Log(String.Format("{3}: {0} {4}:{1,20} {5}: {2}",
-                                scCatNo,
-                                scName,
-                                scMainCatNo,
-                                FormMessage.GROUP_ID,
-                                FormMessage.GROUP_NAME,
-                                FormMessage.MAIN_CAT_ID));
-                        }
-                    }
-                }
-                catch (System.Exception)
-                {
-                    bridge.Log(FormMessage.SUBCAT_NOT_SAVE);
-                }
-            }
-        }
-
-        #endregion SUBCATEGORY
 
         #region CASHIER
         private void btnGetCashier_Click(object sender, EventArgs e)
@@ -4127,76 +3738,6 @@ namespace FP300Service.UserControls
 
         #endregion
 
-        private void btnSaveCardList_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                List<string> cardInfoList = new List<string>();
-                for (int i = 0; i < dgvCardInfoList.Rows.Count; i++)
-                {
-                    DataGridViewCheckBoxCell selected = (DataGridViewCheckBoxCell)dgvCardInfoList.Rows[i].Cells[clmnCardInfoSelect.Index];
-                    if (selected.Value != null && (bool)selected.Value == true)
-                    {
-                        //CCID
-                        int ccid = Convert.ToInt32(dgvCardInfoList.Rows[i].Cells[clmnCCID.Index].Value);
-
-                        //BIN
-                        int bin = Convert.ToInt32(dgvCardInfoList.Rows[i].Cells[clmnBIN.Index].Value);
-
-                        string ccname = (string)dgvCardInfoList.Rows[i].Cells[clmnCCName.Index].Value;
-
-                        cardInfoList.Add(String.Format("{0}|{1:D}|{2:D}", ccid, ccname, bin));
-                    }
-                }
-#if CPP
-
-#else
-                CPResponse response = new CPResponse(bridge.Printer.SaveCardInfoList(cardInfoList.ToArray()));
-#endif
-                
-            }
-            catch (System.Exception)
-            {
-                bridge.Log(FormMessage.SUBCAT_NOT_SAVE);
-            }
-        }
-
-        private void btnOpenCVS_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog ofp = new OpenFileDialog();
-
-                if (ofp.ShowDialog() == DialogResult.OK)
-                {
-                    if (!String.IsNullOrEmpty(ofp.FileName))
-                    {
-                        string[] lines = System.IO.File.ReadAllLines(ofp.FileName);
-                        int rowIndex = 0;
-
-                        foreach (string line in lines)
-                        {
-                            string[] splitted = line.Split(new char[] { ',' });
-
-                            if (splitted.Length>2)
-                            {
-                                rowIndex = dgvCardInfoList.Rows.Add();
-
-                                dgvCardInfoList.Rows[rowIndex].Cells[clmnCCID.Index].Value = splitted[0];
-                                dgvCardInfoList.Rows[rowIndex].Cells[clmnCCName.Index].Value = splitted[1];
-                                dgvCardInfoList.Rows[rowIndex].Cells[clmnBIN.Index].Value = splitted[2];
-                                dgvCardInfoList.Rows[rowIndex].Cells[clmnCardInfoSelect.Index].Value = true;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (System.Exception ex)
-            {
-                bridge.Log(ex.Message);
-            }
-        }
-
         private static List<String> productLineList;
         private void btnBrowseProductFile_Click(object sender, EventArgs e)
         {
@@ -4302,7 +3843,8 @@ namespace FP300Service.UserControls
         PAY_WITH_EFT,
         RECEIPT_LIMIT,
         GRAPHIC_LOGO,
-        RECEIPT_BARCODE
+        RECEIPT_BARCODE,
+        EFT_MANAGEMENT_ON_POS
     }
     public class ProgramOption
     {

@@ -303,4 +303,5 @@ namespace FP300Service
         [Description("Payment void error Payment cannot voided. Continue payment or close receipt.")]
         ERR_EFT_VOID_FAIL = 176
     }
+
 }

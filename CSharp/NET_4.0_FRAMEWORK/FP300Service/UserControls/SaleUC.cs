@@ -253,6 +253,12 @@ namespace FP300Service.UserControls
         private Label labelCrrAccAmount;
         private Label labelCrrAccDate;
         private DateTimePicker dateTimePickerCrrAccDate;
+        private NumericUpDown numericUpDownRefundAmount;
+        private Label labelRefundAmount;
+        private TabPage tabPageEDocument;
+        private Label labelEDocumentDocType;
+        private ComboBox comboBoxEDocumentDocTypes;
+        private Button buttonPrintEDocumentSample;
         private Button btnRefreshCredit;
 
 
@@ -271,6 +277,9 @@ namespace FP300Service.UserControls
 
             comboBoxBarcodeTypes.Items.AddRange(Common.BarcodeTypes);
             comboBoxBarcodeTypes.SelectedIndex = 0;
+
+            comboBoxEDocumentDocTypes.Items.AddRange(Common.EDocumentTypes);
+            comboBoxEDocumentDocTypes.SelectedIndex = 0;
 
             nmrPrice.Enabled = false;
             lblAmount.Enabled = false;
@@ -366,6 +375,9 @@ namespace FP300Service.UserControls
             this.labelCrrAccSerial.Text = FormMessage.DOCUMENT_SERIAL;
             this.tabPageCrrAccountCollctn.Text = FormMessage.CURRENT_ACCOUNT_COLLECTION_DOC;
             this.labelCrrAccDate.Text = FormMessage.DATE;
+            this.buttonPrintEDocumentSample.Text = FormMessage.PRINT_EDOCUMENT_SAMPLE;
+            this.labelEDocumentDocType.Text = FormMessage.DOCUMENT_TYPE;
+            
             
         }
 
@@ -626,6 +638,8 @@ namespace FP300Service.UserControls
             this.label2 = new System.Windows.Forms.Label();
             this.nmrVoidPayIndex = new System.Windows.Forms.NumericUpDown();
             this.tabRefund = new System.Windows.Forms.TabPage();
+            this.numericUpDownRefundAmount = new System.Windows.Forms.NumericUpDown();
+            this.labelRefundAmount = new System.Windows.Forms.Label();
             this.txtAcquierIdRefund = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnRefund = new System.Windows.Forms.Button();
@@ -659,6 +673,10 @@ namespace FP300Service.UserControls
             this.buttonAutoPrintDEPT = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.tabPageEDocument = new System.Windows.Forms.TabPage();
+            this.buttonPrintEDocumentSample = new System.Windows.Forms.Button();
+            this.comboBoxEDocumentDocTypes = new System.Windows.Forms.ComboBox();
+            this.labelEDocumentDocType = new System.Windows.Forms.Label();
             this.tbcStartDoc.SuspendLayout();
             this.tbStrtRcpt.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -720,11 +738,13 @@ namespace FP300Service.UserControls
             this.panelVoidEFT.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrVoidPayIndex)).BeginInit();
             this.tabRefund.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRefundAmount)).BeginInit();
             this.tabPageBankList.SuspendLayout();
             this.tabPageEftSlipCopy.SuspendLayout();
             this.tableLayoutPanelSaleUc.SuspendLayout();
             this.tableLayoutPanelSaleUCLeft.SuspendLayout();
             this.tableLayoutPanelSaleUCRight.SuspendLayout();
+            this.tabPageEDocument.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbcStartDoc
@@ -736,6 +756,7 @@ namespace FP300Service.UserControls
             this.tbcStartDoc.Controls.Add(this.tabPageFood);
             this.tbcStartDoc.Controls.Add(this.tabPageCollection);
             this.tbcStartDoc.Controls.Add(this.tabPageCrrAccountCollctn);
+            this.tbcStartDoc.Controls.Add(this.tabPageEDocument);
             this.tbcStartDoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcStartDoc.Location = new System.Drawing.Point(2, 2);
             this.tbcStartDoc.Margin = new System.Windows.Forms.Padding(2);
@@ -2925,6 +2946,8 @@ namespace FP300Service.UserControls
             // 
             // tabRefund
             // 
+            this.tabRefund.Controls.Add(this.numericUpDownRefundAmount);
+            this.tabRefund.Controls.Add(this.labelRefundAmount);
             this.tabRefund.Controls.Add(this.txtAcquierIdRefund);
             this.tabRefund.Controls.Add(this.label6);
             this.tabRefund.Controls.Add(this.btnRefund);
@@ -2935,9 +2958,35 @@ namespace FP300Service.UserControls
             this.tabRefund.Text = "EFT REFUND";
             this.tabRefund.UseVisualStyleBackColor = true;
             // 
+            // numericUpDownRefundAmount
+            // 
+            this.numericUpDownRefundAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.numericUpDownRefundAmount.DecimalPlaces = 2;
+            this.numericUpDownRefundAmount.Location = new System.Drawing.Point(267, 43);
+            this.numericUpDownRefundAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownRefundAmount.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDownRefundAmount.Name = "numericUpDownRefundAmount";
+            this.numericUpDownRefundAmount.Size = new System.Drawing.Size(90, 20);
+            this.numericUpDownRefundAmount.TabIndex = 27;
+            this.numericUpDownRefundAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // labelRefundAmount
+            // 
+            this.labelRefundAmount.AutoSize = true;
+            this.labelRefundAmount.Location = new System.Drawing.Point(149, 50);
+            this.labelRefundAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelRefundAmount.Name = "labelRefundAmount";
+            this.labelRefundAmount.Size = new System.Drawing.Size(54, 13);
+            this.labelRefundAmount.TabIndex = 26;
+            this.labelRefundAmount.Text = "AMOUNT";
+            // 
             // txtAcquierIdRefund
             // 
-            this.txtAcquierIdRefund.Location = new System.Drawing.Point(230, 30);
+            this.txtAcquierIdRefund.Location = new System.Drawing.Point(267, 19);
             this.txtAcquierIdRefund.Margin = new System.Windows.Forms.Padding(2);
             this.txtAcquierIdRefund.MaxLength = 15;
             this.txtAcquierIdRefund.Name = "txtAcquierIdRefund";
@@ -2947,7 +2996,7 @@ namespace FP300Service.UserControls
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(156, 33);
+            this.label6.Location = new System.Drawing.Point(149, 22);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 13);
@@ -3317,6 +3366,52 @@ namespace FP300Service.UserControls
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // tabPageEDocument
+            // 
+            this.tabPageEDocument.Controls.Add(this.labelEDocumentDocType);
+            this.tabPageEDocument.Controls.Add(this.comboBoxEDocumentDocTypes);
+            this.tabPageEDocument.Controls.Add(this.buttonPrintEDocumentSample);
+            this.tabPageEDocument.Location = new System.Drawing.Point(4, 22);
+            this.tabPageEDocument.Name = "tabPageEDocument";
+            this.tabPageEDocument.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageEDocument.Size = new System.Drawing.Size(461, 100);
+            this.tabPageEDocument.TabIndex = 7;
+            this.tabPageEDocument.Text = "E-BELGE";
+            this.tabPageEDocument.UseVisualStyleBackColor = true;
+            // 
+            // buttonPrintEDocumentSample
+            // 
+            this.buttonPrintEDocumentSample.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonPrintEDocumentSample.Location = new System.Drawing.Point(52, 23);
+            this.buttonPrintEDocumentSample.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPrintEDocumentSample.Name = "buttonPrintEDocumentSample";
+            this.buttonPrintEDocumentSample.Size = new System.Drawing.Size(110, 52);
+            this.buttonPrintEDocumentSample.TabIndex = 2;
+            this.buttonPrintEDocumentSample.Text = "PRINT E-DOCUMENT SAMPLE";
+            this.buttonPrintEDocumentSample.UseVisualStyleBackColor = true;
+            this.buttonPrintEDocumentSample.Click += new System.EventHandler(this.buttonPrintEDocumentSample_Click);
+            // 
+            // comboBoxEDocumentDocTypes
+            // 
+            this.comboBoxEDocumentDocTypes.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboBoxEDocumentDocTypes.FormattingEnabled = true;
+            this.comboBoxEDocumentDocTypes.Location = new System.Drawing.Point(282, 23);
+            this.comboBoxEDocumentDocTypes.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxEDocumentDocTypes.Name = "comboBoxEDocumentDocTypes";
+            this.comboBoxEDocumentDocTypes.Size = new System.Drawing.Size(99, 21);
+            this.comboBoxEDocumentDocTypes.TabIndex = 10;
+            // 
+            // labelEDocumentDocType
+            // 
+            this.labelEDocumentDocType.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelEDocumentDocType.AutoSize = true;
+            this.labelEDocumentDocType.Location = new System.Drawing.Point(188, 26);
+            this.labelEDocumentDocType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelEDocumentDocType.Name = "labelEDocumentDocType";
+            this.labelEDocumentDocType.Size = new System.Drawing.Size(68, 13);
+            this.labelEDocumentDocType.TabIndex = 11;
+            this.labelEDocumentDocType.Text = "BELGE TİPİ:";
+            // 
             // SaleUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3408,12 +3503,15 @@ namespace FP300Service.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.nmrVoidPayIndex)).EndInit();
             this.tabRefund.ResumeLayout(false);
             this.tabRefund.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRefundAmount)).EndInit();
             this.tabPageBankList.ResumeLayout(false);
             this.tabPageEftSlipCopy.ResumeLayout(false);
             this.tabPageEftSlipCopy.PerformLayout();
             this.tableLayoutPanelSaleUc.ResumeLayout(false);
             this.tableLayoutPanelSaleUCLeft.ResumeLayout(false);
             this.tableLayoutPanelSaleUCRight.ResumeLayout(false);
+            this.tabPageEDocument.ResumeLayout(false);
+            this.tabPageEDocument.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3878,15 +3976,23 @@ namespace FP300Service.UserControls
             {
                 if (checkBoxVoidEft.Checked)
                 {
-#if !CPP
                     response = new CPResponse(bridge.Printer.VoidEFTPayment(int.Parse(txtAcquierId.Text), int.Parse(txtBatchNo.Text), int.Parse(txtStanNo.Text)));
-#endif
+
+                    if (response.ErrorCode == 0)
+                    {
+                        bridge.Log(String.Format(FormMessage.AMOUNT.PadRight(12, ' ') + ":{0}", response.GetNextParam()));
+                        bridge.Log(String.Format(FormMessage.ACQUIER_ID.PadRight(12, ' ') + ":{0}", response.GetNextParam()));
+                        bridge.Log(String.Format("ISSUER ID".PadRight(12, ' ') + ":{0}", response.GetNextParam()));
+                        bridge.Log(String.Format("CARD BIN".PadRight(12, ' ') + ":{0}", response.GetNextParam()));
+                    }
                 }
                 else
                 {
                     // SEND COMMAND
-                    response = new CPResponse(bridge.Printer.VoidPayment((int)nmrVoidPayIndex.Value - 1));
+                    response = new CPResponse(bridge.Printer.VoidPayment((int)nmrVoidPayIndex.Value - 1));                
                 }
+
+
             }
             catch (System.Exception ex)
             {
@@ -3966,6 +4072,8 @@ namespace FP300Service.UserControls
                     string bin = response.GetNextParam();
                     string issuerId = response.GetNextParam();
                     string subOprtType = response.GetNextParam();
+                    string batch = response.GetNextParam();
+                    string stan = response.GetNextParam();
 
                     bridge.Log(String.Format("İşlem Tutarı   :{0}", nmrEFTAmount.Value.ToString()));
                     bridge.Log(String.Format("Ödeme Toplamı  :{0}", paidAmount));
@@ -3975,6 +4083,10 @@ namespace FP300Service.UserControls
                     bridge.Log(String.Format("ACQUIRER ID    :{0}", acquirerId));
                     bridge.Log(String.Format("BIN            :{0}", bin));
                     bridge.Log(String.Format("ISSUERER ID    :{0}", issuerId));
+                    if(!String.IsNullOrEmpty(batch))
+                        bridge.Log(String.Format("BATCH NO       :{0}", batch));
+                    if(!String.IsNullOrEmpty(stan))
+                        bridge.Log(String.Format("STAN NO        :{0}", stan));
 
                     if (subOprtType == null)
                     {
@@ -4110,9 +4222,22 @@ namespace FP300Service.UserControls
         {
             try
             {
-#if !CPP
-                CPResponse response = new CPResponse(bridge.Printer.RefundEFTPayment(int.Parse(txtAcquierIdRefund.Text)));
-#endif
+                CPResponse response;
+
+                if (numericUpDownRefundAmount.Value > 0)
+                {
+                    response = new CPResponse(bridge.Printer.RefundEFTPayment(int.Parse(txtAcquierIdRefund.Text), numericUpDownRefundAmount.Value));
+
+                    if (response.ErrorCode == 0)
+                    {
+                        bridge.Log(String.Format(FormMessage.AMOUNT.PadRight(12, ' ') + ":{0}", response.GetNextParam()));
+                        bridge.Log(String.Format(FormMessage.ACQUIER_ID.PadRight(12, ' ') + ":{0}", response.GetNextParam()));
+                        bridge.Log(String.Format("ISSUER ID".PadRight(12, ' ') + ":{0}", response.GetNextParam()));
+                        bridge.Log(String.Format("CARD BIN".PadRight(12, ' ') + ":{0}", response.GetNextParam()));
+                    }
+                }
+                else
+                    response = new CPResponse(bridge.Printer.RefundEFTPayment(int.Parse(txtAcquierIdRefund.Text)));
             }
             catch(Exception ex)
             {
@@ -4125,9 +4250,7 @@ namespace FP300Service.UserControls
             CPResponse response = null;
             try
             {
-#if !CPP
                 response = new CPResponse(bridge.Printer.GetBankListOnEFT());
-#endif
 
                 if (response.ErrorCode == 0)
                 {
@@ -4582,6 +4705,63 @@ namespace FP300Service.UserControls
                 bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
             
+        }
+
+        private void buttonPrintEDocumentSample_Click(object sender, EventArgs e)
+        {
+            List<string> sampleLines = new List<string>();
+
+            sampleLines.AddRange(new string[] {
+            "Sayın,                       15-05-2017 00:00:00",
+            "HUGIN ALICI                     HGN2017019800001",
+            "VKN: 3333333337                            SATIS",
+            "ŞİŞLİ / İSTANBUL                     TEMELFATURA",
+            "V.D. : GALATA                7025680A-BC3C-4AB6-",
+            "                               A37B-34A68B4C1B7C",
+            "                                                ",
+            "                                                ",
+            "SLIM FIT KOT PANTOLON        %18      235,99 TRY",
+            "        5 X 70,00                               ",
+            "MAVI SATEN GÖMLEK            %08      350,00 TRY",
+            "DERİ CEKET ERKEK             %01      700,00 TRY",
+            "       10 X 15,00                               ",
+            "HAKIKI DERİ KEMER            %18      150,00 TRY",
+            "                                                ",
+            "                                                ",
+            "                           Toplam:  17029,24 TRY",
+            "                          KDV %01:   1001,55 TRY",
+            "                          KDV %08:    901,55 TRY",
+            "      Vergiler Dahil Toplam Tutar:  18030,80 TRY",
+            "                                                ",
+            "                                                ",
+            "------------------------------------------------",
+            "* E-Arşiv İzni kapsamında elektronik ortamda    ",
+            "iletilmiştir.                                   ",
+            "* YALNIZ ONSEKİZBİNOTUZ TL SEKSEN KR'DiR        ",
+            "* NAKİT  18030,80 TRY                           ",
+            "* Gönderim Şekli: KAĞIT                         "
+            });
+
+            int docType = 3;
+            try
+            {
+                switch(comboBoxEDocumentDocTypes.SelectedIndex)
+                {
+                    case 0:
+                        docType = 3;
+                        break;
+                    case 1:
+                        docType = 2;
+                        break;
+                }
+
+                CPResponse response = new CPResponse(bridge.Printer.PrintEDocumentCopy(docType, sampleLines.ToArray()));
+
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
         }
     }
 }

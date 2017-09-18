@@ -34,6 +34,12 @@ namespace FP300Service.UserControls
             this.gbcEjLimit.Text = FormMessage.EJ_LIMIT;
             this.lblEjLimit.Text = FormMessage.LINE_COUNT + ":";
             this.btnSetEjLimit.Text = FormMessage.SET_EJ_LIMIT;
+
+            this.groupBoxECRInfo.Text = FormMessage.ECR_INFO;
+            this.buttonGetECRVersion.Text = FormMessage.VERSION_INFO;
+
+            this.groupBoxLibraryInfo.Text = FormMessage.LIBRARY_INFO;
+            this.buttonLibraryVersion.Text = FormMessage.VERSION_INFO;
         }
 
 
@@ -56,23 +62,33 @@ namespace FP300Service.UserControls
             this.btnLastZInfo = new System.Windows.Forms.Button();
             this.btnLastReceiptInfo = new System.Windows.Forms.Button();
             this.tableLayoutPanelFiscalInfoUC = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBoxLibraryInfo = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonLibraryVersion = new System.Windows.Forms.Button();
+            this.groupBoxECRInfo = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonGetECRVersion = new System.Windows.Forms.Button();
             this.gbcEjLimit.SuspendLayout();
             this.tableLayoutPanelEJLimit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrEjLine)).BeginInit();
             this.gbxStatusFuncs.SuspendLayout();
             this.tableLayoutPanelFiscalRcptInfo.SuspendLayout();
             this.tableLayoutPanelFiscalInfoUC.SuspendLayout();
+            this.groupBoxLibraryInfo.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.groupBoxECRInfo.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbcEjLimit
             // 
             this.gbcEjLimit.Controls.Add(this.tableLayoutPanelEJLimit);
             this.gbcEjLimit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbcEjLimit.Location = new System.Drawing.Point(2, 90);
+            this.gbcEjLimit.Location = new System.Drawing.Point(2, 108);
             this.gbcEjLimit.Margin = new System.Windows.Forms.Padding(2);
             this.gbcEjLimit.Name = "gbcEjLimit";
             this.gbcEjLimit.Padding = new System.Windows.Forms.Padding(2);
-            this.gbcEjLimit.Size = new System.Drawing.Size(352, 71);
+            this.gbcEjLimit.Size = new System.Drawing.Size(388, 102);
             this.gbcEjLimit.TabIndex = 20;
             this.gbcEjLimit.TabStop = false;
             this.gbcEjLimit.Text = "EKÜ Limit";
@@ -91,7 +107,7 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelEJLimit.Name = "tableLayoutPanelEJLimit";
             this.tableLayoutPanelEJLimit.RowCount = 1;
             this.tableLayoutPanelEJLimit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelEJLimit.Size = new System.Drawing.Size(348, 54);
+            this.tableLayoutPanelEJLimit.Size = new System.Drawing.Size(384, 85);
             this.tableLayoutPanelEJLimit.TabIndex = 0;
             // 
             // btnSetEjLimit
@@ -100,7 +116,7 @@ namespace FP300Service.UserControls
             this.btnSetEjLimit.Location = new System.Drawing.Point(2, 2);
             this.btnSetEjLimit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetEjLimit.Name = "btnSetEjLimit";
-            this.btnSetEjLimit.Size = new System.Drawing.Size(110, 50);
+            this.btnSetEjLimit.Size = new System.Drawing.Size(122, 81);
             this.btnSetEjLimit.TabIndex = 6;
             this.btnSetEjLimit.Text = "EKÜ Limit Ekle";
             this.btnSetEjLimit.UseVisualStyleBackColor = true;
@@ -109,7 +125,7 @@ namespace FP300Service.UserControls
             // nmrEjLine
             // 
             this.nmrEjLine.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nmrEjLine.Location = new System.Drawing.Point(248, 17);
+            this.nmrEjLine.Location = new System.Drawing.Point(278, 32);
             this.nmrEjLine.Margin = new System.Windows.Forms.Padding(2);
             this.nmrEjLine.Maximum = new decimal(new int[] {
             40000000,
@@ -131,10 +147,10 @@ namespace FP300Service.UserControls
             // 
             this.lblEjLimit.AutoSize = true;
             this.lblEjLimit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblEjLimit.Location = new System.Drawing.Point(116, 0);
+            this.lblEjLimit.Location = new System.Drawing.Point(128, 0);
             this.lblEjLimit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEjLimit.Name = "lblEjLimit";
-            this.lblEjLimit.Size = new System.Drawing.Size(110, 54);
+            this.lblEjLimit.Size = new System.Drawing.Size(122, 85);
             this.lblEjLimit.TabIndex = 16;
             this.lblEjLimit.Text = "Satır Sayısı:";
             this.lblEjLimit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -147,7 +163,7 @@ namespace FP300Service.UserControls
             this.gbxStatusFuncs.Margin = new System.Windows.Forms.Padding(2);
             this.gbxStatusFuncs.Name = "gbxStatusFuncs";
             this.gbxStatusFuncs.Padding = new System.Windows.Forms.Padding(2);
-            this.gbxStatusFuncs.Size = new System.Drawing.Size(352, 84);
+            this.gbxStatusFuncs.Size = new System.Drawing.Size(388, 102);
             this.gbxStatusFuncs.TabIndex = 19;
             this.gbxStatusFuncs.TabStop = false;
             this.gbxStatusFuncs.Text = "Mali Fiş Bilgileri";
@@ -166,16 +182,16 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelFiscalRcptInfo.Name = "tableLayoutPanelFiscalRcptInfo";
             this.tableLayoutPanelFiscalRcptInfo.RowCount = 1;
             this.tableLayoutPanelFiscalRcptInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelFiscalRcptInfo.Size = new System.Drawing.Size(348, 67);
+            this.tableLayoutPanelFiscalRcptInfo.Size = new System.Drawing.Size(384, 85);
             this.tableLayoutPanelFiscalRcptInfo.TabIndex = 0;
             // 
             // btnDrawerInfo
             // 
             this.btnDrawerInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDrawerInfo.Location = new System.Drawing.Point(230, 2);
+            this.btnDrawerInfo.Location = new System.Drawing.Point(254, 2);
             this.btnDrawerInfo.Margin = new System.Windows.Forms.Padding(2);
             this.btnDrawerInfo.Name = "btnDrawerInfo";
-            this.btnDrawerInfo.Size = new System.Drawing.Size(116, 63);
+            this.btnDrawerInfo.Size = new System.Drawing.Size(128, 81);
             this.btnDrawerInfo.TabIndex = 8;
             this.btnDrawerInfo.Text = "Çekmece Bilgileri";
             this.btnDrawerInfo.UseVisualStyleBackColor = true;
@@ -187,7 +203,7 @@ namespace FP300Service.UserControls
             this.btnLastZInfo.Location = new System.Drawing.Point(2, 2);
             this.btnLastZInfo.Margin = new System.Windows.Forms.Padding(2);
             this.btnLastZInfo.Name = "btnLastZInfo";
-            this.btnLastZInfo.Size = new System.Drawing.Size(110, 63);
+            this.btnLastZInfo.Size = new System.Drawing.Size(122, 81);
             this.btnLastZInfo.TabIndex = 6;
             this.btnLastZInfo.Text = "Son Z Bilgisi";
             this.btnLastZInfo.UseVisualStyleBackColor = true;
@@ -196,10 +212,10 @@ namespace FP300Service.UserControls
             // btnLastReceiptInfo
             // 
             this.btnLastReceiptInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLastReceiptInfo.Location = new System.Drawing.Point(116, 2);
+            this.btnLastReceiptInfo.Location = new System.Drawing.Point(128, 2);
             this.btnLastReceiptInfo.Margin = new System.Windows.Forms.Padding(2);
             this.btnLastReceiptInfo.Name = "btnLastReceiptInfo";
-            this.btnLastReceiptInfo.Size = new System.Drawing.Size(110, 63);
+            this.btnLastReceiptInfo.Size = new System.Drawing.Size(122, 81);
             this.btnLastReceiptInfo.TabIndex = 7;
             this.btnLastReceiptInfo.Text = "Son Fiş Bilgisi";
             this.btnLastReceiptInfo.UseVisualStyleBackColor = true;
@@ -208,19 +224,97 @@ namespace FP300Service.UserControls
             // tableLayoutPanelFiscalInfoUC
             // 
             this.tableLayoutPanelFiscalInfoUC.ColumnCount = 2;
-            this.tableLayoutPanelFiscalInfoUC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanelFiscalInfoUC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanelFiscalInfoUC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.49746F));
+            this.tableLayoutPanelFiscalInfoUC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.50254F));
+            this.tableLayoutPanelFiscalInfoUC.Controls.Add(this.groupBoxLibraryInfo, 0, 3);
             this.tableLayoutPanelFiscalInfoUC.Controls.Add(this.gbxStatusFuncs, 0, 0);
             this.tableLayoutPanelFiscalInfoUC.Controls.Add(this.gbcEjLimit, 0, 1);
+            this.tableLayoutPanelFiscalInfoUC.Controls.Add(this.groupBoxECRInfo, 0, 2);
             this.tableLayoutPanelFiscalInfoUC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelFiscalInfoUC.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelFiscalInfoUC.Name = "tableLayoutPanelFiscalInfoUC";
-            this.tableLayoutPanelFiscalInfoUC.RowCount = 3;
-            this.tableLayoutPanelFiscalInfoUC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanelFiscalInfoUC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanelFiscalInfoUC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanelFiscalInfoUC.RowCount = 4;
+            this.tableLayoutPanelFiscalInfoUC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelFiscalInfoUC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelFiscalInfoUC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelFiscalInfoUC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelFiscalInfoUC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFiscalInfoUC.Size = new System.Drawing.Size(591, 427);
             this.tableLayoutPanelFiscalInfoUC.TabIndex = 21;
+            // 
+            // groupBoxLibraryInfo
+            // 
+            this.groupBoxLibraryInfo.Controls.Add(this.tableLayoutPanel2);
+            this.groupBoxLibraryInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxLibraryInfo.Location = new System.Drawing.Point(3, 321);
+            this.groupBoxLibraryInfo.Name = "groupBoxLibraryInfo";
+            this.groupBoxLibraryInfo.Size = new System.Drawing.Size(386, 103);
+            this.groupBoxLibraryInfo.TabIndex = 22;
+            this.groupBoxLibraryInfo.TabStop = false;
+            this.groupBoxLibraryInfo.Text = "Library Info";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
+            this.tableLayoutPanel2.Controls.Add(this.buttonLibraryVersion, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(380, 84);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // buttonLibraryVersion
+            // 
+            this.buttonLibraryVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonLibraryVersion.Location = new System.Drawing.Point(3, 3);
+            this.buttonLibraryVersion.Name = "buttonLibraryVersion";
+            this.buttonLibraryVersion.Size = new System.Drawing.Size(119, 78);
+            this.buttonLibraryVersion.TabIndex = 0;
+            this.buttonLibraryVersion.Text = "Version Info";
+            this.buttonLibraryVersion.UseVisualStyleBackColor = true;
+            this.buttonLibraryVersion.Click += new System.EventHandler(this.buttonLibraryVersion_Click);
+            // 
+            // groupBoxECRInfo
+            // 
+            this.groupBoxECRInfo.Controls.Add(this.tableLayoutPanel1);
+            this.groupBoxECRInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxECRInfo.Location = new System.Drawing.Point(3, 215);
+            this.groupBoxECRInfo.Name = "groupBoxECRInfo";
+            this.groupBoxECRInfo.Size = new System.Drawing.Size(386, 100);
+            this.groupBoxECRInfo.TabIndex = 21;
+            this.groupBoxECRInfo.TabStop = false;
+            this.groupBoxECRInfo.Text = "ECR Info";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
+            this.tableLayoutPanel1.Controls.Add(this.buttonGetECRVersion, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(380, 81);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // buttonGetECRVersion
+            // 
+            this.buttonGetECRVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonGetECRVersion.Location = new System.Drawing.Point(3, 3);
+            this.buttonGetECRVersion.Name = "buttonGetECRVersion";
+            this.buttonGetECRVersion.Size = new System.Drawing.Size(119, 75);
+            this.buttonGetECRVersion.TabIndex = 0;
+            this.buttonGetECRVersion.Text = "Version Info";
+            this.buttonGetECRVersion.UseVisualStyleBackColor = true;
+            this.buttonGetECRVersion.Click += new System.EventHandler(this.buttonGetECRVersion_Click);
             // 
             // FiscalInfoUC
             // 
@@ -236,6 +330,10 @@ namespace FP300Service.UserControls
             this.gbxStatusFuncs.ResumeLayout(false);
             this.tableLayoutPanelFiscalRcptInfo.ResumeLayout(false);
             this.tableLayoutPanelFiscalInfoUC.ResumeLayout(false);
+            this.groupBoxLibraryInfo.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.groupBoxECRInfo.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -255,7 +353,12 @@ namespace FP300Service.UserControls
         private TableLayoutPanel tableLayoutPanelEJLimit;
         private TableLayoutPanel tableLayoutPanelFiscalRcptInfo;
         private TableLayoutPanel tableLayoutPanelFiscalInfoUC;
-
+        private GroupBox groupBoxECRInfo;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Button buttonGetECRVersion;
+        private GroupBox groupBoxLibraryInfo;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Button buttonLibraryVersion;
         private static FiscalCmd lastCmd;
         
         internal static TestUC Instance(IBridge iBridge)
@@ -431,6 +534,36 @@ namespace FP300Service.UserControls
         private void btnSetEjLimit_Click(object sender, EventArgs e)
         {
             SendCommand(new CPResponse(bridge.Printer.SetEJLimit((int)nmrEjLine.Value)));
+        }
+
+        private void buttonGetECRVersion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string version = bridge.Printer.GetECRVersion();
+
+                bridge.Log("***************************************************" + Environment.NewLine);
+                bridge.Log(String.Format(FormMessage.VERSION_INFO + ": {0}", version));
+            }
+            catch(Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+        }
+
+        private void buttonLibraryVersion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string version = bridge.Printer.LibraryVersion;
+
+                bridge.Log("***************************************************" + Environment.NewLine);
+                bridge.Log(String.Format(FormMessage.VERSION_INFO + ": {0}", version));
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
         }
     }
 }
