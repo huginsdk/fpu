@@ -88,6 +88,7 @@ public class FP300Service {
 	public native String VoidReceipt();
 	public native String PrintRemarkLine(String[] line);
 	public native String PrintReceiptBarcode(String barcode);
+	public native String PrintReceiptBarcode(int barcodeType, String barcode);
 	public native String PrintXReport(int copy);
 	public native String PrintXPluReport(int firstPlu, int lastPlu, int copy);
 	public native String PrintZReport();
@@ -145,6 +146,7 @@ public class FP300Service {
    public native String GetEFTSlipCopy(int acquierID, int batchNo, int stanNo, int zNo, int receiptNo);
    public native String GetBankListOnEFT();
    public native String GetSalesInfo();
+   public native String PrintEndDayReport();
 	public DateTime GetNewDateTime() { return new DateTime(); }
 	public native String LoadGraphicLogo(byte[] monochromeBitmapData);
    

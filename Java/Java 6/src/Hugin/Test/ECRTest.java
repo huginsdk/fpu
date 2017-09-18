@@ -136,6 +136,8 @@ public class ECRTest {
         System.out.println(indx++ + " - EFT: VOID PAYMENT");
         System.out.println(indx++ + " - EFT: REFUND PAYMENT");
         System.out.println(indx++ + " - EFT: GET BANK LIST");
+        System.out.println(indx++ + " - EFT: END DAY REPORT");
+        System.out.println(indx++ + " - PRINT RECEIPT BARCODE");
 		
 		System.out.print("Select Menu : ");
         dec = key.nextInt();
@@ -241,6 +243,16 @@ public class ECRTest {
       break; 
     case 19:
             response = fp300Service.GetBankListOnEFT();
+      break;  
+    case 20:
+            response = fp300Service.PrintEndDayReport();
+      break;  
+    case 21:          
+            System.out.print("Barcode Type: ");
+            int barcodeType = key.nextInt();
+            System.out.print("Barcode: ");
+            String barcode = key.next();
+            response = fp300Service.PrintReceiptBarcode(barcodeType, barcode);
       break;  
 
         }
