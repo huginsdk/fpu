@@ -119,7 +119,7 @@ public class ECRTest {
         System.out.println(indx++ + " - EXIT");
         System.out.println(indx++ + " - START RECEIPT");
         System.out.println(indx++ + " - SALE PRODUCT");
-        System.out.println(indx++ + " - Sale DEPARTMENT");
+        System.out.println(indx++ + " - SALE DEPARTMENT");
         System.out.println(indx++ + " - SALE FROM JSON FILE");
         System.out.println(indx++ + " - ADJUST PRODUCT");
         System.out.println(indx++ + " - PAY");
@@ -138,6 +138,7 @@ public class ECRTest {
         System.out.println(indx++ + " - EFT: GET BANK LIST");
         System.out.println(indx++ + " - EFT: END DAY REPORT");
         System.out.println(indx++ + " - PRINT RECEIPT BARCODE");
+		System.out.println(indx++ + " - GET DRAWER INFO");
 		
 		System.out.print("Select Menu : ");
         dec = key.nextInt();
@@ -254,6 +255,9 @@ public class ECRTest {
             String barcode = key.next();
             response = fp300Service.PrintReceiptBarcode(barcodeType, barcode);
       break;  
+	case 22:
+			response = fp300Service.GetDrawerInfo();
+	  break;
 
         }
 
