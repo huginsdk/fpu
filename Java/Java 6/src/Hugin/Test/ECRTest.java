@@ -32,8 +32,8 @@ public class ECRTest {
       case 1:
         System.out.print("IP Address(207.46.128.217): ");
         IpAddress = key.next();
-        System.out.print("Connecting to server(" + IpAddress + ":5555)...");
-        if (fp300Service.TCPConnect(IpAddress, 5555)) System.out.println("OK\n");
+        System.out.print("Connecting to server(" + IpAddress + ":4444)...");
+        if (fp300Service.TCPConnect(IpAddress, 4444)) System.out.println("OK\n");
         else {
           System.out.println("Failed");
           return;
@@ -62,25 +62,27 @@ public class ECRTest {
     serverInfo.Version = "";
     serverInfo.SerialNum = "";
 
-    fp300Service.SetDebugLevel(FP300Service.LogLevel.HIDE_BUG.getValue());
+    fp300Service.SetDebugLevel(FP300Service.LogLevel.INFO.getValue());
 
     System.out.print("Connecting to printer... : " + serverInfo.TerminalNo);
+
     if (fp300Service.Connect(serverInfo, serverInfo.TerminalNo, "")) 
   	{
   		System.out.println(" OK\n");
   	}
     else 
-	  {
+	{
       System.out.println(" Failed");
+	  System.out.println(fp300Service.GetLastLog());
       return;
     }
 
-    System.out.println("Tesing CheckPrinterStatus()...");
+    System.out.println("CheckPrinterStatus()...");
     System.out.println(fp300Service.CheckPrinterStatus());
     System.out.println(fp300Service.GetLastLog() + "\n");
 
-    System.out.println("Tesing SignInCashier(6, 1357)...");
-    System.out.println(fp300Service.SignInCashier(6, "1357"));
+    System.out.println("SignInCashier(9, 14710)...");
+    System.out.println(fp300Service.SignInCashier(9, "14710"));
     System.out.println(fp300Service.GetLastLog() + "\n");
     int dec;
 /*
@@ -139,6 +141,11 @@ public class ECRTest {
         System.out.println(indx++ + " - EFT: END DAY REPORT");
         System.out.println(indx++ + " - PRINT RECEIPT BARCODE");
 		System.out.println(indx++ + " - GET DRAWER INFO");
+		System.out.println(indx++ + " - GET CREDITS");
+		System.out.println(indx++ + " - GET VAT RATES");
+		System.out.println(indx++ + " - STRESS TEST (DRAWER INFO)");
+		System.out.println(indx++ + " - PRINT X REPORT");
+		System.out.println(indx++ + " - PRINT Z REPORT");
 		
 		System.out.print("Select Menu : ");
         dec = key.nextInt();
@@ -258,7 +265,61 @@ public class ECRTest {
 	case 22:
 			response = fp300Service.GetDrawerInfo();
 	  break;
+	case 23:
+			response = fp300Service.GetCreditInfo(0);
+			printResponse(response);
+			response = fp300Service.GetCreditInfo(1);
+			printResponse(response);
+			response = fp300Service.GetCreditInfo(2);
+			printResponse(response);
+			response = fp300Service.GetCreditInfo(3);
+			printResponse(response);
+			response = fp300Service.GetCreditInfo(4);
+			printResponse(response);
+			response = fp300Service.GetCreditInfo(5);
+			printResponse(response);
+			response = fp300Service.GetCreditInfo(6);
+			printResponse(response);
+			response = fp300Service.GetCreditInfo(7);
+	  break;
+	case 24:
+			response = fp300Service.GetVATRate(0);
+			printResponse(response);
+			response = fp300Service.GetVATRate(1);
+			printResponse(response);
+			response = fp300Service.GetVATRate(2);
+			printResponse(response);
+			response = fp300Service.GetVATRate(3);
+			printResponse(response);
+			response = fp300Service.GetVATRate(4);
+			printResponse(response);
+			response = fp300Service.GetVATRate(5);
+			printResponse(response);
+			response = fp300Service.GetVATRate(6);
+			printResponse(response);
+			response = fp300Service.GetVATRate(7);
+	  break;
+	case 25:
+			//System.out.print("VAT index: ");
+            //int VATIndx = key.nextInt();
+			System.out.print("Loop Count: ");
+            int count = key.nextInt();
 
+			for (int i = 0;i<count ;i++ ) {
+				System.out.println("*** " + (i+1) + " ***");
+				System.out.println("---------------------");
+				response = fp300Service.GetDrawerInfo();
+				printResponse(response);
+				System.out.println(" ");
+            }
+
+	  break;
+	case 26:
+			response = fp300Service.PrintXReport(2);
+	  break;
+	case 27:
+			response = fp300Service.PrintZReport();
+	  break;
         }
 
         printResponse(response);
