@@ -3439,9 +3439,9 @@ namespace FP300Service.UserControls
                 CPResponse response = new CPResponse(bridge.Printer.SaveNetworkSettings(ip, subnet, gateway));
 
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -3520,7 +3520,12 @@ namespace FP300Service.UserControls
 
                         if (i == 5)
                         {
-                            long n;
+                            // Check length
+                            if(txtLogo.Text.Length > 11)
+                            {
+                                MessageBox.Show("Last logo line length must be max 11!");
+                                return;
+                            }
 
                             // last logo line have to be numeric
                             if (!CheckInputIsNumeric(txtLogo.Text))
@@ -3679,9 +3684,9 @@ namespace FP300Service.UserControls
 
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
         #endregion VAT

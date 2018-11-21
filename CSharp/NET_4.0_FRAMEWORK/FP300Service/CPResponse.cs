@@ -66,10 +66,8 @@ namespace FP300Service
                     result = DescriptionAttr(enumError);
                     return result;
                 }
-                catch (Exception ex)
-                {
+                catch { }
 
-                }
                 return result;
             }
         }
@@ -85,10 +83,8 @@ namespace FP300Service
                     StatusCode enumStatus = (StatusCode)this.statusCode;
                     result = DescriptionAttr(enumStatus);
                 }
-                catch (Exception ex)
-                {
+                catch { }
 
-                }
                 return result;
             }
         }
@@ -161,6 +157,20 @@ namespace FP300Service
 
                 string retVal = paramList[paramIndex];
                 paramIndex++;
+                return retVal;
+            }
+            else
+                return null;
+        }
+
+        public string GetParamByIndex(int index)
+        {
+            if (paramList != null)
+            {
+                if (paramIndex >= paramList.Count)
+                    return null;
+
+                string retVal = paramList[index - 1];
                 return retVal;
             }
             else

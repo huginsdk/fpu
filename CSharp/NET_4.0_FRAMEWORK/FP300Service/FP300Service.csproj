@@ -75,14 +75,6 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Hugin.Common, Version=1.0.0.430, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\etc\Hugin.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Hugin.POS.CompactPrinter.FP300, Version=1.0.0.430, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\etc\Hugin.POS.CompactPrinter.FP300.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -98,6 +90,18 @@
     <Compile Include="CPResponse.cs" />
     <Compile Include="Connection.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ServiceSEIForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceSEIForm.Designer.cs">
+      <DependentUpon>ServiceSEIForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ErrorCode.cs" />
     <Compile Include="FormMessage.cs" />
@@ -142,6 +146,12 @@
     <Compile Include="UserControls\UtililtyFuncsUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <EmbeddedResource Include="ServiceSEIForm.resx">
+      <DependentUpon>ServiceSEIForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InputBox.resx">
       <DependentUpon>InputBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +188,15 @@
     <EmbeddedResource Include="UserControls\UtililtyFuncsUC.resx">
       <DependentUpon>UtililtyFuncsUC.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Certificates\Kurumsal-s1.crt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Certificates\OKC-S1-SIL.crl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Certificates\OKC-S1.cer">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -200,6 +219,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FP300 All mini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hugin.Common\Hugin.Common.csproj">
+      <Project>{0ddd777b-8d96-4d27-8fce-4448bfd18a44}</Project>
+      <Name>Hugin.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hugin.POS.CompactPrinter.FP300\Hugin.POS.CompactPrinter.FP300.csproj">
+      <Project>{cbba05a0-53f2-494d-bb6e-3825610bf762}</Project>
+      <Name>Hugin.POS.CompactPrinter.FP300</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

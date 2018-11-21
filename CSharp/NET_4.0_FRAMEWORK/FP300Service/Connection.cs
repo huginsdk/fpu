@@ -176,6 +176,7 @@ namespace FP300Service
         private Socket client = null;
         private string ipAddress = String.Empty;
         private int port = 0;
+        private static int supportedBufferSize = ProgramConfig.DEFAULT_BUFFER_SIZE;
 
         public TCPConnection(String ipAddress, int port)
         {
@@ -199,8 +200,8 @@ namespace FP300Service
                               SocketType.Stream, ProtocolType.Tcp);
             // Set initalize values
             client.ReceiveTimeout = 4500;
-            client.ReceiveBufferSize = ProgramConfig.DEFAULT_BUFFER_SIZE;
-            client.SendBufferSize = ProgramConfig.DEFAULT_BUFFER_SIZE;
+            client.ReceiveBufferSize = supportedBufferSize;
+            client.SendBufferSize = supportedBufferSize;
             // Connect to destination
             client.Connect(ipep);
         }
@@ -249,9 +250,12 @@ namespace FP300Service
             }
             set
             {
+                // Close the connection
+                Close();
                 // Set new buffer size
-                client.SendBufferSize = value;
-                client.ReceiveBufferSize = value;
+                supportedBufferSize = value;
+                // Re-open the connection
+                Open();
             }
         }
 

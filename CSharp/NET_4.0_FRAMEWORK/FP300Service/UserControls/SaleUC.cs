@@ -6,6 +6,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Linq;
 
 
 namespace FP300Service.UserControls
@@ -41,7 +42,8 @@ namespace FP300Service.UserControls
         CREDIT,
         CHECK,
         EFT_POS,
-        FOREIGN_CURRENCY
+        FOREIGN_CURRENCY,
+        FOODCARD
     }
 
     public class SaleUC : TestUC
@@ -259,6 +261,62 @@ namespace FP300Service.UserControls
         private Label labelEDocumentDocType;
         private ComboBox comboBoxEDocumentDocTypes;
         private Button buttonPrintEDocumentSample;
+        private TabPage tabPageDataTest;
+        private Button buttonSendTestData;
+        private Button buttonLoadInvoiceFile;
+        private Label labelInvoiceLinePath;
+        private TabPage tabPageInvoice;
+        private TableLayoutPanel tableLayoutPanel20;
+        private Button buttonStartInvoice;
+        private TableLayoutPanel tableLayoutPanel21;
+        private TableLayoutPanel tableLayoutPanel22;
+        private DateTimePicker dateTimePickerInvoiceDT;
+        private Label labelInvoiceDT;
+        private TableLayoutPanel tableLayoutPanel23;
+        private TextBox textBoxInvoiceSerial;
+        private Label labelInvoiceSerial;
+        private TableLayoutPanel tableLayoutPanel24;
+        private TextBox textBoxInvoiceOrderNo;
+        private Label labelInvoiceOrderNo;
+        private Button buttonAddCustomer;
+        private TabPage tabPageStoppage;
+        private TableLayoutPanel tableLayoutPanel25;
+        private Button buttonStoppage;
+        private TableLayoutPanel tableLayoutPanel26;
+        private Label labelStoppageAmount;
+        private NumericUpDown numericUpDownStoppageAmount;
+        private TabPage tabPageReturnDoc;
+        private TableLayoutPanel tableLayoutPanel27;
+        private Button buttonStartReturnDoc;
+        private TableLayoutPanel tableLayoutPanel28;
+        private TableLayoutPanel tableLayoutPanel29;
+        private DateTimePicker dateTimePickerRetDoc;
+        private Label labelRetDocDT;
+        private TableLayoutPanel tableLayoutPanel30;
+        private TextBox textBoxRetDocSerial;
+        private Label labelRetDocSerial;
+        private TableLayoutPanel tableLayoutPanel31;
+        private TextBox textBoxRetDocORderNo;
+        private Label labelRetDocOrderNo;
+        private Button buttonAddCustomerRetDoc;
+        private TabPage tabPageSelfEmpInvoice;
+        private TableLayoutPanel tableLayoutPanel32;
+        private Button buttonStartSelfEmpInvoice;
+        private DataGridView dataGridViewServices;
+        private TableLayoutPanel tableLayoutPanel33;
+        private Button buttonRemoveService;
+        private Button buttonAddService;
+        private Button buttonAddCustomerSEI;
+        private DataGridViewCheckBoxColumn ColumnTick;
+        private DataGridViewTextBoxColumn ColumnService;
+        private TabPage tabSlipExternal;
+        private GroupBox gbxSlipContent;
+        private GroupBox gbxSlipType;
+        private RadioButton rbtnSlipTypeError;
+        private RadioButton rbtnSlipTypeMerchant;
+        private RadioButton rbtnSlipTypeCustomer;
+        private Button btnSendSlip;
+        private TextBox txtSlipLines;
         private Button btnRefreshCredit;
 
 
@@ -377,8 +435,27 @@ namespace FP300Service.UserControls
             this.labelCrrAccDate.Text = FormMessage.DATE;
             this.buttonPrintEDocumentSample.Text = FormMessage.PRINT_EDOCUMENT_SAMPLE;
             this.labelEDocumentDocType.Text = FormMessage.DOCUMENT_TYPE;
-            
-            
+            this.tabPageInvoice.Text = FormMessage.INVOICE;
+            this.buttonStartInvoice.Text = FormMessage.START_DOCUMENT;
+            this.labelInvoiceDT.Text = FormMessage.DATE;
+            this.labelInvoiceSerial.Text = FormMessage.DOCUMENT_SERIAL;
+            this.labelInvoiceOrderNo.Text = FormMessage.DOCUMENT_ORDER_NO;
+            this.buttonAddCustomer.Text = FormMessage.ADD_CUSTOMER;
+            this.tabPageStoppage.Text = FormMessage.STOPPAGE;
+            this.labelStoppageAmount.Text = FormMessage.AMOUNT;
+            this.buttonStoppage.Text = FormMessage.SEND_STOPPAGE;
+            this.tabPageReturnDoc.Text = FormMessage.RETURN_DOCUMENT;
+            this.buttonStartReturnDoc.Text = FormMessage.START_DOCUMENT;
+            this.labelRetDocSerial.Text = FormMessage.DOCUMENT_SERIAL;
+            this.labelRetDocOrderNo.Text = FormMessage.DOCUMENT_ORDER_NO;
+            this.labelRetDocDT.Text = FormMessage.DATE;
+            this.buttonAddCustomerRetDoc.Text = FormMessage.ADD_CUSTOMER;
+            this.tabPageSelfEmpInvoice.Text = FormMessage.SELF_EMPLOYEMENT_INVOICE;
+            this.buttonStartSelfEmpInvoice.Text = FormMessage.START_DOCUMENT;
+            this.buttonAddService.Text = FormMessage.ADD_SERVICE;
+            this.buttonRemoveService.Text = FormMessage.REMOVE_SERVICE;
+            this.buttonAddCustomerSEI.Text = FormMessage.ADD_CUSTOMER;
+            this.dataGridViewServices.Columns[1].HeaderText = FormMessage.SERVICES_SEI;
         }
 
         private int LoadCreditData()
@@ -459,15 +536,14 @@ namespace FP300Service.UserControls
                     RefreshCurrencyList();
                 }*/
             }
-            catch (System.Exception ex)
-            {
-            	
-            }
+            catch { }
+
             base.OnParentChanged(e);
         }
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaleUC));
             this.tbcStartDoc = new System.Windows.Forms.TabControl();
             this.tbStrtRcpt = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -534,6 +610,52 @@ namespace FP300Service.UserControls
             this.labelCrrAccSerial = new System.Windows.Forms.Label();
             this.labelCrrAccAmount = new System.Windows.Forms.Label();
             this.dateTimePickerCrrAccDate = new System.Windows.Forms.DateTimePicker();
+            this.tabPageEDocument = new System.Windows.Forms.TabPage();
+            this.buttonLoadInvoiceFile = new System.Windows.Forms.Button();
+            this.labelInvoiceLinePath = new System.Windows.Forms.Label();
+            this.labelEDocumentDocType = new System.Windows.Forms.Label();
+            this.comboBoxEDocumentDocTypes = new System.Windows.Forms.ComboBox();
+            this.buttonPrintEDocumentSample = new System.Windows.Forms.Button();
+            this.tabPageDataTest = new System.Windows.Forms.TabPage();
+            this.buttonSendTestData = new System.Windows.Forms.Button();
+            this.tabPageInvoice = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonStartInvoice = new System.Windows.Forms.Button();
+            this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
+            this.dateTimePickerInvoiceDT = new System.Windows.Forms.DateTimePicker();
+            this.labelInvoiceDT = new System.Windows.Forms.Label();
+            this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxInvoiceSerial = new System.Windows.Forms.TextBox();
+            this.labelInvoiceSerial = new System.Windows.Forms.Label();
+            this.tableLayoutPanel24 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxInvoiceOrderNo = new System.Windows.Forms.TextBox();
+            this.labelInvoiceOrderNo = new System.Windows.Forms.Label();
+            this.buttonAddCustomer = new System.Windows.Forms.Button();
+            this.tabPageReturnDoc = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonStartReturnDoc = new System.Windows.Forms.Button();
+            this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
+            this.dateTimePickerRetDoc = new System.Windows.Forms.DateTimePicker();
+            this.labelRetDocDT = new System.Windows.Forms.Label();
+            this.tableLayoutPanel30 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxRetDocSerial = new System.Windows.Forms.TextBox();
+            this.labelRetDocSerial = new System.Windows.Forms.Label();
+            this.tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxRetDocORderNo = new System.Windows.Forms.TextBox();
+            this.labelRetDocOrderNo = new System.Windows.Forms.Label();
+            this.buttonAddCustomerRetDoc = new System.Windows.Forms.Button();
+            this.tabPageSelfEmpInvoice = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel32 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonStartSelfEmpInvoice = new System.Windows.Forms.Button();
+            this.dataGridViewServices = new System.Windows.Forms.DataGridView();
+            this.ColumnTick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel33 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonRemoveService = new System.Windows.Forms.Button();
+            this.buttonAddService = new System.Windows.Forms.Button();
+            this.buttonAddCustomerSEI = new System.Windows.Forms.Button();
             this.tbcFooter = new System.Windows.Forms.TabControl();
             this.tbpNotes = new System.Windows.Forms.TabPage();
             this.btnRemark = new System.Windows.Forms.Button();
@@ -548,6 +670,12 @@ namespace FP300Service.UserControls
             this.labelBarcodeType = new System.Windows.Forms.Label();
             this.comboBoxBarcodeTypes = new System.Windows.Forms.ComboBox();
             this.txtRcptBarcode = new System.Windows.Forms.TextBox();
+            this.tabPageStoppage = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonStoppage = new System.Windows.Forms.Button();
+            this.tableLayoutPanel26 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelStoppageAmount = new System.Windows.Forms.Label();
+            this.numericUpDownStoppageAmount = new System.Windows.Forms.NumericUpDown();
             this.tbcSale = new System.Windows.Forms.TabControl();
             this.tbpSale = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -658,6 +786,13 @@ namespace FP300Service.UserControls
             this.labelSlpCpyBatchNo = new System.Windows.Forms.Label();
             this.textBoxSlpCpyAcquirId = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.tabSlipExternal = new System.Windows.Forms.TabPage();
+            this.gbxSlipContent = new System.Windows.Forms.GroupBox();
+            this.gbxSlipType = new System.Windows.Forms.GroupBox();
+            this.rbtnSlipTypeError = new System.Windows.Forms.RadioButton();
+            this.rbtnSlipTypeMerchant = new System.Windows.Forms.RadioButton();
+            this.rbtnSlipTypeCustomer = new System.Windows.Forms.RadioButton();
+            this.btnSendSlip = new System.Windows.Forms.Button();
             this.bntPrintJSONDoc = new System.Windows.Forms.Button();
             this.btnCorrect = new System.Windows.Forms.Button();
             this.btnSubtotal = new System.Windows.Forms.Button();
@@ -673,10 +808,7 @@ namespace FP300Service.UserControls
             this.buttonAutoPrintDEPT = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.tabPageEDocument = new System.Windows.Forms.TabPage();
-            this.buttonPrintEDocumentSample = new System.Windows.Forms.Button();
-            this.comboBoxEDocumentDocTypes = new System.Windows.Forms.ComboBox();
-            this.labelEDocumentDocType = new System.Windows.Forms.Label();
+            this.txtSlipLines = new System.Windows.Forms.TextBox();
             this.tbcStartDoc.SuspendLayout();
             this.tbStrtRcpt.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -698,12 +830,34 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel18.SuspendLayout();
             this.tableLayoutPanel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCrrAccAmount)).BeginInit();
+            this.tabPageEDocument.SuspendLayout();
+            this.tabPageDataTest.SuspendLayout();
+            this.tabPageInvoice.SuspendLayout();
+            this.tableLayoutPanel20.SuspendLayout();
+            this.tableLayoutPanel21.SuspendLayout();
+            this.tableLayoutPanel22.SuspendLayout();
+            this.tableLayoutPanel23.SuspendLayout();
+            this.tableLayoutPanel24.SuspendLayout();
+            this.tabPageReturnDoc.SuspendLayout();
+            this.tableLayoutPanel27.SuspendLayout();
+            this.tableLayoutPanel28.SuspendLayout();
+            this.tableLayoutPanel29.SuspendLayout();
+            this.tableLayoutPanel30.SuspendLayout();
+            this.tableLayoutPanel31.SuspendLayout();
+            this.tabPageSelfEmpInvoice.SuspendLayout();
+            this.tableLayoutPanel32.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewServices)).BeginInit();
+            this.tableLayoutPanel33.SuspendLayout();
             this.tbcFooter.SuspendLayout();
             this.tbpNotes.SuspendLayout();
             this.tbpExtra.SuspendLayout();
             this.tabPageBarcode.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
             this.tableLayoutPanel17.SuspendLayout();
+            this.tabPageStoppage.SuspendLayout();
+            this.tableLayoutPanel25.SuspendLayout();
+            this.tableLayoutPanel26.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStoppageAmount)).BeginInit();
             this.tbcSale.SuspendLayout();
             this.tbpSale.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -741,10 +895,12 @@ namespace FP300Service.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRefundAmount)).BeginInit();
             this.tabPageBankList.SuspendLayout();
             this.tabPageEftSlipCopy.SuspendLayout();
+            this.tabSlipExternal.SuspendLayout();
+            this.gbxSlipContent.SuspendLayout();
+            this.gbxSlipType.SuspendLayout();
             this.tableLayoutPanelSaleUc.SuspendLayout();
             this.tableLayoutPanelSaleUCLeft.SuspendLayout();
             this.tableLayoutPanelSaleUCRight.SuspendLayout();
-            this.tabPageEDocument.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbcStartDoc
@@ -757,22 +913,26 @@ namespace FP300Service.UserControls
             this.tbcStartDoc.Controls.Add(this.tabPageCollection);
             this.tbcStartDoc.Controls.Add(this.tabPageCrrAccountCollctn);
             this.tbcStartDoc.Controls.Add(this.tabPageEDocument);
+            this.tbcStartDoc.Controls.Add(this.tabPageDataTest);
+            this.tbcStartDoc.Controls.Add(this.tabPageInvoice);
+            this.tbcStartDoc.Controls.Add(this.tabPageReturnDoc);
+            this.tbcStartDoc.Controls.Add(this.tabPageSelfEmpInvoice);
             this.tbcStartDoc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbcStartDoc.Location = new System.Drawing.Point(2, 2);
-            this.tbcStartDoc.Margin = new System.Windows.Forms.Padding(2);
+            this.tbcStartDoc.Location = new System.Drawing.Point(3, 2);
+            this.tbcStartDoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbcStartDoc.Name = "tbcStartDoc";
             this.tbcStartDoc.SelectedIndex = 0;
-            this.tbcStartDoc.Size = new System.Drawing.Size(469, 126);
+            this.tbcStartDoc.Size = new System.Drawing.Size(626, 156);
             this.tbcStartDoc.TabIndex = 30;
             // 
             // tbStrtRcpt
             // 
             this.tbStrtRcpt.Controls.Add(this.tableLayoutPanel5);
-            this.tbStrtRcpt.Location = new System.Drawing.Point(4, 22);
-            this.tbStrtRcpt.Margin = new System.Windows.Forms.Padding(2);
+            this.tbStrtRcpt.Location = new System.Drawing.Point(4, 25);
+            this.tbStrtRcpt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbStrtRcpt.Name = "tbStrtRcpt";
-            this.tbStrtRcpt.Padding = new System.Windows.Forms.Padding(2);
-            this.tbStrtRcpt.Size = new System.Drawing.Size(461, 100);
+            this.tbStrtRcpt.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbStrtRcpt.Size = new System.Drawing.Size(618, 127);
             this.tbStrtRcpt.TabIndex = 0;
             this.tbStrtRcpt.Text = "RECEIPT";
             this.tbStrtRcpt.UseVisualStyleBackColor = true;
@@ -783,20 +943,21 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Controls.Add(this.btnStartReceipt, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 2);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(457, 96);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(612, 123);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // btnStartReceipt
             // 
             this.btnStartReceipt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnStartReceipt.Location = new System.Drawing.Point(173, 29);
-            this.btnStartReceipt.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStartReceipt.Location = new System.Drawing.Point(232, 38);
+            this.btnStartReceipt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartReceipt.Name = "btnStartReceipt";
-            this.btnStartReceipt.Size = new System.Drawing.Size(110, 37);
+            this.btnStartReceipt.Size = new System.Drawing.Size(147, 46);
             this.btnStartReceipt.TabIndex = 1;
             this.btnStartReceipt.Text = "START DOCUMENT";
             this.btnStartReceipt.UseVisualStyleBackColor = true;
@@ -805,11 +966,11 @@ namespace FP300Service.UserControls
             // tbStrtInvoice
             // 
             this.tbStrtInvoice.Controls.Add(this.tableLayoutPanel10);
-            this.tbStrtInvoice.Location = new System.Drawing.Point(4, 22);
-            this.tbStrtInvoice.Margin = new System.Windows.Forms.Padding(2);
+            this.tbStrtInvoice.Location = new System.Drawing.Point(4, 25);
+            this.tbStrtInvoice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbStrtInvoice.Name = "tbStrtInvoice";
-            this.tbStrtInvoice.Padding = new System.Windows.Forms.Padding(2);
-            this.tbStrtInvoice.Size = new System.Drawing.Size(461, 100);
+            this.tbStrtInvoice.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbStrtInvoice.Size = new System.Drawing.Size(618, 127);
             this.tbStrtInvoice.TabIndex = 1;
             this.tbStrtInvoice.Text = "INVOICE TYPES";
             this.tbStrtInvoice.UseVisualStyleBackColor = true;
@@ -822,20 +983,21 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel10.Controls.Add(this.btnStartInvoice, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel11, 1, 0);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 2);
+            this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(457, 96);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(612, 123);
             this.tableLayoutPanel10.TabIndex = 33;
             // 
             // btnStartInvoice
             // 
             this.btnStartInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnStartInvoice.Location = new System.Drawing.Point(2, 2);
-            this.btnStartInvoice.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStartInvoice.Location = new System.Drawing.Point(3, 2);
+            this.btnStartInvoice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartInvoice.Name = "btnStartInvoice";
-            this.btnStartInvoice.Size = new System.Drawing.Size(91, 92);
+            this.btnStartInvoice.Size = new System.Drawing.Size(122, 119);
             this.btnStartInvoice.TabIndex = 2;
             this.btnStartInvoice.Text = "START DOCUMENT";
             this.btnStartInvoice.UseVisualStyleBackColor = true;
@@ -848,12 +1010,13 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel11.Controls.Add(this.tableLayoutPanel12, 0, 0);
             this.tableLayoutPanel11.Controls.Add(this.tableLayoutPanel13, 0, 1);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(98, 3);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(132, 4);
+            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 2;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(356, 90);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(476, 115);
             this.tableLayoutPanel11.TabIndex = 3;
             // 
             // tableLayoutPanel12
@@ -868,21 +1031,21 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel12.Controls.Add(this.lblInvSerial, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.txtTCKN_VKN, 3, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(350, 39);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(468, 49);
             this.tableLayoutPanel12.TabIndex = 0;
             // 
             // lblDocTypeInv
             // 
             this.lblDocTypeInv.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDocTypeInv.AutoSize = true;
-            this.lblDocTypeInv.Location = new System.Drawing.Point(12, 6);
-            this.lblDocTypeInv.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDocTypeInv.Location = new System.Drawing.Point(17, 7);
             this.lblDocTypeInv.Name = "lblDocTypeInv";
-            this.lblDocTypeInv.Size = new System.Drawing.Size(59, 26);
+            this.lblDocTypeInv.Size = new System.Drawing.Size(76, 34);
             this.lblDocTypeInv.TabIndex = 28;
             this.lblDocTypeInv.Text = "Document Type";
             // 
@@ -890,31 +1053,30 @@ namespace FP300Service.UserControls
             // 
             this.cbxInvTypes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbxInvTypes.FormattingEnabled = true;
-            this.cbxInvTypes.Location = new System.Drawing.Point(85, 9);
-            this.cbxInvTypes.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxInvTypes.Location = new System.Drawing.Point(114, 12);
+            this.cbxInvTypes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxInvTypes.Name = "cbxInvTypes";
-            this.cbxInvTypes.Size = new System.Drawing.Size(87, 21);
+            this.cbxInvTypes.Size = new System.Drawing.Size(115, 24);
             this.cbxInvTypes.TabIndex = 27;
             // 
             // lblInvSerial
             // 
             this.lblInvSerial.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblInvSerial.AutoSize = true;
-            this.lblInvSerial.Location = new System.Drawing.Point(183, 13);
-            this.lblInvSerial.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblInvSerial.Location = new System.Drawing.Point(249, 16);
             this.lblInvSerial.Name = "lblInvSerial";
-            this.lblInvSerial.Size = new System.Drawing.Size(69, 13);
+            this.lblInvSerial.Size = new System.Drawing.Size(85, 17);
             this.lblInvSerial.TabIndex = 25;
             this.lblInvSerial.Text = "TCKN / VKN";
             // 
             // txtTCKN_VKN
             // 
             this.txtTCKN_VKN.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtTCKN_VKN.Location = new System.Drawing.Point(263, 9);
-            this.txtTCKN_VKN.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTCKN_VKN.Location = new System.Drawing.Point(353, 13);
+            this.txtTCKN_VKN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTCKN_VKN.MaxLength = 11;
             this.txtTCKN_VKN.Name = "txtTCKN_VKN";
-            this.txtTCKN_VKN.Size = new System.Drawing.Size(85, 20);
+            this.txtTCKN_VKN.Size = new System.Drawing.Size(112, 22);
             this.txtTCKN_VKN.TabIndex = 26;
             this.txtTCKN_VKN.Text = "1234567890";
             // 
@@ -930,40 +1092,41 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel13.Controls.Add(this.txtboxInvoiceSerialNo, 3, 0);
             this.tableLayoutPanel13.Controls.Add(this.label7, 2, 0);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 48);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(4, 61);
+            this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 1;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(350, 39);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(468, 50);
             this.tableLayoutPanel13.TabIndex = 1;
             // 
             // label8
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 13);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(15, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 13);
+            this.label8.Size = new System.Drawing.Size(79, 17);
             this.label8.TabIndex = 30;
             this.label8.Text = "Issue Date:";
             // 
             // dateTimePickerInvoiceIssueDate
             // 
             this.dateTimePickerInvoiceIssueDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePickerInvoiceIssueDate.Location = new System.Drawing.Point(85, 9);
+            this.dateTimePickerInvoiceIssueDate.Location = new System.Drawing.Point(114, 14);
+            this.dateTimePickerInvoiceIssueDate.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerInvoiceIssueDate.Name = "dateTimePickerInvoiceIssueDate";
-            this.dateTimePickerInvoiceIssueDate.Size = new System.Drawing.Size(86, 20);
+            this.dateTimePickerInvoiceIssueDate.Size = new System.Drawing.Size(113, 22);
             this.dateTimePickerInvoiceIssueDate.TabIndex = 32;
             // 
             // txtboxInvoiceSerialNo
             // 
             this.txtboxInvoiceSerialNo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxInvoiceSerialNo.Location = new System.Drawing.Point(263, 9);
-            this.txtboxInvoiceSerialNo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtboxInvoiceSerialNo.Location = new System.Drawing.Point(352, 14);
+            this.txtboxInvoiceSerialNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtboxInvoiceSerialNo.MaxLength = 11;
             this.txtboxInvoiceSerialNo.Name = "txtboxInvoiceSerialNo";
-            this.txtboxInvoiceSerialNo.Size = new System.Drawing.Size(85, 20);
+            this.txtboxInvoiceSerialNo.Size = new System.Drawing.Size(112, 22);
             this.txtboxInvoiceSerialNo.TabIndex = 31;
             this.txtboxInvoiceSerialNo.Text = "HGN1234567";
             // 
@@ -971,21 +1134,20 @@ namespace FP300Service.UserControls
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(180, 13);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(242, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 13);
+            this.label7.Size = new System.Drawing.Size(96, 17);
             this.label7.TabIndex = 29;
             this.label7.Text = "Invoice Serial:";
             // 
             // tabAdvance
             // 
             this.tabAdvance.Controls.Add(this.tableLayoutPanel14);
-            this.tabAdvance.Location = new System.Drawing.Point(4, 22);
-            this.tabAdvance.Margin = new System.Windows.Forms.Padding(2);
+            this.tabAdvance.Location = new System.Drawing.Point(4, 25);
+            this.tabAdvance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabAdvance.Name = "tabAdvance";
-            this.tabAdvance.Padding = new System.Windows.Forms.Padding(2);
-            this.tabAdvance.Size = new System.Drawing.Size(461, 100);
+            this.tabAdvance.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabAdvance.Size = new System.Drawing.Size(618, 127);
             this.tabAdvance.TabIndex = 2;
             this.tabAdvance.Text = "ADVANCE";
             this.tabAdvance.UseVisualStyleBackColor = true;
@@ -998,20 +1160,21 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel14.Controls.Add(this.btnPaidDoc, 0, 0);
             this.tableLayoutPanel14.Controls.Add(this.tableLayoutPanel15, 1, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 2);
+            this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 1;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(457, 96);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(612, 123);
             this.tableLayoutPanel14.TabIndex = 25;
             // 
             // btnPaidDoc
             // 
             this.btnPaidDoc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPaidDoc.Location = new System.Drawing.Point(2, 2);
-            this.btnPaidDoc.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPaidDoc.Location = new System.Drawing.Point(3, 2);
+            this.btnPaidDoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPaidDoc.Name = "btnPaidDoc";
-            this.btnPaidDoc.Size = new System.Drawing.Size(99, 92);
+            this.btnPaidDoc.Size = new System.Drawing.Size(133, 119);
             this.btnPaidDoc.TabIndex = 3;
             this.btnPaidDoc.Text = "START DOCUMENT";
             this.btnPaidDoc.UseVisualStyleBackColor = true;
@@ -1029,23 +1192,23 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel15.Controls.Add(this.labelAdvanceName, 0, 1);
             this.tableLayoutPanel15.Controls.Add(this.lblNFTotal, 0, 2);
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(106, 3);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(143, 4);
+            this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
             this.tableLayoutPanel15.RowCount = 3;
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(348, 90);
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(465, 115);
             this.tableLayoutPanel15.TabIndex = 4;
             // 
             // labelAdvanceTCKN
             // 
             this.labelAdvanceTCKN.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelAdvanceTCKN.AutoSize = true;
-            this.labelAdvanceTCKN.Location = new System.Drawing.Point(44, 8);
-            this.labelAdvanceTCKN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelAdvanceTCKN.Location = new System.Drawing.Point(60, 10);
             this.labelAdvanceTCKN.Name = "labelAdvanceTCKN";
-            this.labelAdvanceTCKN.Size = new System.Drawing.Size(39, 13);
+            this.labelAdvanceTCKN.Size = new System.Drawing.Size(49, 17);
             this.labelAdvanceTCKN.TabIndex = 12;
             this.labelAdvanceTCKN.Text = "TCKN:";
             // 
@@ -1053,15 +1216,15 @@ namespace FP300Service.UserControls
             // 
             this.nmrAdvanceAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.nmrAdvanceAmount.DecimalPlaces = 2;
-            this.nmrAdvanceAmount.Location = new System.Drawing.Point(164, 64);
-            this.nmrAdvanceAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrAdvanceAmount.Location = new System.Drawing.Point(220, 83);
+            this.nmrAdvanceAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrAdvanceAmount.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             131072});
             this.nmrAdvanceAmount.Name = "nmrAdvanceAmount";
-            this.nmrAdvanceAmount.Size = new System.Drawing.Size(146, 20);
+            this.nmrAdvanceAmount.Size = new System.Drawing.Size(195, 22);
             this.nmrAdvanceAmount.TabIndex = 9;
             this.nmrAdvanceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrAdvanceAmount.Value = new decimal(new int[] {
@@ -1073,31 +1236,30 @@ namespace FP300Service.UserControls
             // txtboxAdvanceName
             // 
             this.txtboxAdvanceName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxAdvanceName.Location = new System.Drawing.Point(164, 33);
-            this.txtboxAdvanceName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtboxAdvanceName.Location = new System.Drawing.Point(221, 44);
+            this.txtboxAdvanceName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtboxAdvanceName.MaxLength = 15;
             this.txtboxAdvanceName.Name = "txtboxAdvanceName";
-            this.txtboxAdvanceName.Size = new System.Drawing.Size(146, 20);
+            this.txtboxAdvanceName.Size = new System.Drawing.Size(193, 22);
             this.txtboxAdvanceName.TabIndex = 23;
             // 
             // txtboxAdvanceTCKN
             // 
             this.txtboxAdvanceTCKN.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxAdvanceTCKN.Location = new System.Drawing.Point(165, 4);
-            this.txtboxAdvanceTCKN.Margin = new System.Windows.Forms.Padding(2);
+            this.txtboxAdvanceTCKN.Location = new System.Drawing.Point(222, 7);
+            this.txtboxAdvanceTCKN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtboxAdvanceTCKN.MaxLength = 11;
             this.txtboxAdvanceTCKN.Name = "txtboxAdvanceTCKN";
-            this.txtboxAdvanceTCKN.Size = new System.Drawing.Size(144, 20);
+            this.txtboxAdvanceTCKN.Size = new System.Drawing.Size(191, 22);
             this.txtboxAdvanceTCKN.TabIndex = 24;
             // 
             // labelAdvanceName
             // 
             this.labelAdvanceName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelAdvanceName.AutoSize = true;
-            this.labelAdvanceName.Location = new System.Drawing.Point(43, 37);
-            this.labelAdvanceName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelAdvanceName.Location = new System.Drawing.Point(59, 47);
             this.labelAdvanceName.Name = "labelAdvanceName";
-            this.labelAdvanceName.Size = new System.Drawing.Size(41, 13);
+            this.labelAdvanceName.Size = new System.Drawing.Size(51, 17);
             this.labelAdvanceName.TabIndex = 11;
             this.labelAdvanceName.Text = "NAME:";
             // 
@@ -1105,10 +1267,9 @@ namespace FP300Service.UserControls
             // 
             this.lblNFTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNFTotal.AutoSize = true;
-            this.lblNFTotal.Location = new System.Drawing.Point(35, 67);
-            this.lblNFTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNFTotal.Location = new System.Drawing.Point(49, 86);
             this.lblNFTotal.Name = "lblNFTotal";
-            this.lblNFTotal.Size = new System.Drawing.Size(57, 13);
+            this.lblNFTotal.Size = new System.Drawing.Size(72, 17);
             this.lblNFTotal.TabIndex = 10;
             this.lblNFTotal.Text = "AMOUNT:";
             // 
@@ -1120,11 +1281,11 @@ namespace FP300Service.UserControls
             this.tbpStartParking.Controls.Add(this.lblPlate);
             this.tbpStartParking.Controls.Add(this.label1);
             this.tbpStartParking.Controls.Add(this.txtPlate);
-            this.tbpStartParking.Location = new System.Drawing.Point(4, 22);
-            this.tbpStartParking.Margin = new System.Windows.Forms.Padding(2);
+            this.tbpStartParking.Location = new System.Drawing.Point(4, 25);
+            this.tbpStartParking.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbpStartParking.Name = "tbpStartParking";
-            this.tbpStartParking.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpStartParking.Size = new System.Drawing.Size(461, 100);
+            this.tbpStartParking.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbpStartParking.Size = new System.Drawing.Size(618, 127);
             this.tbpStartParking.TabIndex = 3;
             this.tbpStartParking.Text = "OTOPARK";
             this.tbpStartParking.UseVisualStyleBackColor = true;
@@ -1133,19 +1294,19 @@ namespace FP300Service.UserControls
             // 
             this.dtParkTime.CustomFormat = "HH:mm";
             this.dtParkTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtParkTime.Location = new System.Drawing.Point(341, 44);
-            this.dtParkTime.Margin = new System.Windows.Forms.Padding(2);
+            this.dtParkTime.Location = new System.Drawing.Point(455, 54);
+            this.dtParkTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtParkTime.Name = "dtParkTime";
             this.dtParkTime.ShowUpDown = true;
-            this.dtParkTime.Size = new System.Drawing.Size(56, 20);
+            this.dtParkTime.Size = new System.Drawing.Size(73, 22);
             this.dtParkTime.TabIndex = 37;
             // 
             // btnStartParkDoc
             // 
-            this.btnStartParkDoc.Location = new System.Drawing.Point(2, 4);
-            this.btnStartParkDoc.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStartParkDoc.Location = new System.Drawing.Point(3, 5);
+            this.btnStartParkDoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartParkDoc.Name = "btnStartParkDoc";
-            this.btnStartParkDoc.Size = new System.Drawing.Size(110, 37);
+            this.btnStartParkDoc.Size = new System.Drawing.Size(147, 46);
             this.btnStartParkDoc.TabIndex = 4;
             this.btnStartParkDoc.Text = "START DOCUMENT";
             this.btnStartParkDoc.UseVisualStyleBackColor = true;
@@ -1155,59 +1316,58 @@ namespace FP300Service.UserControls
             // 
             this.dtParkDate.CustomFormat = "dd-MM-yyyy";
             this.dtParkDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtParkDate.Location = new System.Drawing.Point(243, 44);
-            this.dtParkDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dtParkDate.Location = new System.Drawing.Point(324, 54);
+            this.dtParkDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtParkDate.Name = "dtParkDate";
-            this.dtParkDate.Size = new System.Drawing.Size(95, 20);
+            this.dtParkDate.Size = new System.Drawing.Size(125, 22);
             this.dtParkDate.TabIndex = 36;
             // 
             // lblPlate
             // 
             this.lblPlate.AutoSize = true;
-            this.lblPlate.Location = new System.Drawing.Point(142, 16);
-            this.lblPlate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPlate.Location = new System.Drawing.Point(189, 20);
             this.lblPlate.Name = "lblPlate";
-            this.lblPlate.Size = new System.Drawing.Size(41, 13);
+            this.lblPlate.Size = new System.Drawing.Size(52, 17);
             this.lblPlate.TabIndex = 28;
             this.lblPlate.Text = "PLATE";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(142, 48);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(189, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(99, 17);
             this.label1.TabIndex = 30;
             this.label1.Text = "ENTRY TIME :";
             // 
             // txtPlate
             // 
-            this.txtPlate.Location = new System.Drawing.Point(185, 12);
-            this.txtPlate.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPlate.Location = new System.Drawing.Point(247, 15);
+            this.txtPlate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPlate.MaxLength = 11;
             this.txtPlate.Name = "txtPlate";
-            this.txtPlate.Size = new System.Drawing.Size(87, 20);
+            this.txtPlate.Size = new System.Drawing.Size(115, 22);
             this.txtPlate.TabIndex = 29;
             this.txtPlate.Text = "34 FP 300";
             // 
             // tabPageFood
             // 
             this.tabPageFood.Controls.Add(this.buttonStartFoodDoc);
-            this.tabPageFood.Location = new System.Drawing.Point(4, 22);
+            this.tabPageFood.Location = new System.Drawing.Point(4, 25);
+            this.tabPageFood.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageFood.Name = "tabPageFood";
-            this.tabPageFood.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFood.Size = new System.Drawing.Size(461, 100);
+            this.tabPageFood.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPageFood.Size = new System.Drawing.Size(618, 127);
             this.tabPageFood.TabIndex = 4;
             this.tabPageFood.Text = "FOOD";
             this.tabPageFood.UseVisualStyleBackColor = true;
             // 
             // buttonStartFoodDoc
             // 
-            this.buttonStartFoodDoc.Location = new System.Drawing.Point(28, 20);
-            this.buttonStartFoodDoc.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonStartFoodDoc.Location = new System.Drawing.Point(37, 25);
+            this.buttonStartFoodDoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonStartFoodDoc.Name = "buttonStartFoodDoc";
-            this.buttonStartFoodDoc.Size = new System.Drawing.Size(110, 37);
+            this.buttonStartFoodDoc.Size = new System.Drawing.Size(147, 46);
             this.buttonStartFoodDoc.TabIndex = 5;
             this.buttonStartFoodDoc.Text = "START DOCUMENT";
             this.buttonStartFoodDoc.UseVisualStyleBackColor = true;
@@ -1229,10 +1389,11 @@ namespace FP300Service.UserControls
             this.tabPageCollection.Controls.Add(this.textBoxCllctnSerial);
             this.tabPageCollection.Controls.Add(this.label9);
             this.tabPageCollection.Controls.Add(this.buttonStartCllctnDoc);
-            this.tabPageCollection.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCollection.Location = new System.Drawing.Point(4, 25);
+            this.tabPageCollection.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageCollection.Name = "tabPageCollection";
-            this.tabPageCollection.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCollection.Size = new System.Drawing.Size(461, 100);
+            this.tabPageCollection.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPageCollection.Size = new System.Drawing.Size(618, 127);
             this.tabPageCollection.TabIndex = 5;
             this.tabPageCollection.Text = "COLLECTION INV";
             this.tabPageCollection.UseVisualStyleBackColor = true;
@@ -1240,27 +1401,28 @@ namespace FP300Service.UserControls
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(252, 58);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Location = new System.Drawing.Point(336, 71);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(66, 13);
+            this.label14.Size = new System.Drawing.Size(89, 17);
             this.label14.TabIndex = 43;
             this.label14.Text = "Fatura Tarihi";
             // 
             // dateTimePickerCllctionInvDate
             // 
             this.dateTimePickerCllctionInvDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePickerCllctionInvDate.Location = new System.Drawing.Point(255, 75);
+            this.dateTimePickerCllctionInvDate.Location = new System.Drawing.Point(340, 92);
+            this.dateTimePickerCllctionInvDate.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerCllctionInvDate.Name = "dateTimePickerCllctionInvDate";
-            this.dateTimePickerCllctionInvDate.Size = new System.Drawing.Size(86, 20);
+            this.dateTimePickerCllctionInvDate.Size = new System.Drawing.Size(113, 22);
             this.dateTimePickerCllctionInvDate.TabIndex = 42;
             // 
             // checkBoxComission
             // 
             this.checkBoxComission.AutoSize = true;
-            this.checkBoxComission.Location = new System.Drawing.Point(364, 58);
+            this.checkBoxComission.Location = new System.Drawing.Point(485, 71);
+            this.checkBoxComission.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxComission.Name = "checkBoxComission";
-            this.checkBoxComission.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxComission.Size = new System.Drawing.Size(18, 17);
             this.checkBoxComission.TabIndex = 41;
             this.checkBoxComission.UseVisualStyleBackColor = true;
             this.checkBoxComission.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
@@ -1268,25 +1430,24 @@ namespace FP300Service.UserControls
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(381, 58);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Location = new System.Drawing.Point(508, 71);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(55, 13);
+            this.label13.Size = new System.Drawing.Size(73, 17);
             this.label13.TabIndex = 40;
             this.label13.Text = "Komisyon:";
             // 
             // numericUpDownComission
             // 
             this.numericUpDownComission.DecimalPlaces = 2;
-            this.numericUpDownComission.Location = new System.Drawing.Point(355, 75);
-            this.numericUpDownComission.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownComission.Location = new System.Drawing.Point(473, 92);
+            this.numericUpDownComission.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDownComission.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             131072});
             this.numericUpDownComission.Name = "numericUpDownComission";
-            this.numericUpDownComission.Size = new System.Drawing.Size(91, 20);
+            this.numericUpDownComission.Size = new System.Drawing.Size(121, 22);
             this.numericUpDownComission.TabIndex = 39;
             this.numericUpDownComission.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownComission.Value = new decimal(new int[] {
@@ -1297,55 +1458,53 @@ namespace FP300Service.UserControls
             // 
             // textBoxInstutionName
             // 
-            this.textBoxInstutionName.Location = new System.Drawing.Point(147, 27);
-            this.textBoxInstutionName.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxInstutionName.Location = new System.Drawing.Point(196, 33);
+            this.textBoxInstutionName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxInstutionName.MaxLength = 21;
             this.textBoxInstutionName.Name = "textBoxInstutionName";
-            this.textBoxInstutionName.Size = new System.Drawing.Size(194, 20);
+            this.textBoxInstutionName.Size = new System.Drawing.Size(257, 22);
             this.textBoxInstutionName.TabIndex = 38;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(147, 10);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Location = new System.Drawing.Point(196, 12);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 13);
+            this.label12.Size = new System.Drawing.Size(77, 17);
             this.label12.TabIndex = 37;
             this.label12.Text = "Kurum Adı:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(147, 60);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(196, 74);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(58, 13);
+            this.label11.Size = new System.Drawing.Size(75, 17);
             this.label11.TabIndex = 36;
             this.label11.Text = "Abone No:";
             // 
             // textBoxSubscriberNo
             // 
-            this.textBoxSubscriberNo.Location = new System.Drawing.Point(143, 76);
-            this.textBoxSubscriberNo.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSubscriberNo.Location = new System.Drawing.Point(191, 94);
+            this.textBoxSubscriberNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSubscriberNo.MaxLength = 11;
             this.textBoxSubscriberNo.Name = "textBoxSubscriberNo";
-            this.textBoxSubscriberNo.Size = new System.Drawing.Size(91, 20);
+            this.textBoxSubscriberNo.Size = new System.Drawing.Size(120, 22);
             this.textBoxSubscriberNo.TabIndex = 35;
             this.textBoxSubscriberNo.Text = "123456789";
             // 
             // numericUpDownCllctnAmount
             // 
             this.numericUpDownCllctnAmount.DecimalPlaces = 2;
-            this.numericUpDownCllctnAmount.Location = new System.Drawing.Point(355, 27);
-            this.numericUpDownCllctnAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownCllctnAmount.Location = new System.Drawing.Point(473, 33);
+            this.numericUpDownCllctnAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDownCllctnAmount.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             131072});
             this.numericUpDownCllctnAmount.Name = "numericUpDownCllctnAmount";
-            this.numericUpDownCllctnAmount.Size = new System.Drawing.Size(91, 20);
+            this.numericUpDownCllctnAmount.Size = new System.Drawing.Size(121, 22);
             this.numericUpDownCllctnAmount.TabIndex = 34;
             this.numericUpDownCllctnAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownCllctnAmount.Value = new decimal(new int[] {
@@ -1357,39 +1516,37 @@ namespace FP300Service.UserControls
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(361, 12);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Location = new System.Drawing.Point(481, 15);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.Size = new System.Drawing.Size(46, 17);
             this.label10.TabIndex = 33;
             this.label10.Text = "Tutar:";
             // 
             // textBoxCllctnSerial
             // 
-            this.textBoxCllctnSerial.Location = new System.Drawing.Point(20, 76);
-            this.textBoxCllctnSerial.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCllctnSerial.Location = new System.Drawing.Point(27, 94);
+            this.textBoxCllctnSerial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxCllctnSerial.MaxLength = 11;
             this.textBoxCllctnSerial.Name = "textBoxCllctnSerial";
-            this.textBoxCllctnSerial.Size = new System.Drawing.Size(91, 20);
+            this.textBoxCllctnSerial.Size = new System.Drawing.Size(120, 22);
             this.textBoxCllctnSerial.TabIndex = 32;
             this.textBoxCllctnSerial.Text = "HGN1234567";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 60);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(23, 74);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(74, 13);
+            this.label9.Size = new System.Drawing.Size(96, 17);
             this.label9.TabIndex = 30;
             this.label9.Text = "Invoice Serial:";
             // 
             // buttonStartCllctnDoc
             // 
-            this.buttonStartCllctnDoc.Location = new System.Drawing.Point(8, 10);
-            this.buttonStartCllctnDoc.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonStartCllctnDoc.Location = new System.Drawing.Point(11, 12);
+            this.buttonStartCllctnDoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonStartCllctnDoc.Name = "buttonStartCllctnDoc";
-            this.buttonStartCllctnDoc.Size = new System.Drawing.Size(110, 37);
+            this.buttonStartCllctnDoc.Size = new System.Drawing.Size(147, 46);
             this.buttonStartCllctnDoc.TabIndex = 5;
             this.buttonStartCllctnDoc.Text = "START DOCUMENT";
             this.buttonStartCllctnDoc.UseVisualStyleBackColor = true;
@@ -1398,10 +1555,11 @@ namespace FP300Service.UserControls
             // tabPageCrrAccountCollctn
             // 
             this.tabPageCrrAccountCollctn.Controls.Add(this.tableLayoutPanel18);
-            this.tabPageCrrAccountCollctn.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCrrAccountCollctn.Location = new System.Drawing.Point(4, 25);
+            this.tabPageCrrAccountCollctn.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageCrrAccountCollctn.Name = "tabPageCrrAccountCollctn";
-            this.tabPageCrrAccountCollctn.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCrrAccountCollctn.Size = new System.Drawing.Size(461, 100);
+            this.tabPageCrrAccountCollctn.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPageCrrAccountCollctn.Size = new System.Drawing.Size(618, 127);
             this.tabPageCrrAccountCollctn.TabIndex = 6;
             this.tabPageCrrAccountCollctn.Text = "CUURENT ACCOUNT COLLECTION DOC";
             this.tabPageCrrAccountCollctn.UseVisualStyleBackColor = true;
@@ -1410,23 +1568,25 @@ namespace FP300Service.UserControls
             // 
             this.tableLayoutPanel18.ColumnCount = 2;
             this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 353F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 471F));
             this.tableLayoutPanel18.Controls.Add(this.btnPrintCurrAccHeader, 0, 0);
             this.tableLayoutPanel18.Controls.Add(this.tableLayoutPanel19, 1, 0);
             this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel18.Name = "tableLayoutPanel18";
             this.tableLayoutPanel18.RowCount = 1;
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(455, 94);
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(610, 119);
             this.tableLayoutPanel18.TabIndex = 0;
             // 
             // btnPrintCurrAccHeader
             // 
             this.btnPrintCurrAccHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPrintCurrAccHeader.Location = new System.Drawing.Point(3, 3);
+            this.btnPrintCurrAccHeader.Location = new System.Drawing.Point(4, 4);
+            this.btnPrintCurrAccHeader.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrintCurrAccHeader.Name = "btnPrintCurrAccHeader";
-            this.btnPrintCurrAccHeader.Size = new System.Drawing.Size(96, 88);
+            this.btnPrintCurrAccHeader.Size = new System.Drawing.Size(131, 111);
             this.btnPrintCurrAccHeader.TabIndex = 0;
             this.btnPrintCurrAccHeader.Text = "START DOCUMENT";
             this.btnPrintCurrAccHeader.UseVisualStyleBackColor = true;
@@ -1448,7 +1608,8 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel19.Controls.Add(this.labelCrrAccAmount, 0, 3);
             this.tableLayoutPanel19.Controls.Add(this.dateTimePickerCrrAccDate, 1, 4);
             this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel19.Location = new System.Drawing.Point(105, 3);
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(143, 4);
+            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel19.Name = "tableLayoutPanel19";
             this.tableLayoutPanel19.RowCount = 5;
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -1456,16 +1617,17 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(347, 88);
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(463, 111);
             this.tableLayoutPanel19.TabIndex = 1;
             // 
             // labelCrrAccDate
             // 
             this.labelCrrAccDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCrrAccDate.AutoSize = true;
-            this.labelCrrAccDate.Location = new System.Drawing.Point(68, 71);
+            this.labelCrrAccDate.Location = new System.Drawing.Point(93, 91);
+            this.labelCrrAccDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCrrAccDate.Name = "labelCrrAccDate";
-            this.labelCrrAccDate.Size = new System.Drawing.Size(36, 13);
+            this.labelCrrAccDate.Size = new System.Drawing.Size(45, 17);
             this.labelCrrAccDate.TabIndex = 29;
             this.labelCrrAccDate.Text = "DATE";
             // 
@@ -1473,15 +1635,15 @@ namespace FP300Service.UserControls
             // 
             this.numericUpDownCrrAccAmount.DecimalPlaces = 2;
             this.numericUpDownCrrAccAmount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDownCrrAccAmount.Location = new System.Drawing.Point(175, 53);
-            this.numericUpDownCrrAccAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownCrrAccAmount.Location = new System.Drawing.Point(234, 68);
+            this.numericUpDownCrrAccAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDownCrrAccAmount.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.numericUpDownCrrAccAmount.Name = "numericUpDownCrrAccAmount";
-            this.numericUpDownCrrAccAmount.Size = new System.Drawing.Size(170, 20);
+            this.numericUpDownCrrAccAmount.Size = new System.Drawing.Size(226, 22);
             this.numericUpDownCrrAccAmount.TabIndex = 28;
             this.numericUpDownCrrAccAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownCrrAccAmount.Value = new decimal(new int[] {
@@ -1493,40 +1655,41 @@ namespace FP300Service.UserControls
             // textBoxCrrAccDocSerial
             // 
             this.textBoxCrrAccDocSerial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCrrAccDocSerial.Location = new System.Drawing.Point(175, 36);
-            this.textBoxCrrAccDocSerial.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCrrAccDocSerial.Location = new System.Drawing.Point(234, 46);
+            this.textBoxCrrAccDocSerial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxCrrAccDocSerial.MaxLength = 48;
             this.textBoxCrrAccDocSerial.Name = "textBoxCrrAccDocSerial";
-            this.textBoxCrrAccDocSerial.Size = new System.Drawing.Size(170, 20);
+            this.textBoxCrrAccDocSerial.Size = new System.Drawing.Size(226, 22);
             this.textBoxCrrAccDocSerial.TabIndex = 27;
             // 
             // textBoxCrrAccCustName
             // 
             this.textBoxCrrAccCustName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCrrAccCustName.Location = new System.Drawing.Point(175, 19);
-            this.textBoxCrrAccCustName.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCrrAccCustName.Location = new System.Drawing.Point(234, 24);
+            this.textBoxCrrAccCustName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxCrrAccCustName.MaxLength = 48;
             this.textBoxCrrAccCustName.Name = "textBoxCrrAccCustName";
-            this.textBoxCrrAccCustName.Size = new System.Drawing.Size(170, 20);
+            this.textBoxCrrAccCustName.Size = new System.Drawing.Size(226, 22);
             this.textBoxCrrAccCustName.TabIndex = 26;
             // 
             // textBoxCrrAccTcknVkn
             // 
             this.textBoxCrrAccTcknVkn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCrrAccTcknVkn.Location = new System.Drawing.Point(175, 2);
-            this.textBoxCrrAccTcknVkn.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCrrAccTcknVkn.Location = new System.Drawing.Point(234, 2);
+            this.textBoxCrrAccTcknVkn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxCrrAccTcknVkn.MaxLength = 11;
             this.textBoxCrrAccTcknVkn.Name = "textBoxCrrAccTcknVkn";
-            this.textBoxCrrAccTcknVkn.Size = new System.Drawing.Size(170, 20);
+            this.textBoxCrrAccTcknVkn.Size = new System.Drawing.Size(226, 22);
             this.textBoxCrrAccTcknVkn.TabIndex = 25;
             // 
             // labelCrrAccTcknVkn
             // 
             this.labelCrrAccTcknVkn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCrrAccTcknVkn.AutoSize = true;
-            this.labelCrrAccTcknVkn.Location = new System.Drawing.Point(55, 2);
+            this.labelCrrAccTcknVkn.Location = new System.Drawing.Point(77, 2);
+            this.labelCrrAccTcknVkn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCrrAccTcknVkn.Name = "labelCrrAccTcknVkn";
-            this.labelCrrAccTcknVkn.Size = new System.Drawing.Size(63, 13);
+            this.labelCrrAccTcknVkn.Size = new System.Drawing.Size(77, 17);
             this.labelCrrAccTcknVkn.TabIndex = 0;
             this.labelCrrAccTcknVkn.Text = "TCKN/VKN";
             // 
@@ -1534,9 +1697,10 @@ namespace FP300Service.UserControls
             // 
             this.labelCrrAccCustName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCrrAccCustName.AutoSize = true;
-            this.labelCrrAccCustName.Location = new System.Drawing.Point(35, 19);
+            this.labelCrrAccCustName.Location = new System.Drawing.Point(51, 24);
+            this.labelCrrAccCustName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCrrAccCustName.Name = "labelCrrAccCustName";
-            this.labelCrrAccCustName.Size = new System.Drawing.Size(102, 13);
+            this.labelCrrAccCustName.Size = new System.Drawing.Size(129, 17);
             this.labelCrrAccCustName.TabIndex = 1;
             this.labelCrrAccCustName.Text = "CUSTOMER NAME";
             // 
@@ -1544,9 +1708,10 @@ namespace FP300Service.UserControls
             // 
             this.labelCrrAccSerial.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCrrAccSerial.AutoSize = true;
-            this.labelCrrAccSerial.Location = new System.Drawing.Point(64, 36);
+            this.labelCrrAccSerial.Location = new System.Drawing.Point(87, 46);
+            this.labelCrrAccSerial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCrrAccSerial.Name = "labelCrrAccSerial";
-            this.labelCrrAccSerial.Size = new System.Drawing.Size(45, 13);
+            this.labelCrrAccSerial.Size = new System.Drawing.Size(56, 17);
             this.labelCrrAccSerial.TabIndex = 2;
             this.labelCrrAccSerial.Text = "SERIAL";
             // 
@@ -1554,52 +1719,633 @@ namespace FP300Service.UserControls
             // 
             this.labelCrrAccAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCrrAccAmount.AutoSize = true;
-            this.labelCrrAccAmount.Location = new System.Drawing.Point(59, 53);
+            this.labelCrrAccAmount.Location = new System.Drawing.Point(81, 68);
+            this.labelCrrAccAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCrrAccAmount.Name = "labelCrrAccAmount";
-            this.labelCrrAccAmount.Size = new System.Drawing.Size(54, 13);
+            this.labelCrrAccAmount.Size = new System.Drawing.Size(68, 17);
             this.labelCrrAccAmount.TabIndex = 3;
             this.labelCrrAccAmount.Text = "AMOUNT";
             // 
             // dateTimePickerCrrAccDate
             // 
             this.dateTimePickerCrrAccDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePickerCrrAccDate.Location = new System.Drawing.Point(176, 71);
+            this.dateTimePickerCrrAccDate.Location = new System.Drawing.Point(235, 92);
+            this.dateTimePickerCrrAccDate.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerCrrAccDate.Name = "dateTimePickerCrrAccDate";
-            this.dateTimePickerCrrAccDate.Size = new System.Drawing.Size(168, 20);
+            this.dateTimePickerCrrAccDate.Size = new System.Drawing.Size(224, 22);
             this.dateTimePickerCrrAccDate.TabIndex = 43;
+            // 
+            // tabPageEDocument
+            // 
+            this.tabPageEDocument.Controls.Add(this.buttonLoadInvoiceFile);
+            this.tabPageEDocument.Controls.Add(this.labelInvoiceLinePath);
+            this.tabPageEDocument.Controls.Add(this.labelEDocumentDocType);
+            this.tabPageEDocument.Controls.Add(this.comboBoxEDocumentDocTypes);
+            this.tabPageEDocument.Controls.Add(this.buttonPrintEDocumentSample);
+            this.tabPageEDocument.Location = new System.Drawing.Point(4, 25);
+            this.tabPageEDocument.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPageEDocument.Name = "tabPageEDocument";
+            this.tabPageEDocument.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPageEDocument.Size = new System.Drawing.Size(618, 127);
+            this.tabPageEDocument.TabIndex = 7;
+            this.tabPageEDocument.Text = "E-BELGE";
+            this.tabPageEDocument.UseVisualStyleBackColor = true;
+            // 
+            // buttonLoadInvoiceFile
+            // 
+            this.buttonLoadInvoiceFile.Location = new System.Drawing.Point(255, 60);
+            this.buttonLoadInvoiceFile.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonLoadInvoiceFile.Name = "buttonLoadInvoiceFile";
+            this.buttonLoadInvoiceFile.Size = new System.Drawing.Size(100, 28);
+            this.buttonLoadInvoiceFile.TabIndex = 13;
+            this.buttonLoadInvoiceFile.Text = "LOAD FILE";
+            this.buttonLoadInvoiceFile.UseVisualStyleBackColor = true;
+            this.buttonLoadInvoiceFile.Click += new System.EventHandler(this.buttonLoadInvoiceFile_Click);
+            // 
+            // labelInvoiceLinePath
+            // 
+            this.labelInvoiceLinePath.AutoSize = true;
+            this.labelInvoiceLinePath.Location = new System.Drawing.Point(251, 94);
+            this.labelInvoiceLinePath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelInvoiceLinePath.Name = "labelInvoiceLinePath";
+            this.labelInvoiceLinePath.Size = new System.Drawing.Size(0, 17);
+            this.labelInvoiceLinePath.TabIndex = 12;
+            // 
+            // labelEDocumentDocType
+            // 
+            this.labelEDocumentDocType.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelEDocumentDocType.AutoSize = true;
+            this.labelEDocumentDocType.Location = new System.Drawing.Point(251, 32);
+            this.labelEDocumentDocType.Name = "labelEDocumentDocType";
+            this.labelEDocumentDocType.Size = new System.Drawing.Size(86, 17);
+            this.labelEDocumentDocType.TabIndex = 11;
+            this.labelEDocumentDocType.Text = "BELGE TİPİ:";
+            // 
+            // comboBoxEDocumentDocTypes
+            // 
+            this.comboBoxEDocumentDocTypes.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboBoxEDocumentDocTypes.FormattingEnabled = true;
+            this.comboBoxEDocumentDocTypes.Location = new System.Drawing.Point(376, 28);
+            this.comboBoxEDocumentDocTypes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxEDocumentDocTypes.Name = "comboBoxEDocumentDocTypes";
+            this.comboBoxEDocumentDocTypes.Size = new System.Drawing.Size(131, 24);
+            this.comboBoxEDocumentDocTypes.TabIndex = 10;
+            // 
+            // buttonPrintEDocumentSample
+            // 
+            this.buttonPrintEDocumentSample.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonPrintEDocumentSample.Location = new System.Drawing.Point(69, 28);
+            this.buttonPrintEDocumentSample.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonPrintEDocumentSample.Name = "buttonPrintEDocumentSample";
+            this.buttonPrintEDocumentSample.Size = new System.Drawing.Size(147, 64);
+            this.buttonPrintEDocumentSample.TabIndex = 2;
+            this.buttonPrintEDocumentSample.Text = "PRINT E-DOCUMENT SAMPLE";
+            this.buttonPrintEDocumentSample.UseVisualStyleBackColor = true;
+            this.buttonPrintEDocumentSample.Click += new System.EventHandler(this.buttonPrintEDocumentSample_Click);
+            // 
+            // tabPageDataTest
+            // 
+            this.tabPageDataTest.Controls.Add(this.buttonSendTestData);
+            this.tabPageDataTest.Location = new System.Drawing.Point(4, 25);
+            this.tabPageDataTest.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPageDataTest.Name = "tabPageDataTest";
+            this.tabPageDataTest.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPageDataTest.Size = new System.Drawing.Size(618, 127);
+            this.tabPageDataTest.TabIndex = 8;
+            this.tabPageDataTest.Text = "DATA TEST";
+            this.tabPageDataTest.UseVisualStyleBackColor = true;
+            // 
+            // buttonSendTestData
+            // 
+            this.buttonSendTestData.Location = new System.Drawing.Point(49, 39);
+            this.buttonSendTestData.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSendTestData.Name = "buttonSendTestData";
+            this.buttonSendTestData.Size = new System.Drawing.Size(151, 49);
+            this.buttonSendTestData.TabIndex = 0;
+            this.buttonSendTestData.Text = "SEND TEST DATA";
+            this.buttonSendTestData.UseVisualStyleBackColor = true;
+            this.buttonSendTestData.Click += new System.EventHandler(this.buttonSendTestData_Click);
+            // 
+            // tabPageInvoice
+            // 
+            this.tabPageInvoice.Controls.Add(this.tableLayoutPanel20);
+            this.tabPageInvoice.Location = new System.Drawing.Point(4, 25);
+            this.tabPageInvoice.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPageInvoice.Name = "tabPageInvoice";
+            this.tabPageInvoice.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPageInvoice.Size = new System.Drawing.Size(618, 127);
+            this.tabPageInvoice.TabIndex = 9;
+            this.tabPageInvoice.Text = "INVOICE";
+            this.tabPageInvoice.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel20
+            // 
+            this.tableLayoutPanel20.ColumnCount = 2;
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel20.Controls.Add(this.buttonStartInvoice, 0, 0);
+            this.tableLayoutPanel20.Controls.Add(this.tableLayoutPanel21, 1, 0);
+            this.tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel20.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel20.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel20.Name = "tableLayoutPanel20";
+            this.tableLayoutPanel20.RowCount = 1;
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(610, 119);
+            this.tableLayoutPanel20.TabIndex = 0;
+            // 
+            // buttonStartInvoice
+            // 
+            this.buttonStartInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonStartInvoice.Location = new System.Drawing.Point(4, 4);
+            this.buttonStartInvoice.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonStartInvoice.Name = "buttonStartInvoice";
+            this.buttonStartInvoice.Size = new System.Drawing.Size(114, 111);
+            this.buttonStartInvoice.TabIndex = 0;
+            this.buttonStartInvoice.Text = "START INVOICE";
+            this.buttonStartInvoice.UseVisualStyleBackColor = true;
+            this.buttonStartInvoice.Click += new System.EventHandler(this.buttonStartInvoice_Click);
+            // 
+            // tableLayoutPanel21
+            // 
+            this.tableLayoutPanel21.ColumnCount = 2;
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.Controls.Add(this.tableLayoutPanel22, 0, 1);
+            this.tableLayoutPanel21.Controls.Add(this.tableLayoutPanel23, 0, 0);
+            this.tableLayoutPanel21.Controls.Add(this.tableLayoutPanel24, 1, 0);
+            this.tableLayoutPanel21.Controls.Add(this.buttonAddCustomer, 1, 1);
+            this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel21.Location = new System.Drawing.Point(126, 4);
+            this.tableLayoutPanel21.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel21.Name = "tableLayoutPanel21";
+            this.tableLayoutPanel21.RowCount = 2;
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.Size = new System.Drawing.Size(480, 111);
+            this.tableLayoutPanel21.TabIndex = 1;
+            // 
+            // tableLayoutPanel22
+            // 
+            this.tableLayoutPanel22.ColumnCount = 1;
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel22.Controls.Add(this.dateTimePickerInvoiceDT, 0, 1);
+            this.tableLayoutPanel22.Controls.Add(this.labelInvoiceDT, 0, 0);
+            this.tableLayoutPanel22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel22.Location = new System.Drawing.Point(4, 59);
+            this.tableLayoutPanel22.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel22.Name = "tableLayoutPanel22";
+            this.tableLayoutPanel22.RowCount = 2;
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel22.Size = new System.Drawing.Size(232, 48);
+            this.tableLayoutPanel22.TabIndex = 0;
+            // 
+            // dateTimePickerInvoiceDT
+            // 
+            this.dateTimePickerInvoiceDT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePickerInvoiceDT.Location = new System.Drawing.Point(4, 28);
+            this.dateTimePickerInvoiceDT.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePickerInvoiceDT.Name = "dateTimePickerInvoiceDT";
+            this.dateTimePickerInvoiceDT.Size = new System.Drawing.Size(224, 22);
+            this.dateTimePickerInvoiceDT.TabIndex = 44;
+            // 
+            // labelInvoiceDT
+            // 
+            this.labelInvoiceDT.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelInvoiceDT.AutoSize = true;
+            this.labelInvoiceDT.Location = new System.Drawing.Point(93, 3);
+            this.labelInvoiceDT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelInvoiceDT.Name = "labelInvoiceDT";
+            this.labelInvoiceDT.Size = new System.Drawing.Size(45, 17);
+            this.labelInvoiceDT.TabIndex = 30;
+            this.labelInvoiceDT.Text = "DATE";
+            // 
+            // tableLayoutPanel23
+            // 
+            this.tableLayoutPanel23.ColumnCount = 1;
+            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel23.Controls.Add(this.textBoxInvoiceSerial, 0, 1);
+            this.tableLayoutPanel23.Controls.Add(this.labelInvoiceSerial, 0, 0);
+            this.tableLayoutPanel23.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel23.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel23.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel23.Name = "tableLayoutPanel23";
+            this.tableLayoutPanel23.RowCount = 2;
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel23.Size = new System.Drawing.Size(232, 47);
+            this.tableLayoutPanel23.TabIndex = 1;
+            // 
+            // textBoxInvoiceSerial
+            // 
+            this.textBoxInvoiceSerial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxInvoiceSerial.Location = new System.Drawing.Point(3, 25);
+            this.textBoxInvoiceSerial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxInvoiceSerial.MaxLength = 48;
+            this.textBoxInvoiceSerial.Name = "textBoxInvoiceSerial";
+            this.textBoxInvoiceSerial.Size = new System.Drawing.Size(226, 22);
+            this.textBoxInvoiceSerial.TabIndex = 32;
+            // 
+            // labelInvoiceSerial
+            // 
+            this.labelInvoiceSerial.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelInvoiceSerial.AutoSize = true;
+            this.labelInvoiceSerial.Location = new System.Drawing.Point(88, 3);
+            this.labelInvoiceSerial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelInvoiceSerial.Name = "labelInvoiceSerial";
+            this.labelInvoiceSerial.Size = new System.Drawing.Size(56, 17);
+            this.labelInvoiceSerial.TabIndex = 31;
+            this.labelInvoiceSerial.Text = "SERIAL";
+            // 
+            // tableLayoutPanel24
+            // 
+            this.tableLayoutPanel24.ColumnCount = 1;
+            this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel24.Controls.Add(this.textBoxInvoiceOrderNo, 0, 1);
+            this.tableLayoutPanel24.Controls.Add(this.labelInvoiceOrderNo, 0, 0);
+            this.tableLayoutPanel24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel24.Location = new System.Drawing.Point(244, 4);
+            this.tableLayoutPanel24.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel24.Name = "tableLayoutPanel24";
+            this.tableLayoutPanel24.RowCount = 2;
+            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel24.Size = new System.Drawing.Size(232, 47);
+            this.tableLayoutPanel24.TabIndex = 0;
+            // 
+            // textBoxInvoiceOrderNo
+            // 
+            this.textBoxInvoiceOrderNo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxInvoiceOrderNo.Location = new System.Drawing.Point(3, 25);
+            this.textBoxInvoiceOrderNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxInvoiceOrderNo.MaxLength = 48;
+            this.textBoxInvoiceOrderNo.Name = "textBoxInvoiceOrderNo";
+            this.textBoxInvoiceOrderNo.Size = new System.Drawing.Size(226, 22);
+            this.textBoxInvoiceOrderNo.TabIndex = 33;
+            // 
+            // labelInvoiceOrderNo
+            // 
+            this.labelInvoiceOrderNo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelInvoiceOrderNo.AutoSize = true;
+            this.labelInvoiceOrderNo.Location = new System.Drawing.Point(74, 3);
+            this.labelInvoiceOrderNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelInvoiceOrderNo.Name = "labelInvoiceOrderNo";
+            this.labelInvoiceOrderNo.Size = new System.Drawing.Size(83, 17);
+            this.labelInvoiceOrderNo.TabIndex = 32;
+            this.labelInvoiceOrderNo.Text = "ORDER NO";
+            // 
+            // buttonAddCustomer
+            // 
+            this.buttonAddCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAddCustomer.Location = new System.Drawing.Point(244, 59);
+            this.buttonAddCustomer.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAddCustomer.Name = "buttonAddCustomer";
+            this.buttonAddCustomer.Size = new System.Drawing.Size(232, 48);
+            this.buttonAddCustomer.TabIndex = 2;
+            this.buttonAddCustomer.Text = "ADD CUSTOMER";
+            this.buttonAddCustomer.UseVisualStyleBackColor = true;
+            this.buttonAddCustomer.Click += new System.EventHandler(this.buttonAddCustomer_Click);
+            // 
+            // tabPageReturnDoc
+            // 
+            this.tabPageReturnDoc.Controls.Add(this.tableLayoutPanel27);
+            this.tabPageReturnDoc.Location = new System.Drawing.Point(4, 25);
+            this.tabPageReturnDoc.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPageReturnDoc.Name = "tabPageReturnDoc";
+            this.tabPageReturnDoc.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPageReturnDoc.Size = new System.Drawing.Size(618, 127);
+            this.tabPageReturnDoc.TabIndex = 10;
+            this.tabPageReturnDoc.Text = "RETURN DOC";
+            this.tabPageReturnDoc.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel27
+            // 
+            this.tableLayoutPanel27.ColumnCount = 2;
+            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel27.Controls.Add(this.buttonStartReturnDoc, 0, 0);
+            this.tableLayoutPanel27.Controls.Add(this.tableLayoutPanel28, 1, 0);
+            this.tableLayoutPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel27.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel27.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel27.Name = "tableLayoutPanel27";
+            this.tableLayoutPanel27.RowCount = 1;
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel27.Size = new System.Drawing.Size(610, 119);
+            this.tableLayoutPanel27.TabIndex = 1;
+            // 
+            // buttonStartReturnDoc
+            // 
+            this.buttonStartReturnDoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonStartReturnDoc.Location = new System.Drawing.Point(4, 4);
+            this.buttonStartReturnDoc.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonStartReturnDoc.Name = "buttonStartReturnDoc";
+            this.buttonStartReturnDoc.Size = new System.Drawing.Size(114, 111);
+            this.buttonStartReturnDoc.TabIndex = 0;
+            this.buttonStartReturnDoc.Text = "START DOCUMENT";
+            this.buttonStartReturnDoc.UseVisualStyleBackColor = true;
+            this.buttonStartReturnDoc.Click += new System.EventHandler(this.buttonStartReturnDoc_Click);
+            // 
+            // tableLayoutPanel28
+            // 
+            this.tableLayoutPanel28.ColumnCount = 2;
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel28.Controls.Add(this.tableLayoutPanel29, 0, 1);
+            this.tableLayoutPanel28.Controls.Add(this.tableLayoutPanel30, 0, 0);
+            this.tableLayoutPanel28.Controls.Add(this.tableLayoutPanel31, 1, 0);
+            this.tableLayoutPanel28.Controls.Add(this.buttonAddCustomerRetDoc, 1, 1);
+            this.tableLayoutPanel28.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel28.Location = new System.Drawing.Point(126, 4);
+            this.tableLayoutPanel28.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel28.Name = "tableLayoutPanel28";
+            this.tableLayoutPanel28.RowCount = 2;
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel28.Size = new System.Drawing.Size(480, 111);
+            this.tableLayoutPanel28.TabIndex = 1;
+            // 
+            // tableLayoutPanel29
+            // 
+            this.tableLayoutPanel29.ColumnCount = 1;
+            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel29.Controls.Add(this.dateTimePickerRetDoc, 0, 1);
+            this.tableLayoutPanel29.Controls.Add(this.labelRetDocDT, 0, 0);
+            this.tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel29.Location = new System.Drawing.Point(4, 59);
+            this.tableLayoutPanel29.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel29.Name = "tableLayoutPanel29";
+            this.tableLayoutPanel29.RowCount = 2;
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel29.Size = new System.Drawing.Size(232, 48);
+            this.tableLayoutPanel29.TabIndex = 0;
+            // 
+            // dateTimePickerRetDoc
+            // 
+            this.dateTimePickerRetDoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePickerRetDoc.Location = new System.Drawing.Point(4, 28);
+            this.dateTimePickerRetDoc.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePickerRetDoc.Name = "dateTimePickerRetDoc";
+            this.dateTimePickerRetDoc.Size = new System.Drawing.Size(224, 22);
+            this.dateTimePickerRetDoc.TabIndex = 44;
+            // 
+            // labelRetDocDT
+            // 
+            this.labelRetDocDT.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelRetDocDT.AutoSize = true;
+            this.labelRetDocDT.Location = new System.Drawing.Point(93, 3);
+            this.labelRetDocDT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelRetDocDT.Name = "labelRetDocDT";
+            this.labelRetDocDT.Size = new System.Drawing.Size(45, 17);
+            this.labelRetDocDT.TabIndex = 30;
+            this.labelRetDocDT.Text = "DATE";
+            // 
+            // tableLayoutPanel30
+            // 
+            this.tableLayoutPanel30.ColumnCount = 1;
+            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel30.Controls.Add(this.textBoxRetDocSerial, 0, 1);
+            this.tableLayoutPanel30.Controls.Add(this.labelRetDocSerial, 0, 0);
+            this.tableLayoutPanel30.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel30.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel30.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel30.Name = "tableLayoutPanel30";
+            this.tableLayoutPanel30.RowCount = 2;
+            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel30.Size = new System.Drawing.Size(232, 47);
+            this.tableLayoutPanel30.TabIndex = 1;
+            // 
+            // textBoxRetDocSerial
+            // 
+            this.textBoxRetDocSerial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxRetDocSerial.Location = new System.Drawing.Point(3, 25);
+            this.textBoxRetDocSerial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxRetDocSerial.MaxLength = 48;
+            this.textBoxRetDocSerial.Name = "textBoxRetDocSerial";
+            this.textBoxRetDocSerial.Size = new System.Drawing.Size(226, 22);
+            this.textBoxRetDocSerial.TabIndex = 32;
+            // 
+            // labelRetDocSerial
+            // 
+            this.labelRetDocSerial.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelRetDocSerial.AutoSize = true;
+            this.labelRetDocSerial.Location = new System.Drawing.Point(88, 3);
+            this.labelRetDocSerial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelRetDocSerial.Name = "labelRetDocSerial";
+            this.labelRetDocSerial.Size = new System.Drawing.Size(56, 17);
+            this.labelRetDocSerial.TabIndex = 31;
+            this.labelRetDocSerial.Text = "SERIAL";
+            // 
+            // tableLayoutPanel31
+            // 
+            this.tableLayoutPanel31.ColumnCount = 1;
+            this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel31.Controls.Add(this.textBoxRetDocORderNo, 0, 1);
+            this.tableLayoutPanel31.Controls.Add(this.labelRetDocOrderNo, 0, 0);
+            this.tableLayoutPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel31.Location = new System.Drawing.Point(244, 4);
+            this.tableLayoutPanel31.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel31.Name = "tableLayoutPanel31";
+            this.tableLayoutPanel31.RowCount = 2;
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel31.Size = new System.Drawing.Size(232, 47);
+            this.tableLayoutPanel31.TabIndex = 0;
+            // 
+            // textBoxRetDocORderNo
+            // 
+            this.textBoxRetDocORderNo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxRetDocORderNo.Location = new System.Drawing.Point(3, 25);
+            this.textBoxRetDocORderNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxRetDocORderNo.MaxLength = 48;
+            this.textBoxRetDocORderNo.Name = "textBoxRetDocORderNo";
+            this.textBoxRetDocORderNo.Size = new System.Drawing.Size(226, 22);
+            this.textBoxRetDocORderNo.TabIndex = 33;
+            // 
+            // labelRetDocOrderNo
+            // 
+            this.labelRetDocOrderNo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelRetDocOrderNo.AutoSize = true;
+            this.labelRetDocOrderNo.Location = new System.Drawing.Point(74, 3);
+            this.labelRetDocOrderNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelRetDocOrderNo.Name = "labelRetDocOrderNo";
+            this.labelRetDocOrderNo.Size = new System.Drawing.Size(83, 17);
+            this.labelRetDocOrderNo.TabIndex = 32;
+            this.labelRetDocOrderNo.Text = "ORDER NO";
+            // 
+            // buttonAddCustomerRetDoc
+            // 
+            this.buttonAddCustomerRetDoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAddCustomerRetDoc.Location = new System.Drawing.Point(244, 59);
+            this.buttonAddCustomerRetDoc.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAddCustomerRetDoc.Name = "buttonAddCustomerRetDoc";
+            this.buttonAddCustomerRetDoc.Size = new System.Drawing.Size(232, 48);
+            this.buttonAddCustomerRetDoc.TabIndex = 2;
+            this.buttonAddCustomerRetDoc.Text = "ADD CUSTOMER";
+            this.buttonAddCustomerRetDoc.UseVisualStyleBackColor = true;
+            this.buttonAddCustomerRetDoc.Click += new System.EventHandler(this.buttonAddCustomerRetDoc_Click);
+            // 
+            // tabPageSelfEmpInvoice
+            // 
+            this.tabPageSelfEmpInvoice.Controls.Add(this.tableLayoutPanel32);
+            this.tabPageSelfEmpInvoice.Location = new System.Drawing.Point(4, 25);
+            this.tabPageSelfEmpInvoice.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPageSelfEmpInvoice.Name = "tabPageSelfEmpInvoice";
+            this.tabPageSelfEmpInvoice.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPageSelfEmpInvoice.Size = new System.Drawing.Size(618, 127);
+            this.tabPageSelfEmpInvoice.TabIndex = 11;
+            this.tabPageSelfEmpInvoice.Text = "SELF EMPLOYMENT INVOICE";
+            this.tabPageSelfEmpInvoice.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel32
+            // 
+            this.tableLayoutPanel32.ColumnCount = 3;
+            this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel32.Controls.Add(this.buttonStartSelfEmpInvoice, 0, 0);
+            this.tableLayoutPanel32.Controls.Add(this.dataGridViewServices, 1, 0);
+            this.tableLayoutPanel32.Controls.Add(this.tableLayoutPanel33, 2, 0);
+            this.tableLayoutPanel32.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel32.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel32.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel32.Name = "tableLayoutPanel32";
+            this.tableLayoutPanel32.RowCount = 1;
+            this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel32.Size = new System.Drawing.Size(610, 119);
+            this.tableLayoutPanel32.TabIndex = 0;
+            // 
+            // buttonStartSelfEmpInvoice
+            // 
+            this.buttonStartSelfEmpInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonStartSelfEmpInvoice.Location = new System.Drawing.Point(4, 4);
+            this.buttonStartSelfEmpInvoice.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonStartSelfEmpInvoice.Name = "buttonStartSelfEmpInvoice";
+            this.buttonStartSelfEmpInvoice.Size = new System.Drawing.Size(114, 111);
+            this.buttonStartSelfEmpInvoice.TabIndex = 0;
+            this.buttonStartSelfEmpInvoice.Text = "START DOCUMENT";
+            this.buttonStartSelfEmpInvoice.UseVisualStyleBackColor = true;
+            this.buttonStartSelfEmpInvoice.Click += new System.EventHandler(this.buttonStartSelfEmpInvoice_Click);
+            // 
+            // dataGridViewServices
+            // 
+            this.dataGridViewServices.AllowUserToAddRows = false;
+            this.dataGridViewServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnTick,
+            this.ColumnService});
+            this.dataGridViewServices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewServices.Location = new System.Drawing.Point(126, 4);
+            this.dataGridViewServices.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewServices.Name = "dataGridViewServices";
+            this.dataGridViewServices.Size = new System.Drawing.Size(327, 111);
+            this.dataGridViewServices.TabIndex = 1;
+            // 
+            // ColumnTick
+            // 
+            this.ColumnTick.FillWeight = 10F;
+            this.ColumnTick.HeaderText = "";
+            this.ColumnTick.MinimumWidth = 10;
+            this.ColumnTick.Name = "ColumnTick";
+            this.ColumnTick.Width = 30;
+            // 
+            // ColumnService
+            // 
+            this.ColumnService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnService.HeaderText = "Service";
+            this.ColumnService.Name = "ColumnService";
+            this.ColumnService.ReadOnly = true;
+            // 
+            // tableLayoutPanel33
+            // 
+            this.tableLayoutPanel33.ColumnCount = 1;
+            this.tableLayoutPanel33.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel33.Controls.Add(this.buttonRemoveService, 0, 1);
+            this.tableLayoutPanel33.Controls.Add(this.buttonAddService, 0, 0);
+            this.tableLayoutPanel33.Controls.Add(this.buttonAddCustomerSEI, 0, 3);
+            this.tableLayoutPanel33.Location = new System.Drawing.Point(461, 4);
+            this.tableLayoutPanel33.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel33.Name = "tableLayoutPanel33";
+            this.tableLayoutPanel33.RowCount = 4;
+            this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel33.Size = new System.Drawing.Size(144, 108);
+            this.tableLayoutPanel33.TabIndex = 2;
+            // 
+            // buttonRemoveService
+            // 
+            this.buttonRemoveService.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonRemoveService.Location = new System.Drawing.Point(4, 36);
+            this.buttonRemoveService.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonRemoveService.Name = "buttonRemoveService";
+            this.buttonRemoveService.Size = new System.Drawing.Size(136, 24);
+            this.buttonRemoveService.TabIndex = 1;
+            this.buttonRemoveService.Text = "REMOVE";
+            this.buttonRemoveService.UseVisualStyleBackColor = true;
+            this.buttonRemoveService.Click += new System.EventHandler(this.buttonRemoveService_Click);
+            // 
+            // buttonAddService
+            // 
+            this.buttonAddService.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAddService.Location = new System.Drawing.Point(4, 4);
+            this.buttonAddService.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAddService.Name = "buttonAddService";
+            this.buttonAddService.Size = new System.Drawing.Size(136, 24);
+            this.buttonAddService.TabIndex = 0;
+            this.buttonAddService.Text = "ADD SERVICE";
+            this.buttonAddService.UseVisualStyleBackColor = true;
+            this.buttonAddService.Click += new System.EventHandler(this.buttonAddService_Click);
+            // 
+            // buttonAddCustomerSEI
+            // 
+            this.buttonAddCustomerSEI.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAddCustomerSEI.Location = new System.Drawing.Point(4, 78);
+            this.buttonAddCustomerSEI.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAddCustomerSEI.Name = "buttonAddCustomerSEI";
+            this.buttonAddCustomerSEI.Size = new System.Drawing.Size(136, 26);
+            this.buttonAddCustomerSEI.TabIndex = 2;
+            this.buttonAddCustomerSEI.Text = "ADD CUSTOMER";
+            this.buttonAddCustomerSEI.UseVisualStyleBackColor = true;
+            this.buttonAddCustomerSEI.Click += new System.EventHandler(this.buttonAddCustomerSEI_Click);
             // 
             // tbcFooter
             // 
             this.tbcFooter.Controls.Add(this.tbpNotes);
             this.tbcFooter.Controls.Add(this.tbpExtra);
             this.tbcFooter.Controls.Add(this.tabPageBarcode);
+            this.tbcFooter.Controls.Add(this.tabPageStoppage);
             this.tbcFooter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbcFooter.Location = new System.Drawing.Point(2, 392);
-            this.tbcFooter.Margin = new System.Windows.Forms.Padding(2);
+            this.tbcFooter.Location = new System.Drawing.Point(3, 482);
+            this.tbcFooter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbcFooter.Name = "tbcFooter";
             this.tbcFooter.SelectedIndex = 0;
-            this.tbcFooter.Size = new System.Drawing.Size(469, 98);
+            this.tbcFooter.Size = new System.Drawing.Size(626, 121);
             this.tbcFooter.TabIndex = 29;
             // 
             // tbpNotes
             // 
             this.tbpNotes.Controls.Add(this.btnRemark);
             this.tbpNotes.Controls.Add(this.txtRemarkLine);
-            this.tbpNotes.Location = new System.Drawing.Point(4, 22);
-            this.tbpNotes.Margin = new System.Windows.Forms.Padding(2);
+            this.tbpNotes.Location = new System.Drawing.Point(4, 25);
+            this.tbpNotes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbpNotes.Name = "tbpNotes";
-            this.tbpNotes.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpNotes.Size = new System.Drawing.Size(461, 72);
+            this.tbpNotes.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbpNotes.Size = new System.Drawing.Size(618, 92);
             this.tbpNotes.TabIndex = 0;
             this.tbpNotes.Text = "FOOTER NOTES";
             this.tbpNotes.UseVisualStyleBackColor = true;
             // 
             // btnRemark
             // 
-            this.btnRemark.Location = new System.Drawing.Point(8, 12);
-            this.btnRemark.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemark.Location = new System.Drawing.Point(11, 15);
+            this.btnRemark.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemark.Name = "btnRemark";
-            this.btnRemark.Size = new System.Drawing.Size(110, 48);
+            this.btnRemark.Size = new System.Drawing.Size(147, 59);
             this.btnRemark.TabIndex = 6;
             this.btnRemark.Text = "REMARK";
             this.btnRemark.UseVisualStyleBackColor = true;
@@ -1607,32 +2353,32 @@ namespace FP300Service.UserControls
             // 
             // txtRemarkLine
             // 
-            this.txtRemarkLine.Location = new System.Drawing.Point(131, 4);
-            this.txtRemarkLine.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRemarkLine.Location = new System.Drawing.Point(175, 5);
+            this.txtRemarkLine.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtRemarkLine.MaxLength = 45;
             this.txtRemarkLine.Multiline = true;
             this.txtRemarkLine.Name = "txtRemarkLine";
-            this.txtRemarkLine.Size = new System.Drawing.Size(319, 64);
+            this.txtRemarkLine.Size = new System.Drawing.Size(424, 78);
             this.txtRemarkLine.TabIndex = 9;
             // 
             // tbpExtra
             // 
             this.tbpExtra.Controls.Add(this.btnOpenDrawer);
-            this.tbpExtra.Location = new System.Drawing.Point(4, 22);
-            this.tbpExtra.Margin = new System.Windows.Forms.Padding(2);
+            this.tbpExtra.Location = new System.Drawing.Point(4, 25);
+            this.tbpExtra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbpExtra.Name = "tbpExtra";
-            this.tbpExtra.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpExtra.Size = new System.Drawing.Size(461, 72);
+            this.tbpExtra.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbpExtra.Size = new System.Drawing.Size(618, 92);
             this.tbpExtra.TabIndex = 1;
             this.tbpExtra.Text = "FOOTER NOTE EXTRA";
             this.tbpExtra.UseVisualStyleBackColor = true;
             // 
             // btnOpenDrawer
             // 
-            this.btnOpenDrawer.Location = new System.Drawing.Point(4, 20);
-            this.btnOpenDrawer.Margin = new System.Windows.Forms.Padding(2);
+            this.btnOpenDrawer.Location = new System.Drawing.Point(5, 25);
+            this.btnOpenDrawer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOpenDrawer.Name = "btnOpenDrawer";
-            this.btnOpenDrawer.Size = new System.Drawing.Size(110, 30);
+            this.btnOpenDrawer.Size = new System.Drawing.Size(147, 37);
             this.btnOpenDrawer.TabIndex = 22;
             this.btnOpenDrawer.Text = "OPEN DRAWER";
             this.btnOpenDrawer.UseVisualStyleBackColor = true;
@@ -1641,10 +2387,11 @@ namespace FP300Service.UserControls
             // tabPageBarcode
             // 
             this.tabPageBarcode.Controls.Add(this.tableLayoutPanel16);
-            this.tabPageBarcode.Location = new System.Drawing.Point(4, 22);
+            this.tabPageBarcode.Location = new System.Drawing.Point(4, 25);
+            this.tabPageBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageBarcode.Name = "tabPageBarcode";
-            this.tabPageBarcode.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBarcode.Size = new System.Drawing.Size(461, 72);
+            this.tabPageBarcode.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPageBarcode.Size = new System.Drawing.Size(618, 92);
             this.tabPageBarcode.TabIndex = 2;
             this.tabPageBarcode.Text = "BARCODE";
             this.tabPageBarcode.UseVisualStyleBackColor = true;
@@ -1657,20 +2404,21 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel16.Controls.Add(this.btnRcptBarcode, 0, 0);
             this.tableLayoutPanel16.Controls.Add(this.tableLayoutPanel17, 1, 0);
             this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel16.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel16.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
             this.tableLayoutPanel16.RowCount = 1;
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel16.Size = new System.Drawing.Size(455, 66);
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(610, 84);
             this.tableLayoutPanel16.TabIndex = 0;
             // 
             // btnRcptBarcode
             // 
             this.btnRcptBarcode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRcptBarcode.Location = new System.Drawing.Point(2, 2);
-            this.btnRcptBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRcptBarcode.Location = new System.Drawing.Point(3, 2);
+            this.btnRcptBarcode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRcptBarcode.Name = "btnRcptBarcode";
-            this.btnRcptBarcode.Size = new System.Drawing.Size(96, 62);
+            this.btnRcptBarcode.Size = new System.Drawing.Size(128, 80);
             this.btnRcptBarcode.TabIndex = 24;
             this.btnRcptBarcode.Text = "PRINT BARCODE";
             this.btnRcptBarcode.UseVisualStyleBackColor = true;
@@ -1686,22 +2434,22 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel17.Controls.Add(this.comboBoxBarcodeTypes, 1, 0);
             this.tableLayoutPanel17.Controls.Add(this.txtRcptBarcode, 1, 1);
             this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel17.Location = new System.Drawing.Point(103, 3);
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(138, 4);
+            this.tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
             this.tableLayoutPanel17.RowCount = 2;
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(349, 60);
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(468, 76);
             this.tableLayoutPanel17.TabIndex = 25;
             // 
             // labelBarcode
             // 
             this.labelBarcode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelBarcode.AutoSize = true;
-            this.labelBarcode.Location = new System.Drawing.Point(56, 38);
-            this.labelBarcode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelBarcode.Location = new System.Drawing.Point(77, 48);
             this.labelBarcode.Name = "labelBarcode";
-            this.labelBarcode.Size = new System.Drawing.Size(62, 13);
+            this.labelBarcode.Size = new System.Drawing.Size(79, 17);
             this.labelBarcode.TabIndex = 30;
             this.labelBarcode.Text = "BARCODE ";
             // 
@@ -1709,10 +2457,9 @@ namespace FP300Service.UserControls
             // 
             this.labelBarcodeType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelBarcodeType.AutoSize = true;
-            this.labelBarcodeType.Location = new System.Drawing.Point(42, 8);
-            this.labelBarcodeType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelBarcodeType.Location = new System.Drawing.Point(59, 10);
             this.labelBarcodeType.Name = "labelBarcodeType";
-            this.labelBarcodeType.Size = new System.Drawing.Size(90, 13);
+            this.labelBarcodeType.Size = new System.Drawing.Size(115, 17);
             this.labelBarcodeType.TabIndex = 27;
             this.labelBarcodeType.Text = "BARCODE TYPE";
             // 
@@ -1720,21 +2467,109 @@ namespace FP300Service.UserControls
             // 
             this.comboBoxBarcodeTypes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboBoxBarcodeTypes.FormattingEnabled = true;
-            this.comboBoxBarcodeTypes.Location = new System.Drawing.Point(200, 4);
-            this.comboBoxBarcodeTypes.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxBarcodeTypes.Location = new System.Drawing.Point(269, 6);
+            this.comboBoxBarcodeTypes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxBarcodeTypes.Name = "comboBoxBarcodeTypes";
-            this.comboBoxBarcodeTypes.Size = new System.Drawing.Size(123, 21);
+            this.comboBoxBarcodeTypes.Size = new System.Drawing.Size(163, 24);
             this.comboBoxBarcodeTypes.TabIndex = 28;
             // 
             // txtRcptBarcode
             // 
             this.txtRcptBarcode.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtRcptBarcode.Location = new System.Drawing.Point(176, 35);
-            this.txtRcptBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRcptBarcode.Location = new System.Drawing.Point(237, 46);
+            this.txtRcptBarcode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtRcptBarcode.MaxLength = 25;
             this.txtRcptBarcode.Name = "txtRcptBarcode";
-            this.txtRcptBarcode.Size = new System.Drawing.Size(171, 20);
+            this.txtRcptBarcode.Size = new System.Drawing.Size(227, 22);
             this.txtRcptBarcode.TabIndex = 29;
+            // 
+            // tabPageStoppage
+            // 
+            this.tabPageStoppage.Controls.Add(this.tableLayoutPanel25);
+            this.tabPageStoppage.Location = new System.Drawing.Point(4, 25);
+            this.tabPageStoppage.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPageStoppage.Name = "tabPageStoppage";
+            this.tabPageStoppage.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPageStoppage.Size = new System.Drawing.Size(618, 92);
+            this.tabPageStoppage.TabIndex = 3;
+            this.tabPageStoppage.Text = "STOPPAGE";
+            this.tabPageStoppage.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel25
+            // 
+            this.tableLayoutPanel25.ColumnCount = 2;
+            this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel25.Controls.Add(this.buttonStoppage, 0, 0);
+            this.tableLayoutPanel25.Controls.Add(this.tableLayoutPanel26, 1, 0);
+            this.tableLayoutPanel25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel25.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel25.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel25.Name = "tableLayoutPanel25";
+            this.tableLayoutPanel25.RowCount = 1;
+            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel25.Size = new System.Drawing.Size(610, 84);
+            this.tableLayoutPanel25.TabIndex = 0;
+            // 
+            // buttonStoppage
+            // 
+            this.buttonStoppage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonStoppage.Location = new System.Drawing.Point(4, 4);
+            this.buttonStoppage.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonStoppage.Name = "buttonStoppage";
+            this.buttonStoppage.Size = new System.Drawing.Size(114, 76);
+            this.buttonStoppage.TabIndex = 0;
+            this.buttonStoppage.Text = "SEND STOPPAGE";
+            this.buttonStoppage.UseVisualStyleBackColor = true;
+            this.buttonStoppage.Click += new System.EventHandler(this.buttonStoppage_Click);
+            // 
+            // tableLayoutPanel26
+            // 
+            this.tableLayoutPanel26.ColumnCount = 2;
+            this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel26.Controls.Add(this.labelStoppageAmount, 0, 0);
+            this.tableLayoutPanel26.Controls.Add(this.numericUpDownStoppageAmount, 1, 0);
+            this.tableLayoutPanel26.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel26.Location = new System.Drawing.Point(126, 4);
+            this.tableLayoutPanel26.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel26.Name = "tableLayoutPanel26";
+            this.tableLayoutPanel26.RowCount = 2;
+            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel26.Size = new System.Drawing.Size(480, 76);
+            this.tableLayoutPanel26.TabIndex = 1;
+            // 
+            // labelStoppageAmount
+            // 
+            this.labelStoppageAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelStoppageAmount.AutoSize = true;
+            this.labelStoppageAmount.Location = new System.Drawing.Point(86, 10);
+            this.labelStoppageAmount.Name = "labelStoppageAmount";
+            this.labelStoppageAmount.Size = new System.Drawing.Size(68, 17);
+            this.labelStoppageAmount.TabIndex = 9;
+            this.labelStoppageAmount.Text = "AMOUNT";
+            // 
+            // numericUpDownStoppageAmount
+            // 
+            this.numericUpDownStoppageAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.numericUpDownStoppageAmount.DecimalPlaces = 2;
+            this.numericUpDownStoppageAmount.Location = new System.Drawing.Point(300, 8);
+            this.numericUpDownStoppageAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.numericUpDownStoppageAmount.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDownStoppageAmount.Name = "numericUpDownStoppageAmount";
+            this.numericUpDownStoppageAmount.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDownStoppageAmount.TabIndex = 17;
+            this.numericUpDownStoppageAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownStoppageAmount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // tbcSale
             // 
@@ -1743,21 +2578,21 @@ namespace FP300Service.UserControls
             this.tbcSale.Controls.Add(this.tbpAdj);
             this.tbcSale.Controls.Add(this.tpgSaleDept);
             this.tbcSale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbcSale.Location = new System.Drawing.Point(2, 132);
-            this.tbcSale.Margin = new System.Windows.Forms.Padding(2);
+            this.tbcSale.Location = new System.Drawing.Point(3, 162);
+            this.tbcSale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbcSale.Name = "tbcSale";
             this.tbcSale.SelectedIndex = 0;
-            this.tbcSale.Size = new System.Drawing.Size(469, 141);
+            this.tbcSale.Size = new System.Drawing.Size(626, 175);
             this.tbcSale.TabIndex = 28;
             // 
             // tbpSale
             // 
             this.tbpSale.Controls.Add(this.tableLayoutPanel1);
-            this.tbpSale.Location = new System.Drawing.Point(4, 22);
-            this.tbpSale.Margin = new System.Windows.Forms.Padding(2);
+            this.tbpSale.Location = new System.Drawing.Point(4, 25);
+            this.tbpSale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbpSale.Name = "tbpSale";
-            this.tbpSale.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpSale.Size = new System.Drawing.Size(461, 115);
+            this.tbpSale.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbpSale.Size = new System.Drawing.Size(618, 146);
             this.tbpSale.TabIndex = 0;
             this.tbpSale.Text = "SALE";
             this.tbpSale.UseVisualStyleBackColor = true;
@@ -1772,11 +2607,12 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel1.Controls.Add(this.btnSale, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(457, 111);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(612, 142);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -1791,38 +2627,38 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel2.Controls.Add(this.nmrPrice, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(106, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(142, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(191, 105);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(256, 134);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // lblPlu
             // 
             this.lblPlu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPlu.AutoSize = true;
-            this.lblPlu.Location = new System.Drawing.Point(32, 10);
-            this.lblPlu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPlu.Location = new System.Drawing.Point(44, 13);
             this.lblPlu.Name = "lblPlu";
-            this.lblPlu.Size = new System.Drawing.Size(31, 13);
+            this.lblPlu.Size = new System.Drawing.Size(39, 17);
             this.lblPlu.TabIndex = 14;
             this.lblPlu.Text = "PLU:";
             // 
             // nmrPlu
             // 
             this.nmrPlu.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nmrPlu.Location = new System.Drawing.Point(112, 7);
-            this.nmrPlu.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrPlu.Location = new System.Drawing.Point(150, 11);
+            this.nmrPlu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrPlu.Maximum = new decimal(new int[] {
             200000,
             0,
             0,
             0});
             this.nmrPlu.Name = "nmrPlu";
-            this.nmrPlu.Size = new System.Drawing.Size(62, 20);
+            this.nmrPlu.Size = new System.Drawing.Size(83, 22);
             this.nmrPlu.TabIndex = 3;
             this.nmrPlu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrPlu.Value = new decimal(new int[] {
@@ -1835,10 +2671,9 @@ namespace FP300Service.UserControls
             // 
             this.lblQuantity.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(15, 44);
-            this.lblQuantity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblQuantity.Location = new System.Drawing.Point(23, 57);
             this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(65, 13);
+            this.lblQuantity.Size = new System.Drawing.Size(82, 17);
             this.lblQuantity.TabIndex = 16;
             this.lblQuantity.Text = "QUANTITY:";
             // 
@@ -1846,15 +2681,15 @@ namespace FP300Service.UserControls
             // 
             this.nmrQuantity.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.nmrQuantity.DecimalPlaces = 3;
-            this.nmrQuantity.Location = new System.Drawing.Point(112, 41);
-            this.nmrQuantity.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrQuantity.Location = new System.Drawing.Point(150, 55);
+            this.nmrQuantity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrQuantity.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.nmrQuantity.Name = "nmrQuantity";
-            this.nmrQuantity.Size = new System.Drawing.Size(62, 20);
+            this.nmrQuantity.Size = new System.Drawing.Size(83, 22);
             this.nmrQuantity.TabIndex = 15;
             this.nmrQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrQuantity.Value = new decimal(new int[] {
@@ -1867,15 +2702,15 @@ namespace FP300Service.UserControls
             // 
             this.nmrPrice.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.nmrPrice.DecimalPlaces = 2;
-            this.nmrPrice.Location = new System.Drawing.Point(112, 76);
-            this.nmrPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrPrice.Location = new System.Drawing.Point(150, 100);
+            this.nmrPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrPrice.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.nmrPrice.Name = "nmrPrice";
-            this.nmrPrice.Size = new System.Drawing.Size(62, 20);
+            this.nmrPrice.Size = new System.Drawing.Size(83, 22);
             this.nmrPrice.TabIndex = 19;
             this.nmrPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrPrice.Value = new decimal(new int[] {
@@ -1892,22 +2727,23 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel3.Controls.Add(this.checkBoxForPrice, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.lblAmount, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 71);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 92);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(89, 31);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(120, 38);
             this.tableLayoutPanel3.TabIndex = 20;
             // 
             // checkBoxForPrice
             // 
             this.checkBoxForPrice.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBoxForPrice.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBoxForPrice.Location = new System.Drawing.Point(5, 7);
-            this.checkBoxForPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxForPrice.Location = new System.Drawing.Point(8, 8);
+            this.checkBoxForPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxForPrice.Name = "checkBoxForPrice";
             this.checkBoxForPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkBoxForPrice.Size = new System.Drawing.Size(15, 17);
+            this.checkBoxForPrice.Size = new System.Drawing.Size(20, 21);
             this.checkBoxForPrice.TabIndex = 29;
             this.checkBoxForPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxForPrice.UseVisualStyleBackColor = true;
@@ -1917,20 +2753,19 @@ namespace FP300Service.UserControls
             // 
             this.lblAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAmount.AutoSize = true;
-            this.lblAmount.Location = new System.Drawing.Point(38, 9);
-            this.lblAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAmount.Location = new System.Drawing.Point(54, 10);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(39, 13);
+            this.lblAmount.Size = new System.Drawing.Size(48, 17);
             this.lblAmount.TabIndex = 21;
             this.lblAmount.Text = "PRICE";
             // 
             // btnSale
             // 
             this.btnSale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSale.Location = new System.Drawing.Point(2, 2);
-            this.btnSale.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSale.Location = new System.Drawing.Point(3, 2);
+            this.btnSale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSale.Name = "btnSale";
-            this.btnSale.Size = new System.Drawing.Size(99, 107);
+            this.btnSale.Size = new System.Drawing.Size(132, 138);
             this.btnSale.TabIndex = 2;
             this.btnSale.Text = "SALE";
             this.btnSale.UseVisualStyleBackColor = true;
@@ -1943,12 +2778,13 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel4.Controls.Add(this.pnlExtraPlufields, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.cbxSaveAndSale, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(303, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(406, 4);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(151, 105);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(202, 134);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // pnlExtraPlufields
@@ -1963,30 +2799,29 @@ namespace FP300Service.UserControls
             this.pnlExtraPlufields.Controls.Add(this.nmrDept);
             this.pnlExtraPlufields.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlExtraPlufields.Enabled = false;
-            this.pnlExtraPlufields.Location = new System.Drawing.Point(2, 21);
-            this.pnlExtraPlufields.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlExtraPlufields.Location = new System.Drawing.Point(3, 27);
+            this.pnlExtraPlufields.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlExtraPlufields.Name = "pnlExtraPlufields";
-            this.pnlExtraPlufields.Size = new System.Drawing.Size(147, 82);
+            this.pnlExtraPlufields.Size = new System.Drawing.Size(196, 105);
             this.pnlExtraPlufields.TabIndex = 28;
             // 
             // lblWeighable
             // 
             this.lblWeighable.AutoSize = true;
-            this.lblWeighable.Location = new System.Drawing.Point(68, 67);
-            this.lblWeighable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblWeighable.Location = new System.Drawing.Point(91, 82);
             this.lblWeighable.Name = "lblWeighable";
-            this.lblWeighable.Size = new System.Drawing.Size(71, 13);
+            this.lblWeighable.Size = new System.Drawing.Size(89, 17);
             this.lblWeighable.TabIndex = 30;
             this.lblWeighable.Text = "WEIGHABLE";
             // 
             // checkBoxWeighable
             // 
             this.checkBoxWeighable.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBoxWeighable.Location = new System.Drawing.Point(42, 65);
-            this.checkBoxWeighable.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxWeighable.Location = new System.Drawing.Point(56, 80);
+            this.checkBoxWeighable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxWeighable.Name = "checkBoxWeighable";
             this.checkBoxWeighable.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkBoxWeighable.Size = new System.Drawing.Size(20, 17);
+            this.checkBoxWeighable.Size = new System.Drawing.Size(27, 21);
             this.checkBoxWeighable.TabIndex = 30;
             this.checkBoxWeighable.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxWeighable.UseVisualStyleBackColor = true;
@@ -1994,63 +2829,60 @@ namespace FP300Service.UserControls
             // 
             // txtBarcode
             // 
-            this.txtBarcode.Location = new System.Drawing.Point(77, 3);
-            this.txtBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBarcode.Location = new System.Drawing.Point(103, 4);
+            this.txtBarcode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBarcode.MaxLength = 15;
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(90, 20);
+            this.txtBarcode.Size = new System.Drawing.Size(119, 22);
             this.txtBarcode.TabIndex = 22;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(3, 48);
-            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblName.Location = new System.Drawing.Point(4, 59);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(62, 13);
+            this.lblName.Size = new System.Drawing.Size(78, 17);
             this.lblName.TabIndex = 27;
             this.lblName.Text = "PLU NAME";
             // 
             // lblBarcode
             // 
             this.lblBarcode.AutoSize = true;
-            this.lblBarcode.Location = new System.Drawing.Point(3, 6);
-            this.lblBarcode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBarcode.Location = new System.Drawing.Point(4, 7);
             this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(59, 13);
+            this.lblBarcode.Size = new System.Drawing.Size(75, 17);
             this.lblBarcode.TabIndex = 23;
             this.lblBarcode.Text = "BARCODE";
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(77, 45);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtName.Location = new System.Drawing.Point(103, 55);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtName.MaxLength = 20;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(90, 20);
+            this.txtName.Size = new System.Drawing.Size(119, 22);
             this.txtName.TabIndex = 26;
             // 
             // lblDeptId
             // 
             this.lblDeptId.AutoSize = true;
-            this.lblDeptId.Location = new System.Drawing.Point(4, 28);
-            this.lblDeptId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDeptId.Location = new System.Drawing.Point(5, 34);
             this.lblDeptId.Name = "lblDeptId";
-            this.lblDeptId.Size = new System.Drawing.Size(46, 13);
+            this.lblDeptId.Size = new System.Drawing.Size(57, 17);
             this.lblDeptId.TabIndex = 25;
             this.lblDeptId.Text = "DEP. ID";
             // 
             // nmrDept
             // 
-            this.nmrDept.Location = new System.Drawing.Point(77, 23);
-            this.nmrDept.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrDept.Location = new System.Drawing.Point(103, 28);
+            this.nmrDept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrDept.Maximum = new decimal(new int[] {
             8,
             0,
             0,
             0});
             this.nmrDept.Name = "nmrDept";
-            this.nmrDept.Size = new System.Drawing.Size(62, 20);
+            this.nmrDept.Size = new System.Drawing.Size(83, 22);
             this.nmrDept.TabIndex = 24;
             this.nmrDept.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrDept.Value = new decimal(new int[] {
@@ -2063,11 +2895,11 @@ namespace FP300Service.UserControls
             // 
             this.cbxSaveAndSale.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbxSaveAndSale.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbxSaveAndSale.Location = new System.Drawing.Point(5, 2);
-            this.cbxSaveAndSale.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxSaveAndSale.Location = new System.Drawing.Point(7, 3);
+            this.cbxSaveAndSale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxSaveAndSale.Name = "cbxSaveAndSale";
             this.cbxSaveAndSale.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cbxSaveAndSale.Size = new System.Drawing.Size(140, 15);
+            this.cbxSaveAndSale.Size = new System.Drawing.Size(187, 18);
             this.cbxSaveAndSale.TabIndex = 20;
             this.cbxSaveAndSale.Text = "SAVE & SALE";
             this.cbxSaveAndSale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2084,11 +2916,11 @@ namespace FP300Service.UserControls
             this.tbpVoidSale.Controls.Add(this.nmrVoidQtty);
             this.tbpVoidSale.Controls.Add(this.nmrVoidPlu);
             this.tbpVoidSale.Controls.Add(this.lblVoidPlu);
-            this.tbpVoidSale.Location = new System.Drawing.Point(4, 22);
-            this.tbpVoidSale.Margin = new System.Windows.Forms.Padding(2);
+            this.tbpVoidSale.Location = new System.Drawing.Point(4, 25);
+            this.tbpVoidSale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbpVoidSale.Name = "tbpVoidSale";
-            this.tbpVoidSale.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpVoidSale.Size = new System.Drawing.Size(461, 115);
+            this.tbpVoidSale.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbpVoidSale.Size = new System.Drawing.Size(618, 146);
             this.tbpVoidSale.TabIndex = 1;
             this.tbpVoidSale.Text = "VOID SALE";
             this.tbpVoidSale.UseVisualStyleBackColor = true;
@@ -2096,32 +2928,31 @@ namespace FP300Service.UserControls
             // lblVoidDeptName
             // 
             this.lblVoidDeptName.AutoSize = true;
-            this.lblVoidDeptName.Location = new System.Drawing.Point(337, 40);
-            this.lblVoidDeptName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblVoidDeptName.Location = new System.Drawing.Point(449, 49);
             this.lblVoidDeptName.Name = "lblVoidDeptName";
-            this.lblVoidDeptName.Size = new System.Drawing.Size(70, 13);
+            this.lblVoidDeptName.Size = new System.Drawing.Size(88, 17);
             this.lblVoidDeptName.TabIndex = 29;
             this.lblVoidDeptName.Text = "DEPT NAME";
             this.lblVoidDeptName.Visible = false;
             // 
             // txtVoidDeptName
             // 
-            this.txtVoidDeptName.Location = new System.Drawing.Point(339, 58);
-            this.txtVoidDeptName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtVoidDeptName.Location = new System.Drawing.Point(452, 71);
+            this.txtVoidDeptName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtVoidDeptName.MaxLength = 20;
             this.txtVoidDeptName.Name = "txtVoidDeptName";
-            this.txtVoidDeptName.Size = new System.Drawing.Size(104, 20);
+            this.txtVoidDeptName.Size = new System.Drawing.Size(137, 22);
             this.txtVoidDeptName.TabIndex = 28;
             this.txtVoidDeptName.Visible = false;
             // 
             // cbxVoidDept
             // 
             this.cbxVoidDept.AutoSize = true;
-            this.cbxVoidDept.Location = new System.Drawing.Point(154, 16);
-            this.cbxVoidDept.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxVoidDept.Location = new System.Drawing.Point(205, 20);
+            this.cbxVoidDept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxVoidDept.Name = "cbxVoidDept";
             this.cbxVoidDept.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cbxVoidDept.Size = new System.Drawing.Size(105, 17);
+            this.cbxVoidDept.Size = new System.Drawing.Size(136, 21);
             this.cbxVoidDept.TabIndex = 17;
             this.cbxVoidDept.Text = "Void Department";
             this.cbxVoidDept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2131,19 +2962,18 @@ namespace FP300Service.UserControls
             // lblVoidQtty
             // 
             this.lblVoidQtty.AutoSize = true;
-            this.lblVoidQtty.Location = new System.Drawing.Point(233, 41);
-            this.lblVoidQtty.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblVoidQtty.Location = new System.Drawing.Point(311, 50);
             this.lblVoidQtty.Name = "lblVoidQtty";
-            this.lblVoidQtty.Size = new System.Drawing.Size(94, 13);
+            this.lblVoidQtty.Size = new System.Drawing.Size(119, 17);
             this.lblVoidQtty.TabIndex = 16;
             this.lblVoidQtty.Text = "VOID QUANTITY:";
             // 
             // btnVoidSale
             // 
-            this.btnVoidSale.Location = new System.Drawing.Point(4, 24);
-            this.btnVoidSale.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVoidSale.Location = new System.Drawing.Point(5, 30);
+            this.btnVoidSale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVoidSale.Name = "btnVoidSale";
-            this.btnVoidSale.Size = new System.Drawing.Size(110, 37);
+            this.btnVoidSale.Size = new System.Drawing.Size(147, 46);
             this.btnVoidSale.TabIndex = 2;
             this.btnVoidSale.Text = "VOID SALE";
             this.btnVoidSale.UseVisualStyleBackColor = true;
@@ -2152,15 +2982,15 @@ namespace FP300Service.UserControls
             // nmrVoidQtty
             // 
             this.nmrVoidQtty.DecimalPlaces = 3;
-            this.nmrVoidQtty.Location = new System.Drawing.Point(236, 58);
-            this.nmrVoidQtty.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrVoidQtty.Location = new System.Drawing.Point(315, 71);
+            this.nmrVoidQtty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrVoidQtty.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.nmrVoidQtty.Name = "nmrVoidQtty";
-            this.nmrVoidQtty.Size = new System.Drawing.Size(62, 20);
+            this.nmrVoidQtty.Size = new System.Drawing.Size(83, 22);
             this.nmrVoidQtty.TabIndex = 15;
             this.nmrVoidQtty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrVoidQtty.Value = new decimal(new int[] {
@@ -2171,8 +3001,8 @@ namespace FP300Service.UserControls
             // 
             // nmrVoidPlu
             // 
-            this.nmrVoidPlu.Location = new System.Drawing.Point(159, 58);
-            this.nmrVoidPlu.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrVoidPlu.Location = new System.Drawing.Point(212, 71);
+            this.nmrVoidPlu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrVoidPlu.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -2184,7 +3014,7 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrVoidPlu.Name = "nmrVoidPlu";
-            this.nmrVoidPlu.Size = new System.Drawing.Size(62, 20);
+            this.nmrVoidPlu.Size = new System.Drawing.Size(83, 22);
             this.nmrVoidPlu.TabIndex = 3;
             this.nmrVoidPlu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrVoidPlu.Value = new decimal(new int[] {
@@ -2196,10 +3026,9 @@ namespace FP300Service.UserControls
             // lblVoidPlu
             // 
             this.lblVoidPlu.AutoSize = true;
-            this.lblVoidPlu.Location = new System.Drawing.Point(158, 41);
-            this.lblVoidPlu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblVoidPlu.Location = new System.Drawing.Point(211, 50);
             this.lblVoidPlu.Name = "lblVoidPlu";
-            this.lblVoidPlu.Size = new System.Drawing.Size(31, 13);
+            this.lblVoidPlu.Size = new System.Drawing.Size(39, 17);
             this.lblVoidPlu.TabIndex = 14;
             this.lblVoidPlu.Text = "PLU:";
             // 
@@ -2211,11 +3040,11 @@ namespace FP300Service.UserControls
             this.tbpAdj.Controls.Add(this.lblAdjAmount);
             this.tbpAdj.Controls.Add(this.rbtnDiscount);
             this.tbpAdj.Controls.Add(this.cbxPerc);
-            this.tbpAdj.Location = new System.Drawing.Point(4, 22);
-            this.tbpAdj.Margin = new System.Windows.Forms.Padding(2);
+            this.tbpAdj.Location = new System.Drawing.Point(4, 25);
+            this.tbpAdj.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbpAdj.Name = "tbpAdj";
-            this.tbpAdj.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpAdj.Size = new System.Drawing.Size(461, 115);
+            this.tbpAdj.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbpAdj.Size = new System.Drawing.Size(618, 146);
             this.tbpAdj.TabIndex = 2;
             this.tbpAdj.Text = "ADJUSTMENT";
             this.tbpAdj.UseVisualStyleBackColor = true;
@@ -2223,15 +3052,15 @@ namespace FP300Service.UserControls
             // nmrAdjAmount
             // 
             this.nmrAdjAmount.DecimalPlaces = 2;
-            this.nmrAdjAmount.Location = new System.Drawing.Point(154, 36);
-            this.nmrAdjAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrAdjAmount.Location = new System.Drawing.Point(205, 44);
+            this.nmrAdjAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrAdjAmount.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.nmrAdjAmount.Name = "nmrAdjAmount";
-            this.nmrAdjAmount.Size = new System.Drawing.Size(62, 20);
+            this.nmrAdjAmount.Size = new System.Drawing.Size(83, 22);
             this.nmrAdjAmount.TabIndex = 17;
             this.nmrAdjAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrAdjAmount.Value = new decimal(new int[] {
@@ -2242,10 +3071,10 @@ namespace FP300Service.UserControls
             // 
             // btnAdjust
             // 
-            this.btnAdjust.Location = new System.Drawing.Point(4, 26);
-            this.btnAdjust.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdjust.Location = new System.Drawing.Point(5, 32);
+            this.btnAdjust.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdjust.Name = "btnAdjust";
-            this.btnAdjust.Size = new System.Drawing.Size(110, 35);
+            this.btnAdjust.Size = new System.Drawing.Size(147, 43);
             this.btnAdjust.TabIndex = 11;
             this.btnAdjust.Text = "ADJUST";
             this.btnAdjust.UseVisualStyleBackColor = true;
@@ -2254,10 +3083,10 @@ namespace FP300Service.UserControls
             // rbtnFee
             // 
             this.rbtnFee.AutoSize = true;
-            this.rbtnFee.Location = new System.Drawing.Point(345, 46);
-            this.rbtnFee.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnFee.Location = new System.Drawing.Point(460, 57);
+            this.rbtnFee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbtnFee.Name = "rbtnFee";
-            this.rbtnFee.Size = new System.Drawing.Size(45, 17);
+            this.rbtnFee.Size = new System.Drawing.Size(55, 21);
             this.rbtnFee.TabIndex = 16;
             this.rbtnFee.Text = "FEE";
             this.rbtnFee.UseVisualStyleBackColor = true;
@@ -2265,10 +3094,9 @@ namespace FP300Service.UserControls
             // lblAdjAmount
             // 
             this.lblAdjAmount.AutoSize = true;
-            this.lblAdjAmount.Location = new System.Drawing.Point(142, 19);
-            this.lblAdjAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAdjAmount.Location = new System.Drawing.Point(189, 23);
             this.lblAdjAmount.Name = "lblAdjAmount";
-            this.lblAdjAmount.Size = new System.Drawing.Size(80, 13);
+            this.lblAdjAmount.Size = new System.Drawing.Size(102, 17);
             this.lblAdjAmount.TabIndex = 13;
             this.lblAdjAmount.Text = "ADJ. AMOUNT";
             // 
@@ -2276,10 +3104,10 @@ namespace FP300Service.UserControls
             // 
             this.rbtnDiscount.AutoSize = true;
             this.rbtnDiscount.Checked = true;
-            this.rbtnDiscount.Location = new System.Drawing.Point(345, 22);
-            this.rbtnDiscount.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnDiscount.Location = new System.Drawing.Point(460, 27);
+            this.rbtnDiscount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbtnDiscount.Name = "rbtnDiscount";
-            this.rbtnDiscount.Size = new System.Drawing.Size(81, 17);
+            this.rbtnDiscount.Size = new System.Drawing.Size(100, 21);
             this.rbtnDiscount.TabIndex = 15;
             this.rbtnDiscount.TabStop = true;
             this.rbtnDiscount.Text = "DISCOUNT";
@@ -2288,11 +3116,11 @@ namespace FP300Service.UserControls
             // cbxPerc
             // 
             this.cbxPerc.AutoSize = true;
-            this.cbxPerc.Location = new System.Drawing.Point(228, 36);
-            this.cbxPerc.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxPerc.Location = new System.Drawing.Point(304, 44);
+            this.cbxPerc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxPerc.Name = "cbxPerc";
             this.cbxPerc.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cbxPerc.Size = new System.Drawing.Size(113, 17);
+            this.cbxPerc.Size = new System.Drawing.Size(146, 21);
             this.cbxPerc.TabIndex = 14;
             this.cbxPerc.Text = "PERCENTAGE(%)";
             this.cbxPerc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2311,22 +3139,22 @@ namespace FP300Service.UserControls
             this.tpgSaleDept.Controls.Add(this.lblDeptSaleQtty);
             this.tpgSaleDept.Controls.Add(this.nmrDeptSaleId);
             this.tpgSaleDept.Controls.Add(this.nmrDeptSaleQtty);
-            this.tpgSaleDept.Location = new System.Drawing.Point(4, 22);
-            this.tpgSaleDept.Margin = new System.Windows.Forms.Padding(2);
+            this.tpgSaleDept.Location = new System.Drawing.Point(4, 25);
+            this.tpgSaleDept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpgSaleDept.Name = "tpgSaleDept";
-            this.tpgSaleDept.Padding = new System.Windows.Forms.Padding(2);
-            this.tpgSaleDept.Size = new System.Drawing.Size(461, 115);
+            this.tpgSaleDept.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tpgSaleDept.Size = new System.Drawing.Size(618, 146);
             this.tpgSaleDept.TabIndex = 3;
             this.tpgSaleDept.Text = "DEPT SALE";
             this.tpgSaleDept.UseVisualStyleBackColor = true;
             // 
             // cbxDeptSaleWeighable
             // 
-            this.cbxDeptSaleWeighable.Location = new System.Drawing.Point(334, 45);
-            this.cbxDeptSaleWeighable.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxDeptSaleWeighable.Location = new System.Drawing.Point(445, 55);
+            this.cbxDeptSaleWeighable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxDeptSaleWeighable.Name = "cbxDeptSaleWeighable";
             this.cbxDeptSaleWeighable.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cbxDeptSaleWeighable.Size = new System.Drawing.Size(104, 17);
+            this.cbxDeptSaleWeighable.Size = new System.Drawing.Size(139, 21);
             this.cbxDeptSaleWeighable.TabIndex = 38;
             this.cbxDeptSaleWeighable.Text = "WEIGHABLE";
             this.cbxDeptSaleWeighable.UseVisualStyleBackColor = true;
@@ -2334,29 +3162,27 @@ namespace FP300Service.UserControls
             // lblDeptSalePrice
             // 
             this.lblDeptSalePrice.AutoSize = true;
-            this.lblDeptSalePrice.Location = new System.Drawing.Point(140, 71);
-            this.lblDeptSalePrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDeptSalePrice.Location = new System.Drawing.Point(187, 87);
             this.lblDeptSalePrice.Name = "lblDeptSalePrice";
-            this.lblDeptSalePrice.Size = new System.Drawing.Size(39, 13);
+            this.lblDeptSalePrice.Size = new System.Drawing.Size(48, 17);
             this.lblDeptSalePrice.TabIndex = 37;
             this.lblDeptSalePrice.Text = "PRICE";
             // 
             // lblDeptName
             // 
             this.lblDeptName.AutoSize = true;
-            this.lblDeptName.Location = new System.Drawing.Point(275, 18);
-            this.lblDeptName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDeptName.Location = new System.Drawing.Point(367, 22);
             this.lblDeptName.Name = "lblDeptName";
-            this.lblDeptName.Size = new System.Drawing.Size(70, 13);
+            this.lblDeptName.Size = new System.Drawing.Size(88, 17);
             this.lblDeptName.TabIndex = 27;
             this.lblDeptName.Text = "DEPT NAME";
             // 
             // btnSaleDept
             // 
-            this.btnSaleDept.Location = new System.Drawing.Point(4, 20);
-            this.btnSaleDept.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaleDept.Location = new System.Drawing.Point(5, 25);
+            this.btnSaleDept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSaleDept.Name = "btnSaleDept";
-            this.btnSaleDept.Size = new System.Drawing.Size(110, 37);
+            this.btnSaleDept.Size = new System.Drawing.Size(147, 46);
             this.btnSaleDept.TabIndex = 30;
             this.btnSaleDept.Text = "SALE";
             this.btnSaleDept.UseVisualStyleBackColor = true;
@@ -2365,15 +3191,15 @@ namespace FP300Service.UserControls
             // nmrDeptSalePrice
             // 
             this.nmrDeptSalePrice.DecimalPlaces = 2;
-            this.nmrDeptSalePrice.Location = new System.Drawing.Point(184, 66);
-            this.nmrDeptSalePrice.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrDeptSalePrice.Location = new System.Drawing.Point(245, 81);
+            this.nmrDeptSalePrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrDeptSalePrice.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.nmrDeptSalePrice.Name = "nmrDeptSalePrice";
-            this.nmrDeptSalePrice.Size = new System.Drawing.Size(62, 20);
+            this.nmrDeptSalePrice.Size = new System.Drawing.Size(83, 22);
             this.nmrDeptSalePrice.TabIndex = 35;
             this.nmrDeptSalePrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrDeptSalePrice.Value = new decimal(new int[] {
@@ -2384,37 +3210,35 @@ namespace FP300Service.UserControls
             // 
             // txtDeptSaleName
             // 
-            this.txtDeptSaleName.Location = new System.Drawing.Point(350, 15);
-            this.txtDeptSaleName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDeptSaleName.Location = new System.Drawing.Point(467, 18);
+            this.txtDeptSaleName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDeptSaleName.MaxLength = 20;
             this.txtDeptSaleName.Name = "txtDeptSaleName";
-            this.txtDeptSaleName.Size = new System.Drawing.Size(90, 20);
+            this.txtDeptSaleName.Size = new System.Drawing.Size(119, 22);
             this.txtDeptSaleName.TabIndex = 26;
             // 
             // lblDeptSaleId
             // 
             this.lblDeptSaleId.AutoSize = true;
-            this.lblDeptSaleId.Location = new System.Drawing.Point(134, 17);
-            this.lblDeptSaleId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDeptSaleId.Location = new System.Drawing.Point(179, 21);
             this.lblDeptSaleId.Name = "lblDeptSaleId";
-            this.lblDeptSaleId.Size = new System.Drawing.Size(46, 13);
+            this.lblDeptSaleId.Size = new System.Drawing.Size(57, 17);
             this.lblDeptSaleId.TabIndex = 25;
             this.lblDeptSaleId.Text = "DEP. ID";
             // 
             // lblDeptSaleQtty
             // 
             this.lblDeptSaleQtty.AutoSize = true;
-            this.lblDeptSaleQtty.Location = new System.Drawing.Point(118, 43);
-            this.lblDeptSaleQtty.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDeptSaleQtty.Location = new System.Drawing.Point(157, 53);
             this.lblDeptSaleQtty.Name = "lblDeptSaleQtty";
-            this.lblDeptSaleQtty.Size = new System.Drawing.Size(65, 13);
+            this.lblDeptSaleQtty.Size = new System.Drawing.Size(82, 17);
             this.lblDeptSaleQtty.TabIndex = 34;
             this.lblDeptSaleQtty.Text = "QUANTITY:";
             // 
             // nmrDeptSaleId
             // 
-            this.nmrDeptSaleId.Location = new System.Drawing.Point(185, 14);
-            this.nmrDeptSaleId.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrDeptSaleId.Location = new System.Drawing.Point(247, 17);
+            this.nmrDeptSaleId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrDeptSaleId.Maximum = new decimal(new int[] {
             8,
             0,
@@ -2426,7 +3250,7 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrDeptSaleId.Name = "nmrDeptSaleId";
-            this.nmrDeptSaleId.Size = new System.Drawing.Size(62, 20);
+            this.nmrDeptSaleId.Size = new System.Drawing.Size(83, 22);
             this.nmrDeptSaleId.TabIndex = 24;
             this.nmrDeptSaleId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrDeptSaleId.Value = new decimal(new int[] {
@@ -2438,15 +3262,15 @@ namespace FP300Service.UserControls
             // nmrDeptSaleQtty
             // 
             this.nmrDeptSaleQtty.DecimalPlaces = 3;
-            this.nmrDeptSaleQtty.Location = new System.Drawing.Point(185, 37);
-            this.nmrDeptSaleQtty.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrDeptSaleQtty.Location = new System.Drawing.Point(247, 46);
+            this.nmrDeptSaleQtty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrDeptSaleQtty.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.nmrDeptSaleQtty.Name = "nmrDeptSaleQtty";
-            this.nmrDeptSaleQtty.Size = new System.Drawing.Size(62, 20);
+            this.nmrDeptSaleQtty.Size = new System.Drawing.Size(83, 22);
             this.nmrDeptSaleQtty.TabIndex = 33;
             this.nmrDeptSaleQtty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrDeptSaleQtty.Value = new decimal(new int[] {
@@ -2463,12 +3287,13 @@ namespace FP300Service.UserControls
             this.tbcPayment.Controls.Add(this.tabRefund);
             this.tbcPayment.Controls.Add(this.tabPageBankList);
             this.tbcPayment.Controls.Add(this.tabPageEftSlipCopy);
+            this.tbcPayment.Controls.Add(this.tabSlipExternal);
             this.tbcPayment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbcPayment.Location = new System.Drawing.Point(2, 277);
-            this.tbcPayment.Margin = new System.Windows.Forms.Padding(2);
+            this.tbcPayment.Location = new System.Drawing.Point(3, 341);
+            this.tbcPayment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbcPayment.Name = "tbcPayment";
             this.tbcPayment.SelectedIndex = 0;
-            this.tbcPayment.Size = new System.Drawing.Size(469, 111);
+            this.tbcPayment.Size = new System.Drawing.Size(626, 137);
             this.tbcPayment.TabIndex = 27;
             // 
             // tbpPay1
@@ -2476,11 +3301,11 @@ namespace FP300Service.UserControls
             this.tbpPay1.Controls.Add(this.tableLayoutPanel6);
             this.tbpPay1.Controls.Add(this.lblFCurrValue);
             this.tbpPay1.Controls.Add(this.lblPayIndx);
-            this.tbpPay1.Location = new System.Drawing.Point(4, 22);
-            this.tbpPay1.Margin = new System.Windows.Forms.Padding(2);
+            this.tbpPay1.Location = new System.Drawing.Point(4, 25);
+            this.tbpPay1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbpPay1.Name = "tbpPay1";
-            this.tbpPay1.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpPay1.Size = new System.Drawing.Size(461, 85);
+            this.tbpPay1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbpPay1.Size = new System.Drawing.Size(618, 108);
             this.tbpPay1.TabIndex = 0;
             this.tbpPay1.Text = "CASH PAYMENTS";
             this.tbpPay1.UseVisualStyleBackColor = true;
@@ -2493,27 +3318,29 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.btnPayment, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 2);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(457, 81);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(612, 104);
             this.tableLayoutPanel6.TabIndex = 21;
             // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel9, 0, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(107, 3);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(143, 4);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(347, 75);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(465, 96);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // tableLayoutPanel8
@@ -2524,21 +3351,21 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel8.Controls.Add(this.lblPayAmount, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.nmrPaymentAmount, 1, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(341, 31);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(457, 40);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // lblPayAmount
             // 
             this.lblPayAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPayAmount.AutoSize = true;
-            this.lblPayAmount.Location = new System.Drawing.Point(30, 9);
-            this.lblPayAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPayAmount.Location = new System.Drawing.Point(45, 11);
             this.lblPayAmount.Name = "lblPayAmount";
-            this.lblPayAmount.Size = new System.Drawing.Size(109, 13);
+            this.lblPayAmount.Size = new System.Drawing.Size(138, 17);
             this.lblPayAmount.TabIndex = 8;
             this.lblPayAmount.Text = "PAYMENT AMOUNT";
             // 
@@ -2546,15 +3373,15 @@ namespace FP300Service.UserControls
             // 
             this.nmrPaymentAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.nmrPaymentAmount.DecimalPlaces = 2;
-            this.nmrPaymentAmount.Location = new System.Drawing.Point(210, 5);
-            this.nmrPaymentAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrPaymentAmount.Location = new System.Drawing.Point(282, 9);
+            this.nmrPaymentAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrPaymentAmount.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.nmrPaymentAmount.Name = "nmrPaymentAmount";
-            this.nmrPaymentAmount.Size = new System.Drawing.Size(90, 20);
+            this.nmrPaymentAmount.Size = new System.Drawing.Size(120, 22);
             this.nmrPaymentAmount.TabIndex = 16;
             this.nmrPaymentAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrPaymentAmount.Value = new decimal(new int[] {
@@ -2576,21 +3403,21 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel9.Controls.Add(this.btnRefreshCredit, 3, 0);
             this.tableLayoutPanel9.Controls.Add(this.cbxSubPayments, 2, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 40);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(4, 52);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(341, 32);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(457, 40);
             this.tableLayoutPanel9.TabIndex = 1;
             // 
             // lblPayType
             // 
             this.lblPayType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPayType.AutoSize = true;
-            this.lblPayType.Location = new System.Drawing.Point(3, 9);
-            this.lblPayType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPayType.Location = new System.Drawing.Point(8, 11);
             this.lblPayType.Name = "lblPayType";
-            this.lblPayType.Size = new System.Drawing.Size(90, 13);
+            this.lblPayType.Size = new System.Drawing.Size(114, 17);
             this.lblPayType.TabIndex = 10;
             this.lblPayType.Text = "PAYMENT TYPE";
             // 
@@ -2598,10 +3425,10 @@ namespace FP300Service.UserControls
             // 
             this.cbxPaymentType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbxPaymentType.FormattingEnabled = true;
-            this.cbxPaymentType.Location = new System.Drawing.Point(99, 5);
-            this.cbxPaymentType.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxPaymentType.Location = new System.Drawing.Point(133, 7);
+            this.cbxPaymentType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxPaymentType.Name = "cbxPaymentType";
-            this.cbxPaymentType.Size = new System.Drawing.Size(67, 21);
+            this.cbxPaymentType.Size = new System.Drawing.Size(88, 24);
             this.cbxPaymentType.TabIndex = 9;
             this.cbxPaymentType.SelectedIndexChanged += new System.EventHandler(this.cbxPaymentType_SelectedIndexChanged);
             // 
@@ -2609,10 +3436,10 @@ namespace FP300Service.UserControls
             // 
             this.btnRefreshCredit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnRefreshCredit.Image = global::FP300Service.Properties.Resources.refresh;
-            this.btnRefreshCredit.Location = new System.Drawing.Point(307, 2);
-            this.btnRefreshCredit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRefreshCredit.Location = new System.Drawing.Point(411, 3);
+            this.btnRefreshCredit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRefreshCredit.Name = "btnRefreshCredit";
-            this.btnRefreshCredit.Size = new System.Drawing.Size(30, 28);
+            this.btnRefreshCredit.Size = new System.Drawing.Size(40, 34);
             this.btnRefreshCredit.TabIndex = 19;
             this.btnRefreshCredit.UseVisualStyleBackColor = true;
             this.btnRefreshCredit.Visible = false;
@@ -2622,20 +3449,20 @@ namespace FP300Service.UserControls
             // 
             this.cbxSubPayments.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbxSubPayments.FormattingEnabled = true;
-            this.cbxSubPayments.Location = new System.Drawing.Point(170, 5);
-            this.cbxSubPayments.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxSubPayments.Location = new System.Drawing.Point(229, 7);
+            this.cbxSubPayments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxSubPayments.Name = "cbxSubPayments";
-            this.cbxSubPayments.Size = new System.Drawing.Size(131, 21);
+            this.cbxSubPayments.Size = new System.Drawing.Size(173, 24);
             this.cbxSubPayments.TabIndex = 17;
             this.cbxSubPayments.SelectedIndexChanged += new System.EventHandler(this.cbxSubPayments_SelectedIndexChanged);
             // 
             // btnPayment
             // 
             this.btnPayment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPayment.Location = new System.Drawing.Point(2, 2);
-            this.btnPayment.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPayment.Location = new System.Drawing.Point(3, 2);
+            this.btnPayment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(100, 77);
+            this.btnPayment.Size = new System.Drawing.Size(133, 100);
             this.btnPayment.TabIndex = 6;
             this.btnPayment.Text = "PAYMENT";
             this.btnPayment.UseVisualStyleBackColor = true;
@@ -2644,19 +3471,17 @@ namespace FP300Service.UserControls
             // lblFCurrValue
             // 
             this.lblFCurrValue.AutoSize = true;
-            this.lblFCurrValue.Location = new System.Drawing.Point(151, 67);
-            this.lblFCurrValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFCurrValue.Location = new System.Drawing.Point(201, 82);
             this.lblFCurrValue.Name = "lblFCurrValue";
-            this.lblFCurrValue.Size = new System.Drawing.Size(0, 13);
+            this.lblFCurrValue.Size = new System.Drawing.Size(0, 17);
             this.lblFCurrValue.TabIndex = 20;
             // 
             // lblPayIndx
             // 
             this.lblPayIndx.AutoSize = true;
-            this.lblPayIndx.Location = new System.Drawing.Point(291, 24);
-            this.lblPayIndx.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPayIndx.Location = new System.Drawing.Point(388, 30);
             this.lblPayIndx.Name = "lblPayIndx";
-            this.lblPayIndx.Size = new System.Drawing.Size(0, 13);
+            this.lblPayIndx.Size = new System.Drawing.Size(0, 17);
             this.lblPayIndx.TabIndex = 18;
             // 
             // tbpPayEFT
@@ -2670,11 +3495,11 @@ namespace FP300Service.UserControls
             this.tbpPayEFT.Controls.Add(this.btnEFTAuthorization);
             this.tbpPayEFT.Controls.Add(this.btnCardQuery);
             this.tbpPayEFT.Controls.Add(this.chbSlipCopy);
-            this.tbpPayEFT.Location = new System.Drawing.Point(4, 22);
-            this.tbpPayEFT.Margin = new System.Windows.Forms.Padding(2);
+            this.tbpPayEFT.Location = new System.Drawing.Point(4, 25);
+            this.tbpPayEFT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbpPayEFT.Name = "tbpPayEFT";
-            this.tbpPayEFT.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpPayEFT.Size = new System.Drawing.Size(461, 85);
+            this.tbpPayEFT.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbpPayEFT.Size = new System.Drawing.Size(618, 108);
             this.tbpPayEFT.TabIndex = 1;
             this.tbpPayEFT.Text = "EFT PAYMENT";
             this.tbpPayEFT.UseVisualStyleBackColor = true;
@@ -2682,25 +3507,24 @@ namespace FP300Service.UserControls
             // lblEFTAmount
             // 
             this.lblEFTAmount.AutoSize = true;
-            this.lblEFTAmount.Location = new System.Drawing.Point(132, 66);
-            this.lblEFTAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEFTAmount.Location = new System.Drawing.Point(176, 81);
             this.lblEFTAmount.Name = "lblEFTAmount";
-            this.lblEFTAmount.Size = new System.Drawing.Size(109, 13);
+            this.lblEFTAmount.Size = new System.Drawing.Size(138, 17);
             this.lblEFTAmount.TabIndex = 29;
             this.lblEFTAmount.Text = "PAYMENT AMOUNT";
             // 
             // nmrEFTAmount
             // 
             this.nmrEFTAmount.DecimalPlaces = 2;
-            this.nmrEFTAmount.Location = new System.Drawing.Point(248, 61);
-            this.nmrEFTAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrEFTAmount.Location = new System.Drawing.Point(331, 75);
+            this.nmrEFTAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrEFTAmount.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.nmrEFTAmount.Name = "nmrEFTAmount";
-            this.nmrEFTAmount.Size = new System.Drawing.Size(62, 20);
+            this.nmrEFTAmount.Size = new System.Drawing.Size(83, 22);
             this.nmrEFTAmount.TabIndex = 30;
             this.nmrEFTAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrEFTAmount.Value = new decimal(new int[] {
@@ -2712,52 +3536,50 @@ namespace FP300Service.UserControls
             // lblCardNum
             // 
             this.lblCardNum.AutoSize = true;
-            this.lblCardNum.Location = new System.Drawing.Point(136, 14);
-            this.lblCardNum.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCardNum.Location = new System.Drawing.Point(181, 17);
             this.lblCardNum.Name = "lblCardNum";
-            this.lblCardNum.Size = new System.Drawing.Size(90, 13);
+            this.lblCardNum.Size = new System.Drawing.Size(113, 17);
             this.lblCardNum.TabIndex = 28;
             this.lblCardNum.Text = "CARD NUMBER:";
             // 
             // lblInstallment
             // 
             this.lblInstallment.AutoSize = true;
-            this.lblInstallment.Location = new System.Drawing.Point(136, 39);
-            this.lblInstallment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblInstallment.Location = new System.Drawing.Point(181, 48);
             this.lblInstallment.Name = "lblInstallment";
-            this.lblInstallment.Size = new System.Drawing.Size(85, 13);
+            this.lblInstallment.Size = new System.Drawing.Size(107, 17);
             this.lblInstallment.TabIndex = 27;
             this.lblInstallment.Text = "INSTALLMENT:";
             // 
             // nmrInstallment
             // 
-            this.nmrInstallment.Location = new System.Drawing.Point(270, 36);
-            this.nmrInstallment.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrInstallment.Location = new System.Drawing.Point(360, 44);
+            this.nmrInstallment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrInstallment.Maximum = new decimal(new int[] {
             20000,
             0,
             0,
             0});
             this.nmrInstallment.Name = "nmrInstallment";
-            this.nmrInstallment.Size = new System.Drawing.Size(40, 20);
+            this.nmrInstallment.Size = new System.Drawing.Size(53, 22);
             this.nmrInstallment.TabIndex = 26;
             this.nmrInstallment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtCardNumber
             // 
-            this.txtCardNumber.Location = new System.Drawing.Point(242, 12);
-            this.txtCardNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCardNumber.Location = new System.Drawing.Point(323, 15);
+            this.txtCardNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCardNumber.MaxLength = 6;
             this.txtCardNumber.Name = "txtCardNumber";
-            this.txtCardNumber.Size = new System.Drawing.Size(68, 20);
+            this.txtCardNumber.Size = new System.Drawing.Size(89, 22);
             this.txtCardNumber.TabIndex = 22;
             // 
             // btnEFTAuthorization
             // 
-            this.btnEFTAuthorization.Location = new System.Drawing.Point(4, 44);
-            this.btnEFTAuthorization.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEFTAuthorization.Location = new System.Drawing.Point(5, 54);
+            this.btnEFTAuthorization.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEFTAuthorization.Name = "btnEFTAuthorization";
-            this.btnEFTAuthorization.Size = new System.Drawing.Size(110, 35);
+            this.btnEFTAuthorization.Size = new System.Drawing.Size(147, 43);
             this.btnEFTAuthorization.TabIndex = 5;
             this.btnEFTAuthorization.Text = "GET EFT PAYMENT";
             this.btnEFTAuthorization.UseVisualStyleBackColor = true;
@@ -2765,10 +3587,10 @@ namespace FP300Service.UserControls
             // 
             // btnCardQuery
             // 
-            this.btnCardQuery.Location = new System.Drawing.Point(2, 4);
-            this.btnCardQuery.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCardQuery.Location = new System.Drawing.Point(3, 5);
+            this.btnCardQuery.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCardQuery.Name = "btnCardQuery";
-            this.btnCardQuery.Size = new System.Drawing.Size(110, 35);
+            this.btnCardQuery.Size = new System.Drawing.Size(147, 43);
             this.btnCardQuery.TabIndex = 4;
             this.btnCardQuery.Text = "CHECK CARD";
             this.btnCardQuery.UseVisualStyleBackColor = true;
@@ -2777,11 +3599,11 @@ namespace FP300Service.UserControls
             // chbSlipCopy
             // 
             this.chbSlipCopy.AutoSize = true;
-            this.chbSlipCopy.Location = new System.Drawing.Point(338, 14);
-            this.chbSlipCopy.Margin = new System.Windows.Forms.Padding(2);
+            this.chbSlipCopy.Location = new System.Drawing.Point(451, 17);
+            this.chbSlipCopy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbSlipCopy.Name = "chbSlipCopy";
             this.chbSlipCopy.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chbSlipCopy.Size = new System.Drawing.Size(81, 17);
+            this.chbSlipCopy.Size = new System.Drawing.Size(101, 21);
             this.chbSlipCopy.TabIndex = 21;
             this.chbSlipCopy.Text = "SLIP COPY";
             this.chbSlipCopy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2795,11 +3617,11 @@ namespace FP300Service.UserControls
             this.tbpVoidPay.Controls.Add(this.btnVoidPayment);
             this.tbpVoidPay.Controls.Add(this.label2);
             this.tbpVoidPay.Controls.Add(this.nmrVoidPayIndex);
-            this.tbpVoidPay.Location = new System.Drawing.Point(4, 22);
-            this.tbpVoidPay.Margin = new System.Windows.Forms.Padding(2);
+            this.tbpVoidPay.Location = new System.Drawing.Point(4, 25);
+            this.tbpVoidPay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbpVoidPay.Name = "tbpVoidPay";
-            this.tbpVoidPay.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpVoidPay.Size = new System.Drawing.Size(461, 85);
+            this.tbpVoidPay.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbpVoidPay.Size = new System.Drawing.Size(618, 108);
             this.tbpVoidPay.TabIndex = 2;
             this.tbpVoidPay.Text = "VOID PAYMENT";
             this.tbpVoidPay.UseVisualStyleBackColor = true;
@@ -2807,21 +3629,20 @@ namespace FP300Service.UserControls
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(180, 9);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(240, 11);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 13);
+            this.label5.Size = new System.Drawing.Size(71, 17);
             this.label5.TabIndex = 31;
             this.label5.Text = "VOID EFT";
             // 
             // checkBoxVoidEft
             // 
             this.checkBoxVoidEft.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBoxVoidEft.Location = new System.Drawing.Point(151, 8);
-            this.checkBoxVoidEft.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxVoidEft.Location = new System.Drawing.Point(201, 10);
+            this.checkBoxVoidEft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxVoidEft.Name = "checkBoxVoidEft";
             this.checkBoxVoidEft.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkBoxVoidEft.Size = new System.Drawing.Size(20, 17);
+            this.checkBoxVoidEft.Size = new System.Drawing.Size(27, 21);
             this.checkBoxVoidEft.TabIndex = 30;
             this.checkBoxVoidEft.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxVoidEft.UseVisualStyleBackColor = true;
@@ -2836,75 +3657,72 @@ namespace FP300Service.UserControls
             this.panelVoidEFT.Controls.Add(this.txtAcquierId);
             this.panelVoidEFT.Controls.Add(this.lblAcquierId);
             this.panelVoidEFT.Enabled = false;
-            this.panelVoidEFT.Location = new System.Drawing.Point(274, 2);
-            this.panelVoidEFT.Margin = new System.Windows.Forms.Padding(2);
+            this.panelVoidEFT.Location = new System.Drawing.Point(365, 2);
+            this.panelVoidEFT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelVoidEFT.Name = "panelVoidEFT";
-            this.panelVoidEFT.Size = new System.Drawing.Size(182, 77);
+            this.panelVoidEFT.Size = new System.Drawing.Size(243, 95);
             this.panelVoidEFT.TabIndex = 29;
             // 
             // txtStanNo
             // 
-            this.txtStanNo.Location = new System.Drawing.Point(77, 47);
-            this.txtStanNo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtStanNo.Location = new System.Drawing.Point(103, 58);
+            this.txtStanNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtStanNo.MaxLength = 15;
             this.txtStanNo.Name = "txtStanNo";
-            this.txtStanNo.Size = new System.Drawing.Size(90, 20);
+            this.txtStanNo.Size = new System.Drawing.Size(119, 22);
             this.txtStanNo.TabIndex = 27;
             // 
             // txtBatchNo
             // 
-            this.txtBatchNo.Location = new System.Drawing.Point(77, 24);
-            this.txtBatchNo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBatchNo.Location = new System.Drawing.Point(103, 30);
+            this.txtBatchNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBatchNo.MaxLength = 15;
             this.txtBatchNo.Name = "txtBatchNo";
-            this.txtBatchNo.Size = new System.Drawing.Size(90, 20);
+            this.txtBatchNo.Size = new System.Drawing.Size(119, 22);
             this.txtBatchNo.TabIndex = 26;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 50);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(5, 62);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.Size = new System.Drawing.Size(70, 17);
             this.label4.TabIndex = 25;
             this.label4.Text = "STAN NO";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 30);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(4, 37);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.Size = new System.Drawing.Size(79, 17);
             this.label3.TabIndex = 24;
             this.label3.Text = "BATCH NO";
             // 
             // txtAcquierId
             // 
-            this.txtAcquierId.Location = new System.Drawing.Point(77, 3);
-            this.txtAcquierId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAcquierId.Location = new System.Drawing.Point(103, 4);
+            this.txtAcquierId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAcquierId.MaxLength = 15;
             this.txtAcquierId.Name = "txtAcquierId";
-            this.txtAcquierId.Size = new System.Drawing.Size(90, 20);
+            this.txtAcquierId.Size = new System.Drawing.Size(119, 22);
             this.txtAcquierId.TabIndex = 22;
             // 
             // lblAcquierId
             // 
             this.lblAcquierId.AutoSize = true;
-            this.lblAcquierId.Location = new System.Drawing.Point(3, 6);
-            this.lblAcquierId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAcquierId.Location = new System.Drawing.Point(4, 7);
             this.lblAcquierId.Name = "lblAcquierId";
-            this.lblAcquierId.Size = new System.Drawing.Size(69, 13);
+            this.lblAcquierId.Size = new System.Drawing.Size(86, 17);
             this.lblAcquierId.TabIndex = 23;
             this.lblAcquierId.Text = "ACQUIER ID";
             // 
             // btnVoidPayment
             // 
-            this.btnVoidPayment.Location = new System.Drawing.Point(4, 22);
-            this.btnVoidPayment.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVoidPayment.Location = new System.Drawing.Point(5, 27);
+            this.btnVoidPayment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVoidPayment.Name = "btnVoidPayment";
-            this.btnVoidPayment.Size = new System.Drawing.Size(110, 35);
+            this.btnVoidPayment.Size = new System.Drawing.Size(147, 43);
             this.btnVoidPayment.TabIndex = 23;
             this.btnVoidPayment.Text = "VOID PAYMENT";
             this.btnVoidPayment.UseVisualStyleBackColor = true;
@@ -2913,17 +3731,16 @@ namespace FP300Service.UserControls
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(118, 52);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(157, 64);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 13);
+            this.label2.Size = new System.Drawing.Size(123, 17);
             this.label2.TabIndex = 25;
             this.label2.Text = "PAYMENT INDEX:";
             // 
             // nmrVoidPayIndex
             // 
-            this.nmrVoidPayIndex.Location = new System.Drawing.Point(220, 49);
-            this.nmrVoidPayIndex.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrVoidPayIndex.Location = new System.Drawing.Point(293, 60);
+            this.nmrVoidPayIndex.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrVoidPayIndex.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -2935,7 +3752,7 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrVoidPayIndex.Name = "nmrVoidPayIndex";
-            this.nmrVoidPayIndex.Size = new System.Drawing.Size(40, 20);
+            this.nmrVoidPayIndex.Size = new System.Drawing.Size(53, 22);
             this.nmrVoidPayIndex.TabIndex = 24;
             this.nmrVoidPayIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrVoidPayIndex.Value = new decimal(new int[] {
@@ -2951,9 +3768,10 @@ namespace FP300Service.UserControls
             this.tabRefund.Controls.Add(this.txtAcquierIdRefund);
             this.tabRefund.Controls.Add(this.label6);
             this.tabRefund.Controls.Add(this.btnRefund);
-            this.tabRefund.Location = new System.Drawing.Point(4, 22);
+            this.tabRefund.Location = new System.Drawing.Point(4, 25);
+            this.tabRefund.Margin = new System.Windows.Forms.Padding(4);
             this.tabRefund.Name = "tabRefund";
-            this.tabRefund.Size = new System.Drawing.Size(461, 85);
+            this.tabRefund.Size = new System.Drawing.Size(618, 108);
             this.tabRefund.TabIndex = 3;
             this.tabRefund.Text = "EFT REFUND";
             this.tabRefund.UseVisualStyleBackColor = true;
@@ -2962,53 +3780,51 @@ namespace FP300Service.UserControls
             // 
             this.numericUpDownRefundAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numericUpDownRefundAmount.DecimalPlaces = 2;
-            this.numericUpDownRefundAmount.Location = new System.Drawing.Point(267, 43);
-            this.numericUpDownRefundAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownRefundAmount.Location = new System.Drawing.Point(357, 53);
+            this.numericUpDownRefundAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDownRefundAmount.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.numericUpDownRefundAmount.Name = "numericUpDownRefundAmount";
-            this.numericUpDownRefundAmount.Size = new System.Drawing.Size(90, 20);
+            this.numericUpDownRefundAmount.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownRefundAmount.TabIndex = 27;
             this.numericUpDownRefundAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelRefundAmount
             // 
             this.labelRefundAmount.AutoSize = true;
-            this.labelRefundAmount.Location = new System.Drawing.Point(149, 50);
-            this.labelRefundAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelRefundAmount.Location = new System.Drawing.Point(199, 62);
             this.labelRefundAmount.Name = "labelRefundAmount";
-            this.labelRefundAmount.Size = new System.Drawing.Size(54, 13);
+            this.labelRefundAmount.Size = new System.Drawing.Size(68, 17);
             this.labelRefundAmount.TabIndex = 26;
             this.labelRefundAmount.Text = "AMOUNT";
             // 
             // txtAcquierIdRefund
             // 
-            this.txtAcquierIdRefund.Location = new System.Drawing.Point(267, 19);
-            this.txtAcquierIdRefund.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAcquierIdRefund.Location = new System.Drawing.Point(356, 23);
+            this.txtAcquierIdRefund.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAcquierIdRefund.MaxLength = 15;
             this.txtAcquierIdRefund.Name = "txtAcquierIdRefund";
-            this.txtAcquierIdRefund.Size = new System.Drawing.Size(90, 20);
+            this.txtAcquierIdRefund.Size = new System.Drawing.Size(119, 22);
             this.txtAcquierIdRefund.TabIndex = 24;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(149, 22);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(199, 27);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 13);
+            this.label6.Size = new System.Drawing.Size(86, 17);
             this.label6.TabIndex = 25;
             this.label6.Text = "ACQUIER ID";
             // 
             // btnRefund
             // 
-            this.btnRefund.Location = new System.Drawing.Point(15, 19);
-            this.btnRefund.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRefund.Location = new System.Drawing.Point(20, 23);
+            this.btnRefund.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRefund.Name = "btnRefund";
-            this.btnRefund.Size = new System.Drawing.Size(110, 37);
+            this.btnRefund.Size = new System.Drawing.Size(147, 46);
             this.btnRefund.TabIndex = 3;
             this.btnRefund.Text = "REFUND";
             this.btnRefund.UseVisualStyleBackColor = true;
@@ -3017,19 +3833,20 @@ namespace FP300Service.UserControls
             // tabPageBankList
             // 
             this.tabPageBankList.Controls.Add(this.btnBankList);
-            this.tabPageBankList.Location = new System.Drawing.Point(4, 22);
+            this.tabPageBankList.Location = new System.Drawing.Point(4, 25);
+            this.tabPageBankList.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageBankList.Name = "tabPageBankList";
-            this.tabPageBankList.Size = new System.Drawing.Size(461, 85);
+            this.tabPageBankList.Size = new System.Drawing.Size(618, 108);
             this.tabPageBankList.TabIndex = 4;
             this.tabPageBankList.Text = "BANK LIST";
             this.tabPageBankList.UseVisualStyleBackColor = true;
             // 
             // btnBankList
             // 
-            this.btnBankList.Location = new System.Drawing.Point(24, 18);
-            this.btnBankList.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBankList.Location = new System.Drawing.Point(32, 22);
+            this.btnBankList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBankList.Name = "btnBankList";
-            this.btnBankList.Size = new System.Drawing.Size(110, 37);
+            this.btnBankList.Size = new System.Drawing.Size(147, 46);
             this.btnBankList.TabIndex = 3;
             this.btnBankList.Text = "GET BANK LIST";
             this.btnBankList.UseVisualStyleBackColor = true;
@@ -3049,10 +3866,11 @@ namespace FP300Service.UserControls
             this.tabPageEftSlipCopy.Controls.Add(this.labelSlpCpyBatchNo);
             this.tabPageEftSlipCopy.Controls.Add(this.textBoxSlpCpyAcquirId);
             this.tabPageEftSlipCopy.Controls.Add(this.label17);
-            this.tabPageEftSlipCopy.Location = new System.Drawing.Point(4, 22);
+            this.tabPageEftSlipCopy.Location = new System.Drawing.Point(4, 25);
+            this.tabPageEftSlipCopy.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageEftSlipCopy.Name = "tabPageEftSlipCopy";
-            this.tabPageEftSlipCopy.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEftSlipCopy.Size = new System.Drawing.Size(461, 85);
+            this.tabPageEftSlipCopy.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPageEftSlipCopy.Size = new System.Drawing.Size(618, 108);
             this.tabPageEftSlipCopy.TabIndex = 5;
             this.tabPageEftSlipCopy.Text = "EFT SLIPCOPY";
             this.tabPageEftSlipCopy.UseVisualStyleBackColor = true;
@@ -3060,11 +3878,11 @@ namespace FP300Service.UserControls
             // checkBoxSlpCpyZnoRcptNo
             // 
             this.checkBoxSlpCpyZnoRcptNo.AutoSize = true;
-            this.checkBoxSlpCpyZnoRcptNo.Location = new System.Drawing.Point(288, 13);
-            this.checkBoxSlpCpyZnoRcptNo.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxSlpCpyZnoRcptNo.Location = new System.Drawing.Point(384, 16);
+            this.checkBoxSlpCpyZnoRcptNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxSlpCpyZnoRcptNo.Name = "checkBoxSlpCpyZnoRcptNo";
             this.checkBoxSlpCpyZnoRcptNo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkBoxSlpCpyZnoRcptNo.Size = new System.Drawing.Size(108, 17);
+            this.checkBoxSlpCpyZnoRcptNo.Size = new System.Drawing.Size(140, 21);
             this.checkBoxSlpCpyZnoRcptNo.TabIndex = 39;
             this.checkBoxSlpCpyZnoRcptNo.Text = "Z No-Fiş No ile Al";
             this.checkBoxSlpCpyZnoRcptNo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3073,10 +3891,10 @@ namespace FP300Service.UserControls
             // 
             // buttonGetEFTSlipCopy
             // 
-            this.buttonGetEFTSlipCopy.Location = new System.Drawing.Point(5, 19);
-            this.buttonGetEFTSlipCopy.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonGetEFTSlipCopy.Location = new System.Drawing.Point(7, 23);
+            this.buttonGetEFTSlipCopy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonGetEFTSlipCopy.Name = "buttonGetEFTSlipCopy";
-            this.buttonGetEFTSlipCopy.Size = new System.Drawing.Size(89, 48);
+            this.buttonGetEFTSlipCopy.Size = new System.Drawing.Size(119, 59);
             this.buttonGetEFTSlipCopy.TabIndex = 38;
             this.buttonGetEFTSlipCopy.Text = "GET SLIPCOPY";
             this.buttonGetEFTSlipCopy.UseVisualStyleBackColor = true;
@@ -3084,106 +3902,185 @@ namespace FP300Service.UserControls
             // 
             // textBoxSlpCpyRcptNo
             // 
-            this.textBoxSlpCpyRcptNo.Location = new System.Drawing.Point(360, 54);
-            this.textBoxSlpCpyRcptNo.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSlpCpyRcptNo.Location = new System.Drawing.Point(480, 66);
+            this.textBoxSlpCpyRcptNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSlpCpyRcptNo.MaxLength = 15;
             this.textBoxSlpCpyRcptNo.Name = "textBoxSlpCpyRcptNo";
-            this.textBoxSlpCpyRcptNo.Size = new System.Drawing.Size(90, 20);
+            this.textBoxSlpCpyRcptNo.Size = new System.Drawing.Size(119, 22);
             this.textBoxSlpCpyRcptNo.TabIndex = 37;
             // 
             // textBoxSlpCpyZNo
             // 
-            this.textBoxSlpCpyZNo.Location = new System.Drawing.Point(360, 31);
-            this.textBoxSlpCpyZNo.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSlpCpyZNo.Location = new System.Drawing.Point(480, 38);
+            this.textBoxSlpCpyZNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSlpCpyZNo.MaxLength = 15;
             this.textBoxSlpCpyZNo.Name = "textBoxSlpCpyZNo";
-            this.textBoxSlpCpyZNo.Size = new System.Drawing.Size(90, 20);
+            this.textBoxSlpCpyZNo.Size = new System.Drawing.Size(119, 22);
             this.textBoxSlpCpyZNo.TabIndex = 36;
             // 
             // labelSlpCpyRcptNo
             // 
             this.labelSlpCpyRcptNo.AutoSize = true;
-            this.labelSlpCpyRcptNo.Location = new System.Drawing.Point(287, 57);
-            this.labelSlpCpyRcptNo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSlpCpyRcptNo.Location = new System.Drawing.Point(383, 70);
             this.labelSlpCpyRcptNo.Name = "labelSlpCpyRcptNo";
-            this.labelSlpCpyRcptNo.Size = new System.Drawing.Size(42, 13);
+            this.labelSlpCpyRcptNo.Size = new System.Drawing.Size(53, 17);
             this.labelSlpCpyRcptNo.TabIndex = 35;
             this.labelSlpCpyRcptNo.Text = "FİŞ NO";
             // 
             // labelSlpCpyZNo
             // 
             this.labelSlpCpyZNo.AutoSize = true;
-            this.labelSlpCpyZNo.Location = new System.Drawing.Point(286, 37);
-            this.labelSlpCpyZNo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSlpCpyZNo.Location = new System.Drawing.Point(381, 46);
             this.labelSlpCpyZNo.Name = "labelSlpCpyZNo";
-            this.labelSlpCpyZNo.Size = new System.Drawing.Size(33, 13);
+            this.labelSlpCpyZNo.Size = new System.Drawing.Size(42, 17);
             this.labelSlpCpyZNo.TabIndex = 34;
             this.labelSlpCpyZNo.Text = "Z NO";
             // 
             // textBoxSlpCpyStanNo
             // 
-            this.textBoxSlpCpyStanNo.Location = new System.Drawing.Point(175, 54);
-            this.textBoxSlpCpyStanNo.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSlpCpyStanNo.Location = new System.Drawing.Point(233, 66);
+            this.textBoxSlpCpyStanNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSlpCpyStanNo.MaxLength = 15;
             this.textBoxSlpCpyStanNo.Name = "textBoxSlpCpyStanNo";
-            this.textBoxSlpCpyStanNo.Size = new System.Drawing.Size(90, 20);
+            this.textBoxSlpCpyStanNo.Size = new System.Drawing.Size(119, 22);
             this.textBoxSlpCpyStanNo.TabIndex = 33;
             // 
             // textBoxSlpCpyBatchNo
             // 
-            this.textBoxSlpCpyBatchNo.Location = new System.Drawing.Point(175, 31);
-            this.textBoxSlpCpyBatchNo.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSlpCpyBatchNo.Location = new System.Drawing.Point(233, 38);
+            this.textBoxSlpCpyBatchNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSlpCpyBatchNo.MaxLength = 15;
             this.textBoxSlpCpyBatchNo.Name = "textBoxSlpCpyBatchNo";
-            this.textBoxSlpCpyBatchNo.Size = new System.Drawing.Size(90, 20);
+            this.textBoxSlpCpyBatchNo.Size = new System.Drawing.Size(119, 22);
             this.textBoxSlpCpyBatchNo.TabIndex = 32;
             // 
             // labelSlpCpyStanNo
             // 
             this.labelSlpCpyStanNo.AutoSize = true;
-            this.labelSlpCpyStanNo.Location = new System.Drawing.Point(102, 57);
-            this.labelSlpCpyStanNo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSlpCpyStanNo.Location = new System.Drawing.Point(136, 70);
             this.labelSlpCpyStanNo.Name = "labelSlpCpyStanNo";
-            this.labelSlpCpyStanNo.Size = new System.Drawing.Size(55, 13);
+            this.labelSlpCpyStanNo.Size = new System.Drawing.Size(70, 17);
             this.labelSlpCpyStanNo.TabIndex = 31;
             this.labelSlpCpyStanNo.Text = "STAN NO";
             // 
             // labelSlpCpyBatchNo
             // 
             this.labelSlpCpyBatchNo.AutoSize = true;
-            this.labelSlpCpyBatchNo.Location = new System.Drawing.Point(101, 37);
-            this.labelSlpCpyBatchNo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSlpCpyBatchNo.Location = new System.Drawing.Point(135, 46);
             this.labelSlpCpyBatchNo.Name = "labelSlpCpyBatchNo";
-            this.labelSlpCpyBatchNo.Size = new System.Drawing.Size(62, 13);
+            this.labelSlpCpyBatchNo.Size = new System.Drawing.Size(79, 17);
             this.labelSlpCpyBatchNo.TabIndex = 30;
             this.labelSlpCpyBatchNo.Text = "BATCH NO";
             // 
             // textBoxSlpCpyAcquirId
             // 
-            this.textBoxSlpCpyAcquirId.Location = new System.Drawing.Point(175, 10);
-            this.textBoxSlpCpyAcquirId.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSlpCpyAcquirId.Location = new System.Drawing.Point(233, 12);
+            this.textBoxSlpCpyAcquirId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSlpCpyAcquirId.MaxLength = 15;
             this.textBoxSlpCpyAcquirId.Name = "textBoxSlpCpyAcquirId";
-            this.textBoxSlpCpyAcquirId.Size = new System.Drawing.Size(90, 20);
+            this.textBoxSlpCpyAcquirId.Size = new System.Drawing.Size(119, 22);
             this.textBoxSlpCpyAcquirId.TabIndex = 28;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(101, 13);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Location = new System.Drawing.Point(135, 16);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(69, 13);
+            this.label17.Size = new System.Drawing.Size(86, 17);
             this.label17.TabIndex = 29;
             this.label17.Text = "ACQUIER ID";
+            // 
+            // tabSlipExternal
+            // 
+            this.tabSlipExternal.Controls.Add(this.gbxSlipContent);
+            this.tabSlipExternal.Controls.Add(this.gbxSlipType);
+            this.tabSlipExternal.Controls.Add(this.btnSendSlip);
+            this.tabSlipExternal.Location = new System.Drawing.Point(4, 25);
+            this.tabSlipExternal.Name = "tabSlipExternal";
+            this.tabSlipExternal.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSlipExternal.Size = new System.Drawing.Size(618, 108);
+            this.tabSlipExternal.TabIndex = 6;
+            this.tabSlipExternal.Text = "EXTERNAL SLIP";
+            this.tabSlipExternal.UseVisualStyleBackColor = true;
+            // 
+            // gbxSlipContent
+            // 
+            this.gbxSlipContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbxSlipContent.Controls.Add(this.txtSlipLines);
+            this.gbxSlipContent.Location = new System.Drawing.Point(322, 3);
+            this.gbxSlipContent.Name = "gbxSlipContent";
+            this.gbxSlipContent.Size = new System.Drawing.Size(289, 99);
+            this.gbxSlipContent.TabIndex = 26;
+            this.gbxSlipContent.TabStop = false;
+            this.gbxSlipContent.Text = "Slip Lines";
+            // 
+            // gbxSlipType
+            // 
+            this.gbxSlipType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.gbxSlipType.Controls.Add(this.rbtnSlipTypeError);
+            this.gbxSlipType.Controls.Add(this.rbtnSlipTypeMerchant);
+            this.gbxSlipType.Controls.Add(this.rbtnSlipTypeCustomer);
+            this.gbxSlipType.Location = new System.Drawing.Point(171, 3);
+            this.gbxSlipType.Name = "gbxSlipType";
+            this.gbxSlipType.Size = new System.Drawing.Size(145, 99);
+            this.gbxSlipType.TabIndex = 25;
+            this.gbxSlipType.TabStop = false;
+            this.gbxSlipType.Text = "Select Slip Type";
+            // 
+            // rbtnSlipTypeError
+            // 
+            this.rbtnSlipTypeError.AutoSize = true;
+            this.rbtnSlipTypeError.Location = new System.Drawing.Point(21, 71);
+            this.rbtnSlipTypeError.Name = "rbtnSlipTypeError";
+            this.rbtnSlipTypeError.Size = new System.Drawing.Size(65, 21);
+            this.rbtnSlipTypeError.TabIndex = 2;
+            this.rbtnSlipTypeError.TabStop = true;
+            this.rbtnSlipTypeError.Text = "Error ";
+            this.rbtnSlipTypeError.UseVisualStyleBackColor = true;
+            // 
+            // rbtnSlipTypeMerchant
+            // 
+            this.rbtnSlipTypeMerchant.AutoSize = true;
+            this.rbtnSlipTypeMerchant.Location = new System.Drawing.Point(21, 49);
+            this.rbtnSlipTypeMerchant.Name = "rbtnSlipTypeMerchant";
+            this.rbtnSlipTypeMerchant.Size = new System.Drawing.Size(88, 21);
+            this.rbtnSlipTypeMerchant.TabIndex = 1;
+            this.rbtnSlipTypeMerchant.Text = "Merchant";
+            this.rbtnSlipTypeMerchant.UseVisualStyleBackColor = true;
+            // 
+            // rbtnSlipTypeCustomer
+            // 
+            this.rbtnSlipTypeCustomer.AutoSize = true;
+            this.rbtnSlipTypeCustomer.Checked = true;
+            this.rbtnSlipTypeCustomer.Location = new System.Drawing.Point(21, 24);
+            this.rbtnSlipTypeCustomer.Name = "rbtnSlipTypeCustomer";
+            this.rbtnSlipTypeCustomer.Size = new System.Drawing.Size(89, 21);
+            this.rbtnSlipTypeCustomer.TabIndex = 0;
+            this.rbtnSlipTypeCustomer.TabStop = true;
+            this.rbtnSlipTypeCustomer.Text = "Customer";
+            this.rbtnSlipTypeCustomer.UseVisualStyleBackColor = true;
+            // 
+            // btnSendSlip
+            // 
+            this.btnSendSlip.Location = new System.Drawing.Point(11, 27);
+            this.btnSendSlip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSendSlip.Name = "btnSendSlip";
+            this.btnSendSlip.Size = new System.Drawing.Size(147, 43);
+            this.btnSendSlip.TabIndex = 24;
+            this.btnSendSlip.Text = "SEND SLIP";
+            this.btnSendSlip.UseVisualStyleBackColor = true;
+            this.btnSendSlip.Click += new System.EventHandler(this.btnSendSlip_Click);
             // 
             // bntPrintJSONDoc
             // 
             this.bntPrintJSONDoc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bntPrintJSONDoc.Location = new System.Drawing.Point(2, 149);
-            this.bntPrintJSONDoc.Margin = new System.Windows.Forms.Padding(2);
+            this.bntPrintJSONDoc.Location = new System.Drawing.Point(3, 182);
+            this.bntPrintJSONDoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bntPrintJSONDoc.Name = "bntPrintJSONDoc";
-            this.bntPrintJSONDoc.Size = new System.Drawing.Size(116, 45);
+            this.bntPrintJSONDoc.Size = new System.Drawing.Size(153, 56);
             this.bntPrintJSONDoc.TabIndex = 26;
             this.bntPrintJSONDoc.Text = "PRINT JSON";
             this.bntPrintJSONDoc.UseVisualStyleBackColor = true;
@@ -3192,10 +4089,10 @@ namespace FP300Service.UserControls
             // btnCorrect
             // 
             this.btnCorrect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCorrect.Location = new System.Drawing.Point(2, 296);
-            this.btnCorrect.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCorrect.Location = new System.Drawing.Point(3, 362);
+            this.btnCorrect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCorrect.Name = "btnCorrect";
-            this.btnCorrect.Size = new System.Drawing.Size(116, 45);
+            this.btnCorrect.Size = new System.Drawing.Size(153, 56);
             this.btnCorrect.TabIndex = 19;
             this.btnCorrect.Text = "CORRECT";
             this.btnCorrect.UseVisualStyleBackColor = true;
@@ -3204,10 +4101,10 @@ namespace FP300Service.UserControls
             // btnSubtotal
             // 
             this.btnSubtotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSubtotal.Location = new System.Drawing.Point(2, 247);
-            this.btnSubtotal.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubtotal.Location = new System.Drawing.Point(3, 302);
+            this.btnSubtotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubtotal.Name = "btnSubtotal";
-            this.btnSubtotal.Size = new System.Drawing.Size(116, 45);
+            this.btnSubtotal.Size = new System.Drawing.Size(153, 56);
             this.btnSubtotal.TabIndex = 5;
             this.btnSubtotal.Text = "SUBTOTAL";
             this.btnSubtotal.UseVisualStyleBackColor = true;
@@ -3216,10 +4113,10 @@ namespace FP300Service.UserControls
             // btnVoidReceipt
             // 
             this.btnVoidReceipt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnVoidReceipt.Location = new System.Drawing.Point(2, 394);
-            this.btnVoidReceipt.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVoidReceipt.Location = new System.Drawing.Point(3, 482);
+            this.btnVoidReceipt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVoidReceipt.Name = "btnVoidReceipt";
-            this.btnVoidReceipt.Size = new System.Drawing.Size(116, 45);
+            this.btnVoidReceipt.Size = new System.Drawing.Size(153, 56);
             this.btnVoidReceipt.TabIndex = 4;
             this.btnVoidReceipt.Text = "VOID DOCUMENT";
             this.btnVoidReceipt.UseVisualStyleBackColor = true;
@@ -3228,10 +4125,10 @@ namespace FP300Service.UserControls
             // btnCloseReceipt
             // 
             this.btnCloseReceipt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCloseReceipt.Location = new System.Drawing.Point(2, 345);
-            this.btnCloseReceipt.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCloseReceipt.Location = new System.Drawing.Point(3, 422);
+            this.btnCloseReceipt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCloseReceipt.Name = "btnCloseReceipt";
-            this.btnCloseReceipt.Size = new System.Drawing.Size(116, 45);
+            this.btnCloseReceipt.Size = new System.Drawing.Size(153, 56);
             this.btnCloseReceipt.TabIndex = 3;
             this.btnCloseReceipt.Text = "CLOSE DOCUMENT";
             this.btnCloseReceipt.UseVisualStyleBackColor = true;
@@ -3240,10 +4137,10 @@ namespace FP300Service.UserControls
             // btnRcptInfo
             // 
             this.btnRcptInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRcptInfo.Location = new System.Drawing.Point(2, 100);
-            this.btnRcptInfo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRcptInfo.Location = new System.Drawing.Point(3, 122);
+            this.btnRcptInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRcptInfo.Name = "btnRcptInfo";
-            this.btnRcptInfo.Size = new System.Drawing.Size(116, 45);
+            this.btnRcptInfo.Size = new System.Drawing.Size(153, 56);
             this.btnRcptInfo.TabIndex = 31;
             this.btnRcptInfo.Text = "RECEIPT INFO";
             this.btnRcptInfo.UseVisualStyleBackColor = true;
@@ -3252,10 +4149,10 @@ namespace FP300Service.UserControls
             // buttonAutoPrintPLU
             // 
             this.buttonAutoPrintPLU.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonAutoPrintPLU.Location = new System.Drawing.Point(2, 51);
-            this.buttonAutoPrintPLU.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAutoPrintPLU.Location = new System.Drawing.Point(3, 62);
+            this.buttonAutoPrintPLU.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAutoPrintPLU.Name = "buttonAutoPrintPLU";
-            this.buttonAutoPrintPLU.Size = new System.Drawing.Size(116, 45);
+            this.buttonAutoPrintPLU.Size = new System.Drawing.Size(153, 56);
             this.buttonAutoPrintPLU.TabIndex = 32;
             this.buttonAutoPrintPLU.Text = "AUTO PRINT    JSON PLU";
             this.buttonAutoPrintPLU.UseVisualStyleBackColor = true;
@@ -3264,10 +4161,10 @@ namespace FP300Service.UserControls
             // btnJsonOnlyDept
             // 
             this.btnJsonOnlyDept.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnJsonOnlyDept.Location = new System.Drawing.Point(2, 198);
-            this.btnJsonOnlyDept.Margin = new System.Windows.Forms.Padding(2);
+            this.btnJsonOnlyDept.Location = new System.Drawing.Point(3, 242);
+            this.btnJsonOnlyDept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnJsonOnlyDept.Name = "btnJsonOnlyDept";
-            this.btnJsonOnlyDept.Size = new System.Drawing.Size(116, 45);
+            this.btnJsonOnlyDept.Size = new System.Drawing.Size(153, 56);
             this.btnJsonOnlyDept.TabIndex = 33;
             this.btnJsonOnlyDept.Text = "PRINT JSON DEPT";
             this.btnJsonOnlyDept.UseVisualStyleBackColor = true;
@@ -3282,10 +4179,11 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelSaleUc.Controls.Add(this.tableLayoutPanelSaleUCRight, 1, 0);
             this.tableLayoutPanelSaleUc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSaleUc.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelSaleUc.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanelSaleUc.Name = "tableLayoutPanelSaleUc";
             this.tableLayoutPanelSaleUc.RowCount = 1;
             this.tableLayoutPanelSaleUc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelSaleUc.Size = new System.Drawing.Size(605, 498);
+            this.tableLayoutPanelSaleUc.Size = new System.Drawing.Size(807, 613);
             this.tableLayoutPanelSaleUc.TabIndex = 34;
             // 
             // tableLayoutPanelSaleUCLeft
@@ -3297,14 +4195,15 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelSaleUCLeft.Controls.Add(this.tbcPayment, 0, 2);
             this.tableLayoutPanelSaleUCLeft.Controls.Add(this.tbcFooter, 0, 3);
             this.tableLayoutPanelSaleUCLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSaleUCLeft.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelSaleUCLeft.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanelSaleUCLeft.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanelSaleUCLeft.Name = "tableLayoutPanelSaleUCLeft";
             this.tableLayoutPanelSaleUCLeft.RowCount = 4;
             this.tableLayoutPanelSaleUCLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.42276F));
             this.tableLayoutPanelSaleUCLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.47154F));
             this.tableLayoutPanelSaleUCLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.37398F));
             this.tableLayoutPanelSaleUCLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.3252F));
-            this.tableLayoutPanelSaleUCLeft.Size = new System.Drawing.Size(473, 492);
+            this.tableLayoutPanelSaleUCLeft.Size = new System.Drawing.Size(632, 605);
             this.tableLayoutPanelSaleUCLeft.TabIndex = 0;
             // 
             // tableLayoutPanelSaleUCRight
@@ -3322,7 +4221,8 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelSaleUCRight.Controls.Add(this.bntPrintJSONDoc, 0, 3);
             this.tableLayoutPanelSaleUCRight.Controls.Add(this.buttonAutoPrintDEPT, 0, 0);
             this.tableLayoutPanelSaleUCRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSaleUCRight.Location = new System.Drawing.Point(482, 3);
+            this.tableLayoutPanelSaleUCRight.Location = new System.Drawing.Point(644, 4);
+            this.tableLayoutPanelSaleUCRight.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanelSaleUCRight.Name = "tableLayoutPanelSaleUCRight";
             this.tableLayoutPanelSaleUCRight.RowCount = 10;
             this.tableLayoutPanelSaleUCRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -3335,16 +4235,16 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelSaleUCRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanelSaleUCRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanelSaleUCRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanelSaleUCRight.Size = new System.Drawing.Size(120, 492);
+            this.tableLayoutPanelSaleUCRight.Size = new System.Drawing.Size(159, 605);
             this.tableLayoutPanelSaleUCRight.TabIndex = 1;
             // 
             // buttonPrintSalesDocument
             // 
             this.buttonPrintSalesDocument.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonPrintSalesDocument.Location = new System.Drawing.Point(2, 443);
-            this.buttonPrintSalesDocument.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPrintSalesDocument.Location = new System.Drawing.Point(3, 542);
+            this.buttonPrintSalesDocument.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPrintSalesDocument.Name = "buttonPrintSalesDocument";
-            this.buttonPrintSalesDocument.Size = new System.Drawing.Size(116, 47);
+            this.buttonPrintSalesDocument.Size = new System.Drawing.Size(153, 61);
             this.buttonPrintSalesDocument.TabIndex = 35;
             this.buttonPrintSalesDocument.Text = "PRINT SALE DOCUMENT";
             this.buttonPrintSalesDocument.UseVisualStyleBackColor = true;
@@ -3353,10 +4253,10 @@ namespace FP300Service.UserControls
             // buttonAutoPrintDEPT
             // 
             this.buttonAutoPrintDEPT.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonAutoPrintDEPT.Location = new System.Drawing.Point(2, 2);
-            this.buttonAutoPrintDEPT.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAutoPrintDEPT.Location = new System.Drawing.Point(3, 2);
+            this.buttonAutoPrintDEPT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAutoPrintDEPT.Name = "buttonAutoPrintDEPT";
-            this.buttonAutoPrintDEPT.Size = new System.Drawing.Size(116, 45);
+            this.buttonAutoPrintDEPT.Size = new System.Drawing.Size(153, 56);
             this.buttonAutoPrintDEPT.TabIndex = 34;
             this.buttonAutoPrintDEPT.Text = "AUTO PRINT    JSON DEPT";
             this.buttonAutoPrintDEPT.UseVisualStyleBackColor = true;
@@ -3366,61 +4266,29 @@ namespace FP300Service.UserControls
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // tabPageEDocument
+            // txtSlipLines
             // 
-            this.tabPageEDocument.Controls.Add(this.labelEDocumentDocType);
-            this.tabPageEDocument.Controls.Add(this.comboBoxEDocumentDocTypes);
-            this.tabPageEDocument.Controls.Add(this.buttonPrintEDocumentSample);
-            this.tabPageEDocument.Location = new System.Drawing.Point(4, 22);
-            this.tabPageEDocument.Name = "tabPageEDocument";
-            this.tabPageEDocument.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEDocument.Size = new System.Drawing.Size(461, 100);
-            this.tabPageEDocument.TabIndex = 7;
-            this.tabPageEDocument.Text = "E-BELGE";
-            this.tabPageEDocument.UseVisualStyleBackColor = true;
-            // 
-            // buttonPrintEDocumentSample
-            // 
-            this.buttonPrintEDocumentSample.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonPrintEDocumentSample.Location = new System.Drawing.Point(52, 23);
-            this.buttonPrintEDocumentSample.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonPrintEDocumentSample.Name = "buttonPrintEDocumentSample";
-            this.buttonPrintEDocumentSample.Size = new System.Drawing.Size(110, 52);
-            this.buttonPrintEDocumentSample.TabIndex = 2;
-            this.buttonPrintEDocumentSample.Text = "PRINT E-DOCUMENT SAMPLE";
-            this.buttonPrintEDocumentSample.UseVisualStyleBackColor = true;
-            this.buttonPrintEDocumentSample.Click += new System.EventHandler(this.buttonPrintEDocumentSample_Click);
-            // 
-            // comboBoxEDocumentDocTypes
-            // 
-            this.comboBoxEDocumentDocTypes.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBoxEDocumentDocTypes.FormattingEnabled = true;
-            this.comboBoxEDocumentDocTypes.Location = new System.Drawing.Point(282, 23);
-            this.comboBoxEDocumentDocTypes.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxEDocumentDocTypes.Name = "comboBoxEDocumentDocTypes";
-            this.comboBoxEDocumentDocTypes.Size = new System.Drawing.Size(99, 21);
-            this.comboBoxEDocumentDocTypes.TabIndex = 10;
-            // 
-            // labelEDocumentDocType
-            // 
-            this.labelEDocumentDocType.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelEDocumentDocType.AutoSize = true;
-            this.labelEDocumentDocType.Location = new System.Drawing.Point(188, 26);
-            this.labelEDocumentDocType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelEDocumentDocType.Name = "labelEDocumentDocType";
-            this.labelEDocumentDocType.Size = new System.Drawing.Size(68, 13);
-            this.labelEDocumentDocType.TabIndex = 11;
-            this.labelEDocumentDocType.Text = "BELGE TİPİ:";
+            this.txtSlipLines.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSlipLines.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtSlipLines.Location = new System.Drawing.Point(3, 18);
+            this.txtSlipLines.MaxLength = 2000;
+            this.txtSlipLines.Multiline = true;
+            this.txtSlipLines.Name = "txtSlipLines";
+            this.txtSlipLines.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtSlipLines.Size = new System.Drawing.Size(283, 78);
+            this.txtSlipLines.TabIndex = 0;
+            this.txtSlipLines.Text = resources.GetString("txtSlipLines.Text");
+            this.txtSlipLines.WordWrap = false;
             // 
             // SaleUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanelSaleUc);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "SaleUC";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Size = new System.Drawing.Size(605, 498);
+            this.Size = new System.Drawing.Size(807, 613);
             this.tbcStartDoc.ResumeLayout(false);
             this.tbStrtRcpt.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -3448,6 +4316,31 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel19.ResumeLayout(false);
             this.tableLayoutPanel19.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCrrAccAmount)).EndInit();
+            this.tabPageEDocument.ResumeLayout(false);
+            this.tabPageEDocument.PerformLayout();
+            this.tabPageDataTest.ResumeLayout(false);
+            this.tabPageInvoice.ResumeLayout(false);
+            this.tableLayoutPanel20.ResumeLayout(false);
+            this.tableLayoutPanel21.ResumeLayout(false);
+            this.tableLayoutPanel22.ResumeLayout(false);
+            this.tableLayoutPanel22.PerformLayout();
+            this.tableLayoutPanel23.ResumeLayout(false);
+            this.tableLayoutPanel23.PerformLayout();
+            this.tableLayoutPanel24.ResumeLayout(false);
+            this.tableLayoutPanel24.PerformLayout();
+            this.tabPageReturnDoc.ResumeLayout(false);
+            this.tableLayoutPanel27.ResumeLayout(false);
+            this.tableLayoutPanel28.ResumeLayout(false);
+            this.tableLayoutPanel29.ResumeLayout(false);
+            this.tableLayoutPanel29.PerformLayout();
+            this.tableLayoutPanel30.ResumeLayout(false);
+            this.tableLayoutPanel30.PerformLayout();
+            this.tableLayoutPanel31.ResumeLayout(false);
+            this.tableLayoutPanel31.PerformLayout();
+            this.tabPageSelfEmpInvoice.ResumeLayout(false);
+            this.tableLayoutPanel32.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewServices)).EndInit();
+            this.tableLayoutPanel33.ResumeLayout(false);
             this.tbcFooter.ResumeLayout(false);
             this.tbpNotes.ResumeLayout(false);
             this.tbpNotes.PerformLayout();
@@ -3456,6 +4349,11 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel17.ResumeLayout(false);
             this.tableLayoutPanel17.PerformLayout();
+            this.tabPageStoppage.ResumeLayout(false);
+            this.tableLayoutPanel25.ResumeLayout(false);
+            this.tableLayoutPanel26.ResumeLayout(false);
+            this.tableLayoutPanel26.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStoppageAmount)).EndInit();
             this.tbcSale.ResumeLayout(false);
             this.tbpSale.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -3507,11 +4405,14 @@ namespace FP300Service.UserControls
             this.tabPageBankList.ResumeLayout(false);
             this.tabPageEftSlipCopy.ResumeLayout(false);
             this.tabPageEftSlipCopy.PerformLayout();
+            this.tabSlipExternal.ResumeLayout(false);
+            this.gbxSlipContent.ResumeLayout(false);
+            this.gbxSlipContent.PerformLayout();
+            this.gbxSlipType.ResumeLayout(false);
+            this.gbxSlipType.PerformLayout();
             this.tableLayoutPanelSaleUc.ResumeLayout(false);
             this.tableLayoutPanelSaleUCLeft.ResumeLayout(false);
             this.tableLayoutPanelSaleUCRight.ResumeLayout(false);
-            this.tabPageEDocument.ResumeLayout(false);
-            this.tabPageEDocument.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3649,7 +4550,7 @@ namespace FP300Service.UserControls
                 int paymentType = cbxPaymentType.SelectedIndex;
 
                 //IF PAYMENT IS FOREIGN CURRENCY OR CREDIT
-                if (cbxPaymentType.Text == FormMessage.CURRENCY || cbxPaymentType.Text == FormMessage.CREDIT)
+                if ((cbxPaymentType.Text == FormMessage.CURRENCY) || (cbxPaymentType.Text == FormMessage.CREDIT) || (cbxPaymentType.Text == FormMessage.FOODCARD))
                 {
                     //Index
                     index = cbxSubPayments.SelectedIndex;
@@ -3840,6 +4741,20 @@ namespace FP300Service.UserControls
                         cbxSubPayments.Visible = true;
                     }
                     break;
+                case FormMessage.FOODCARD:
+                    int foodCardCount = 0;
+                    btnRefreshCredit.Visible = true;
+                    //if (MainForm.Credits[0] == null)
+                    {
+                        cbxSubPayments.Visible = false;
+                        foodCardCount = RefreshFoodCards();
+                    }
+                    if (MainForm.Credits[0] != null || foodCardCount > 0)
+                    {
+                        lblPayIndx.Visible = true;
+                        cbxSubPayments.Visible = true;
+                    }
+                    break;
                 default:
                     lblPayIndx.Visible = false;
                     cbxSubPayments.Visible = false;
@@ -3865,7 +4780,14 @@ namespace FP300Service.UserControls
         private void btnRefreshCredit_Click(object sender, EventArgs e)
         {
             MainForm.Credits[0] = null;
-            RefreshCredits();
+            if (cbxPaymentType.SelectedIndex == 1)
+            {
+                RefreshCredits();
+            }
+            else if(cbxPaymentType.SelectedIndex == 4)
+            {
+                RefreshFoodCards();
+            }
         }
 
         private int RefreshCredits()
@@ -3897,7 +4819,7 @@ namespace FP300Service.UserControls
                     cbxSubPayments.SelectedIndex = 0;
 
                 }
-                catch (System.Exception ex)
+                catch
                 {
                     bridge.Log(FormMessage.OPERATION_FAILS);
                 }
@@ -3905,6 +4827,13 @@ namespace FP300Service.UserControls
 
 
             return creditCount;
+        }
+        
+        private int RefreshFoodCards()
+        {
+            cbxSubPayments.Items.Clear();
+            bridge.Log(FormMessage.FOODCARDS_LOADED);
+            return 0;
         }
 
         private void nmrPaymentAmount_ValueChanged(object sender, EventArgs e)
@@ -4308,6 +5237,25 @@ namespace FP300Service.UserControls
                             bridge.Log(String.Format("PAY AMOUNT : {0}", response.GetNextParam()));
                             bridge.Log(String.Format("PAY DETAIL : {0}", response.GetNextParam()));
                         }
+
+                        int kdvCount = Convert.ToInt32(response.GetNextParam());
+                        decimal vatTotalKdv = 0;
+                        decimal total = 0;
+                        string tempVal = "";
+                        for (int i = 0; i < kdvCount; i++)
+                        {
+                            bridge.Log(String.Format("KDV RATE         : {0}", response.GetNextParam()));
+                            tempVal = response.GetNextParam();
+                            total += Convert.ToDecimal(tempVal);
+                            bridge.Log(String.Format("KDV TOTAL AMOUNT : {0}", tempVal));
+                            tempVal = response.GetNextParam();
+                            vatTotalKdv += Convert.ToDecimal(tempVal);
+                            bridge.Log(String.Format("KDV AMOUNT       : {0}", tempVal));
+                        }
+
+                        bridge.Log(String.Format("TOTAL  : {0}", total));
+                        bridge.Log(String.Format("KDV : {0}", vatTotalKdv));
+
                     }
                     catch
                     {
@@ -4709,9 +5657,52 @@ namespace FP300Service.UserControls
 
         private void buttonPrintEDocumentSample_Click(object sender, EventArgs e)
         {
-            List<string> sampleLines = new List<string>();
+            List<string> lineList = new List<string>();
 
-            sampleLines.AddRange(new string[] {
+            int docType = 3;
+            try
+            {
+                switch(comboBoxEDocumentDocTypes.SelectedIndex)
+                {
+                    case 0:
+                        docType = 1;
+                        lineList = GetInvoiceSample();
+                        break;
+                    case 1:
+                        docType = 3;
+                        lineList = GetEDocumentSample();
+                        break;
+                    case 2:
+                        docType = 2;
+                        lineList = GetEDocumentSample();
+                        break;
+                    case 3:
+                        docType = 9;
+                        lineList = GetNoteOfExpensesSample();
+                        break;
+                    case 4:
+                        docType = 10;
+                        lineList = GetSelfEmplyomentInvoiceSample();
+                        break;
+                    case 5:
+                        docType = 1;
+                        lineList = GetInvoiceSample2();
+                        break;
+                }
+
+                CPResponse response = new CPResponse(bridge.Printer.PrintEDocumentCopy(docType, lineList.ToArray()));
+
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+        }
+
+        private List<string> GetEDocumentSample()
+        {
+            return new List<string>(new string[] {
+
             "Sayın,                       15-05-2017 00:00:00",
             "HUGIN ALICI                     HGN2017019800001",
             "VKN: 3333333337                            SATIS",
@@ -4740,25 +5731,469 @@ namespace FP300Service.UserControls
             "* YALNIZ ONSEKİZBİNOTUZ TL SEKSEN KR'DiR        ",
             "* NAKİT  18030,80 TRY                           ",
             "* Gönderim Şekli: KAĞIT                         "
-            });
 
-            int docType = 3;
+            });
+        }
+
+        private List<string> GetNoteOfExpensesSample()
+        {
+            return new List<string>(new string[] {
+
+            "Sayın,                       29-03-2018 16:16:53",
+            "HUGIN ALICI                   FP1100438500240127",
+            "VKN: 3333333337                             IADE",
+            "ŞİŞLİ / İSTANBUL                  GİDER PUSULASI",
+            "T:02122525252                                   ",
+            "F:02122525353                        MERSIS/EBIS",
+            "V.D. : GALATA             1234567890754645254234",
+            "                                                ",
+            "                                                ",
+            "                                                ",
+            "SLIM FIT KOT PANTOLON        %18      235,99 TRY",
+            "        5 X 70,00                               ",
+            "MAVI SATEN GÖMLEK            %08      350,00 TRY",
+            "DERİ CEKET ERKEK             %01      700,00 TRY",
+            "       10 X 15,00                               ",
+            "HAKIKI DERİ KEMER            %18      150,00 TRY",
+            "                                                ",
+            "                                                ",
+            "                           Toplam:  17029,24 TRY",
+            "                          KDV %01:   1001,55 TRY",
+            "                          KDV %08:    901,55 TRY",
+            "      Vergiler Dahil Toplam Tutar:  18030,80 TRY",
+            "                                                ",
+            "DÜZENLEYEN: SERDAR GÖKCEN                       ",
+            "İMZA :                                          ",
+            "                                                ",
+            "------------------------------------------------",
+            "* YALNIZ ONSEKİZBİNOTUZ TL SEKSEN KR'DiR        ",
+            "* NAKİT  18030,80 TRY                           "
+
+            });
+        }
+
+        private List<string> GetSelfEmplyomentInvoiceSample()
+        {
+            return new List<string>(new string[] {
+
+            "Sayın,                       29-03-2018 16:16:53",
+            "HUGIN ALICI                   FP1100438500240127",
+            "VKN: 3333333337                            SATIS",
+            "ŞİŞLİ / İSTANBUL          SERBEST MESLEK MAKBUZU",
+            "T:02122525252                                   ",
+            "F:02122525353                        MERSIS/EBIS",
+            "V.D. : GALATA             1234567890754645254234",
+            "                                                ",
+            "                                                ",
+            "                                                ",
+            "SLIM FIT KOT PANTOLON        %18      235,99 TRY",
+            "        5 X 70,00                               ",
+            "MAVI SATEN GÖMLEK            %08      350,00 TRY",
+            "DERİ CEKET ERKEK             %01      700,00 TRY",
+            "       10 X 15,00                               ",
+            "HAKIKI DERİ KEMER            %18      150,00 TRY",
+            "                                                ",
+            "                                                ",
+            "                           Toplam:  17029,24 TRY",
+            "                          KDV %01:   1001,55 TRY",
+            "                          KDV %08:    901,55 TRY",
+            "      Vergiler Dahil Toplam Tutar:  18030,80 TRY",
+            "                                                ",
+            "DÜZENLEYEN: SERDAR GÖKCEN                       ",
+            "İMZA :                                          ",
+            "                                                ",
+            "------------------------------------------------",
+            "* YALNIZ ONSEKİZBİNOTUZ TL SEKSEN KR'DiR        ",
+            "* NAKİT  18030,80 TRY                           "
+
+            });
+        }
+
+        private List<string> GetInvoiceSample()
+        {
+            return new List<string>(new string[] {
+
+            "Sayın,                       29-03-2018 16:16:53",
+            "HUGIN ALICI                             AA123456",
+            "VKN: 3333333337                            SATIS",
+            "ŞİŞLİ / İSTANBUL                          FATURA",
+            "T:02122525252                                   ",
+            "F:02122525353                        MERSIS/EBIS",
+            "V.D. : GALATA             1234567890754645254234",
+            "                                                ",
+            "                                                ",
+            "                                                ",
+            "SLIM FIT KOT PANTOLON        %18      235,99 TRY",
+            "        5 X 70,00                               ",
+            "MAVI SATEN GÖMLEK            %08      350,00 TRY",
+            "DERİ CEKET ERKEK             %01      700,00 TRY",
+            "       10 X 15,00                               ",
+            "HAKIKI DERİ KEMER            %18      150,00 TRY",
+            "                                                ",
+            "                                                ",
+            "                           Toplam:  17029,24 TRY",
+            "                          KDV %01:   1001,55 TRY",
+            "                          KDV %08:    901,55 TRY",
+            "      Vergiler Dahil Toplam Tutar:  18030,80 TRY",
+            "                                                ",
+            "DÜZENLEYEN: SERDAR GÖKCEN                       ",
+            "İMZA :                                          ",
+            "                                                ",
+            "------------------------------------------------",
+            "* YALNIZ ONSEKİZBİNOTUZ TL SEKSEN KR'DiR        ",
+            "* NAKİT  18030,80 TRY                           "
+
+            });
+        }
+
+        private List<string> GetInvoiceSample2()
+        {
+            return new List<string>(new string[] {
+
+            "Sayın,                       29-03-2018 16:16:53",
+            "HUGIN ALICI                             AA123456",
+            "VKN: 3333333337                            SATIS",
+            "ŞİŞLİ / İSTANBUL                          FATURA",
+            "T:02122525252                                   ",
+            "F:02122525353                        MERSIS/EBIS",
+            "V.D. : GALATA             1234567890754645254234",
+            "",
+            "",
+            "",
+            "SLIM FIT KOT PANTOLON        %18      235,99 TRY",
+            "        5 X 70,00                               ",
+            "MAVI SATEN GÖMLEK            %08      350,00 TRY",
+            "DERİ CEKET ERKEK             %01      700,00 TRY",
+            "       10 X 15,00                               ",
+            "HAKIKI DERİ KEMER            %18      150,00 TRY",
+            "                                                ",
+            "                                                ",
+            "                           Toplam:  17029,24 TRY",
+            "                          KDV %01:   1001,55 TRY",
+            "                          KDV %08:    901,55 TRY",
+            "      Vergiler Dahil Toplam Tutar:  18030,80 TRY",
+            "                                                ",
+            "DÜZENLEYEN: SERDAR GÖKCEN                       ",
+            "İMZA :                                          ",
+            "                                                ",
+            "------------------------------------------------",
+            "* YALNIZ ONSEKİZBİNOTUZ TL SEKSEN KR'DiR        ",
+            "* NAKİT  18030,80 TRY                           "
+
+            });
+        }
+
+        private void buttonSendTestData_Click(object sender, EventArgs e)
+        {
+            //string rawData = "DF-F0-01-01-03-DF-F0-03-02-10-60-DF-F0-04-02-48-50-DF-F0-18-14-49-53-50-41-4E-41-4B-20-4B-47-20-20-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-08-06-DF-F0-04-02-33-50-DF-F0-18-14-48-41-56-55-C7-20-4B-47-20-20-20-20-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-30-DF-F0-04-02-39-50-DF-F0-18-14-50-41-54-4C-49-43-41-4E-20-4B-45-4D-45-52-20-4B-47-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-54-DF-F0-04-02-39-50-DF-F0-18-14-42-DD-42-45-52-20-31-2E-4B-41-4C-DD-54-45-20-4B-47-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-11-06-DF-F0-04-02-84-50-DF-F0-18-14-C7-DD-4C-45-4B-20-4F-52-47-41-4E-DD-4B-20-4B-47-20-20-20-20-DF-F0-1F-01-01-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-13-86-DF-F0-04-03-01-09-00-DF-F0-18-14-4D-55-5A-20-DD-54-48-41-4C-20-4B-47-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-28-94-DF-F0-04-02-49-50-DF-F0-18-14-44-4F-4D-41-54-45-53-20-4B-47-20-20-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-25-00-DF-F0-18-14-46-41-4C-49-4D-20-53-41-4B-49-5A-20-35-58-35-20-4C-DD-20-4F-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-25-00-DF-F0-18-14-46-41-4C-49-4D-20-53-41-4B-49-5A-20-35-58-35-20-4C-DD-20-4B-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-01-42-50-DF-F0-18-14-59-55-4D-4F-DE-20-59-55-4D-55-DE-41-54-49-43-49-20-4C-41-56-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-04-08-DF-F0-04-02-68-50-DF-F0-18-14-4C-DD-4D-4F-4E-20-4B-47-20-20-20-20-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-24-24-DF-F0-04-02-59-50-DF-F0-18-14-45-4C-4D-41-20-59-2E-41-52-4A-41-4E-54-DD-4E-20-4B-47-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-25-22-DF-F0-04-02-19-50-DF-F0-18-14-50-41-54-41-54-45-53-20-4B-47-20-20-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-18-84-DF-F0-04-02-59-50-DF-F0-18-14-41-52-4D-55-54-20-53-41-4E-54-41-20-4B-47-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-43-4F-4F-4B-20-42-55-5A-44-4F-4C-41-42-49-20-50-4F-DE-45-54-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-03-09-00-DF-F0-18-14-59-55-44-55-4D-20-41-59-C7-DD-C7-45-4B-20-59-41-D0-49-20-35-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-52-50-DF-F0-18-14-53-43-4F-54-43-48-20-42-52-DD-54-45-20-4B-4C-41-53-DD-4B-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-21-62-DF-F0-04-02-19-50-DF-F0-18-14-53-4F-D0-41-4E-20-4B-47-20-20-20-20-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-42-50-DF-F0-18-14-44-4F-4D-45-53-54-4F-53-20-C7-41-4D-41-DE-49-52-20-53-55-59-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-85-00-DF-F0-18-14-44-41-4C-DD-4E-20-49-53-4C-41-4B-20-4D-45-4E-44-DD-4C-20-33-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-72-50-DF-F0-18-14-56-DD-4C-45-44-41-20-53-DC-4E-47-45-52-20-42-45-5A-20-33-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-72-50-DF-F0-18-14-46-41-DD-52-59-20-42-55-4C-41-DE-49-4B-20-44-45-54-45-52-4A-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-01-35-00-DF-F0-18-14-44-55-52-55-20-53-49-56-49-20-53-41-42-55-4E-20-47-4F-55-52-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-62-50-DF-F0-18-14-43-DD-46-20-4B-52-45-4D-20-55-4C-54-52-41-20-47-DC-C7-20-32-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-01-79-00-DF-F0-18-14-52-DD-4E-53-4F-20-4D-41-54-DD-4B-20-42-45-59-41-5A-20-47-DC-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-03-02-40-00-DF-F0-04-02-05-00-DF-F0-18-14-DC-4C-4B-45-52-20-43-41-46-45-20-43-52-4F-57-4E-20-4C-41-54-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-13-50-DF-F0-18-14-DC-4C-4B-45-52-20-4D-41-4B-41-52-4E-45-4B-53-20-44-4F-4D-41-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-02-DF-F0-03-02-10-00-DF-F0-04-03-01-39-50-DF-F0-18-14-48-45-4B-DD-4D-4F-D0-4C-55-20-55-4E-20-35-20-4B-47-20-20-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-13-50-DF-F0-18-14-DC-4C-4B-45-52-20-4D-41-4B-41-52-4E-45-4B-53-20-41-43-49-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-02-62-50-DF-F0-18-14-C7-41-59-4B-55-52-20-C7-41-59-20-52-DD-5A-45-20-54-55-52-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-15-00-DF-F0-18-14-46-DD-4C-DD-5A-20-4D-41-4B-41-52-4E-41-20-42-55-52-47-55-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-15-00-DF-F0-18-14-46-DD-4C-DD-5A-20-4D-41-4B-41-52-4E-41-20-4B-41-4C-45-4D-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-46-DD-59-4F-4E-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-89-50-DF-F0-18-14-53-45-C7-4B-DD-4E-20-50-DD-52-DD-4E-C7-20-42-41-4C-44-4F-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-40-00-DF-F0-18-14-47-DC-4E-45-DE-20-4E-DD-DE-41-53-54-41-20-38-30-30-20-47-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-4D-DD-44-59-45-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-92-50-DF-F0-18-14-44-4F-D0-55-DE-20-C7-41-59-20-42-4C-41-43-4B-20-4C-41-42-45-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-16-50-DF-F0-18-14-4E-2E-41-4E-4B-41-52-41-20-DD-52-4D-DD-4B-20-35-30-30-20-47-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-05-00-DF-F0-18-14-53-45-C7-4B-DD-4E-20-4D-45-52-43-DD-4D-45-4B-20-4B-49-52-4D-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-15-00-DF-F0-18-14-46-DD-4C-DD-5A-20-4D-41-4B-41-52-4E-41-20-42-4F-4E-43-55-4B-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-42-DD-4C-4C-55-52-20-54-55-5A-20-DD-59-4F-54-4C-55-20-31-2E-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-45-52-DD-DE-54-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-49-50-DF-F0-18-14-53-45-C7-4B-DD-4E-20-50-DD-52-DD-4E-C7-20-4F-53-4D-41-4E-43-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-DE-45-48-52-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-4E-55-48-27-55-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-02-19-00-DF-F0-18-14-54-4F-52-4B-55-20-54-4F-5A-DE-45-4B-45-52-20-35-30-30-30-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-02-19-00-DF-F0-18-14-54-4F-52-4B-55-20-54-4F-5A-DE-45-4B-45-52-20-35-30-30-30-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-53-50-41-47-45-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-15-00-DF-F0-18-14-46-DD-4C-DD-5A-20-4D-41-4B-41-52-4E-41-20-53-50-41-47-45-54-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-74-00-DF-F0-18-14-53-45-C7-4B-DD-4E-20-42-55-4C-47-55-52-20-50-DD-4C-41-56-4C-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-37-50-DF-F0-18-14-53-45-C7-4B-DD-4E-20-42-55-4C-47-55-52-20-50-DD-4C-41-56-4C-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-DE-45-48-52-DD-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-22-50-DF-F0-18-14-53-45-C7-4B-DD-4E-20-4E-4F-48-55-54-20-4B-4F-C7-42-41-DE-49-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-42-DD-4C-4C-55-52-20-54-55-5A-20-DD-59-4F-54-4C-55-20-31-2E-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-82-50-DF-F0-18-14-53-45-C7-4B-DD-4E-20-4D-45-52-43-DD-4D-45-4B-20-59-45-DE-DD-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-01-75-00-DF-F0-18-14-53-4F-4C-4F-20-54-55-56-41-4C-45-54-20-4B-41-D0-49-44-49-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-35-00-DF-F0-18-14-4F-52-4B-DD-44-20-50-45-44-20-55-4C-54-52-41-20-45-58-54-52-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-02-02-50-DF-F0-18-14-46-DD-4E-DD-53-48-20-4D-41-4B-DD-4E-45-20-54-45-4D-DD-5A-4C-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-49-50-DF-F0-18-14-DC-4C-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-C7-4F-4B-4F-4E-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-99-00-DF-F0-18-14-45-4C-53-45-56-45-20-DE-41-4D-50-55-41-4E-20-4B-4F-35-20-35-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-03-29-00-DF-F0-18-14-46-41-DD-52-59-20-54-41-42-4C-45-54-20-50-4C-41-54-49-4E-55-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-99-50-DF-F0-18-14-4E-45-53-54-4C-45-20-47-45-56-52-45-4B-20-4E-45-53-46-DD-54-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-39-00-DF-F0-18-14-4E-45-53-54-4C-45-20-43-41-46-46-45-45-20-4D-41-54-45-20-50-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-99-00-DF-F0-18-14-46-DD-4E-DD-53-48-20-50-41-52-4C-41-54-49-43-49-20-34-30-30-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-29-50-DF-F0-18-14-DC-4C-4B-45-52-20-C7-DD-5A-DD-20-56-DD-C7-20-4B-52-41-4B-45-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-DC-4C-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-44-DD-44-4F-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-DC-4C-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-44-DD-44-4F-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-DC-4C-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-44-DD-44-4F-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-14-00-DF-F0-18-14-DC-4C-4B-45-52-20-4E-41-50-4F-4C-DD-54-45-4E-20-C7-DD-4B-4F-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-05-62-DF-F0-04-03-03-00-00-DF-F0-18-14-54-41-54-4C-49-20-42-41-4B-4C-41-56-41-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-05-20-DF-F0-04-03-01-20-00-DF-F0-18-14-54-55-4C-55-4D-42-41-20-54-41-54-4C-49-53-49-20-4B-47-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-45-54-DD-20-42-DD-53-4B-DC-56-DD-20-42-55-52-C7-41-4B-20-4B-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-02-40-DF-F0-04-03-01-02-50-DF-F0-18-14-41-44-41-4C-49-4C-41-52-20-4D-53-49-49-52-20-43-DD-50-53-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-02-54-DF-F0-04-02-95-00-DF-F0-18-14-41-44-41-4C-49-4C-41-52-20-4B-55-DE-20-4C-4F-4B-55-4D-55-20-DF-F0-1F-01-01-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-07-18-DF-F0-04-03-01-85-00-DF-F0-18-14-45-52-50-DD-4C-DD-C7-20-54-41-56-55-4B-20-4B-41-4E-41-54-20-DF-F0-1F-01-01-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-06-98-DF-F0-04-03-01-85-00-DF-F0-18-14-45-52-50-DD-4C-DD-C7-20-54-41-56-55-4B-20-4B-41-4E-41-54-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-35-00-DF-F0-18-14-45-54-DD-20-42-DD-53-4B-DC-56-DD-20-4E-45-47-52-4F-20-33-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-02-DF-F0-03-02-10-00-DF-F0-04-02-59-50-DF-F0-18-14-55-4E-4F-20-45-4B-4D-45-4B-20-42-DC-59-DC-4B-20-54-4F-53-54-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-01-45-00-DF-F0-18-14-48-45-41-44-26-53-48-4F-55-4C-44-45-52-53-20-DE-41-4D-50-55-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-47-50-DF-F0-18-14-DC-4C-4B-45-52-20-48-41-4C-4C-45-59-20-C7-DD-4B-4F-4C-41-54-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-45-54-DD-20-42-DD-53-4B-DC-56-DD-20-42-55-52-C7-41-4B-20-4B-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-25-00-DF-F0-18-14-45-54-DD-20-47-4F-46-52-45-54-20-48-4F-DE-42-45-DE-20-48-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-DC-4C-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-44-DD-44-4F-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-37-50-DF-F0-18-14-45-54-DD-20-42-DD-53-4B-DC-56-DD-20-42-55-52-C7-41-4B-20-4B-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-39-50-DF-F0-18-14-45-54-DD-20-42-DD-53-4B-DC-56-DD-20-42-45-4E-DD-4D-4F-20-50-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-07-50-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-4D-DD-4C-4B-53-48-41-4B-45-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-07-50-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-4D-DD-4C-4B-53-48-41-4B-45-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-07-50-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-4D-DD-4C-4B-53-48-41-4B-45-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-20-00-DF-F0-18-14-45-54-DD-20-C7-55-42-55-4B-20-43-52-41-58-20-44-41-48-41-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-03-82-DF-F0-04-03-01-39-00-DF-F0-18-14-4B-41-53-2D-4B-45-DE-20-4B-45-DE-20-50-45-59-4E-DD-52-DD-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-45-54-DD-20-47-4F-4E-47-20-42-41-4C-20-56-45-20-48-41-52-44-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-07-50-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-4D-DD-4C-4B-53-48-41-4B-45-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-06-00-DF-F0-18-14-4E-45-53-43-41-46-45-20-32-53-DD-20-31-20-41-52-41-44-41-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-04-00-DF-F0-18-14-4E-45-53-43-41-46-45-20-43-4C-41-53-53-49-43-20-32-20-47-52-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-04-00-DF-F0-18-14-4E-45-53-43-41-46-45-20-47-4F-4C-44-20-32-20-47-52-20-20-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-04-00-DF-F0-18-14-4E-45-53-43-41-46-45-20-47-4F-4C-44-20-32-20-47-52-20-20-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-02-DF-F0-03-02-10-00-DF-F0-04-02-20-00-DF-F0-18-14-53-DD-4D-DD-54-20-45-4B-4D-45-4B-20-41-44-45-54-20-20-20-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-02-DF-F0-03-02-10-00-DF-F0-04-02-20-00-DF-F0-18-14-53-DD-4D-DD-54-20-45-4B-4D-45-4B-20-41-44-45-54-20-20-20-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-39-00-DF-F0-18-14-DC-4C-4B-45-52-20-50-52-4F-42-DD-53-20-50-52-4F-54-45-DD-4E-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-55-4E-DD-20-43-41-52-45-20-4B-55-4C-41-4B-20-C7-55-42-55-D0-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-69-00-DF-F0-18-14-59-D6-52-45-4C-20-4D-41-4B-41-52-4E-41-20-45-52-DD-DE-54-45-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-16-50-DF-F0-18-14-45-54-DD-4D-45-4B-20-4B-4C-41-53-DD-4B-20-48-41-5A-49-52-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-20-00-DF-F0-18-14-45-54-DD-20-4B-52-41-4B-45-52-20-42-41-4C-49-4B-20-4D-49-53-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-12-50-DF-F0-18-14-54-4F-52-4B-55-20-42-DD-53-4B-DC-56-DD-20-54-41-4D-20-C7-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-DD-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-04-66-DF-F0-04-03-03-29-00-DF-F0-18-14-41-44-41-4C-49-4C-41-52-20-4B-4F-4B-54-45-59-4C-20-C7-45-52-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-40-00-DF-F0-18-14-DC-4C-4B-45-52-20-44-41-4D-4C-41-20-C7-DD-4B-4F-4C-41-54-41-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-02-DF-F0-03-02-10-00-DF-F0-04-02-40-00-DF-F0-18-14-45-4B-4D-45-4B-20-41-44-45-54-20-D6-5A-54-52-41-42-5A-4F-4E-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-35-00-DF-F0-18-14-DC-4C-4B-45-52-20-50-D6-54-DD-42-D6-52-20-4B-41-4B-41-4F-4C-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-59-00-DF-F0-18-14-50-41-50-41-D0-41-4E-20-41-59-20-C7-45-4B-DD-52-44-45-D0-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-16-50-DF-F0-18-14-45-54-DD-4D-45-4B-20-4B-4C-41-53-DD-4B-20-48-41-5A-49-52-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-02-15-00-DF-F0-18-14-54-41-4D-45-4B-20-52-45-C7-45-4C-20-C7-DD-4C-45-4B-20-31-38-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-62-50-DF-F0-18-14-45-52-50-DD-4C-DD-C7-20-54-41-56-55-4B-20-44-D6-4E-45-52-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-20-88-DF-F0-04-02-75-00-DF-F0-18-14-45-52-50-DD-4C-DD-C7-20-54-41-56-55-4B-20-42-DC-54-DC-4E-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-04-00-DF-F0-18-14-4E-45-53-43-41-46-45-20-43-4C-41-53-53-49-43-20-32-20-47-52-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-08-04-DF-F0-04-03-01-42-50-DF-F0-18-14-45-52-50-DD-4C-DD-C7-20-54-41-56-55-4B-20-50-DD-52-5A-4F-4C-DF-F0-1F-01-01-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-49-00-DF-F0-18-14-DD-C7-DD-4D-20-50-45-59-4E-DD-52-20-42-45-59-41-5A-20-39-30-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-50-49-4E-41-52-20-41-C7-42-DD-54-DD-52-20-4D-41-43-41-52-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-08-36-DF-F0-04-03-01-42-50-DF-F0-18-14-45-52-50-DD-4C-DD-C7-20-54-41-56-55-4B-20-50-DD-52-5A-4F-4C-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-06-00-DF-F0-18-14-4E-45-53-43-41-46-45-20-32-53-DD-20-31-20-41-52-41-44-41-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-14-00-DF-F0-18-14-DC-4C-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-4E-41-50-4F-4C-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-89-50-DF-F0-18-14-DD-C7-DD-4D-20-59-4F-D0-55-52-54-20-32-32-35-30-20-47-20-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-15-86-DF-F0-04-03-02-15-00-DF-F0-18-14-5A-45-59-54-DD-4E-20-DD-52-DD-20-53-45-4C-45-20-4B-47-20-20-DF-F0-1F-01-01-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-54-50-DF-F0-18-14-50-49-4E-41-52-20-4C-41-42-4E-45-20-37-35-30-20-47-20-20-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-45-00-DF-F0-18-14-4B-49-4C-49-C7-4C-41-52-20-59-55-4D-55-52-54-41-20-33-30-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-16-00-DF-F0-18-14-50-49-4E-41-52-20-41-C7-42-DD-54-DD-52-20-48-DD-4E-44-DD-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-35-00-DF-F0-18-14-50-49-4E-41-52-20-4D-DD-4C-46-D6-59-20-35-30-30-20-47-52-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-05-26-DF-F0-04-03-01-69-00-DF-F0-18-14-5A-45-59-54-DD-4E-20-59-45-DE-DD-4C-20-4B-DC-C7-DC-4B-20-C7-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-02-DF-F0-03-02-10-50-DF-F0-04-02-75-00-DF-F0-18-14-DD-54-DD-4D-41-54-20-59-55-46-4B-41-20-4B-47-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-05-48-DF-F0-04-03-05-15-00-DF-F0-18-14-44-41-4E-41-20-4B-41-53-41-50-20-53-55-43-55-4B-20-4B-47-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-59-00-DF-F0-18-14-45-52-50-DD-4C-DD-C7-20-53-41-4C-41-4D-20-50-DD-4C-DD-C7-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-49-00-DF-F0-18-14-41-2E-54-41-54-4C-49-43-49-20-54-41-48-DD-4E-2B-50-45-4B-4D-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-79-50-DF-F0-18-14-54-4F-52-4B-55-20-42-41-4E-41-44-41-20-4B-52-45-4D-20-C7-DD-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-39-00-DF-F0-18-14-54-4F-52-4B-55-20-42-41-4E-41-44-41-20-4B-52-45-4D-20-C7-DD-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-77-50-DF-F0-18-14-DE-41-48-DD-4E-20-53-55-43-55-4B-20-41-59-56-41-5A-20-54-41-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-58-DF-F0-04-03-04-25-00-DF-F0-18-14-44-41-4E-41-20-4B-49-59-4D-41-20-4B-47-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-42-DF-F0-04-03-04-25-00-DF-F0-18-14-44-41-4E-41-20-4B-49-59-4D-41-20-4B-47-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-99-00-DF-F0-18-14-45-52-50-DD-4C-DD-C7-20-31-20-4B-47-20-4E-55-47-45-54-20-50-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-C7-45-52-45-5A-5A-41-20-C7-45-52-45-5A-4D-DD-58-20-31-30-37-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-02-99-00-DF-F0-18-14-41-4E-41-56-41-52-5A-41-20-42-41-4C-20-C7-DD-C7-45-4B-20-38-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-29-50-DF-F0-18-14-DD-C7-DD-4D-20-53-DC-54-20-59-41-52-49-4D-20-59-41-D0-4C-49-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-29-50-DF-F0-18-14-DD-C7-DD-4D-20-53-DC-54-20-59-41-52-49-4D-20-59-41-D0-4C-49-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-04-00-DF-F0-18-14-46-45-52-53-41-4E-20-4E-41-52-20-45-4B-DE-DD-4C-DD-20-53-4F-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-50-41-54-4F-53-20-41-43-49-20-42-41-48-41-52-41-54-4C-49-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-19-50-DF-F0-18-14-4B-4E-4F-52-52-20-C7-4F-52-42-41-20-4B-4C-41-53-DD-4B-20-DE-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-19-50-DF-F0-18-14-4B-4E-4F-52-52-20-C7-4F-52-42-41-20-4B-4C-41-53-DD-4B-20-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-19-50-DF-F0-18-14-4B-4E-4F-52-52-20-C7-4F-52-42-41-20-4B-4C-41-53-DD-4B-20-4D-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-19-50-DF-F0-18-14-4B-4E-4F-52-52-20-C7-4F-52-42-41-20-4B-4C-41-53-DD-4B-20-45-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-52-50-DF-F0-18-14-50-49-4E-41-52-20-4D-41-4E-54-49-20-4B-41-59-53-45-52-DD-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-27-50-DF-F0-18-14-4B-41-56-41-4B-4C-49-44-45-52-45-20-4C-DD-4D-4F-4E-20-53-4F-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-64-00-DF-F0-18-14-DD-C7-DD-4D-20-53-DC-54-20-C7-DD-4B-4F-4C-41-54-41-4C-49-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-35-00-DF-F0-18-14-50-49-4E-41-52-20-4D-DD-4C-46-D6-59-20-35-30-30-20-47-52-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-79-50-DF-F0-18-14-45-4B-DD-43-DD-20-50-45-59-4E-DD-52-20-53-DC-5A-4D-45-20-38-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-25-00-DF-F0-18-14-DC-4C-4B-45-52-20-4B-45-54-C7-41-50-20-37-35-30-47-2B-4D-41-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-25-00-DF-F0-18-14-DC-4C-4B-45-52-20-42-DD-5A-DD-4D-20-4D-41-52-47-41-52-DD-4E-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-92-50-DF-F0-18-14-DE-41-4E-56-45-52-20-48-45-4C-56-41-20-C7-DD-4C-45-4B-2D-4B-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-02-50-DF-F0-18-14-4B-4F-53-4B-41-20-48-45-4C-56-41-20-4B-41-4B-41-4F-4C-55-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-55-00-DF-F0-18-14-42-45-52-52-41-4B-20-54-55-52-DE-55-20-53-41-4C-41-54-41-4C-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-79-50-DF-F0-18-14-41-2E-54-41-54-4C-49-43-49-20-48-45-4C-56-41-20-4B-41-4B-41-DF-F0-1F-01-00";
+            string rawData = "DF-F0-01-01-03-DF-F0-03-02-10-60-DF-F0-04-02-48-50-DF-F0-18-14-49-53-50-41-4E-41-4B-20-4B-47-20-20-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-08-06-DF-F0-04-02-33-50-DF-F0-18-14-48-41-56-55-C7-20-4B-47-20-20-20-20-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-30-DF-F0-04-02-39-50-DF-F0-18-14-50-41-54-4C-49-43-41-4E-20-4B-45-4D-45-52-20-4B-47-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-54-DF-F0-04-02-39-50-DF-F0-18-14-42-DD-42-45-52-20-31-2E-4B-41-4C-DD-54-45-20-4B-47-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-11-06-DF-F0-04-02-84-50-DF-F0-18-14-C7-DD-4C-45-4B-20-4F-52-47-41-4E-DD-4B-20-4B-47-20-20-20-20-DF-F0-1F-01-01-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-13-86-DF-F0-04-03-01-09-00-DF-F0-18-14-4D-55-5A-20-DD-54-48-41-4C-20-4B-47-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-28-94-DF-F0-04-02-49-50-DF-F0-18-14-44-4F-4D-41-54-45-53-20-4B-47-20-20-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-25-00-DF-F0-18-14-46-41-4C-49-4D-20-53-41-4B-49-5A-20-35-58-35-20-4C-DD-20-4F-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-25-00-DF-F0-18-14-46-41-4C-49-4D-20-53-41-4B-49-5A-20-35-58-35-20-4C-DD-20-4B-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-01-42-50-DF-F0-18-14-59-55-4D-4F-DE-20-59-55-4D-55-DE-41-54-49-43-49-20-4C-41-56-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-04-08-DF-F0-04-02-68-50-DF-F0-18-14-4C-DD-4D-4F-4E-20-4B-47-20-20-20-20-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-24-24-DF-F0-04-02-59-50-DF-F0-18-14-45-4C-4D-41-20-59-2E-41-52-4A-41-4E-54-DD-4E-20-4B-47-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-25-22-DF-F0-04-02-19-50-DF-F0-18-14-50-41-54-41-54-45-53-20-4B-47-20-20-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-18-84-DF-F0-04-02-59-50-DF-F0-18-14-41-52-4D-55-54-20-53-41-4E-54-41-20-4B-47-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-43-4F-4F-4B-20-42-55-5A-44-4F-4C-41-42-49-20-50-4F-DE-45-54-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-03-09-00-DF-F0-18-14-59-55-44-55-4D-20-41-59-C7-DD-C7-45-4B-20-59-41-D0-49-20-35-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-52-50-DF-F0-18-14-53-43-4F-54-43-48-20-42-52-DD-54-45-20-4B-4C-41-53-DD-4B-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-21-62-DF-F0-04-02-19-50-DF-F0-18-14-53-4F-D0-41-4E-20-4B-47-20-20-20-20-20-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-42-50-DF-F0-18-14-44-4F-4D-45-53-54-4F-53-20-C7-41-4D-41-DE-49-52-20-53-55-59-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-85-00-DF-F0-18-14-44-41-4C-DD-4E-20-49-53-4C-41-4B-20-4D-45-4E-44-DD-4C-20-33-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-72-50-DF-F0-18-14-56-DD-4C-45-44-41-20-53-DC-4E-47-45-52-20-42-45-5A-20-33-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-72-50-DF-F0-18-14-46-41-DD-52-59-20-42-55-4C-41-DE-49-4B-20-44-45-54-45-52-4A-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-01-35-00-DF-F0-18-14-44-55-52-55-20-53-49-56-49-20-53-41-42-55-4E-20-47-4F-55-52-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-62-50-DF-F0-18-14-43-DD-46-20-4B-52-45-4D-20-55-4C-54-52-41-20-47-DC-C7-20-32-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-01-79-00-DF-F0-18-14-52-DD-4E-53-4F-20-4D-41-54-DD-4B-20-42-45-59-41-5A-20-47-DC-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-03-02-40-00-DF-F0-04-02-05-00-DF-F0-18-14-DC-4C-4B-45-52-20-43-41-46-45-20-43-52-4F-57-4E-20-4C-41-54-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-13-50-DF-F0-18-14-DC-4C-4B-45-52-20-4D-41-4B-41-52-4E-45-4B-53-20-44-4F-4D-41-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-02-DF-F0-03-02-10-00-DF-F0-04-03-01-39-50-DF-F0-18-14-48-45-4B-DD-4D-4F-D0-4C-55-20-55-4E-20-35-20-4B-47-20-20-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-13-50-DF-F0-18-14-DC-4C-4B-45-52-20-4D-41-4B-41-52-4E-45-4B-53-20-41-43-49-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-02-62-50-DF-F0-18-14-C7-41-59-4B-55-52-20-C7-41-59-20-52-DD-5A-45-20-54-55-52-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-15-00-DF-F0-18-14-46-DD-4C-DD-5A-20-4D-41-4B-41-52-4E-41-20-42-55-52-47-55-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-15-00-DF-F0-18-14-46-DD-4C-DD-5A-20-4D-41-4B-41-52-4E-41-20-4B-41-4C-45-4D-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-46-DD-59-4F-4E-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-89-50-DF-F0-18-14-53-45-C7-4B-DD-4E-20-50-DD-52-DD-4E-C7-20-42-41-4C-44-4F-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-40-00-DF-F0-18-14-47-DC-4E-45-DE-20-4E-DD-DE-41-53-54-41-20-38-30-30-20-47-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-4D-DD-44-59-45-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-92-50-DF-F0-18-14-44-4F-D0-55-DE-20-C7-41-59-20-42-4C-41-43-4B-20-4C-41-42-45-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-16-50-DF-F0-18-14-4E-2E-41-4E-4B-41-52-41-20-DD-52-4D-DD-4B-20-35-30-30-20-47-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-05-00-DF-F0-18-14-53-45-C7-4B-DD-4E-20-4D-45-52-43-DD-4D-45-4B-20-4B-49-52-4D-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-15-00-DF-F0-18-14-46-DD-4C-DD-5A-20-4D-41-4B-41-52-4E-41-20-42-4F-4E-43-55-4B-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-42-DD-4C-4C-55-52-20-54-55-5A-20-DD-59-4F-54-4C-55-20-31-2E-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-45-52-DD-DE-54-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-49-50-DF-F0-18-14-53-45-C7-4B-DD-4E-20-50-DD-52-DD-4E-C7-20-4F-53-4D-41-4E-43-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-DE-45-48-52-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-4E-55-48-27-55-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-02-19-00-DF-F0-18-14-54-4F-52-4B-55-20-54-4F-5A-DE-45-4B-45-52-20-35-30-30-30-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-02-19-00-DF-F0-18-14-54-4F-52-4B-55-20-54-4F-5A-DE-45-4B-45-52-20-35-30-30-30-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-53-50-41-47-45-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-15-00-DF-F0-18-14-46-DD-4C-DD-5A-20-4D-41-4B-41-52-4E-41-20-53-50-41-47-45-54-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-74-00-DF-F0-18-14-53-45-C7-4B-DD-4E-20-42-55-4C-47-55-52-20-50-DD-4C-41-56-4C-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-37-50-DF-F0-18-14-53-45-C7-4B-DD-4E-20-42-55-4C-47-55-52-20-50-DD-4C-41-56-4C-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-41-4E-4B-41-52-41-20-4D-41-4B-41-52-4E-41-20-DE-45-48-52-DD-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-22-50-DF-F0-18-14-53-45-C7-4B-DD-4E-20-4E-4F-48-55-54-20-4B-4F-C7-42-41-DE-49-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-42-DD-4C-4C-55-52-20-54-55-5A-20-DD-59-4F-54-4C-55-20-31-2E-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-82-50-DF-F0-18-14-53-45-C7-4B-DD-4E-20-4D-45-52-43-DD-4D-45-4B-20-59-45-DE-DD-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-01-75-00-DF-F0-18-14-53-4F-4C-4F-20-54-55-56-41-4C-45-54-20-4B-41-D0-49-44-49-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-35-00-DF-F0-18-14-4F-52-4B-DD-44-20-50-45-44-20-55-4C-54-52-41-20-45-58-54-52-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-02-02-50-DF-F0-18-14-46-DD-4E-DD-53-48-20-4D-41-4B-DD-4E-45-20-54-45-4D-DD-5A-4C-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-49-50-DF-F0-18-14-DC-4C-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-C7-4F-4B-4F-4E-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-99-00-DF-F0-18-14-45-4C-53-45-56-45-20-DE-41-4D-50-55-41-4E-20-4B-4F-35-20-35-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-03-29-00-DF-F0-18-14-46-41-DD-52-59-20-54-41-42-4C-45-54-20-50-4C-41-54-49-4E-55-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-99-50-DF-F0-18-14-4E-45-53-54-4C-45-20-47-45-56-52-45-4B-20-4E-45-53-46-DD-54-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-39-00-DF-F0-18-14-4E-45-53-54-4C-45-20-43-41-46-46-45-45-20-4D-41-54-45-20-50-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-99-00-DF-F0-18-14-46-DD-4E-DD-53-48-20-50-41-52-4C-41-54-49-43-49-20-34-30-30-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-29-50-DF-F0-18-14-DC-4C-4B-45-52-20-C7-DD-5A-DD-20-56-DD-C7-20-4B-52-41-4B-45-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-DC-4C-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-44-DD-44-4F-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-DC-4C-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-44-DD-44-4F-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-DC-4C-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-44-DD-44-4F-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-14-00-DF-F0-18-14-DC-4C-4B-45-52-20-4E-41-50-4F-4C-DD-54-45-4E-20-C7-DD-4B-4F-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-05-62-DF-F0-04-03-03-00-00-DF-F0-18-14-54-41-54-4C-49-20-42-41-4B-4C-41-56-41-20-20-20-20-20-20-20-DF-F0-1F-01-01-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-05-20-DF-F0-04-03-01-20-00-DF-F0-18-14-54-55-4C-55-4D-42-41-20-54-41-54-4C-49-53-49-20-4B-47-20-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-45-54-DD-20-42-DD-53-4B-DC-56-DD-20-42-55-52-C7-41-4B-20-4B-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-02-40-DF-F0-04-03-01-02-50-DF-F0-18-14-41-44-41-4C-49-4C-41-52-20-4D-53-49-49-52-20-43-DD-50-53-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-02-54-DF-F0-04-02-95-00-DF-F0-18-14-41-44-41-4C-49-4C-41-52-20-4B-55-DE-20-4C-4F-4B-55-4D-55-20-DF-F0-1F-01-01-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-07-18-DF-F0-04-03-01-85-00-DF-F0-18-14-45-52-50-DD-4C-DD-C7-20-54-41-56-55-4B-20-4B-41-4E-41-54-20-DF-F0-1F-01-01-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-06-98-DF-F0-04-03-01-85-00-DF-F0-18-14-45-52-50-DD-4C-DD-C7-20-54-41-56-55-4B-20-4B-41-4E-41-54-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-35-00-DF-F0-18-14-45-54-DD-20-42-DD-53-4B-DC-56-DD-20-4E-45-47-52-4F-20-33-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-02-DF-F0-03-02-10-00-DF-F0-04-02-59-50-DF-F0-18-14-55-4E-4F-20-45-4B-4D-45-4B-20-42-DC-59-DC-4B-20-54-4F-53-54-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-03-01-45-00-DF-F0-18-14-48-45-41-44-26-53-48-4F-55-4C-44-45-52-53-20-DE-41-4D-50-55-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-47-50-DF-F0-18-14-DC-4C-4B-45-52-20-48-41-4C-4C-45-59-20-C7-DD-4B-4F-4C-41-54-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-45-54-DD-20-42-DD-53-4B-DC-56-DD-20-42-55-52-C7-41-4B-20-4B-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-25-00-DF-F0-18-14-45-54-DD-20-47-4F-46-52-45-54-20-48-4F-DE-42-45-DE-20-48-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-DC-4C-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-44-DD-44-4F-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-37-50-DF-F0-18-14-45-54-DD-20-42-DD-53-4B-DC-56-DD-20-42-55-52-C7-41-4B-20-4B-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-39-50-DF-F0-18-14-45-54-DD-20-42-DD-53-4B-DC-56-DD-20-42-45-4E-DD-4D-4F-20-50-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-07-50-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-4D-DD-4C-4B-53-48-41-4B-45-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-07-50-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-4D-DD-4C-4B-53-48-41-4B-45-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-07-50-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-4D-DD-4C-4B-53-48-41-4B-45-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-20-00-DF-F0-18-14-45-54-DD-20-C7-55-42-55-4B-20-43-52-41-58-20-44-41-48-41-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-03-82-DF-F0-04-03-01-39-00-DF-F0-18-14-4B-41-53-2D-4B-45-DE-20-4B-45-DE-20-50-45-59-4E-DD-52-DD-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-17-50-DF-F0-18-14-45-54-DD-20-47-4F-4E-47-20-42-41-4C-20-56-45-20-48-41-52-44-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-07-50-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-4D-DD-4C-4B-53-48-41-4B-45-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-06-00-DF-F0-18-14-4E-45-53-43-41-46-45-20-32-53-DD-20-31-20-41-52-41-44-41-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-04-00-DF-F0-18-14-4E-45-53-43-41-46-45-20-43-4C-41-53-53-49-43-20-32-20-47-52-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-04-00-DF-F0-18-14-4E-45-53-43-41-46-45-20-47-4F-4C-44-20-32-20-47-52-20-20-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-04-00-DF-F0-18-14-4E-45-53-43-41-46-45-20-47-4F-4C-44-20-32-20-47-52-20-20-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-02-DF-F0-03-02-10-00-DF-F0-04-02-20-00-DF-F0-18-14-53-DD-4D-DD-54-20-45-4B-4D-45-4B-20-41-44-45-54-20-20-20-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-02-DF-F0-03-02-10-00-DF-F0-04-02-20-00-DF-F0-18-14-53-DD-4D-DD-54-20-45-4B-4D-45-4B-20-41-44-45-54-20-20-20-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-39-00-DF-F0-18-14-DC-4C-4B-45-52-20-50-52-4F-42-DD-53-20-50-52-4F-54-45-DD-4E-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-04-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-55-4E-DD-20-43-41-52-45-20-4B-55-4C-41-4B-20-C7-55-42-55-D0-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-69-00-DF-F0-18-14-59-D6-52-45-4C-20-4D-41-4B-41-52-4E-41-20-45-52-DD-DE-54-45-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-16-50-DF-F0-18-14-45-54-DD-4D-45-4B-20-4B-4C-41-53-DD-4B-20-48-41-5A-49-52-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-20-00-DF-F0-18-14-45-54-DD-20-4B-52-41-4B-45-52-20-42-41-4C-49-4B-20-4D-49-53-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-12-50-DF-F0-18-14-54-4F-52-4B-55-20-42-DD-53-4B-DC-56-DD-20-54-41-4D-20-C7-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-DD-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-04-66-DF-F0-04-03-03-29-00-DF-F0-18-14-41-44-41-4C-49-4C-41-52-20-4B-4F-4B-54-45-59-4C-20-C7-45-52-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-40-00-DF-F0-18-14-DC-4C-4B-45-52-20-44-41-4D-4C-41-20-C7-DD-4B-4F-4C-41-54-41-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-02-DF-F0-03-02-10-00-DF-F0-04-02-40-00-DF-F0-18-14-45-4B-4D-45-4B-20-41-44-45-54-20-D6-5A-54-52-41-42-5A-4F-4E-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-35-00-DF-F0-18-14-DC-4C-4B-45-52-20-50-D6-54-DD-42-D6-52-20-4B-41-4B-41-4F-4C-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-59-00-DF-F0-18-14-50-41-50-41-D0-41-4E-20-41-59-20-C7-45-4B-DD-52-44-45-D0-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-16-50-DF-F0-18-14-45-54-DD-4D-45-4B-20-4B-4C-41-53-DD-4B-20-48-41-5A-49-52-20-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-02-15-00-DF-F0-18-14-54-41-4D-45-4B-20-52-45-C7-45-4C-20-C7-DD-4C-45-4B-20-31-38-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-62-50-DF-F0-18-14-45-52-50-DD-4C-DD-C7-20-54-41-56-55-4B-20-44-D6-4E-45-52-20-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-20-88-DF-F0-04-02-75-00-DF-F0-18-14-45-52-50-DD-4C-DD-C7-20-54-41-56-55-4B-20-42-DC-54-DC-4E-20-DF-F0-1F-01-01-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-09-00-DF-F0-18-14-44-52-2E-4F-45-54-4B-45-52-20-C7-DD-4B-4F-4C-41-54-41-20-DD-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-04-00-DF-F0-18-14-4E-45-53-43-41-46-45-20-43-4C-41-53-53-49-43-20-32-20-47-52-DF-F0-1F-01-00-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-08-04-DF-F0-04-03-01-42-50-DF-F0-18-14-45-52-50-DD-4C-DD-C7-20-54-41-56-55-4B-20-50-DD-52-5A-4F-4C-DF-F0-1F-01-01-DF-71-2F-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-03-01-49-00-DF-F0-18-14-DD-C7-DD-4D-20-50-45-59-4E-DD-52-20-42-45-59-41-5A-20-39-30-DF-F0-1F-01-00-DF-71-2E-DF-F0-01-01-03-DF-F0-03-02-10-00-DF-F0-04-02-32-50-DF-F0-18-14-50-49-4E-41-52-20-41-C7-42-DD-54-DD-52-20-4D-41-43-41-52-20-DF-F0-1F-01-00";
+
             try
             {
-                switch(comboBoxEDocumentDocTypes.SelectedIndex)
+                string rmData = rawData.Replace("-", "").Trim();
+
+                byte[] testData = StringToByteArray(rmData);
+            
+                CPResponse response = new CPResponse(bridge.Printer.PrintDocumentHeader(1, "12345678901", "AA123456", DateTime.Now));
+
+                response = new CPResponse(bridge.Printer.SendTestData(testData));
+
+            }
+            catch(Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+        }
+
+        public static byte[] StringToByteArray(string hex)
+        {
+            return Enumerable.Range(0, hex.Length)
+                             .Where(x => x % 2 == 0)
+                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
+                             .ToArray();
+        }
+
+        private void buttonLoadInvoiceFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            if(ofd.ShowDialog() == DialogResult.OK)
+            {
+                string file = ofd.FileName;
+
+                try
                 {
-                    case 0:
-                        docType = 3;
-                        break;
-                    case 1:
-                        docType = 2;
-                        break;
+                    string[] lines = File.ReadAllLines(file);
+
+                    int docType = 3;
+                    switch (comboBoxEDocumentDocTypes.SelectedIndex)
+                    {
+                        case 0:
+                            docType = 1;
+                            break;
+                        case 1:
+                            docType = 3;
+                            break;
+                        case 2:
+                            docType = 2;
+                            break;
+                        case 3:
+                            docType = 9;
+                            break;
+                        case 4:
+                            docType = 10;
+                            break;
+                        case 5:
+                            docType = 1;
+                            break;
+                    }
+
+                    CPResponse response = new CPResponse(bridge.Printer.PrintEDocumentCopy(docType, lines));
+                }
+                catch(Exception ex)
+                {
+                    bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+                }
+            }
+        }
+
+        private static Hugin.Common.Customer customer = null;
+        private void buttonStartInvoice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string docSerial = textBoxInvoiceSerial.Text;
+                string docOrderNo = textBoxInvoiceOrderNo.Text;
+                DateTime invoiceDT = dateTimePickerInvoiceDT.Value;
+
+                CPResponse response = new CPResponse(bridge.Printer.PrintInvoiceHeader(invoiceDT, docSerial, docOrderNo, customer));
+
+                if (response.ErrorCode == 0)
+                {
+                    string docNo = response.GetNextParam();
+                    string ZNo = response.GetNextParam();
+
+                    bridge.Log(String.Format("BELGE NO       :{0}", docNo));
+                    bridge.Log(String.Format("Z NO           :{0}", ZNo));
+
+                    int i = 2;
+                    while(i < response.ParamList.Count)
+                    {
+                        bridge.Log(String.Format("KDV            :{0}", response.GetNextParam()));
+                        bridge.Log(String.Format("KDV TOPLAM     :{0}", response.GetNextParam()));
+                        i += 2;
+                    }
                 }
 
-                CPResponse response = new CPResponse(bridge.Printer.PrintEDocumentCopy(docType, sampleLines.ToArray()));
 
             }
             catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+            finally
+            {
+                customer = null;
+                this.buttonAddCustomer.Text = FormMessage.ADD_CUSTOMER;
+            }
+        }
+
+        private void buttonAddCustomer_Click(object sender, EventArgs e)
+        {
+            customer = null;
+            CustomerForm cf = new CustomerForm();
+            try
+            {
+                if (cf.ShowDialog() == DialogResult.OK)
+                {
+                    customer = CustomerForm.CurrentCustomer;
+                    this.buttonAddCustomer.Text = FormMessage.UPDATE_CUSTOMER;
+                }
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+                this.buttonAddCustomer.Text = FormMessage.ADD_CUSTOMER;
+            }
+        }
+
+        private void buttonStoppage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal amount = numericUpDownStoppageAmount.Value;
+
+                CPResponse response = new CPResponse(bridge.Printer.PrintSubtotal(amount));
+
+                if (response.ErrorCode == 0)
+                {
+                    bridge.Log(String.Format(FormMessage.SUBTOTAL.PadRight(12, ' ') + ":{0}", response.GetNextParam()));
+
+                    bridge.Log(String.Format(FormMessage.PAID_TOTAL.PadRight(12, ' ') + ":{0}", response.GetNextParam()));
+                }
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+        }
+
+        private void buttonAddCustomerRetDoc_Click(object sender, EventArgs e)
+        {
+            customer = null;
+            CustomerForm cf = new CustomerForm();
+            try
+            {
+                if (cf.ShowDialog() == DialogResult.OK)
+                {
+                    customer = CustomerForm.CurrentCustomer;
+                    this.buttonAddCustomerRetDoc.Text = FormMessage.UPDATE_CUSTOMER;
+                }
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+                this.buttonAddCustomerRetDoc.Text = FormMessage.ADD_CUSTOMER;
+            }
+        }
+
+        private void buttonStartReturnDoc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string docSerial = textBoxRetDocSerial.Text;
+                string docOrderNo = textBoxRetDocORderNo.Text;
+                DateTime invoiceDT = dateTimePickerRetDoc.Value;
+
+                CPResponse response = new CPResponse(bridge.Printer.PrintReturnDocumentHeader(invoiceDT, docSerial, docOrderNo, customer));
+
+                if (response.ErrorCode == 0)
+                {
+                    string docNo = response.GetNextParam();
+                    string ZNo = response.GetNextParam();
+
+                    bridge.Log(String.Format("BELGE NO       :{0}", docNo));
+                    bridge.Log(String.Format("Z NO           :{0}", ZNo));
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+            finally
+            {
+                customer = null;
+                this.buttonAddCustomerRetDoc.Text = FormMessage.ADD_CUSTOMER;
+            }
+        }
+
+        private static List<Hugin.Common.Service> serviceList = new List<Hugin.Common.Service>();
+        private void buttonAddService_Click(object sender, EventArgs e)
+        {
+            ServiceSEIForm sf = new ServiceSEIForm();
+
+            try
+            {
+                if (sf.ShowDialog() == DialogResult.OK)
+                {
+                    serviceList.Add(ServiceSEIForm.CurrentService);
+
+                    dataGridViewServices.Rows.Add(new DataGridViewRow());
+                    DataGridViewRow row = dataGridViewServices.Rows[dataGridViewServices.Rows.Count - 1];
+                    row.Cells[1].Value = ServiceSEIForm.CurrentService.Definition;
+                }
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+        }
+
+        private void buttonRemoveService_Click(object sender, EventArgs e)
+        {
+            for (int i = dataGridViewServices.Rows.Count - 1; i >= 0; i--)
+            {
+                if ((bool)dataGridViewServices.Rows[i].Cells[0].FormattedValue)
+                {
+                    serviceList.RemoveAt(i);
+                    dataGridViewServices.Rows.RemoveAt(i);
+                }
+            }
+        }
+
+        private void buttonAddCustomerSEI_Click(object sender, EventArgs e)
+        {
+            customer = null;
+            CustomerForm cf = new CustomerForm();
+            try
+            {
+                if (cf.ShowDialog() == DialogResult.OK)
+                {
+                    customer = CustomerForm.CurrentCustomer;
+                    this.buttonAddCustomerRetDoc.Text = FormMessage.UPDATE_CUSTOMER;
+                }
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+                this.buttonAddCustomerRetDoc.Text = FormMessage.ADD_CUSTOMER;
+            }
+        }
+
+        private void buttonStartSelfEmpInvoice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                CPResponse response = new CPResponse(bridge.Printer.PrintSelfEmployementHeader(customer, serviceList.ToArray()));
+
+                if (response.ErrorCode == 0)
+                {
+                    string docNo = response.GetNextParam();
+                    string ZNo = response.GetNextParam();
+
+                    bridge.Log(String.Format("BELGE NO       :{0}", docNo));
+                    bridge.Log(String.Format("Z NO           :{0}", ZNo));
+
+                    int i = 2;
+                    while (i < response.ParamList.Count)
+                    {
+                        bridge.Log(String.Format("KDV            :{0}", response.GetNextParam()));
+                        bridge.Log(String.Format("KDV TOPLAM     :{0}", response.GetNextParam()));
+                        i += 2;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+            finally
+            {
+                customer = null;
+                this.buttonAddCustomerSEI.Text = FormMessage.ADD_CUSTOMER;
+            }
+        }
+
+        private void btnSendSlip_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<byte> bytes = new List<byte>();
+                CPResponse response;
+                int slipType = 1;
+
+                if (rbtnSlipTypeMerchant.Checked)
+                    slipType = 2;
+                else if (rbtnSlipTypeError.Checked)
+                    slipType = 3;
+
+                response = new CPResponse(bridge.Printer.PrintSlip(slipType, txtSlipLines.Lines));
+            }
+            catch (System.Exception ex)
             {
                 bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }

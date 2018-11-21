@@ -11,6 +11,16 @@
     <add key="LogDirectory" value="C:\logger"/>
     <add key="GetZReportAt" value="500"/>
     <add key="AutoPrintTimerInterval" value="10000"/>
+	
+	 <add key="TubitakTestCase" value="0"/>
+    <!--    
+     TUBITAK TEST MENU:                        HATA KODLARI:
+     0 - NONE                                     00
+     1 - GEÇERSİZ MESAJ                           11
+     2 - LRC DOĞRULAMA HATASI                     13
+     3 - TAG UZUNLUĞU HATASI                      31
+    -->
+    
     <!--
     <add key="LicenseKey" value="25D5D564E9B68EED"/>
     -->

@@ -135,10 +135,7 @@ namespace FP300Service
                 {
                     txtLog.Invoke(new LogDelegate(Log), line);
                 }
-                catch (System.Exception ex)
-                {
-                	
-                }
+                catch { }
             }
             else
             {
@@ -213,21 +210,19 @@ namespace FP300Service
         {
             try
             {
-                if (threadClient!= null && threadClient.IsAlive)
+                if (threadClient != null && threadClient.IsAlive)
                 {
                     threadClient.Abort();
                     threadClient = null;
                     btnStart.Text = "Başlat";
-                }else
+                }
+                else
                 {
                     StartTestServer(IpAddress, Port);
                     btnStart.Text = "Durdur";
                 }
             }
-            catch (System.Exception ex)
-            {
-            	
-            }
+            catch { }
         }
         protected override void Dispose(bool disposing)
         {
@@ -242,10 +237,7 @@ namespace FP300Service
                         threadClient.Abort();
                     }
                 }
-                catch (System.Exception ex)
-                {
-                	
-                }                
+                catch { }             
             }
             base.Dispose(disposing);
         }

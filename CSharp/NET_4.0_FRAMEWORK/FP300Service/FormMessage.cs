@@ -281,7 +281,7 @@ namespace FP300Service
         public const String CASH_IN_CASH_OUT = "CASH IN/OUT";
         public const String CASH_IN = "CASH IN";
         public const String CASH_OUT = "CASH OUT";
-        public const String AMOUNT = "MİKTAR";
+        public const String AMOUNT = "AMOUNT";
         public const string SPECIAL_RECEIPT = "NF RECEIPT";
         public const String PRINT_SAMPLE_CONTEXT = "PRINT SAMPLE CONTEXT";
         public const string START_NF_RECEIPT = "START NF RECEIPT";
@@ -362,7 +362,7 @@ namespace FP300Service
         public const String PAYMENT_INDEX = "PAYMENT INDEX";
         public const String PAYMENT_AMOUNT = "PAYMENT AMOUNT";
 
-        public const String CONTEXT = "İÇERİK";
+        public const String CONTEXT = "CONTEXT";
         public const String PRINT = "PRINT";
         public const String SAVE = "SAVE";
 
@@ -395,6 +395,42 @@ namespace FP300Service
         public const string VERSION_INFO = "VERSION INFO";
         public const string ECR_INFO = "ECR INFO";
         public const string LIBRARY_INFO = "LIBRARY INFO";
+
+        public const string COLLECT = "COLLECT";
+        public const string COLLECT_INFO = "COLLECT INFO";
+        public const string COLLECT_TYPE = "COLLECT TYPE";
+        public const string COLLECT_QUANTITY = "COLLECT QUANTITY";
+        public const string COLLECT_AMOUNT = "COLLECT AMOUNT";
+
+        public const string NOTE_OF_EXPENSES = "NOTE OF EXPENSES";
+        public const string SELF_EMPLOYEMENT_INVOICE = "SELF EMPLOYEMENT INVOICE";
+
+        public const string DOCUMENT_ORDER_NO = "DOC ORDER NO";
+        public const string TAX_OFFICE = "TAX OFFICE";
+        public const string ADDRESS = "ADDRESS";
+
+        public const string ADD = "ADD";
+        public const string CLEAR = "CLEAR";
+        public const string UPDATE_CUSTOMER = "UPDATE CUSTOMER";
+        public const string ADD_CUSTOMER = "ADD CUSTOMER";
+        public const string LABEL = "LABEL";
+        public const string STOPPAGE = "STOPPAGE";
+        public const string SEND_STOPPAGE = "SEND STOPPAGE";
+        public const string RETURN_DOCUMENT = "RETURN DOCUMENT";
+
+        public const string ADD_SERVICE = "ADD SERVICE";
+        public const string REMOVE_SERVICE = "REMOVE SERVICE";
+
+        public const string INDEX = "INDEX";
+        public const string SERVICES_SEI = "SERVICES";
+
+        public static string SERVICE_DEFINITION = "SERVICE DEFINITION";
+        public static string GROSS_WAGES = "GROSS WAGES";
+        public static string STOPPAGE_OTHER = "STOPPAGE OTHER %";
+        public static string STOPPAGE_RATE = "STOPPAGE %";
+
+        public const string ADDRESS_LINE = "ADDRESS LINE";
+
 #else
         #region FiscalInfoUC
 
@@ -451,6 +487,7 @@ namespace FP300Service
         public const String F_CURRENCY_CODE_NAME = "DÖVİZ KODU";
         public const String EXCHANGE_RATE = "KUR";
         public const String CURRENCY = "DÖVİZ";
+        public const String FOODCARD = "YEMEK KARTI"; 
 
         public const String CATEGORY = "KATEGORİ";
         public const String MAIN_GROUP = "ANA ÜRÜN GRUBU";
@@ -517,6 +554,7 @@ namespace FP300Service
         public const String PLU_REPORT = "PLU RAPORU";
         public const string X_REPORT = "X RAPORU";
         public const String GET_REPORT = "RAPOR AL";
+        public const String REPORT_CONTENT = "İÇERİK GETİR";
         public const String RECEIPT_TOTAL_REPORT = "FİŞ TOPLAMLARI RAPORU";
 
         public const String Z_REPORTS = "Z RAPORLARI";
@@ -614,6 +652,8 @@ namespace FP300Service
         public const String CREDITS_LOADED = "KREDİLER YÜKLENDİ";
         public const String CREDITS = "KREDİLER";
 
+        public const String FOODCARDS_LOADED = "YEMEK KARTLARI YÜKLENDİ";
+
         public const string JSON_FILE_NOT_EXISTS = "JSON SATIŞ DOSYASI BULUNAMADI";
         public const String DISCOUNT_ACTIVE = "İNDİRİM AKTİF";
         public const String PROVISION_CODE = "PROVİZYON KODU";
@@ -669,8 +709,8 @@ namespace FP300Service
         public const String START_FM = "MALİ BELLEK BAŞLAT";
         public const String CASHIER_LOGIN = "KASİYER GİRİŞİ";
         public const String CASH_IN_CASH_OUT = "KASA ALDI/VERDİ";
-        public const String CASH_IN = "KASA ALDI";
-        public const String CASH_OUT = "KASA VERDİ";
+        public const String CASH_IN = "NAKİT GİRİŞ";
+        public const String CASH_OUT = "NAKİT ÇIKIŞ";
         public const String AMOUNT = "MİKTAR";
         public const string SPECIAL_RECEIPT = "ÖZEL FİŞ";
         public const String PRINT_SAMPLE_CONTEXT = "ÖRNEK İÇERİK YAZDIR";
@@ -735,6 +775,10 @@ namespace FP300Service
         public const String NOTE = "NOT";
         public const String QUANTITY = "MİKTAR";
 
+        public const String RETURN_AMOUNT = "İADE TUTARI";
+        public const String RETURN_COUNT = "İADE SAYISI";
+        public const String RETURN_AFFECT_DRAWER = "ÇEKMECE ETKİLENSİN";
+
         public const String TOTAL_INFO = "TOPLAM BİLGİLERİ";
         public const String TOTAL_RECEIPT_COUNT = "TOPLAM FİŞ SAYISI";
         public const String TOTAL_AMOUNT = "TOPLAM TUTAR";
@@ -793,6 +837,47 @@ namespace FP300Service
         public const string VERSION_INFO = "VERSİYON BİLGİSİ";
         public const string ECR_INFO = "ÖKC BİLGİLERİ";
         public const string LIBRARY_INFO = "KÜTÜPHANE BİLGİLERİ";
+
+        public const string COLLECT = "TAHSİL";
+        public const string COLLECT_INFO = "TAHSİL BİLGİSİ";
+        public const string COLLECT_TYPE = "TAHSİLAT TİPİ";
+        public const string COLLECT_QUANTITY = "TAHSİLAT ADEDİ";
+        public const string COLLECT_AMOUNT = "TAHSİLAT TUTARI";
+        public const string NOTE_OF_EXPENSES = "GİDER PUSULASI";
+        public const string SELF_EMPLOYEMENT_INVOICE = "SERBEST MESLEK MAKBUZU";
+
+        public const string DOCUMENT_ORDER_NO = "BELGE SIRA NO";
+
+        public const string TAX_OFFICE = "VERGİ DAİRESİ";
+
+        public const string ADDRESS = "ADRES";
+        public const string ADDRESS_LINE = "ADRES SATIRI";
+
+        public const string ADD = "EKLE";
+        public const string CLEAR = "TEMİZLE";
+
+        public const string UPDATE_CUSTOMER = "MÜŞTERİ GÜNCELLE";
+
+        public const string ADD_CUSTOMER = "MÜŞTERİ EKLE";
+
+        public const string LABEL = "ÜNVAN/ETİKET";
+
+        public const string STOPPAGE = "STOPAJ";
+
+        public const string SEND_STOPPAGE = "STOPAJ UYGULA";
+
+        public const string RETURN_DOCUMENT = "GİDER PUSULASI";
+
+        public const string ADD_SERVICE = "HİZMET EKLE";
+        public const string REMOVE_SERVICE = "HİZMET KALDIR";
+
+        public const string INDEX = "İNDEKS";
+        public const string SERVICES_SEI = "HİZMETLER";
+
+        public static string SERVICE_DEFINITION = "HİZMET TANIMI";
+        public static string GROSS_WAGES = "BRÜT ÜCRET";
+        public static string STOPPAGE_OTHER = "KDV TEVKİFAT %";
+        public static string STOPPAGE_RATE = "STOPAJ %";
 
         #endregion
 

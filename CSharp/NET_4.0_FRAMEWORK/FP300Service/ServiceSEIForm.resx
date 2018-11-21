@@ -117,34 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ColumnTick.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ColumnService.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="txtSlipLines.Text" xml:space="preserve">
-    <value>1         KULLANILABİLİR WORLDPUAN
-3         TOPLAM          121,90TL
-1                                          
-1           BU MARKAYA ÖZEL PUAN           
-2         TOPLAM            1,17TL         
-1                                          
-1        TOPLAM KULLANILABİLİR PUAN        
-2         TOPLAM          123,07TL
-1                                          
-1SN:001                              
-1REF:0169559946                GRUP NO: 085
-1AID:A0000000031010             Visa Credit
-1Ver:92.03.13                              
-1                                          
-1          BU BELGEYİ SAKLAYINIZ           
-</value>
-  </data>
-  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>97, 17</value>
-  </metadata>
 </root>

@@ -15,6 +15,12 @@ namespace FP300Service.UserControls
         LAST_RECEIPT_INFO,
         DRAWER_INFO
     }
+
+    enum CollectType
+    {
+        CASH_IN = 1,
+        CASH_OUT
+    }
     public class FiscalInfoUC : TestUC
     {
         public FiscalInfoUC()
@@ -499,6 +505,48 @@ namespace FP300Service.UserControls
                         bridge.Log(String.Format(FormMessage.TOTAL_ADJUSTED_AMOUNT + ": {0}", paramVal));
                     }
 
+                    // ÇEKMECE GİRİŞ BİLGİLERİ
+                    bridge.Log("--- " + FormMessage.CASH_IN + " ---");                   
+                    {
+                        paramVal = response.GetNextParam();
+                        if (!String.IsNullOrEmpty(paramVal))
+                        {
+                            int paymentType = int.Parse(paramVal);
+                            bridge.Log(String.Format(FormMessage.COLLECT_TYPE.PadLeft(15, ' ') + ": {0}", Common.CollectTypes[paymentType-1]));
+                        }
+                        paramVal = response.GetNextParam();
+                        if (!String.IsNullOrEmpty(paramVal))
+                        {
+                            bridge.Log(String.Format(FormMessage.COLLECT_QUANTITY.PadLeft(15, ' ') + ": {0}", paramVal));
+                        }
+                        paramVal = response.GetNextParam();
+                        if (!String.IsNullOrEmpty(paramVal))
+                        {
+                            bridge.Log(String.Format(FormMessage.COLLECT_AMOUNT.PadLeft(15, ' ') + ": {0}", paramVal));
+                        }
+                    }
+
+                    // ÇEKMECE ÇIKIŞ BİLGİLERİ
+                    bridge.Log("--- " + FormMessage.CASH_OUT + " ---");
+                    {
+                        paramVal = response.GetNextParam();
+                        if (!String.IsNullOrEmpty(paramVal))
+                        {
+                            int paymentType = int.Parse(paramVal);
+                            bridge.Log(String.Format(FormMessage.COLLECT_TYPE.PadLeft(15, ' ') + ": {0}", Common.CollectTypes[paymentType - 1]));
+                        }
+                        paramVal = response.GetNextParam();
+                        if (!String.IsNullOrEmpty(paramVal))
+                        {
+                            bridge.Log(String.Format(FormMessage.COLLECT_QUANTITY.PadLeft(15, ' ') + ": {0}", paramVal));
+                        }
+                        paramVal = response.GetNextParam();
+                        if (!String.IsNullOrEmpty(paramVal))
+                        {
+                            bridge.Log(String.Format(FormMessage.COLLECT_AMOUNT.PadLeft(15, ' ') + ": {0}", paramVal));
+                        }
+                    }
+
                     // ÖDEME BİLGİLERİ 
                     bridge.Log("--- "+FormMessage.PAYMENT_INFO+" ---");
                     int i = 0;
@@ -525,9 +573,9 @@ namespace FP300Service.UserControls
                     }             
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 

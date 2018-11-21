@@ -1057,9 +1057,9 @@ namespace FP300Service.UserControls
 
                 ParseServiceResponse(response);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -1073,9 +1073,9 @@ namespace FP300Service.UserControls
 
                 ParseServiceResponse(response);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
 
         }
@@ -1098,10 +1098,7 @@ namespace FP300Service.UserControls
 
                 ParseServiceResponse(response);
             }
-            catch (System.Exception ex)
-            {
-
-            }
+            catch { }
 
         }
 
@@ -1126,9 +1123,9 @@ namespace FP300Service.UserControls
 
                 ParseServiceResponse(response);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -1140,9 +1137,9 @@ namespace FP300Service.UserControls
                 ParseServiceResponse(response);
 
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -1153,9 +1150,9 @@ namespace FP300Service.UserControls
                 CPResponse response = new CPResponse(bridge.Printer.CloseFM());
                 ParseServiceResponse(response);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -1225,9 +1222,9 @@ namespace FP300Service.UserControls
                 CPResponse response = new CPResponse(bridge.Printer.GetServiceCode());
                 ParseServiceResponse(response);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
 
@@ -1311,10 +1308,8 @@ namespace FP300Service.UserControls
                     ipVal += int.Parse(spltIPAddrs[i]).ToString().PadLeft(3, '0');
                 }
             }
-            catch (System.Exception ex)
-            {
-            	
-            }
+            catch { }
+
             // Port
             int port = Convert.ToInt32(txtGMPPort.Text);
 

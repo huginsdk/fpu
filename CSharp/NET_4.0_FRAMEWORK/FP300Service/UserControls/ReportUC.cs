@@ -31,8 +31,6 @@ namespace FP300Service.UserControls
         private RadioButton rbtnXReport;
         private CheckBox cbxHard;
         private CheckBox cbxSoft;
-        private RadioButton rbtnFiscDateReport;
-        private RadioButton rbtnFiscZZReport;
         private RadioButton rbtnZReport;
         private Button btnPrintZReport;
         private GroupBox grpPrintArea;
@@ -40,16 +38,6 @@ namespace FP300Service.UserControls
         private Label lblFirstPlu;
         private NumericUpDown nmrPLULast;
         private Label lblPLULast;
-        private NumericUpDown nmrFFZFirst;
-        private Label lblFFZLast;
-        private NumericUpDown nmrFFZLast;
-        private Label lblFFZFirst;
-        private DateTimePicker dtZZLastDate;
-        private DateTimePicker dtZZFirstDate;
-        private Label lblZZLastDate;
-        private Label lblZZFirstDate;
-        private CheckBox cbxFFDateDetailed;
-        private CheckBox cbxFFZZDetailed;
         private TabPage tabEJSingle;
         private DateTimePicker dtEJSingDocTime;
         private DateTimePicker dtEJSingDocDate;
@@ -92,6 +80,33 @@ namespace FP300Service.UserControls
         private TableLayoutPanel tableLayoutPanelReportUC;
         private TableLayoutPanel tableLayoutPanelReportUCLeftSide;
         private RadioButton rbtnEndDay;
+        private Label lblAmountReturnDocZ;
+        private Label lblCountReturnDocZ;
+        private NumericUpDown numerAmountReturnDocZ;
+        private NumericUpDown numerCountReturnDocZ;
+        private CheckBox cbxAffectDrawerZ;
+        private TabPage tabFMReports;
+        private Button btnPrintFMReport;
+        private CheckBox cbxFFZZDetailed;
+        private CheckBox cbxFFDateDetailed;
+        private DateTimePicker dtZZLastDate;
+        private DateTimePicker dtZZFirstDate;
+        private Label lblZZLastDate;
+        private Label lblZZFirstDate;
+        private NumericUpDown nmrFFZFirst;
+        private Label lblFFZLast;
+        private NumericUpDown nmrFFZLast;
+        private Label lblFFZFirst;
+        private RadioButton rbtnFiscDateReport;
+        private RadioButton rbtnFiscZZReport;
+        private CheckBox cbxAffectDrawerX;
+        private NumericUpDown numerAmountReturnDocX;
+        private NumericUpDown numerCountReturnDocX;
+        private Label lblAmountReturnDocX;
+        private Label lblCountReturnDocX;
+        private Button btnReportContentX;
+        private Button btnReportContentZ;
+        private Button btnReportContentFM;
         private Button btnPrintEJSingReport;
 
         internal static TestUC Instance(IBridge iBridge)
@@ -190,6 +205,18 @@ namespace FP300Service.UserControls
             this.lblEJSingDocNo.Text = FormMessage.DOCUMENT_ID;
             this.lblEJSingDocTime.Text = FormMessage.TIME;
             this.lblEJSingDocDate.Text = FormMessage.DATE;
+
+            this.lblAmountReturnDocX.Text = FormMessage.RETURN_AMOUNT;
+            this.lblCountReturnDocX.Text = FormMessage.RETURN_COUNT;
+            this.cbxAffectDrawerX.Text = FormMessage.RETURN_AFFECT_DRAWER;
+
+            this.lblAmountReturnDocZ.Text = FormMessage.RETURN_AMOUNT;
+            this.lblCountReturnDocZ.Text = FormMessage.RETURN_COUNT;
+            this.cbxAffectDrawerZ.Text = FormMessage.RETURN_AFFECT_DRAWER;
+            this.btnPrintFMReport.Text = FormMessage.GET_REPORT;
+            this.btnReportContentX.Text = FormMessage.REPORT_CONTENT;
+            this.btnReportContentZ.Text = FormMessage.REPORT_CONTENT;
+            this.btnReportContentFM.Text = FormMessage.REPORT_CONTENT;
         }
         /// <summary> 
         /// Required method for Designer support - do not modify 
@@ -203,6 +230,12 @@ namespace FP300Service.UserControls
             this.txtResult = new System.Windows.Forms.RichTextBox();
             this.tbcReports = new System.Windows.Forms.TabControl();
             this.tabXReports = new System.Windows.Forms.TabPage();
+            this.btnReportContentX = new System.Windows.Forms.Button();
+            this.cbxAffectDrawerX = new System.Windows.Forms.CheckBox();
+            this.numerAmountReturnDocX = new System.Windows.Forms.NumericUpDown();
+            this.numerCountReturnDocX = new System.Windows.Forms.NumericUpDown();
+            this.lblAmountReturnDocX = new System.Windows.Forms.Label();
+            this.lblCountReturnDocX = new System.Windows.Forms.Label();
             this.rbtnReceiptTotalReport = new System.Windows.Forms.RadioButton();
             this.nmrPLULast = new System.Windows.Forms.NumericUpDown();
             this.lblPLULast = new System.Windows.Forms.Label();
@@ -213,6 +246,16 @@ namespace FP300Service.UserControls
             this.rbtnXReport = new System.Windows.Forms.RadioButton();
             this.btnPrintNonFiscReport = new System.Windows.Forms.Button();
             this.tabZReports = new System.Windows.Forms.TabPage();
+            this.cbxAffectDrawerZ = new System.Windows.Forms.CheckBox();
+            this.numerAmountReturnDocZ = new System.Windows.Forms.NumericUpDown();
+            this.numerCountReturnDocZ = new System.Windows.Forms.NumericUpDown();
+            this.lblAmountReturnDocZ = new System.Windows.Forms.Label();
+            this.lblCountReturnDocZ = new System.Windows.Forms.Label();
+            this.rbtnEndDay = new System.Windows.Forms.RadioButton();
+            this.rbtnZReport = new System.Windows.Forms.RadioButton();
+            this.btnPrintZReport = new System.Windows.Forms.Button();
+            this.tabFMReports = new System.Windows.Forms.TabPage();
+            this.btnPrintFMReport = new System.Windows.Forms.Button();
             this.cbxFFZZDetailed = new System.Windows.Forms.CheckBox();
             this.cbxFFDateDetailed = new System.Windows.Forms.CheckBox();
             this.dtZZLastDate = new System.Windows.Forms.DateTimePicker();
@@ -225,8 +268,6 @@ namespace FP300Service.UserControls
             this.lblFFZFirst = new System.Windows.Forms.Label();
             this.rbtnFiscDateReport = new System.Windows.Forms.RadioButton();
             this.rbtnFiscZZReport = new System.Windows.Forms.RadioButton();
-            this.rbtnZReport = new System.Windows.Forms.RadioButton();
-            this.btnPrintZReport = new System.Windows.Forms.Button();
             this.tabEJSingle = new System.Windows.Forms.TabPage();
             this.nmrEJZCopyZNo = new System.Windows.Forms.NumericUpDown();
             this.lblZCopyZno = new System.Windows.Forms.Label();
@@ -268,13 +309,19 @@ namespace FP300Service.UserControls
             this.btnPrintEJPerReport = new System.Windows.Forms.Button();
             this.tableLayoutPanelReportUC = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelReportUCLeftSide = new System.Windows.Forms.TableLayoutPanel();
-            this.rbtnEndDay = new System.Windows.Forms.RadioButton();
+            this.btnReportContentZ = new System.Windows.Forms.Button();
+            this.btnReportContentFM = new System.Windows.Forms.Button();
             this.grpPrintArea.SuspendLayout();
             this.tbcReports.SuspendLayout();
             this.tabXReports.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numerAmountReturnDocX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numerCountReturnDocX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrPLULast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrPLUFirst)).BeginInit();
             this.tabZReports.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numerAmountReturnDocZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numerCountReturnDocZ)).BeginInit();
+            this.tabFMReports.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrFFZFirst)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrFFZLast)).BeginInit();
             this.tabEJSingle.SuspendLayout();
@@ -295,11 +342,9 @@ namespace FP300Service.UserControls
             this.grpPrintArea.Controls.Add(this.cbxSoft);
             this.grpPrintArea.Controls.Add(this.cbxHard);
             this.grpPrintArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpPrintArea.Location = new System.Drawing.Point(2, 2);
-            this.grpPrintArea.Margin = new System.Windows.Forms.Padding(2);
+            this.grpPrintArea.Location = new System.Drawing.Point(3, 3);
             this.grpPrintArea.Name = "grpPrintArea";
-            this.grpPrintArea.Padding = new System.Windows.Forms.Padding(2);
-            this.grpPrintArea.Size = new System.Drawing.Size(285, 38);
+            this.grpPrintArea.Size = new System.Drawing.Size(429, 58);
             this.grpPrintArea.TabIndex = 2;
             this.grpPrintArea.TabStop = false;
             // 
@@ -308,10 +353,9 @@ namespace FP300Service.UserControls
             this.cbxSoft.AutoSize = true;
             this.cbxSoft.Checked = true;
             this.cbxSoft.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbxSoft.Location = new System.Drawing.Point(12, 12);
-            this.cbxSoft.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxSoft.Location = new System.Drawing.Point(18, 18);
             this.cbxSoft.Name = "cbxSoft";
-            this.cbxSoft.Size = new System.Drawing.Size(61, 17);
+            this.cbxSoft.Size = new System.Drawing.Size(89, 24);
             this.cbxSoft.TabIndex = 3;
             this.cbxSoft.Text = "İÇERİK";
             this.cbxSoft.UseVisualStyleBackColor = true;
@@ -321,10 +365,9 @@ namespace FP300Service.UserControls
             this.cbxHard.AutoSize = true;
             this.cbxHard.Checked = true;
             this.cbxHard.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbxHard.Location = new System.Drawing.Point(76, 12);
-            this.cbxHard.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxHard.Location = new System.Drawing.Point(114, 18);
             this.cbxHard.Name = "cbxHard";
-            this.cbxHard.Size = new System.Drawing.Size(59, 17);
+            this.cbxHard.Size = new System.Drawing.Size(82, 24);
             this.cbxHard.TabIndex = 4;
             this.cbxHard.Text = "PRINT";
             this.cbxHard.UseVisualStyleBackColor = true;
@@ -334,11 +377,10 @@ namespace FP300Service.UserControls
             this.txtResult.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtResult.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtResult.Location = new System.Drawing.Point(297, 2);
-            this.txtResult.Margin = new System.Windows.Forms.Padding(2);
+            this.txtResult.Location = new System.Drawing.Point(446, 3);
             this.txtResult.Name = "txtResult";
-            this.txtResult.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(292, 423);
+            this.txtResult.ReadOnly = true;
+            this.txtResult.Size = new System.Drawing.Size(437, 652);
             this.txtResult.TabIndex = 1;
             this.txtResult.Text = "";
             // 
@@ -346,20 +388,26 @@ namespace FP300Service.UserControls
             // 
             this.tbcReports.Controls.Add(this.tabXReports);
             this.tbcReports.Controls.Add(this.tabZReports);
+            this.tbcReports.Controls.Add(this.tabFMReports);
             this.tbcReports.Controls.Add(this.tabEJSingle);
             this.tbcReports.Controls.Add(this.tabEJPeriyot);
             this.tbcReports.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcReports.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbcReports.Location = new System.Drawing.Point(2, 44);
-            this.tbcReports.Margin = new System.Windows.Forms.Padding(2);
+            this.tbcReports.Location = new System.Drawing.Point(3, 67);
             this.tbcReports.Multiline = true;
             this.tbcReports.Name = "tbcReports";
             this.tbcReports.SelectedIndex = 0;
-            this.tbcReports.Size = new System.Drawing.Size(285, 375);
+            this.tbcReports.Size = new System.Drawing.Size(429, 578);
             this.tbcReports.TabIndex = 0;
             // 
             // tabXReports
             // 
+            this.tabXReports.Controls.Add(this.btnReportContentX);
+            this.tabXReports.Controls.Add(this.cbxAffectDrawerX);
+            this.tabXReports.Controls.Add(this.numerAmountReturnDocX);
+            this.tabXReports.Controls.Add(this.numerCountReturnDocX);
+            this.tabXReports.Controls.Add(this.lblAmountReturnDocX);
+            this.tabXReports.Controls.Add(this.lblCountReturnDocX);
             this.tabXReports.Controls.Add(this.rbtnReceiptTotalReport);
             this.tabXReports.Controls.Add(this.nmrPLULast);
             this.tabXReports.Controls.Add(this.lblPLULast);
@@ -369,31 +417,88 @@ namespace FP300Service.UserControls
             this.tabXReports.Controls.Add(this.rbtPluRprt);
             this.tabXReports.Controls.Add(this.rbtnXReport);
             this.tabXReports.Controls.Add(this.btnPrintNonFiscReport);
-            this.tabXReports.Location = new System.Drawing.Point(4, 38);
-            this.tabXReports.Margin = new System.Windows.Forms.Padding(2);
+            this.tabXReports.Location = new System.Drawing.Point(4, 52);
             this.tabXReports.Name = "tabXReports";
-            this.tabXReports.Padding = new System.Windows.Forms.Padding(2);
-            this.tabXReports.Size = new System.Drawing.Size(277, 333);
+            this.tabXReports.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabXReports.Size = new System.Drawing.Size(421, 522);
             this.tabXReports.TabIndex = 0;
             this.tabXReports.Text = "X REPORTS";
             this.tabXReports.UseVisualStyleBackColor = true;
+            // 
+            // btnReportContentX
+            // 
+            this.btnReportContentX.Location = new System.Drawing.Point(216, 418);
+            this.btnReportContentX.Name = "btnReportContentX";
+            this.btnReportContentX.Size = new System.Drawing.Size(188, 80);
+            this.btnReportContentX.TabIndex = 37;
+            this.btnReportContentX.Text = "CONTENT";
+            this.btnReportContentX.UseVisualStyleBackColor = true;
+            this.btnReportContentX.Click += new System.EventHandler(this.btnReportContent_Click);
+            // 
+            // cbxAffectDrawerX
+            // 
+            this.cbxAffectDrawerX.AutoSize = true;
+            this.cbxAffectDrawerX.Location = new System.Drawing.Point(218, 135);
+            this.cbxAffectDrawerX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbxAffectDrawerX.Name = "cbxAffectDrawerX";
+            this.cbxAffectDrawerX.Size = new System.Drawing.Size(122, 23);
+            this.cbxAffectDrawerX.TabIndex = 36;
+            this.cbxAffectDrawerX.Text = "Affect Drawer";
+            this.cbxAffectDrawerX.UseVisualStyleBackColor = true;
+            // 
+            // numerAmountReturnDocX
+            // 
+            this.numerAmountReturnDocX.DecimalPlaces = 2;
+            this.numerAmountReturnDocX.Location = new System.Drawing.Point(216, 92);
+            this.numerAmountReturnDocX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numerAmountReturnDocX.Name = "numerAmountReturnDocX";
+            this.numerAmountReturnDocX.Size = new System.Drawing.Size(120, 25);
+            this.numerAmountReturnDocX.TabIndex = 35;
+            this.numerAmountReturnDocX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // numerCountReturnDocX
+            // 
+            this.numerCountReturnDocX.Location = new System.Drawing.Point(256, 57);
+            this.numerCountReturnDocX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numerCountReturnDocX.Name = "numerCountReturnDocX";
+            this.numerCountReturnDocX.Size = new System.Drawing.Size(80, 25);
+            this.numerCountReturnDocX.TabIndex = 34;
+            this.numerCountReturnDocX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lblAmountReturnDocX
+            // 
+            this.lblAmountReturnDocX.AutoSize = true;
+            this.lblAmountReturnDocX.Location = new System.Drawing.Point(38, 92);
+            this.lblAmountReturnDocX.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAmountReturnDocX.Name = "lblAmountReturnDocX";
+            this.lblAmountReturnDocX.Size = new System.Drawing.Size(146, 19);
+            this.lblAmountReturnDocX.TabIndex = 33;
+            this.lblAmountReturnDocX.Text = "AMOUNT RETURN:";
+            // 
+            // lblCountReturnDocX
+            // 
+            this.lblCountReturnDocX.AutoSize = true;
+            this.lblCountReturnDocX.Location = new System.Drawing.Point(38, 57);
+            this.lblCountReturnDocX.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCountReturnDocX.Name = "lblCountReturnDocX";
+            this.lblCountReturnDocX.Size = new System.Drawing.Size(132, 19);
+            this.lblCountReturnDocX.TabIndex = 32;
+            this.lblCountReturnDocX.Text = "COUNT RETURN:";
             // 
             // rbtnReceiptTotalReport
             // 
             this.rbtnReceiptTotalReport.AutoSize = true;
             this.rbtnReceiptTotalReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnReceiptTotalReport.Location = new System.Drawing.Point(16, 215);
-            this.rbtnReceiptTotalReport.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnReceiptTotalReport.Location = new System.Drawing.Point(24, 365);
             this.rbtnReceiptTotalReport.Name = "rbtnReceiptTotalReport";
-            this.rbtnReceiptTotalReport.Size = new System.Drawing.Size(185, 17);
+            this.rbtnReceiptTotalReport.Size = new System.Drawing.Size(259, 24);
             this.rbtnReceiptTotalReport.TabIndex = 12;
             this.rbtnReceiptTotalReport.Text = "RECEIPTS TOTAL REPORT";
             this.rbtnReceiptTotalReport.UseVisualStyleBackColor = true;
             // 
             // nmrPLULast
             // 
-            this.nmrPLULast.Location = new System.Drawing.Point(118, 113);
-            this.nmrPLULast.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrPLULast.Location = new System.Drawing.Point(177, 248);
             this.nmrPLULast.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -405,7 +510,7 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrPLULast.Name = "nmrPLULast";
-            this.nmrPLULast.Size = new System.Drawing.Size(68, 19);
+            this.nmrPLULast.Size = new System.Drawing.Size(102, 25);
             this.nmrPLULast.TabIndex = 11;
             this.nmrPLULast.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrPLULast.Value = new decimal(new int[] {
@@ -417,17 +522,15 @@ namespace FP300Service.UserControls
             // lblPLULast
             // 
             this.lblPLULast.AutoSize = true;
-            this.lblPLULast.Location = new System.Drawing.Point(32, 115);
-            this.lblPLULast.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPLULast.Location = new System.Drawing.Point(48, 249);
             this.lblPLULast.Name = "lblPLULast";
-            this.lblPLULast.Size = new System.Drawing.Size(66, 14);
+            this.lblPLULast.Size = new System.Drawing.Size(87, 19);
             this.lblPLULast.TabIndex = 10;
             this.lblPLULast.Text = "LAST PLU :";
             // 
             // nmrPLUFirst
             // 
-            this.nmrPLUFirst.Location = new System.Drawing.Point(118, 89);
-            this.nmrPLUFirst.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrPLUFirst.Location = new System.Drawing.Point(177, 209);
             this.nmrPLUFirst.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -439,7 +542,7 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrPLUFirst.Name = "nmrPLUFirst";
-            this.nmrPLUFirst.Size = new System.Drawing.Size(68, 19);
+            this.nmrPLUFirst.Size = new System.Drawing.Size(102, 25);
             this.nmrPLUFirst.TabIndex = 9;
             this.nmrPLUFirst.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrPLUFirst.Value = new decimal(new int[] {
@@ -451,10 +554,9 @@ namespace FP300Service.UserControls
             // lblFirstPlu
             // 
             this.lblFirstPlu.AutoSize = true;
-            this.lblFirstPlu.Location = new System.Drawing.Point(32, 90);
-            this.lblFirstPlu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFirstPlu.Location = new System.Drawing.Point(48, 211);
             this.lblFirstPlu.Name = "lblFirstPlu";
-            this.lblFirstPlu.Size = new System.Drawing.Size(68, 14);
+            this.lblFirstPlu.Size = new System.Drawing.Size(91, 19);
             this.lblFirstPlu.TabIndex = 8;
             this.lblFirstPlu.Text = "FIRST PLU :";
             // 
@@ -462,10 +564,9 @@ namespace FP300Service.UserControls
             // 
             this.rbtnSystemInfoRprt.AutoSize = true;
             this.rbtnSystemInfoRprt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnSystemInfoRprt.Location = new System.Drawing.Point(16, 170);
-            this.rbtnSystemInfoRprt.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnSystemInfoRprt.Location = new System.Drawing.Point(24, 308);
             this.rbtnSystemInfoRprt.Name = "rbtnSystemInfoRprt";
-            this.rbtnSystemInfoRprt.Size = new System.Drawing.Size(163, 17);
+            this.rbtnSystemInfoRprt.Size = new System.Drawing.Size(230, 24);
             this.rbtnSystemInfoRprt.TabIndex = 7;
             this.rbtnSystemInfoRprt.Text = "SYSTEM INFO REPORT";
             this.rbtnSystemInfoRprt.UseVisualStyleBackColor = true;
@@ -474,10 +575,9 @@ namespace FP300Service.UserControls
             // 
             this.rbtPluRprt.AutoSize = true;
             this.rbtPluRprt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtPluRprt.Location = new System.Drawing.Point(16, 64);
-            this.rbtPluRprt.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtPluRprt.Location = new System.Drawing.Point(24, 171);
             this.rbtPluRprt.Name = "rbtPluRprt";
-            this.rbtPluRprt.Size = new System.Drawing.Size(104, 17);
+            this.rbtPluRprt.Size = new System.Drawing.Size(145, 24);
             this.rbtPluRprt.TabIndex = 6;
             this.rbtPluRprt.Text = "PLU REPORT";
             this.rbtPluRprt.UseVisualStyleBackColor = true;
@@ -487,10 +587,9 @@ namespace FP300Service.UserControls
             this.rbtnXReport.AutoSize = true;
             this.rbtnXReport.Checked = true;
             this.rbtnXReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnXReport.Location = new System.Drawing.Point(16, 16);
-            this.rbtnXReport.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnXReport.Location = new System.Drawing.Point(24, 25);
             this.rbtnXReport.Name = "rbtnXReport";
-            this.rbtnXReport.Size = new System.Drawing.Size(88, 17);
+            this.rbtnXReport.Size = new System.Drawing.Size(123, 24);
             this.rbtnXReport.TabIndex = 5;
             this.rbtnXReport.TabStop = true;
             this.rbtnXReport.Text = "X REPORT";
@@ -498,10 +597,9 @@ namespace FP300Service.UserControls
             // 
             // btnPrintNonFiscReport
             // 
-            this.btnPrintNonFiscReport.Location = new System.Drawing.Point(130, 301);
-            this.btnPrintNonFiscReport.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPrintNonFiscReport.Location = new System.Drawing.Point(14, 418);
             this.btnPrintNonFiscReport.Name = "btnPrintNonFiscReport";
-            this.btnPrintNonFiscReport.Size = new System.Drawing.Size(86, 33);
+            this.btnPrintNonFiscReport.Size = new System.Drawing.Size(188, 80);
             this.btnPrintNonFiscReport.TabIndex = 0;
             this.btnPrintNonFiscReport.Text = "GET REPORT";
             this.btnPrintNonFiscReport.UseVisualStyleBackColor = true;
@@ -509,49 +607,160 @@ namespace FP300Service.UserControls
             // 
             // tabZReports
             // 
+            this.tabZReports.Controls.Add(this.btnReportContentZ);
+            this.tabZReports.Controls.Add(this.cbxAffectDrawerZ);
+            this.tabZReports.Controls.Add(this.numerAmountReturnDocZ);
+            this.tabZReports.Controls.Add(this.numerCountReturnDocZ);
+            this.tabZReports.Controls.Add(this.lblAmountReturnDocZ);
+            this.tabZReports.Controls.Add(this.lblCountReturnDocZ);
             this.tabZReports.Controls.Add(this.rbtnEndDay);
-            this.tabZReports.Controls.Add(this.cbxFFZZDetailed);
-            this.tabZReports.Controls.Add(this.cbxFFDateDetailed);
-            this.tabZReports.Controls.Add(this.dtZZLastDate);
-            this.tabZReports.Controls.Add(this.dtZZFirstDate);
-            this.tabZReports.Controls.Add(this.lblZZLastDate);
-            this.tabZReports.Controls.Add(this.lblZZFirstDate);
-            this.tabZReports.Controls.Add(this.nmrFFZFirst);
-            this.tabZReports.Controls.Add(this.lblFFZLast);
-            this.tabZReports.Controls.Add(this.nmrFFZLast);
-            this.tabZReports.Controls.Add(this.lblFFZFirst);
-            this.tabZReports.Controls.Add(this.rbtnFiscDateReport);
-            this.tabZReports.Controls.Add(this.rbtnFiscZZReport);
             this.tabZReports.Controls.Add(this.rbtnZReport);
             this.tabZReports.Controls.Add(this.btnPrintZReport);
-            this.tabZReports.Location = new System.Drawing.Point(4, 38);
-            this.tabZReports.Margin = new System.Windows.Forms.Padding(2);
+            this.tabZReports.Location = new System.Drawing.Point(4, 52);
             this.tabZReports.Name = "tabZReports";
-            this.tabZReports.Padding = new System.Windows.Forms.Padding(2);
-            this.tabZReports.Size = new System.Drawing.Size(277, 333);
+            this.tabZReports.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabZReports.Size = new System.Drawing.Size(421, 522);
             this.tabZReports.TabIndex = 1;
             this.tabZReports.Text = "Z REPORTS";
             this.tabZReports.UseVisualStyleBackColor = true;
             // 
+            // cbxAffectDrawerZ
+            // 
+            this.cbxAffectDrawerZ.AutoSize = true;
+            this.cbxAffectDrawerZ.Location = new System.Drawing.Point(206, 149);
+            this.cbxAffectDrawerZ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbxAffectDrawerZ.Name = "cbxAffectDrawerZ";
+            this.cbxAffectDrawerZ.Size = new System.Drawing.Size(122, 23);
+            this.cbxAffectDrawerZ.TabIndex = 31;
+            this.cbxAffectDrawerZ.Text = "Affect Drawer";
+            this.cbxAffectDrawerZ.UseVisualStyleBackColor = true;
+            // 
+            // numerAmountReturnDocZ
+            // 
+            this.numerAmountReturnDocZ.DecimalPlaces = 2;
+            this.numerAmountReturnDocZ.Location = new System.Drawing.Point(204, 102);
+            this.numerAmountReturnDocZ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numerAmountReturnDocZ.Name = "numerAmountReturnDocZ";
+            this.numerAmountReturnDocZ.Size = new System.Drawing.Size(120, 25);
+            this.numerAmountReturnDocZ.TabIndex = 30;
+            this.numerAmountReturnDocZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // numerCountReturnDocZ
+            // 
+            this.numerCountReturnDocZ.Location = new System.Drawing.Point(244, 68);
+            this.numerCountReturnDocZ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numerCountReturnDocZ.Name = "numerCountReturnDocZ";
+            this.numerCountReturnDocZ.Size = new System.Drawing.Size(80, 25);
+            this.numerCountReturnDocZ.TabIndex = 29;
+            this.numerCountReturnDocZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lblAmountReturnDocZ
+            // 
+            this.lblAmountReturnDocZ.AutoSize = true;
+            this.lblAmountReturnDocZ.Location = new System.Drawing.Point(26, 102);
+            this.lblAmountReturnDocZ.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAmountReturnDocZ.Name = "lblAmountReturnDocZ";
+            this.lblAmountReturnDocZ.Size = new System.Drawing.Size(146, 19);
+            this.lblAmountReturnDocZ.TabIndex = 28;
+            this.lblAmountReturnDocZ.Text = "AMOUNT RETURN:";
+            // 
+            // lblCountReturnDocZ
+            // 
+            this.lblCountReturnDocZ.AutoSize = true;
+            this.lblCountReturnDocZ.Location = new System.Drawing.Point(26, 68);
+            this.lblCountReturnDocZ.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCountReturnDocZ.Name = "lblCountReturnDocZ";
+            this.lblCountReturnDocZ.Size = new System.Drawing.Size(132, 19);
+            this.lblCountReturnDocZ.TabIndex = 27;
+            this.lblCountReturnDocZ.Text = "COUNT RETURN:";
+            // 
+            // rbtnEndDay
+            // 
+            this.rbtnEndDay.AutoSize = true;
+            this.rbtnEndDay.Checked = true;
+            this.rbtnEndDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbtnEndDay.Location = new System.Drawing.Point(24, 232);
+            this.rbtnEndDay.Name = "rbtnEndDay";
+            this.rbtnEndDay.Size = new System.Drawing.Size(190, 24);
+            this.rbtnEndDay.TabIndex = 26;
+            this.rbtnEndDay.TabStop = true;
+            this.rbtnEndDay.Text = "END DAY REPORT";
+            this.rbtnEndDay.UseVisualStyleBackColor = true;
+            // 
+            // rbtnZReport
+            // 
+            this.rbtnZReport.AutoSize = true;
+            this.rbtnZReport.Checked = true;
+            this.rbtnZReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbtnZReport.Location = new System.Drawing.Point(24, 25);
+            this.rbtnZReport.Name = "rbtnZReport";
+            this.rbtnZReport.Size = new System.Drawing.Size(122, 24);
+            this.rbtnZReport.TabIndex = 11;
+            this.rbtnZReport.TabStop = true;
+            this.rbtnZReport.Text = "Z REPORT";
+            this.rbtnZReport.UseVisualStyleBackColor = true;
+            // 
+            // btnPrintZReport
+            // 
+            this.btnPrintZReport.Location = new System.Drawing.Point(14, 418);
+            this.btnPrintZReport.Name = "btnPrintZReport";
+            this.btnPrintZReport.Size = new System.Drawing.Size(188, 80);
+            this.btnPrintZReport.TabIndex = 8;
+            this.btnPrintZReport.Text = "GET REPORT";
+            this.btnPrintZReport.UseVisualStyleBackColor = true;
+            this.btnPrintZReport.Click += new System.EventHandler(this.btnPrintZReports_Click);
+            // 
+            // tabFMReports
+            // 
+            this.tabFMReports.Controls.Add(this.btnReportContentFM);
+            this.tabFMReports.Controls.Add(this.btnPrintFMReport);
+            this.tabFMReports.Controls.Add(this.cbxFFZZDetailed);
+            this.tabFMReports.Controls.Add(this.cbxFFDateDetailed);
+            this.tabFMReports.Controls.Add(this.dtZZLastDate);
+            this.tabFMReports.Controls.Add(this.dtZZFirstDate);
+            this.tabFMReports.Controls.Add(this.lblZZLastDate);
+            this.tabFMReports.Controls.Add(this.lblZZFirstDate);
+            this.tabFMReports.Controls.Add(this.nmrFFZFirst);
+            this.tabFMReports.Controls.Add(this.lblFFZLast);
+            this.tabFMReports.Controls.Add(this.nmrFFZLast);
+            this.tabFMReports.Controls.Add(this.lblFFZFirst);
+            this.tabFMReports.Controls.Add(this.rbtnFiscDateReport);
+            this.tabFMReports.Controls.Add(this.rbtnFiscZZReport);
+            this.tabFMReports.Location = new System.Drawing.Point(4, 52);
+            this.tabFMReports.Name = "tabFMReports";
+            this.tabFMReports.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabFMReports.Size = new System.Drawing.Size(421, 522);
+            this.tabFMReports.TabIndex = 4;
+            this.tabFMReports.Text = "FM REPORTS";
+            this.tabFMReports.UseVisualStyleBackColor = true;
+            // 
+            // btnPrintFMReport
+            // 
+            this.btnPrintFMReport.Location = new System.Drawing.Point(14, 418);
+            this.btnPrintFMReport.Name = "btnPrintFMReport";
+            this.btnPrintFMReport.Size = new System.Drawing.Size(188, 80);
+            this.btnPrintFMReport.TabIndex = 38;
+            this.btnPrintFMReport.Text = "GET REPORT";
+            this.btnPrintFMReport.UseVisualStyleBackColor = true;
+            this.btnPrintFMReport.Click += new System.EventHandler(this.btnPrintFMReport_Click);
+            // 
             // cbxFFZZDetailed
             // 
             this.cbxFFZZDetailed.AutoSize = true;
-            this.cbxFFZZDetailed.Location = new System.Drawing.Point(118, 158);
-            this.cbxFFZZDetailed.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxFFZZDetailed.Location = new System.Drawing.Point(166, 165);
             this.cbxFFZZDetailed.Name = "cbxFFZZDetailed";
-            this.cbxFFZZDetailed.Size = new System.Drawing.Size(92, 18);
-            this.cbxFFZZDetailed.TabIndex = 25;
+            this.cbxFFZZDetailed.Size = new System.Drawing.Size(121, 23);
+            this.cbxFFZZDetailed.TabIndex = 37;
             this.cbxFFZZDetailed.Text = "Z DETAILED";
             this.cbxFFZZDetailed.UseVisualStyleBackColor = true;
             // 
             // cbxFFDateDetailed
             // 
             this.cbxFFDateDetailed.AutoSize = true;
-            this.cbxFFDateDetailed.Location = new System.Drawing.Point(115, 263);
-            this.cbxFFDateDetailed.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxFFDateDetailed.Location = new System.Drawing.Point(162, 326);
             this.cbxFFDateDetailed.Name = "cbxFFDateDetailed";
-            this.cbxFFDateDetailed.Size = new System.Drawing.Size(115, 18);
-            this.cbxFFDateDetailed.TabIndex = 24;
+            this.cbxFFDateDetailed.Size = new System.Drawing.Size(150, 23);
+            this.cbxFFDateDetailed.TabIndex = 36;
             this.cbxFFDateDetailed.Text = "DATE DETAILED";
             this.cbxFFDateDetailed.UseVisualStyleBackColor = true;
             // 
@@ -559,46 +768,41 @@ namespace FP300Service.UserControls
             // 
             this.dtZZLastDate.CustomFormat = "dd-MM-yyyy";
             this.dtZZLastDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtZZLastDate.Location = new System.Drawing.Point(115, 240);
-            this.dtZZLastDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dtZZLastDate.Location = new System.Drawing.Point(162, 289);
             this.dtZZLastDate.Name = "dtZZLastDate";
-            this.dtZZLastDate.Size = new System.Drawing.Size(95, 19);
-            this.dtZZLastDate.TabIndex = 23;
+            this.dtZZLastDate.Size = new System.Drawing.Size(140, 25);
+            this.dtZZLastDate.TabIndex = 35;
             // 
             // dtZZFirstDate
             // 
             this.dtZZFirstDate.CustomFormat = "dd-MM-yyyy";
             this.dtZZFirstDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtZZFirstDate.Location = new System.Drawing.Point(115, 216);
-            this.dtZZFirstDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dtZZFirstDate.Location = new System.Drawing.Point(162, 252);
             this.dtZZFirstDate.Name = "dtZZFirstDate";
-            this.dtZZFirstDate.Size = new System.Drawing.Size(95, 19);
-            this.dtZZFirstDate.TabIndex = 22;
+            this.dtZZFirstDate.Size = new System.Drawing.Size(140, 25);
+            this.dtZZFirstDate.TabIndex = 34;
             // 
             // lblZZLastDate
             // 
             this.lblZZLastDate.AutoSize = true;
-            this.lblZZLastDate.Location = new System.Drawing.Point(32, 245);
-            this.lblZZLastDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblZZLastDate.Location = new System.Drawing.Point(38, 298);
             this.lblZZLastDate.Name = "lblZZLastDate";
-            this.lblZZLastDate.Size = new System.Drawing.Size(68, 14);
-            this.lblZZLastDate.TabIndex = 20;
+            this.lblZZLastDate.Size = new System.Drawing.Size(87, 19);
+            this.lblZZLastDate.TabIndex = 33;
             this.lblZZLastDate.Text = "Son Z Tarih :";
             // 
             // lblZZFirstDate
             // 
             this.lblZZFirstDate.AutoSize = true;
-            this.lblZZFirstDate.Location = new System.Drawing.Point(32, 216);
-            this.lblZZFirstDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblZZFirstDate.Location = new System.Drawing.Point(38, 252);
             this.lblZZFirstDate.Name = "lblZZFirstDate";
-            this.lblZZFirstDate.Size = new System.Drawing.Size(86, 14);
-            this.lblZZFirstDate.TabIndex = 18;
+            this.lblZZFirstDate.Size = new System.Drawing.Size(113, 19);
+            this.lblZZFirstDate.TabIndex = 32;
             this.lblZZFirstDate.Text = "FIRST Z DATE :";
             // 
             // nmrFFZFirst
             // 
-            this.nmrFFZFirst.Location = new System.Drawing.Point(118, 112);
-            this.nmrFFZFirst.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrFFZFirst.Location = new System.Drawing.Point(166, 92);
             this.nmrFFZFirst.Maximum = new decimal(new int[] {
             4000,
             0,
@@ -610,8 +814,8 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrFFZFirst.Name = "nmrFFZFirst";
-            this.nmrFFZFirst.Size = new System.Drawing.Size(68, 19);
-            this.nmrFFZFirst.TabIndex = 17;
+            this.nmrFFZFirst.Size = new System.Drawing.Size(102, 25);
+            this.nmrFFZFirst.TabIndex = 31;
             this.nmrFFZFirst.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrFFZFirst.Value = new decimal(new int[] {
             1,
@@ -622,17 +826,15 @@ namespace FP300Service.UserControls
             // lblFFZLast
             // 
             this.lblFFZLast.AutoSize = true;
-            this.lblFFZLast.Location = new System.Drawing.Point(32, 137);
-            this.lblFFZLast.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFFZLast.Location = new System.Drawing.Point(38, 132);
             this.lblFFZLast.Name = "lblFFZLast";
-            this.lblFFZLast.Size = new System.Drawing.Size(66, 14);
-            this.lblFFZLast.TabIndex = 16;
+            this.lblFFZLast.Size = new System.Drawing.Size(87, 19);
+            this.lblFFZLast.TabIndex = 30;
             this.lblFFZLast.Text = "LAST Z ID :";
             // 
             // nmrFFZLast
             // 
-            this.nmrFFZLast.Location = new System.Drawing.Point(118, 135);
-            this.nmrFFZLast.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrFFZLast.Location = new System.Drawing.Point(166, 129);
             this.nmrFFZLast.Maximum = new decimal(new int[] {
             4000,
             0,
@@ -644,8 +846,8 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrFFZLast.Name = "nmrFFZLast";
-            this.nmrFFZLast.Size = new System.Drawing.Size(68, 19);
-            this.nmrFFZLast.TabIndex = 15;
+            this.nmrFFZLast.Size = new System.Drawing.Size(102, 25);
+            this.nmrFFZLast.TabIndex = 29;
             this.nmrFFZLast.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrFFZLast.Value = new decimal(new int[] {
             1,
@@ -656,22 +858,20 @@ namespace FP300Service.UserControls
             // lblFFZFirst
             // 
             this.lblFFZFirst.AutoSize = true;
-            this.lblFFZFirst.Location = new System.Drawing.Point(32, 114);
-            this.lblFFZFirst.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFFZFirst.Location = new System.Drawing.Point(38, 95);
             this.lblFFZFirst.Name = "lblFFZFirst";
-            this.lblFFZFirst.Size = new System.Drawing.Size(68, 14);
-            this.lblFFZFirst.TabIndex = 14;
+            this.lblFFZFirst.Size = new System.Drawing.Size(91, 19);
+            this.lblFFZFirst.TabIndex = 28;
             this.lblFFZFirst.Text = "FIRST Z ID :";
             // 
             // rbtnFiscDateReport
             // 
             this.rbtnFiscDateReport.AutoSize = true;
             this.rbtnFiscDateReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnFiscDateReport.Location = new System.Drawing.Point(16, 193);
-            this.rbtnFiscDateReport.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnFiscDateReport.Location = new System.Drawing.Point(14, 218);
             this.rbtnFiscDateReport.Name = "rbtnFiscDateReport";
-            this.rbtnFiscDateReport.Size = new System.Drawing.Size(221, 17);
-            this.rbtnFiscDateReport.TabIndex = 13;
+            this.rbtnFiscDateReport.Size = new System.Drawing.Size(316, 24);
+            this.rbtnFiscDateReport.TabIndex = 27;
             this.rbtnFiscDateReport.Text = "FISCAL MEMORY REPORT(DATE)";
             this.rbtnFiscDateReport.UseVisualStyleBackColor = true;
             // 
@@ -679,38 +879,12 @@ namespace FP300Service.UserControls
             // 
             this.rbtnFiscZZReport.AutoSize = true;
             this.rbtnFiscZZReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnFiscZZReport.Location = new System.Drawing.Point(16, 91);
-            this.rbtnFiscZZReport.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnFiscZZReport.Location = new System.Drawing.Point(14, 62);
             this.rbtnFiscZZReport.Name = "rbtnFiscZZReport";
-            this.rbtnFiscZZReport.Size = new System.Drawing.Size(208, 17);
-            this.rbtnFiscZZReport.TabIndex = 12;
+            this.rbtnFiscZZReport.Size = new System.Drawing.Size(297, 24);
+            this.rbtnFiscZZReport.TabIndex = 26;
             this.rbtnFiscZZReport.Text = "FISCAL MEMORY REPORT(Z-Z)";
             this.rbtnFiscZZReport.UseVisualStyleBackColor = true;
-            // 
-            // rbtnZReport
-            // 
-            this.rbtnZReport.AutoSize = true;
-            this.rbtnZReport.Checked = true;
-            this.rbtnZReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnZReport.Location = new System.Drawing.Point(16, 16);
-            this.rbtnZReport.Margin = new System.Windows.Forms.Padding(2);
-            this.rbtnZReport.Name = "rbtnZReport";
-            this.rbtnZReport.Size = new System.Drawing.Size(88, 17);
-            this.rbtnZReport.TabIndex = 11;
-            this.rbtnZReport.TabStop = true;
-            this.rbtnZReport.Text = "Z REPORT";
-            this.rbtnZReport.UseVisualStyleBackColor = true;
-            // 
-            // btnPrintZReport
-            // 
-            this.btnPrintZReport.Location = new System.Drawing.Point(130, 301);
-            this.btnPrintZReport.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPrintZReport.Name = "btnPrintZReport";
-            this.btnPrintZReport.Size = new System.Drawing.Size(86, 33);
-            this.btnPrintZReport.TabIndex = 8;
-            this.btnPrintZReport.Text = "GET REPORT";
-            this.btnPrintZReport.UseVisualStyleBackColor = true;
-            this.btnPrintZReport.Click += new System.EventHandler(this.btnPrintZReports_Click);
             // 
             // tabEJSingle
             // 
@@ -729,19 +903,17 @@ namespace FP300Service.UserControls
             this.tabEJSingle.Controls.Add(this.rbtnEJDocCopyDate);
             this.tabEJSingle.Controls.Add(this.rbtnEJDocCopyZandDocId);
             this.tabEJSingle.Controls.Add(this.btnPrintEJSingReport);
-            this.tabEJSingle.Location = new System.Drawing.Point(4, 38);
-            this.tabEJSingle.Margin = new System.Windows.Forms.Padding(2);
+            this.tabEJSingle.Location = new System.Drawing.Point(4, 52);
             this.tabEJSingle.Name = "tabEJSingle";
-            this.tabEJSingle.Padding = new System.Windows.Forms.Padding(2);
-            this.tabEJSingle.Size = new System.Drawing.Size(277, 333);
+            this.tabEJSingle.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabEJSingle.Size = new System.Drawing.Size(421, 522);
             this.tabEJSingle.TabIndex = 2;
             this.tabEJSingle.Text = "EJ SINGLE REPORT";
             this.tabEJSingle.UseVisualStyleBackColor = true;
             // 
             // nmrEJZCopyZNo
             // 
-            this.nmrEJZCopyZNo.Location = new System.Drawing.Point(118, 78);
-            this.nmrEJZCopyZNo.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrEJZCopyZNo.Location = new System.Drawing.Point(177, 120);
             this.nmrEJZCopyZNo.Maximum = new decimal(new int[] {
             4000,
             0,
@@ -753,7 +925,7 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrEJZCopyZNo.Name = "nmrEJZCopyZNo";
-            this.nmrEJZCopyZNo.Size = new System.Drawing.Size(68, 19);
+            this.nmrEJZCopyZNo.Size = new System.Drawing.Size(102, 25);
             this.nmrEJZCopyZNo.TabIndex = 41;
             this.nmrEJZCopyZNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrEJZCopyZNo.Value = new decimal(new int[] {
@@ -765,10 +937,9 @@ namespace FP300Service.UserControls
             // lblZCopyZno
             // 
             this.lblZCopyZno.AutoSize = true;
-            this.lblZCopyZno.Location = new System.Drawing.Point(32, 80);
-            this.lblZCopyZno.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblZCopyZno.Location = new System.Drawing.Point(48, 123);
             this.lblZCopyZno.Name = "lblZCopyZno";
-            this.lblZCopyZno.Size = new System.Drawing.Size(32, 14);
+            this.lblZCopyZno.Size = new System.Drawing.Size(42, 19);
             this.lblZCopyZno.TabIndex = 40;
             this.lblZCopyZno.Text = "Z Id :";
             // 
@@ -776,10 +947,9 @@ namespace FP300Service.UserControls
             // 
             this.rbtnZCopy.AutoSize = true;
             this.rbtnZCopy.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnZCopy.Location = new System.Drawing.Point(16, 53);
-            this.rbtnZCopy.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnZCopy.Location = new System.Drawing.Point(24, 82);
             this.rbtnZCopy.Name = "rbtnZCopy";
-            this.rbtnZCopy.Size = new System.Drawing.Size(70, 17);
+            this.rbtnZCopy.Size = new System.Drawing.Size(98, 24);
             this.rbtnZCopy.TabIndex = 39;
             this.rbtnZCopy.Text = "Z COPY";
             this.rbtnZCopy.UseVisualStyleBackColor = true;
@@ -789,10 +959,9 @@ namespace FP300Service.UserControls
             this.rbtnEJDetail.AutoSize = true;
             this.rbtnEJDetail.Checked = true;
             this.rbtnEJDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnEJDetail.Location = new System.Drawing.Point(16, 16);
-            this.rbtnEJDetail.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnEJDetail.Location = new System.Drawing.Point(24, 25);
             this.rbtnEJDetail.Name = "rbtnEJDetail";
-            this.rbtnEJDetail.Size = new System.Drawing.Size(142, 17);
+            this.rbtnEJDetail.Size = new System.Drawing.Size(200, 24);
             this.rbtnEJDetail.TabIndex = 38;
             this.rbtnEJDetail.TabStop = true;
             this.rbtnEJDetail.Text = "EJ DETAIL REPORT";
@@ -802,47 +971,42 @@ namespace FP300Service.UserControls
             // 
             this.dtEJSingDocTime.CustomFormat = "HH:mm";
             this.dtEJSingDocTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEJSingDocTime.Location = new System.Drawing.Point(115, 240);
-            this.dtEJSingDocTime.Margin = new System.Windows.Forms.Padding(2);
+            this.dtEJSingDocTime.Location = new System.Drawing.Point(172, 369);
             this.dtEJSingDocTime.Name = "dtEJSingDocTime";
             this.dtEJSingDocTime.ShowUpDown = true;
-            this.dtEJSingDocTime.Size = new System.Drawing.Size(95, 19);
+            this.dtEJSingDocTime.Size = new System.Drawing.Size(140, 25);
             this.dtEJSingDocTime.TabIndex = 35;
             // 
             // dtEJSingDocDate
             // 
             this.dtEJSingDocDate.CustomFormat = "dd-MM-yyyy";
             this.dtEJSingDocDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEJSingDocDate.Location = new System.Drawing.Point(115, 216);
-            this.dtEJSingDocDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dtEJSingDocDate.Location = new System.Drawing.Point(172, 332);
             this.dtEJSingDocDate.Name = "dtEJSingDocDate";
-            this.dtEJSingDocDate.Size = new System.Drawing.Size(95, 19);
+            this.dtEJSingDocDate.Size = new System.Drawing.Size(140, 25);
             this.dtEJSingDocDate.TabIndex = 34;
             // 
             // lblEJSingDocTime
             // 
             this.lblEJSingDocTime.AutoSize = true;
-            this.lblEJSingDocTime.Location = new System.Drawing.Point(32, 245);
-            this.lblEJSingDocTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEJSingDocTime.Location = new System.Drawing.Point(48, 377);
             this.lblEJSingDocTime.Name = "lblEJSingDocTime";
-            this.lblEJSingDocTime.Size = new System.Drawing.Size(38, 14);
+            this.lblEJSingDocTime.Size = new System.Drawing.Size(45, 19);
             this.lblEJSingDocTime.TabIndex = 33;
             this.lblEJSingDocTime.Text = "Time :";
             // 
             // lblEJSingDocDate
             // 
             this.lblEJSingDocDate.AutoSize = true;
-            this.lblEJSingDocDate.Location = new System.Drawing.Point(32, 216);
-            this.lblEJSingDocDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEJSingDocDate.Location = new System.Drawing.Point(48, 332);
             this.lblEJSingDocDate.Name = "lblEJSingDocDate";
-            this.lblEJSingDocDate.Size = new System.Drawing.Size(35, 14);
+            this.lblEJSingDocDate.Size = new System.Drawing.Size(45, 19);
             this.lblEJSingDocDate.TabIndex = 32;
             this.lblEJSingDocDate.Text = "Date :";
             // 
             // nmrEJSingDocNo
             // 
-            this.nmrEJSingDocNo.Location = new System.Drawing.Point(118, 161);
-            this.nmrEJSingDocNo.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrEJSingDocNo.Location = new System.Drawing.Point(177, 248);
             this.nmrEJSingDocNo.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -854,7 +1018,7 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrEJSingDocNo.Name = "nmrEJSingDocNo";
-            this.nmrEJSingDocNo.Size = new System.Drawing.Size(68, 19);
+            this.nmrEJSingDocNo.Size = new System.Drawing.Size(102, 25);
             this.nmrEJSingDocNo.TabIndex = 31;
             this.nmrEJSingDocNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrEJSingDocNo.Value = new decimal(new int[] {
@@ -866,17 +1030,15 @@ namespace FP300Service.UserControls
             // lblEJSingDocNo
             // 
             this.lblEJSingDocNo.AutoSize = true;
-            this.lblEJSingDocNo.Location = new System.Drawing.Point(32, 162);
-            this.lblEJSingDocNo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEJSingDocNo.Location = new System.Drawing.Point(48, 249);
             this.lblEJSingDocNo.Name = "lblEJSingDocNo";
-            this.lblEJSingDocNo.Size = new System.Drawing.Size(73, 14);
+            this.lblEJSingDocNo.Size = new System.Drawing.Size(95, 19);
             this.lblEJSingDocNo.TabIndex = 30;
             this.lblEJSingDocNo.Text = "Document Id :";
             // 
             // nmrEJSingDocZNo
             // 
-            this.nmrEJSingDocZNo.Location = new System.Drawing.Point(118, 136);
-            this.nmrEJSingDocZNo.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrEJSingDocZNo.Location = new System.Drawing.Point(177, 209);
             this.nmrEJSingDocZNo.Maximum = new decimal(new int[] {
             4000,
             0,
@@ -888,7 +1050,7 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrEJSingDocZNo.Name = "nmrEJSingDocZNo";
-            this.nmrEJSingDocZNo.Size = new System.Drawing.Size(68, 19);
+            this.nmrEJSingDocZNo.Size = new System.Drawing.Size(102, 25);
             this.nmrEJSingDocZNo.TabIndex = 29;
             this.nmrEJSingDocZNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrEJSingDocZNo.Value = new decimal(new int[] {
@@ -900,10 +1062,9 @@ namespace FP300Service.UserControls
             // lblEJSingDocZNo
             // 
             this.lblEJSingDocZNo.AutoSize = true;
-            this.lblEJSingDocZNo.Location = new System.Drawing.Point(32, 138);
-            this.lblEJSingDocZNo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEJSingDocZNo.Location = new System.Drawing.Point(48, 212);
             this.lblEJSingDocZNo.Name = "lblEJSingDocZNo";
-            this.lblEJSingDocZNo.Size = new System.Drawing.Size(32, 14);
+            this.lblEJSingDocZNo.Size = new System.Drawing.Size(42, 19);
             this.lblEJSingDocZNo.TabIndex = 28;
             this.lblEJSingDocZNo.Text = "Z Id :";
             // 
@@ -911,10 +1072,9 @@ namespace FP300Service.UserControls
             // 
             this.rbtnEJDocCopyDate.AutoSize = true;
             this.rbtnEJDocCopyDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnEJDocCopyDate.Location = new System.Drawing.Point(16, 193);
-            this.rbtnEJDocCopyDate.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnEJDocCopyDate.Location = new System.Drawing.Point(24, 297);
             this.rbtnEJDocCopyDate.Name = "rbtnEJDocCopyDate";
-            this.rbtnEJDocCopyDate.Size = new System.Drawing.Size(220, 17);
+            this.rbtnEJDocCopyDate.Size = new System.Drawing.Size(309, 24);
             this.rbtnEJDocCopyDate.TabIndex = 27;
             this.rbtnEJDocCopyDate.Text = "EJ SINGLE REPORT(DATE/TIME)";
             this.rbtnEJDocCopyDate.UseVisualStyleBackColor = true;
@@ -923,20 +1083,18 @@ namespace FP300Service.UserControls
             // 
             this.rbtnEJDocCopyZandDocId.AutoSize = true;
             this.rbtnEJDocCopyZandDocId.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnEJDocCopyZandDocId.Location = new System.Drawing.Point(16, 111);
-            this.rbtnEJDocCopyZandDocId.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnEJDocCopyZandDocId.Location = new System.Drawing.Point(24, 171);
             this.rbtnEJDocCopyZandDocId.Name = "rbtnEJDocCopyZandDocId";
-            this.rbtnEJDocCopyZandDocId.Size = new System.Drawing.Size(225, 17);
+            this.rbtnEJDocCopyZandDocId.Size = new System.Drawing.Size(317, 24);
             this.rbtnEJDocCopyZandDocId.TabIndex = 26;
             this.rbtnEJDocCopyZandDocId.Text = "EJ SINGLE REPORT(Z ID/DOC ID)";
             this.rbtnEJDocCopyZandDocId.UseVisualStyleBackColor = true;
             // 
             // btnPrintEJSingReport
             // 
-            this.btnPrintEJSingReport.Location = new System.Drawing.Point(130, 301);
-            this.btnPrintEJSingReport.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPrintEJSingReport.Location = new System.Drawing.Point(52, 423);
             this.btnPrintEJSingReport.Name = "btnPrintEJSingReport";
-            this.btnPrintEJSingReport.Size = new System.Drawing.Size(86, 33);
+            this.btnPrintEJSingReport.Size = new System.Drawing.Size(262, 83);
             this.btnPrintEJSingReport.TabIndex = 24;
             this.btnPrintEJSingReport.Text = "GET REPORT";
             this.btnPrintEJSingReport.UseVisualStyleBackColor = true;
@@ -966,11 +1124,10 @@ namespace FP300Service.UserControls
             this.tabEJPeriyot.Controls.Add(this.rbtnEJPerByDate);
             this.tabEJPeriyot.Controls.Add(this.rbtnEJPerByNo);
             this.tabEJPeriyot.Controls.Add(this.btnPrintEJPerReport);
-            this.tabEJPeriyot.Location = new System.Drawing.Point(4, 38);
-            this.tabEJPeriyot.Margin = new System.Windows.Forms.Padding(2);
+            this.tabEJPeriyot.Location = new System.Drawing.Point(4, 52);
             this.tabEJPeriyot.Name = "tabEJPeriyot";
-            this.tabEJPeriyot.Padding = new System.Windows.Forms.Padding(2);
-            this.tabEJPeriyot.Size = new System.Drawing.Size(277, 333);
+            this.tabEJPeriyot.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabEJPeriyot.Size = new System.Drawing.Size(421, 522);
             this.tabEJPeriyot.TabIndex = 3;
             this.tabEJPeriyot.Text = "EJ PERIODIC";
             this.tabEJPeriyot.UseVisualStyleBackColor = true;
@@ -979,19 +1136,17 @@ namespace FP300Service.UserControls
             // 
             this.dtDailyDate.CustomFormat = "dd-MM-yyyy";
             this.dtDailyDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDailyDate.Location = new System.Drawing.Point(115, 276);
-            this.dtDailyDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dtDailyDate.Location = new System.Drawing.Point(172, 425);
             this.dtDailyDate.Name = "dtDailyDate";
-            this.dtDailyDate.Size = new System.Drawing.Size(95, 19);
+            this.dtDailyDate.Size = new System.Drawing.Size(140, 25);
             this.dtDailyDate.TabIndex = 58;
             // 
             // lblEJPerDailyDate
             // 
             this.lblEJPerDailyDate.AutoSize = true;
-            this.lblEJPerDailyDate.Location = new System.Drawing.Point(32, 276);
-            this.lblEJPerDailyDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEJPerDailyDate.Location = new System.Drawing.Point(48, 425);
             this.lblEJPerDailyDate.Name = "lblEJPerDailyDate";
-            this.lblEJPerDailyDate.Size = new System.Drawing.Size(35, 14);
+            this.lblEJPerDailyDate.Size = new System.Drawing.Size(45, 19);
             this.lblEJPerDailyDate.TabIndex = 57;
             this.lblEJPerDailyDate.Text = "Date :";
             // 
@@ -999,10 +1154,9 @@ namespace FP300Service.UserControls
             // 
             this.rbtnEJPerByDaily.AutoSize = true;
             this.rbtnEJPerByDaily.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnEJPerByDaily.Location = new System.Drawing.Point(16, 253);
-            this.rbtnEJPerByDaily.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnEJPerByDaily.Location = new System.Drawing.Point(24, 389);
             this.rbtnEJPerByDaily.Name = "rbtnEJPerByDaily";
-            this.rbtnEJPerByDaily.Size = new System.Drawing.Size(150, 17);
+            this.rbtnEJPerByDaily.Size = new System.Drawing.Size(216, 24);
             this.rbtnEJPerByDaily.TabIndex = 56;
             this.rbtnEJPerByDaily.Text = "EJ PERIODIC (DAILY)";
             this.rbtnEJPerByDaily.UseVisualStyleBackColor = true;
@@ -1011,47 +1165,42 @@ namespace FP300Service.UserControls
             // 
             this.dtEJPerLastTime.CustomFormat = "HH:mm";
             this.dtEJPerLastTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEJPerLastTime.Location = new System.Drawing.Point(115, 230);
-            this.dtEJPerLastTime.Margin = new System.Windows.Forms.Padding(2);
+            this.dtEJPerLastTime.Location = new System.Drawing.Point(172, 354);
             this.dtEJPerLastTime.Name = "dtEJPerLastTime";
             this.dtEJPerLastTime.ShowUpDown = true;
-            this.dtEJPerLastTime.Size = new System.Drawing.Size(95, 19);
+            this.dtEJPerLastTime.Size = new System.Drawing.Size(140, 25);
             this.dtEJPerLastTime.TabIndex = 55;
             // 
             // dtEJPerLastDate
             // 
             this.dtEJPerLastDate.CustomFormat = "dd-MM-yyyy";
             this.dtEJPerLastDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEJPerLastDate.Location = new System.Drawing.Point(115, 209);
-            this.dtEJPerLastDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dtEJPerLastDate.Location = new System.Drawing.Point(172, 322);
             this.dtEJPerLastDate.Name = "dtEJPerLastDate";
-            this.dtEJPerLastDate.Size = new System.Drawing.Size(95, 19);
+            this.dtEJPerLastDate.Size = new System.Drawing.Size(140, 25);
             this.dtEJPerLastDate.TabIndex = 54;
             // 
             // lblEJPerLastTime
             // 
             this.lblEJPerLastTime.AutoSize = true;
-            this.lblEJPerLastTime.Location = new System.Drawing.Point(32, 235);
-            this.lblEJPerLastTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEJPerLastTime.Location = new System.Drawing.Point(48, 362);
             this.lblEJPerLastTime.Name = "lblEJPerLastTime";
-            this.lblEJPerLastTime.Size = new System.Drawing.Size(75, 14);
+            this.lblEJPerLastTime.Size = new System.Drawing.Size(102, 19);
             this.lblEJPerLastTime.TabIndex = 53;
             this.lblEJPerLastTime.Text = "LAST HOUR :";
             // 
             // lblEJPerLastDt
             // 
             this.lblEJPerLastDt.AutoSize = true;
-            this.lblEJPerLastDt.Location = new System.Drawing.Point(32, 209);
-            this.lblEJPerLastDt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEJPerLastDt.Location = new System.Drawing.Point(48, 322);
             this.lblEJPerLastDt.Name = "lblEJPerLastDt";
-            this.lblEJPerLastDt.Size = new System.Drawing.Size(74, 14);
+            this.lblEJPerLastDt.Size = new System.Drawing.Size(96, 19);
             this.lblEJPerLastDt.TabIndex = 52;
             this.lblEJPerLastDt.Text = "LAST DATE :";
             // 
             // nmrEJPerLastDoc
             // 
-            this.nmrEJPerLastDoc.Location = new System.Drawing.Point(118, 110);
-            this.nmrEJPerLastDoc.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrEJPerLastDoc.Location = new System.Drawing.Point(177, 169);
             this.nmrEJPerLastDoc.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -1063,7 +1212,7 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrEJPerLastDoc.Name = "nmrEJPerLastDoc";
-            this.nmrEJPerLastDoc.Size = new System.Drawing.Size(68, 19);
+            this.nmrEJPerLastDoc.Size = new System.Drawing.Size(102, 25);
             this.nmrEJPerLastDoc.TabIndex = 51;
             this.nmrEJPerLastDoc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrEJPerLastDoc.Value = new decimal(new int[] {
@@ -1075,17 +1224,15 @@ namespace FP300Service.UserControls
             // lblEJPerLastDoc
             // 
             this.lblEJPerLastDoc.AutoSize = true;
-            this.lblEJPerLastDoc.Location = new System.Drawing.Point(32, 111);
-            this.lblEJPerLastDoc.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEJPerLastDoc.Location = new System.Drawing.Point(48, 171);
             this.lblEJPerLastDoc.Name = "lblEJPerLastDoc";
-            this.lblEJPerLastDoc.Size = new System.Drawing.Size(82, 14);
+            this.lblEJPerLastDoc.Size = new System.Drawing.Size(112, 19);
             this.lblEJPerLastDoc.TabIndex = 50;
             this.lblEJPerLastDoc.Text = "LAST DOC ID :";
             // 
             // nmrEJPerLastZ
             // 
-            this.nmrEJPerLastZ.Location = new System.Drawing.Point(118, 89);
-            this.nmrEJPerLastZ.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrEJPerLastZ.Location = new System.Drawing.Point(177, 137);
             this.nmrEJPerLastZ.Maximum = new decimal(new int[] {
             4000,
             0,
@@ -1097,7 +1244,7 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrEJPerLastZ.Name = "nmrEJPerLastZ";
-            this.nmrEJPerLastZ.Size = new System.Drawing.Size(68, 19);
+            this.nmrEJPerLastZ.Size = new System.Drawing.Size(102, 25);
             this.nmrEJPerLastZ.TabIndex = 49;
             this.nmrEJPerLastZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrEJPerLastZ.Value = new decimal(new int[] {
@@ -1109,10 +1256,9 @@ namespace FP300Service.UserControls
             // lblEJPerLastZ
             // 
             this.lblEJPerLastZ.AutoSize = true;
-            this.lblEJPerLastZ.Location = new System.Drawing.Point(32, 90);
-            this.lblEJPerLastZ.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEJPerLastZ.Location = new System.Drawing.Point(48, 138);
             this.lblEJPerLastZ.Name = "lblEJPerLastZ";
-            this.lblEJPerLastZ.Size = new System.Drawing.Size(66, 14);
+            this.lblEJPerLastZ.Size = new System.Drawing.Size(87, 19);
             this.lblEJPerLastZ.TabIndex = 48;
             this.lblEJPerLastZ.Text = "LAST Z ID :";
             // 
@@ -1120,47 +1266,42 @@ namespace FP300Service.UserControls
             // 
             this.dtEJPerFirstTime.CustomFormat = "HH:mm";
             this.dtEJPerFirstTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEJPerFirstTime.Location = new System.Drawing.Point(115, 175);
-            this.dtEJPerFirstTime.Margin = new System.Windows.Forms.Padding(2);
+            this.dtEJPerFirstTime.Location = new System.Drawing.Point(172, 269);
             this.dtEJPerFirstTime.Name = "dtEJPerFirstTime";
             this.dtEJPerFirstTime.ShowUpDown = true;
-            this.dtEJPerFirstTime.Size = new System.Drawing.Size(95, 19);
+            this.dtEJPerFirstTime.Size = new System.Drawing.Size(140, 25);
             this.dtEJPerFirstTime.TabIndex = 47;
             // 
             // dtEJPerFirstDate
             // 
             this.dtEJPerFirstDate.CustomFormat = "dd-MM-yyyy";
             this.dtEJPerFirstDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEJPerFirstDate.Location = new System.Drawing.Point(115, 154);
-            this.dtEJPerFirstDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dtEJPerFirstDate.Location = new System.Drawing.Point(172, 237);
             this.dtEJPerFirstDate.Name = "dtEJPerFirstDate";
-            this.dtEJPerFirstDate.Size = new System.Drawing.Size(95, 19);
+            this.dtEJPerFirstDate.Size = new System.Drawing.Size(140, 25);
             this.dtEJPerFirstDate.TabIndex = 46;
             // 
             // lblEJPerFistTime
             // 
             this.lblEJPerFistTime.AutoSize = true;
-            this.lblEJPerFistTime.Location = new System.Drawing.Point(32, 180);
-            this.lblEJPerFistTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEJPerFistTime.Location = new System.Drawing.Point(48, 277);
             this.lblEJPerFistTime.Name = "lblEJPerFistTime";
-            this.lblEJPerFistTime.Size = new System.Drawing.Size(77, 14);
+            this.lblEJPerFistTime.Size = new System.Drawing.Size(106, 19);
             this.lblEJPerFistTime.TabIndex = 45;
             this.lblEJPerFistTime.Text = "FIRST HOUR :";
             // 
             // lblEJPerFirstZDt
             // 
             this.lblEJPerFirstZDt.AutoSize = true;
-            this.lblEJPerFirstZDt.Location = new System.Drawing.Point(32, 154);
-            this.lblEJPerFirstZDt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEJPerFirstZDt.Location = new System.Drawing.Point(48, 237);
             this.lblEJPerFirstZDt.Name = "lblEJPerFirstZDt";
-            this.lblEJPerFirstZDt.Size = new System.Drawing.Size(76, 14);
+            this.lblEJPerFirstZDt.Size = new System.Drawing.Size(100, 19);
             this.lblEJPerFirstZDt.TabIndex = 44;
             this.lblEJPerFirstZDt.Text = "FIRST DATE :";
             // 
             // nmrEJPerFirstDoc
             // 
-            this.nmrEJPerFirstDoc.Location = new System.Drawing.Point(118, 62);
-            this.nmrEJPerFirstDoc.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrEJPerFirstDoc.Location = new System.Drawing.Point(177, 95);
             this.nmrEJPerFirstDoc.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -1172,7 +1313,7 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrEJPerFirstDoc.Name = "nmrEJPerFirstDoc";
-            this.nmrEJPerFirstDoc.Size = new System.Drawing.Size(68, 19);
+            this.nmrEJPerFirstDoc.Size = new System.Drawing.Size(102, 25);
             this.nmrEJPerFirstDoc.TabIndex = 43;
             this.nmrEJPerFirstDoc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrEJPerFirstDoc.Value = new decimal(new int[] {
@@ -1184,17 +1325,15 @@ namespace FP300Service.UserControls
             // lblEJPerFirstDoc
             // 
             this.lblEJPerFirstDoc.AutoSize = true;
-            this.lblEJPerFirstDoc.Location = new System.Drawing.Point(32, 63);
-            this.lblEJPerFirstDoc.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEJPerFirstDoc.Location = new System.Drawing.Point(48, 97);
             this.lblEJPerFirstDoc.Name = "lblEJPerFirstDoc";
-            this.lblEJPerFirstDoc.Size = new System.Drawing.Size(84, 14);
+            this.lblEJPerFirstDoc.Size = new System.Drawing.Size(116, 19);
             this.lblEJPerFirstDoc.TabIndex = 42;
             this.lblEJPerFirstDoc.Text = "FIRST DOC ID :";
             // 
             // nmrEJPerFirstZ
             // 
-            this.nmrEJPerFirstZ.Location = new System.Drawing.Point(118, 41);
-            this.nmrEJPerFirstZ.Margin = new System.Windows.Forms.Padding(2);
+            this.nmrEJPerFirstZ.Location = new System.Drawing.Point(177, 63);
             this.nmrEJPerFirstZ.Maximum = new decimal(new int[] {
             4000,
             0,
@@ -1206,7 +1345,7 @@ namespace FP300Service.UserControls
             0,
             0});
             this.nmrEJPerFirstZ.Name = "nmrEJPerFirstZ";
-            this.nmrEJPerFirstZ.Size = new System.Drawing.Size(68, 19);
+            this.nmrEJPerFirstZ.Size = new System.Drawing.Size(102, 25);
             this.nmrEJPerFirstZ.TabIndex = 41;
             this.nmrEJPerFirstZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmrEJPerFirstZ.Value = new decimal(new int[] {
@@ -1218,10 +1357,9 @@ namespace FP300Service.UserControls
             // lblEJPerFirstZ
             // 
             this.lblEJPerFirstZ.AutoSize = true;
-            this.lblEJPerFirstZ.Location = new System.Drawing.Point(32, 43);
-            this.lblEJPerFirstZ.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEJPerFirstZ.Location = new System.Drawing.Point(48, 66);
             this.lblEJPerFirstZ.Name = "lblEJPerFirstZ";
-            this.lblEJPerFirstZ.Size = new System.Drawing.Size(68, 14);
+            this.lblEJPerFirstZ.Size = new System.Drawing.Size(91, 19);
             this.lblEJPerFirstZ.TabIndex = 40;
             this.lblEJPerFirstZ.Text = "FIRST Z ID :";
             // 
@@ -1229,10 +1367,9 @@ namespace FP300Service.UserControls
             // 
             this.rbtnEJPerByDate.AutoSize = true;
             this.rbtnEJPerByDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnEJPerByDate.Location = new System.Drawing.Point(16, 131);
-            this.rbtnEJPerByDate.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnEJPerByDate.Location = new System.Drawing.Point(24, 202);
             this.rbtnEJPerByDate.Name = "rbtnEJPerByDate";
-            this.rbtnEJPerByDate.Size = new System.Drawing.Size(220, 17);
+            this.rbtnEJPerByDate.Size = new System.Drawing.Size(309, 24);
             this.rbtnEJPerByDate.TabIndex = 39;
             this.rbtnEJPerByDate.Text = "EJ SINGLE REPORT(DATE/TIME)";
             this.rbtnEJPerByDate.UseVisualStyleBackColor = true;
@@ -1242,10 +1379,9 @@ namespace FP300Service.UserControls
             this.rbtnEJPerByNo.AutoSize = true;
             this.rbtnEJPerByNo.Checked = true;
             this.rbtnEJPerByNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnEJPerByNo.Location = new System.Drawing.Point(16, 16);
-            this.rbtnEJPerByNo.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnEJPerByNo.Location = new System.Drawing.Point(24, 25);
             this.rbtnEJPerByNo.Name = "rbtnEJPerByNo";
-            this.rbtnEJPerByNo.Size = new System.Drawing.Size(225, 17);
+            this.rbtnEJPerByNo.Size = new System.Drawing.Size(317, 24);
             this.rbtnEJPerByNo.TabIndex = 38;
             this.rbtnEJPerByNo.TabStop = true;
             this.rbtnEJPerByNo.Text = "EJ SINGLE REPORT(Z ID/DOC ID)";
@@ -1253,10 +1389,9 @@ namespace FP300Service.UserControls
             // 
             // btnPrintEJPerReport
             // 
-            this.btnPrintEJPerReport.Location = new System.Drawing.Point(130, 301);
-            this.btnPrintEJPerReport.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPrintEJPerReport.Location = new System.Drawing.Point(70, 458);
             this.btnPrintEJPerReport.Name = "btnPrintEJPerReport";
-            this.btnPrintEJPerReport.Size = new System.Drawing.Size(86, 33);
+            this.btnPrintEJPerReport.Size = new System.Drawing.Size(230, 51);
             this.btnPrintEJPerReport.TabIndex = 36;
             this.btnPrintEJPerReport.Text = "GET REPORT";
             this.btnPrintEJPerReport.UseVisualStyleBackColor = true;
@@ -1271,10 +1406,11 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelReportUC.Controls.Add(this.tableLayoutPanelReportUCLeftSide, 0, 0);
             this.tableLayoutPanelReportUC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelReportUC.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelReportUC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanelReportUC.Name = "tableLayoutPanelReportUC";
             this.tableLayoutPanelReportUC.RowCount = 1;
             this.tableLayoutPanelReportUC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelReportUC.Size = new System.Drawing.Size(591, 427);
+            this.tableLayoutPanelReportUC.Size = new System.Drawing.Size(886, 658);
             this.tableLayoutPanelReportUC.TabIndex = 3;
             // 
             // tableLayoutPanelReportUCLeftSide
@@ -1284,44 +1420,57 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelReportUCLeftSide.Controls.Add(this.grpPrintArea, 0, 0);
             this.tableLayoutPanelReportUCLeftSide.Controls.Add(this.tbcReports, 0, 1);
             this.tableLayoutPanelReportUCLeftSide.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelReportUCLeftSide.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelReportUCLeftSide.Location = new System.Drawing.Point(4, 5);
+            this.tableLayoutPanelReportUCLeftSide.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanelReportUCLeftSide.Name = "tableLayoutPanelReportUCLeftSide";
             this.tableLayoutPanelReportUCLeftSide.RowCount = 2;
             this.tableLayoutPanelReportUCLeftSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanelReportUCLeftSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanelReportUCLeftSide.Size = new System.Drawing.Size(289, 421);
+            this.tableLayoutPanelReportUCLeftSide.Size = new System.Drawing.Size(435, 648);
             this.tableLayoutPanelReportUCLeftSide.TabIndex = 2;
             // 
-            // rbtnEndDay
+            // btnReportContentZ
             // 
-            this.rbtnEndDay.AutoSize = true;
-            this.rbtnEndDay.Checked = true;
-            this.rbtnEndDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtnEndDay.Location = new System.Drawing.Point(16, 52);
-            this.rbtnEndDay.Margin = new System.Windows.Forms.Padding(2);
-            this.rbtnEndDay.Name = "rbtnEndDay";
-            this.rbtnEndDay.Size = new System.Drawing.Size(135, 17);
-            this.rbtnEndDay.TabIndex = 26;
-            this.rbtnEndDay.TabStop = true;
-            this.rbtnEndDay.Text = "END DAY REPORT";
-            this.rbtnEndDay.UseVisualStyleBackColor = true;
+            this.btnReportContentZ.Location = new System.Drawing.Point(216, 418);
+            this.btnReportContentZ.Name = "btnReportContentZ";
+            this.btnReportContentZ.Size = new System.Drawing.Size(188, 80);
+            this.btnReportContentZ.TabIndex = 32;
+            this.btnReportContentZ.Text = "CONTENT";
+            this.btnReportContentZ.UseVisualStyleBackColor = true;
+            this.btnReportContentZ.Click += new System.EventHandler(this.btnReportContent_Click);
+            // 
+            // btnReportContentFM
+            // 
+            this.btnReportContentFM.Location = new System.Drawing.Point(216, 418);
+            this.btnReportContentFM.Name = "btnReportContentFM";
+            this.btnReportContentFM.Size = new System.Drawing.Size(188, 80);
+            this.btnReportContentFM.TabIndex = 39;
+            this.btnReportContentFM.Text = "CONTENT";
+            this.btnReportContentFM.UseVisualStyleBackColor = true;
+            this.btnReportContentFM.Click += new System.EventHandler(this.btnReportContent_Click);
             // 
             // ReportUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanelReportUC);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.Name = "ReportUC";
             this.grpPrintArea.ResumeLayout(false);
             this.grpPrintArea.PerformLayout();
             this.tbcReports.ResumeLayout(false);
             this.tabXReports.ResumeLayout(false);
             this.tabXReports.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numerAmountReturnDocX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numerCountReturnDocX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrPLULast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrPLUFirst)).EndInit();
             this.tabZReports.ResumeLayout(false);
             this.tabZReports.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numerAmountReturnDocZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numerCountReturnDocZ)).EndInit();
+            this.tabFMReports.ResumeLayout(false);
+            this.tabFMReports.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrFFZFirst)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrFFZLast)).EndInit();
             this.tabEJSingle.ResumeLayout(false);
@@ -1345,13 +1494,26 @@ namespace FP300Service.UserControls
         {
             txtResult.Text = "";
             int copy = GetPrintTarget();
-            CPResponse response;
+            CPResponse response = null;
 
             try
             {
                 if (rbtnXReport.Checked)
                 {
-                    response = new CPResponse(bridge.Printer.PrintXReport(copy));
+                    if (numerCountReturnDocX.Value == 0)
+                    {
+                        response = new CPResponse(bridge.Printer.PrintXReport(copy));
+                    }
+                    else
+                    {
+                        int count = (int)numerCountReturnDocX.Value;
+                        decimal amount = numerAmountReturnDocX.Value;
+
+                        response = new CPResponse(
+                            bridge.Printer.PrintXReport(count,
+                                                        amount,
+                                                        cbxAffectDrawerX.Checked));
+                    }
                 }
                 else if (rbtPluRprt.Checked)
                 {
@@ -1374,7 +1536,13 @@ namespace FP300Service.UserControls
             }
             catch(Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+
+            String reportContent = response.GetParamByIndex(3);
+            if(!String.IsNullOrEmpty(reportContent))
+            {
+                txtResult.Text = reportContent;
             }
         }
 
@@ -1383,53 +1551,50 @@ namespace FP300Service.UserControls
         {
             txtResult.Text = "";
             int copy = GetPrintTarget();
-            CPResponse response;
+            CPResponse response = null;
+
+            System.Threading.Thread reportThread;
 
             try
             {
-                if (rbtnZReport.Checked)
+                if (btnPrintZReport.Text == FormMessage.GET_REPORT)
                 {
-                    response = new CPResponse(bridge.Printer.PrintZReport());
-                }
-                else if (rbtnEndDay.Checked)
-                {
-                    response = new CPResponse(bridge.Printer.PrintEndDayReport());
-                }
-                else if (rbtnFiscZZReport.Checked)
-                {
-                    //FIRST Z NO
-                    int firstZ = (int)nmrFFZFirst.Value;
-
-                    //LAST Z NO
-                    int lastZ = (int)nmrFFZLast.Value;
-
-                    bool detail = false;
-                    if (cbxFFZZDetailed.Checked)
+                    if (rbtnZReport.Checked)
                     {
-                        detail = true;
+                        if (numerCountReturnDocZ.Value == Decimal.Zero)
+                        {
+                            response = new CPResponse(bridge.Printer.PrintZReport(GetPrintTarget()));
+                        }
+                        else
+                        {
+                            int count = (int)numerCountReturnDocZ.Value;
+                            decimal amount = numerAmountReturnDocZ.Value;
+
+                            response = new CPResponse(
+                                bridge.Printer.PrintZReport(count, 
+                                                            amount, 
+                                                            cbxAffectDrawerZ.Checked));
+                        }
                     }
-
-                    response = new CPResponse(bridge.Printer.PrintPeriodicZZReport(firstZ, lastZ, copy, detail));
-                }
-                else if (rbtnFiscDateReport.Checked)
-                {
-                    //FIRST Z DATE
-                    DateTime firstZDate = dtZZFirstDate.Value;
-
-                    //LAST Z DATE
-                    DateTime lastZDate = dtZZLastDate.Value;
-
-                    bool detail = false;
-                    if (cbxFFDateDetailed.Checked)
+                    else if (rbtnEndDay.Checked)
                     {
-                        detail = true;
+                        response = new CPResponse(bridge.Printer.PrintEndDayReport());
                     }
-                    response = new CPResponse(bridge.Printer.PrintPeriodicDateReport(firstZDate, lastZDate, copy, detail));
+                }
+                else
+                {
+                    InterruptReport();
                 }
             }
             catch (Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+
+            String reportContent = response.GetParamByIndex(3);
+            if (!String.IsNullOrEmpty(reportContent))
+            {
+                txtResult.Text = reportContent;
             }
         }
 
@@ -1439,39 +1604,66 @@ namespace FP300Service.UserControls
             int copy = GetPrintTarget();
             CPResponse response;
 
+            System.Threading.Thread reportThread;
+
             try
             {
-                if (rbtnEJDetail.Checked)
+                if (btnPrintEJSingReport.Text == FormMessage.GET_REPORT)
                 {
-                    response = new CPResponse(bridge.Printer.PrintEJDetail(copy));
-                }
-                else if (rbtnZCopy.Checked)
-                {
-                    response = new CPResponse(bridge.Printer.PrintEJPeriodic((int)nmrEJZCopyZNo.Value, 0, (int)nmrEJZCopyZNo.Value, 0, copy));
-                }
-                else if (rbtnEJDocCopyZandDocId.Checked)
-                {
-                    response = new CPResponse(bridge.Printer.PrintEJPeriodic((int)nmrEJSingDocZNo.Value,
-                                                                               (int)nmrEJSingDocNo.Value,
-                                                                               (int)nmrEJSingDocZNo.Value, 
-                                                                               (int)nmrEJSingDocNo.Value,
-                                                                                copy));
-                }
-                else if (rbtnEJDocCopyDate.Checked)
-                {
-                    //Receipt Date
-                    DateTime date = dtEJSingDocDate.Value;
+                    if (rbtnEJDetail.Checked)
+                    {
+                        response = new CPResponse(bridge.Printer.PrintEJDetail(copy));
+                    }
+                    else if (rbtnZCopy.Checked)
+                    {
+                        reportThread = new System.Threading.Thread(delegate()
+                        {
+                            SetControlText(btnPrintEJSingReport, FormMessage.INTERRUPT_PROCESS);
+                            response = new CPResponse(bridge.Printer.PrintEJPeriodic((int)nmrEJZCopyZNo.Value, 0, (int)nmrEJZCopyZNo.Value, 0, copy));
+                            SetControlText(btnPrintEJSingReport, FormMessage.GET_REPORT);
+                        });
+                        reportThread.Start();
+                    }
+                    else if (rbtnEJDocCopyZandDocId.Checked)
+                    {
+                        reportThread = new System.Threading.Thread(delegate()
+                        {
+                            SetControlText(btnPrintEJSingReport, FormMessage.INTERRUPT_PROCESS);
+                            response = new CPResponse(bridge.Printer.PrintEJPeriodic((int)nmrEJSingDocZNo.Value,
+                                                                                   (int)nmrEJSingDocNo.Value,
+                                                                                   (int)nmrEJSingDocZNo.Value,
+                                                                                   (int)nmrEJSingDocNo.Value,
+                                                                                    copy));
+                            SetControlText(btnPrintEJSingReport, FormMessage.GET_REPORT);
+                        });
+                        reportThread.Start();
+                    }
+                    else if (rbtnEJDocCopyDate.Checked)
+                    {
+                        //Receipt Date
+                        DateTime date = dtEJSingDocDate.Value;
 
-                    DateTime time = dtEJSingDocTime.Value;
+                        DateTime time = dtEJSingDocTime.Value;
 
-                    DateTime comp = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, 0, 0);
+                        DateTime comp = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, 0, 0);
 
-                    response = new CPResponse(bridge.Printer.PrintEJPeriodic(comp, copy));
+                        reportThread = new System.Threading.Thread(delegate()
+                        {
+                            SetControlText(btnPrintEJSingReport, FormMessage.INTERRUPT_PROCESS);
+                            response = new CPResponse(bridge.Printer.PrintEJPeriodic(comp, copy));
+                            SetControlText(btnPrintEJSingReport, FormMessage.GET_REPORT);
+                        });
+                        reportThread.Start();
+                    }
+                }
+                else
+                {
+                    InterruptReport();
                 }
             }
             catch (Exception ex)
             {
-                bridge.Log(FormMessage.OPERATION_FAILS);
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
         }
       
@@ -1502,37 +1694,193 @@ namespace FP300Service.UserControls
             int copy = GetPrintTarget();
             CPResponse response;
 
-           if (rbtnEJPerByNo.Checked)
+            System.Threading.Thread reportThread;
+
+            try
             {
-                response = new CPResponse(bridge.Printer.PrintEJPeriodic((int)nmrEJPerFirstZ.Value, (int)nmrEJPerFirstDoc.Value,
-                                 (int)nmrEJPerLastZ.Value, (int)nmrEJPerLastDoc.Value,
-                                     copy));
+                if (btnPrintEJPerReport.Text == FormMessage.GET_REPORT)
+                {
+                    btnPrintEJPerReport.Text = FormMessage.INTERRUPT_PROCESS;
+
+                    if (rbtnEJPerByNo.Checked)
+                    {
+                        reportThread = new System.Threading.Thread(delegate ()
+                        {
+                            SetControlText(btnPrintEJPerReport, FormMessage.INTERRUPT_PROCESS);
+                            response = new CPResponse(bridge.Printer.PrintEJPeriodic((int)nmrEJPerFirstZ.Value, (int)nmrEJPerFirstDoc.Value,
+                                         (int)nmrEJPerLastZ.Value, (int)nmrEJPerLastDoc.Value,
+                                             copy));
+                            SetControlText(btnPrintEJPerReport, FormMessage.GET_REPORT);
+                        });
+                        reportThread.Start();                       
+                    }
+                    else if (rbtnEJPerByDate.Checked)
+                    {
+                        //First Date
+                        DateTime date = dtEJPerFirstDate.Value;
+                        DateTime time = dtEJPerFirstTime.Value;
+                        DateTime firstDate = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
+
+                        //Last Date
+                        date = dtEJPerLastDate.Value;
+                        time = dtEJPerLastTime.Value;
+                        DateTime lastDate = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
+
+                        reportThread = new System.Threading.Thread(delegate ()
+                        {
+                            SetControlText(btnPrintEJPerReport, FormMessage.INTERRUPT_PROCESS);
+                            response = new CPResponse(bridge.Printer.PrintEJPeriodic(firstDate, lastDate, copy));
+                            SetControlText(btnPrintEJPerReport, FormMessage.GET_REPORT);
+                        });
+                        reportThread.Start();
+                    }
+                    else if (rbtnEJPerByDaily.Checked)
+                    {
+                        DateTime date = dtDailyDate.Value;
+
+                        DateTime startDate = new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
+                        DateTime endDate = new DateTime(date.Year, date.Month, date.Day, 23, 59, 59);
+
+                        reportThread = new System.Threading.Thread(delegate ()
+                        {
+                            SetControlText(btnPrintEJPerReport, FormMessage.INTERRUPT_PROCESS);
+                            response = new CPResponse(bridge.Printer.PrintEJPeriodic(startDate, endDate, copy));
+                            SetControlText(btnPrintEJPerReport, FormMessage.GET_REPORT);
+                        });
+                        reportThread.Start();                
+                    }
+                }
+                else
+                {
+                    InterruptReport();
+                }
             }
-            else if (rbtnEJPerByDate.Checked)
+            catch (Exception ex)
             {
-                //First Date
-                DateTime date = dtEJPerFirstDate.Value;
-                DateTime time = dtEJPerFirstTime.Value;
-                DateTime firstDate = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
-
-                //Last Date
-                date = dtEJPerLastDate.Value;
-                time = dtEJPerLastTime.Value;
-                DateTime lastDate = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
-
-                response = new CPResponse(bridge.Printer.PrintEJPeriodic(firstDate, lastDate, copy));
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
-            else if (rbtnEJPerByDaily.Checked)
-           {
-               DateTime date = dtDailyDate.Value;
-
-               DateTime startDate = new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
-               DateTime endDate = new DateTime(date.Year, date.Month, date.Day, 23, 59, 59);
-
-               response = new CPResponse(bridge.Printer.PrintEJPeriodic(startDate, endDate, copy));
-           }
-
         }
 
+        private void InterruptReport()
+        {
+            CPResponse response = null;
+
+            try
+            {
+                response = new CPResponse(bridge.Printer.InterruptReport());
+            }
+            catch(Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+        }
+
+        private delegate void SetControlTextDelegate(Control control, string text);
+        private void SetControlText(Control control, string text)
+        {
+            if(control.InvokeRequired)
+            {
+                control.Invoke(new SetControlTextDelegate(SetControlText), control, text);
+            }
+            else
+            {
+                control.Text = text;
+            }
+        }
+
+        private void btnPrintFMReport_Click(object sender, EventArgs e)
+        {
+            txtResult.Text = "";
+            int copy = GetPrintTarget();
+            CPResponse response = null;
+
+            System.Threading.Thread reportThread;
+
+            try
+            {
+                if (btnPrintFMReport.Text == FormMessage.GET_REPORT)
+                {
+                    if (rbtnFiscZZReport.Checked)
+                    {
+                        //FIRST Z NO
+                        int firstZ = (int)nmrFFZFirst.Value;
+
+                        //LAST Z NO
+                        int lastZ = (int)nmrFFZLast.Value;
+
+                        bool detail = false;
+                        if (cbxFFZZDetailed.Checked)
+                        {
+                            detail = true;
+                        }
+
+                        //reportThread = new System.Threading.Thread(delegate ()
+                        {
+                            SetControlText(btnPrintFMReport, FormMessage.INTERRUPT_PROCESS);
+                            response = new CPResponse(bridge.Printer.PrintPeriodicZZReport(firstZ, lastZ, copy, detail));
+                            SetControlText(btnPrintFMReport, FormMessage.GET_REPORT);
+                        }//);
+                        //reportThread.Start();
+                    }
+                    else if (rbtnFiscDateReport.Checked)
+                    {
+                        //FIRST Z DATE
+                        DateTime firstZDate = dtZZFirstDate.Value;
+
+                        //LAST Z DATE
+                        DateTime lastZDate = dtZZLastDate.Value;
+
+                        bool detail = false;
+                        if (cbxFFDateDetailed.Checked)
+                        {
+                            detail = true;
+                        }
+
+                        //reportThread = new System.Threading.Thread(delegate ()
+                        {
+                            SetControlText(btnPrintFMReport, FormMessage.INTERRUPT_PROCESS);
+                            response = new CPResponse(bridge.Printer.PrintPeriodicDateReport(firstZDate, lastZDate, copy, detail));
+                            SetControlText(btnPrintFMReport, FormMessage.GET_REPORT);
+                        }//);
+                        //reportThread.Start();
+                    }
+                }
+                else
+                {
+                    InterruptReport();
+                }
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+
+            String reportContent = response.GetParamByIndex(3);
+            if (!String.IsNullOrEmpty(reportContent))
+            {
+                txtResult.Text = reportContent;
+            }
+        }
+
+        private void btnReportContent_Click(object sender, EventArgs e)
+        {
+            txtResult.Text = "";
+            CPResponse response = null;
+
+            try
+            {
+                response = new CPResponse(bridge.Printer.GetReportContent());
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+
+            String reportContent = response.GetParamByIndex(3);
+            if (!String.IsNullOrEmpty(reportContent))
+            {
+                txtResult.Text = reportContent;
+            }
+        }
     }
 }
