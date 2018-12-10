@@ -116,8 +116,12 @@ public class Utility {
           {"172", "INVALID CARD"},
           {"173", "AMOUNT MISMATCH"},
           {"174", "NO PROVISION"},
-          {"175", "INVALID INSTALLMENT"}
-
+          {"175", "INVALID INSTALLMENT"},
+		  {"176", "EFT VOID FAIL"},
+		  {"177", "EFT RETURN FAIL"},
+		  {"178", "EFT SLIPCOPY FAIL"},
+		  {"179", "INVALID OFFLINE EFT MODE"},
+		  {"180", "INVALID EFT MODE"}
       };
 
   public static String GetErrorMessage(int errorCode) {

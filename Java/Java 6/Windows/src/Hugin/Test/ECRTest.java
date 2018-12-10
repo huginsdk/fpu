@@ -5,10 +5,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 import java.io.FileInputStream;
+import java.util.Calendar;
+import java.io.BufferedReader;
 
 import Hugin.DeviceInfo;
 import Hugin.FP300Service;
 import Hugin.Utility;
+import Hugin.DateTime;
 
 public class ECRTest {
 
@@ -28,12 +31,16 @@ public class ECRTest {
     int tcp = key.nextInt();
 
     String IpAddress = "207.46.128.217";
+	int port = 4444;
     switch (tcp) {
       case 1:
         System.out.print("IP Address(207.46.128.217): ");
         IpAddress = key.next();
-        System.out.print("Connecting to server(" + IpAddress + ":4444)...");
-        if (fp300Service.TCPConnect(IpAddress, 4444)) System.out.println("OK\n");
+		System.out.print("Port: ");
+		port = key.nextInt();
+
+        System.out.print("Connecting to server(" + IpAddress + ":"+port+")...");
+        if (fp300Service.TCPConnect(IpAddress, port)) System.out.println("OK\n");
         else {
           System.out.println("Failed");
           return;
@@ -62,7 +69,7 @@ public class ECRTest {
     serverInfo.Version = "";
     serverInfo.SerialNum = "";
 
-    fp300Service.SetDebugLevel(FP300Service.LogLevel.INFO.getValue());
+    fp300Service.SetDebugLevel(FP300Service.LogLevel.HIDE_BUG.getValue());
 
     System.out.print("Connecting to printer... : " + serverInfo.TerminalNo);
 
@@ -125,7 +132,7 @@ public class ECRTest {
         System.out.println(indx++ + " - SALE FROM JSON FILE");
         System.out.println(indx++ + " - ADJUST PRODUCT");
         System.out.println(indx++ + " - PAY");
-        System.out.println(indx++ + " - PAY by CREDIT CARD");
+        System.out.println(indx++ + " - PAY by EFT-POS(with params)");
         System.out.println(indx++ + " - CLOSE RECEIPT");
         System.out.println(indx++ + " - VOID RECEIPT");
         System.out.println(indx++ + " - PRINT REMARK");
@@ -146,6 +153,11 @@ public class ECRTest {
 		System.out.println(indx++ + " - STRESS TEST (DRAWER INFO)");
 		System.out.println(indx++ + " - PRINT X REPORT");
 		System.out.println(indx++ + " - PRINT Z REPORT");
+		System.out.println(indx++ + " - PRINT DOCUMENT HEADER");
+		System.out.println(indx++ + " - PAY by EFT-POS(with no card number)");
+		System.out.println(indx++ + " - PRINT JSON SALE DOCUMENT (DEPT)");
+		System.out.println(indx++ + " - PAY WITH CREDIT");
+		System.out.println(indx++ + " - EFT: GET SLIP COPY");
 		
 		System.out.print("Select Menu : ");
         dec = key.nextInt();
@@ -178,7 +190,15 @@ public class ECRTest {
           case 7: //PAY BY CREDIT
             System.out.print("Amount: ");
             double ccAmount = key.nextDouble();
-            response = fp300Service.GetEFTAuthorisation(ccAmount, 1, "");
+
+			System.out.print("Installment: ");
+			int installment = key.nextInt();
+
+			System.out.print("Card Number: ");
+			String cn = key.next();
+
+            response = fp300Service.GetEFTAuthorisation(ccAmount, installment, cn);
+
             break;
           case 8:
             response = fp300Service.CloseReceipt(false);
@@ -315,11 +335,71 @@ public class ECRTest {
 
 	  break;
 	case 26:
-			response = fp300Service.PrintXReport(2);
+			response = fp300Service.PrintXReport(3);
 	  break;
 	case 27:
 			response = fp300Service.PrintZReport();
 	  break;
+	case 28:
+			System.out.print("Document Type: ");
+			int dType = key.nextInt();
+
+			System.out.print("TCKN/VKN: ");
+			String tcknVkn = key.next();
+
+			System.out.print("Document Serial: ");
+			String serial = key.next();
+			//String serial = "";
+			DateTime dt = new DateTime(Calendar.getInstance());
+			response = fp300Service.PrintDocumentHeader(dType, tcknVkn, serial, dt);
+      break;
+	  case 29: //PAY BY CREDIT
+            System.out.print("Amount: ");
+            double a = key.nextDouble();
+
+			System.out.print("Installment: ");
+			int i = key.nextInt();
+
+            response = fp300Service.GetEFTAuthorisation(a, i, "");
+        break;
+	case 30:
+			String jsonStr = "{\"FiscalItems\":[{\"Id\":20,\"Quantity\":1.0,\"Price\":25.75,\"Name\":\"KITAP\",\"DeptId\":4,\"Status\":0,\"Adj\":{\"Type\":2,\"Amount\":20.0,\"percentage\":0,\"NoteLine1\":null,\"NoteLine2\":null},\"NoteLine1\":\"## 000020\",\"NoteLine2\":null},{\"Id\":20,\"Quantity\":1.0,\"Price\":25.0,\"Name\":\"KITAP\",\"DeptId\":4,\"Status\":0,\"Adj\":null,\"NoteLine1\":\"## 000020\",\"NoteLine2\":null},{\"Id\":26,\"Quantity\":20.0,\"Price\":4.5,\"Name\":\"LARK\",\"DeptId\":1,\"Status\":0,\"Adj\":null,\"NoteLine1\":\"## 000026\",\"NoteLine2\":null}],\"Adjustments\":[{\"Type\":2,\"Amount\":18.0,\"percentage\":0,\"NoteLine1\":null,\"NoteLine2\":null}],\"Payments\":[{\"Type\":0,\"Index\":0,\"PaidTotal\":200.25,\"viaByEFT\":false,\"SequenceNo\":0}],\"FooterNotes\":[\"URUN INDIRIMI  :   *20,00\",\"ARATOP INDIRIMI:   *18,00\",\"TOPLAM INDIRIM : *38,00\"],\"EndOfReceiptInfo\":{\"CloseReceiptFlag\":true,\"BarcodeFlag\":false,\"Barcode\":null}}";
+
+			System.out.print("CHECK CODE: 11 ");
+			System.out.print("Yazdiriliyor...:  " + jsonStr);
+			response = fp300Service.PrintJSONDocumentDeptOnly(jsonStr);
+
+		
+		break;
+	case 31:
+			System.out.print("Credit Index: ");
+			int creditIdx = key.nextInt();
+
+			System.out.print("Amount: ");
+			double creditAmount = key.nextDouble();
+
+			response = fp300Service.PrintPayment(1, creditIdx, creditAmount);
+			
+		break;
+	case 32:
+			System.out.print("Acquier ID: ");
+			int acquierID = key.nextInt();
+
+			System.out.print("Batch No: ");
+			int batchNo = key.nextInt();
+
+			System.out.print("Stan No: ");
+			int stanNo = key.nextInt();
+
+			System.out.print("Z No: ");
+			int zNo = key.nextInt();
+
+			System.out.print("docNo No: ");
+			int docNo = key.nextInt();
+
+			response = fp300Service.GetEFTSlipCopy(acquierID, batchNo, stanNo, zNo, docNo);
+			
+		break;
         }
 
         printResponse(response);

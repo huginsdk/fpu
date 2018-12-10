@@ -1,4 +1,4 @@
-rd classes /s /q
+rm -rf classes
 mkdir classes
 javac -encoding UTF-8 -d classes src/Hugin/*.java src/Hugin/Test/*.java
 
