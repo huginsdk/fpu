@@ -1,0 +1,2 @@
+-PrinterLib.dll native C++ dll idir.
+-lib_json.dll PrinterLib.dll içinde kullanýlan JSON iþlemler için reference dll dir.
