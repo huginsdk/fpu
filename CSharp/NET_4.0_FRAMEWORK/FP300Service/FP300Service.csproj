@@ -75,10 +75,29 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hugin.Common">
+      <HintPath>..\etc\Hugin.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Hugin.ExDevice.DiffieHellman">
+      <HintPath>..\etc\Hugin.ExDevice.DiffieHellman.dll</HintPath>
+    </Reference>
+    <Reference Include="Hugin.GMPCommon">
+      <HintPath>..\etc\Hugin.GMPCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="Hugin.POS.CompactPrinter.FP300">
+      <HintPath>..\etc\Hugin.POS.CompactPrinter.FP300.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\etc\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\etc\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
@@ -219,16 +238,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FP300 All mini.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Hugin.Common\Hugin.Common.csproj">
-      <Project>{0ddd777b-8d96-4d27-8fce-4448bfd18a44}</Project>
-      <Name>Hugin.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Hugin.POS.CompactPrinter.FP300\Hugin.POS.CompactPrinter.FP300.csproj">
-      <Project>{cbba05a0-53f2-494d-bb6e-3825610bf762}</Project>
-      <Name>Hugin.POS.CompactPrinter.FP300</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
