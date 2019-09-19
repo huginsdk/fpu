@@ -175,12 +175,14 @@ namespace FP300Service.UserControls
         private TableLayoutPanel tableLayoutPanel10;
         private Button buttonEORGet;
         private Button buttonEORSet;
+        private CheckBox checkBoxForGibLogo;
         private DataGridViewCheckBoxColumn clmnSelectedVat; 
 
         public ProgramUC()
             : base()
         {
             InitializeComponent();
+            checkBoxForGibLogo.Checked = false;
 
             SetLanguageOption();
 
@@ -475,6 +477,7 @@ namespace FP300Service.UserControls
             this.btnGetPrmOption = new System.Windows.Forms.Button();
             this.btnSavePrmOption = new System.Windows.Forms.Button();
             this.tbpBitmapLogo = new System.Windows.Forms.TabPage();
+            this.checkBoxForGibLogo = new System.Windows.Forms.CheckBox();
             this.lblLogoHeight = new System.Windows.Forms.Label();
             this.lblLogoWidth = new System.Windows.Forms.Label();
             this.lblPreviewLogo = new System.Windows.Forms.Label();
@@ -1717,6 +1720,7 @@ namespace FP300Service.UserControls
             // 
             // tbpBitmapLogo
             // 
+            this.tbpBitmapLogo.Controls.Add(this.checkBoxForGibLogo);
             this.tbpBitmapLogo.Controls.Add(this.lblLogoHeight);
             this.tbpBitmapLogo.Controls.Add(this.lblLogoWidth);
             this.tbpBitmapLogo.Controls.Add(this.lblPreviewLogo);
@@ -1731,6 +1735,17 @@ namespace FP300Service.UserControls
             this.tbpBitmapLogo.TabIndex = 7;
             this.tbpBitmapLogo.Text = "GRAPHIC LOGO";
             this.tbpBitmapLogo.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxForGibLogo
+            // 
+            this.checkBoxForGibLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBoxForGibLogo.AutoSize = true;
+            this.checkBoxForGibLogo.Location = new System.Drawing.Point(388, 256);
+            this.checkBoxForGibLogo.Name = "checkBoxForGibLogo";
+            this.checkBoxForGibLogo.Size = new System.Drawing.Size(77, 17);
+            this.checkBoxForGibLogo.TabIndex = 24;
+            this.checkBoxForGibLogo.Text = "GIB LOGO";
+            this.checkBoxForGibLogo.UseVisualStyleBackColor = true;
             // 
             // lblLogoHeight
             // 
@@ -3391,10 +3406,15 @@ namespace FP300Service.UserControls
 
         private void btnSendBitmap_Click(object sender, EventArgs e)
         {
+            int index = 0;
+
+            if (checkBoxForGibLogo.Checked)
+                index = ProgramConfig.GIB_LOGO_NO;
+
             bridge.Log(FormMessage.SAVE_BITMAP_MESSAGE);
             try
             {
-                CPResponse response = new CPResponse(bridge.Printer.LoadGraphicLogo(pbxLogo.Image));
+                CPResponse response = new CPResponse(bridge.Printer.LoadGraphicLogo(pbxLogo.Image, index));
             }
             catch (Exception ex)
             {
@@ -3518,7 +3538,7 @@ namespace FP300Service.UserControls
                         //logo
                         TextBox txtLogo = (TextBox)GetControlByName("txtLogo" + i);
 
-                        if (i == 5)
+                        if (i == 6)
                         {
                             // Check length
                             if(txtLogo.Text.Length > 11)

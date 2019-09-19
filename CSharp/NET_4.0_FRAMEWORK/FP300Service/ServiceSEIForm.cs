@@ -30,9 +30,9 @@ namespace FP300Service
         private void SetLanguageOptions()
         {
             this.labelServiceDefinition.Text = FormMessage.SERVICE_DEFINITION;
-            this.labelServiceGrossWages.Text = FormMessage.GROSS_WAGES;
+            this.labelServiceBrutAmount.Text = FormMessage.BRUT_AMOUNT;
             this.labelServiceVATRate.Text = FormMessage.VAT_RATE;
-            this.labelStoppageOther.Text = FormMessage.STOPPAGE_OTHER;
+            this.labelWageRate.Text = FormMessage.WAGE_RATE;
             this.labelServiceStoppageRate.Text = FormMessage.STOPPAGE_RATE;
             this.buttonAdd.Text = FormMessage.ADD;
             this.buttonClear.Text = FormMessage.CLEAR;
@@ -43,10 +43,10 @@ namespace FP300Service
             service = new Service();
 
             service.Definition = textBoxServiceDefinition.Text;
-            service.GrossWages = numericUpDownGrossWages.Value;
+            service.BrutAmount = numericUpDownBrutAmount.Value;
             service.StoppageRate = (int)numericUpDownStoppageRate.Value;
             service.VATRate = (int)numericUpDownVATRate.Value;
-            service.StoppageOtherRate = (int)numericUpDownStoppageOther.Value;
+            service.WageRate = (int)numericUpDownWageRate.Value;
 
             this.DialogResult = DialogResult.OK;
             Close();
@@ -56,10 +56,10 @@ namespace FP300Service
         {
             service = null;
             textBoxServiceDefinition.Clear();
-            numericUpDownGrossWages.Refresh();
+            numericUpDownBrutAmount.Refresh();
             numericUpDownStoppageRate.Refresh();
             numericUpDownVATRate.Refresh();
-            numericUpDownStoppageOther.Refresh();
+            numericUpDownWageRate.Refresh();
         }
     }
 }

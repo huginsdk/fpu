@@ -51,12 +51,25 @@ namespace FP300Service
 
             if (customer.AddressList == null)
                 customer.AddressList = new List<string>();
+
             customer.AddressList.Add(textBoxCustomerAddress1.Text);
             customer.AddressList.Add(textBoxCustomerAddress2.Text);
             customer.AddressList.Add(textBoxCustomerAddress3.Text);
             customer.AddressList.Add(textBoxCustomerAddress4.Text);
             customer.AddressList.Add(textBoxCustomerAddress5.Text);
 
+            for(int i = customer.AddressList.Count; i>0;i--)
+            {
+                int currIndex = i - 1;
+                if(customer.AddressList[currIndex].Length == 0)
+                {
+                    customer.AddressList.RemoveAt(currIndex);
+                }
+                else
+                {
+                    break;
+                }
+            }
             this.DialogResult = DialogResult.OK;
             Close();
         }

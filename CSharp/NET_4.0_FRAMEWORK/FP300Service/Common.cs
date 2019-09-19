@@ -13,6 +13,7 @@ namespace FP300Service
         public static string[] BarcodeTypes = { FormMessage.BARCODE_NONE, FormMessage.BARCODE_EAN, FormMessage.BARCODE_QRN, FormMessage.BARCODE_CO39, FormMessage.BARCODE_C128 };
         public static string[] EDocumentTypes = { FormMessage.INVOICE, FormMessage.E_ARCHIVE, FormMessage.E_INVOICE, FormMessage.NOTE_OF_EXPENSES, FormMessage.SELF_EMPLOYEMENT_INVOICE, "NULL STR INVOICE" };
         public static string[] CollectTypes = { FormMessage.CASH_IN, FormMessage.CASH_OUT };
+        public static string[] OtherDocTypes = { FormMessage.INVOICE, FormMessage.NOTE_OF_EXPENSES, FormMessage.SELF_EMPLOYEMENT_INVOICE };
     }
 
     public class FCurrency
@@ -24,13 +25,14 @@ namespace FP300Service
 
     public class ProgramConfig
     {
+        public const int GIB_LOGO_NO = (10);
         public const int LOGO_LINE_LENGTH = (48);
         public const int PRODUCT_NAME_LENGTH = (20);
         public const int PLU_NAME_FIXLENGTH = (15);
         public const int CREDIT_NAME_LENGTH = (15);
         public const int FCURRENCY_NAME_LENGTH = (15);
         public const int DEP_NAME_LENGTH = (20);
-        public const int LENGTH_OF_LOGO_LINES = 6;
+        public const int LENGTH_OF_LOGO_LINES = 7;
         public const int MAX_CREDIT_COUNT = 8;
         public const int MAX_FCURRENCY_COUNT = 4;
         public const int MAX_VAT_RATE_COUNT = 8;

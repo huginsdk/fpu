@@ -160,6 +160,11 @@ namespace FP300Service
         public const String FIRST_DATE = "FIRST DATE";
         public const String FIRST_DOC_ID = "FIRST DOC ID";
 
+        public const String OTHER_DOC = "OTHER DOCS";
+        public const String OTHER_DOC_TYPE = "OTHER DOCS TYPE";
+        public const String DAILY_OTHER_DOC_REPORT = "OTHER DOC (DAILY)";
+        public const String PERIODIC_OTHER_DOC_REPORT = "OTHER DOC (PERIODIC)";
+
         #endregion
 
         #region SaleUC
@@ -585,6 +590,10 @@ namespace FP300Service
         public const String FIRST_DOC_ID = "İLK FİŞ NO";
         public const String LAST_DOC_ID = "SON FİŞ NO";
 
+        public const String OTHER_DOC = "DİĞER BELGELER";
+        public const String OTHER_DOC_TYPE = "DİĞER BELGE TİPİ";
+        public const String DAILY_OTHER_DOC_REPORT = "DİĞER BELGE (GÜNLÜK)";
+        public const String PERIODIC_OTHER_DOC_REPORT = "DİĞER BELGE (PERİYODİK)";
         #endregion
 
         #region SaleUC
@@ -875,9 +884,13 @@ namespace FP300Service
         public const string SERVICES_SEI = "HİZMETLER";
 
         public static string SERVICE_DEFINITION = "HİZMET TANIMI";
-        public static string GROSS_WAGES = "BRÜT ÜCRET";
-        public static string STOPPAGE_OTHER = "KDV TEVKİFAT %";
+        public static string BRUT_AMOUNT = "BRÜT ÜCRET";
+        public static string WAGE_RATE = "KDV TEVKİFAT %";
         public static string STOPPAGE_RATE = "STOPAJ %";
+
+        public static string KEYPAD_OPTIONS = "TUŞ SEÇENEKLERİ";
+        public static string LOCK_KEYS = "TUŞ KİLİTLE";
+        public static string UNLOCK_KEYS = "TUŞ KİLİDİ AÇ";
 
         #endregion
 
