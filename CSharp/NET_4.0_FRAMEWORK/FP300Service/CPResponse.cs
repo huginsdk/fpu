@@ -170,6 +170,9 @@ namespace FP300Service
                 if (paramIndex >= paramList.Count)
                     return null;
 
+                if (index > paramList.Count || index <= 0)
+                    return null;
+
                 string retVal = paramList[index - 1];
                 return retVal;
             }

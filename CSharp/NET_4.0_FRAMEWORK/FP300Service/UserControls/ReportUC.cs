@@ -1789,17 +1789,21 @@ namespace FP300Service.UserControls
                 {
                     response = new CPResponse(bridge.Printer.PrintReceiptTotalReport(copy));
                 }
+
+                if(response != null)
+                {
+                    String reportContent = response.GetParamByIndex(3);
+                    if (!String.IsNullOrEmpty(reportContent))
+                    {
+                        txtResult.Text = reportContent;
+                    }
+                }
             }
             catch(Exception ex)
             {
                 bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
 
-            String reportContent = response.GetParamByIndex(3);
-            if(!String.IsNullOrEmpty(reportContent))
-            {
-                txtResult.Text = reportContent;
-            }
         }
 
 
@@ -1841,17 +1845,21 @@ namespace FP300Service.UserControls
                 {
                     InterruptReport();
                 }
+
+                if (response != null)
+                {
+                    String reportContent = response.GetParamByIndex(3);
+                    if (!String.IsNullOrEmpty(reportContent))
+                    {
+                        txtResult.Text = reportContent;
+                    }
+                }
             }
             catch (Exception ex)
             {
                 bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
 
-            String reportContent = response.GetParamByIndex(3);
-            if (!String.IsNullOrEmpty(reportContent))
-            {
-                txtResult.Text = reportContent;
-            }
         }
 
         private void btnPrintEJReport_Click(object sender, EventArgs e)
@@ -2153,6 +2161,15 @@ namespace FP300Service.UserControls
                         }//);
                         //reportThread.Start();
                     }
+
+                    if (response != null)
+                    {
+                        String reportContent = response.GetParamByIndex(3);
+                        if (!String.IsNullOrEmpty(reportContent))
+                        {
+                            txtResult.Text = reportContent;
+                        }
+                    }
                 }
                 else
                 {
@@ -2164,11 +2181,6 @@ namespace FP300Service.UserControls
                 bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
 
-            String reportContent = response.GetParamByIndex(3);
-            if (!String.IsNullOrEmpty(reportContent))
-            {
-                txtResult.Text = reportContent;
-            }
         }
 
         private void btnReportContent_Click(object sender, EventArgs e)
@@ -2179,17 +2191,21 @@ namespace FP300Service.UserControls
             try
             {
                 response = new CPResponse(bridge.Printer.GetReportContent());
+
+                if (response != null)
+                {
+                    String reportContent = response.GetParamByIndex(3);
+                    if (!String.IsNullOrEmpty(reportContent))
+                    {
+                        txtResult.Text = reportContent;
+                    }
+                }
             }
             catch (Exception ex)
             {
                 bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
             }
 
-            String reportContent = response.GetParamByIndex(3);
-            if (!String.IsNullOrEmpty(reportContent))
-            {
-                txtResult.Text = reportContent;
-            }
         }
     }
 }

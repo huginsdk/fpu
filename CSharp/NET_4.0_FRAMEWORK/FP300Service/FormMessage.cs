@@ -65,6 +65,7 @@ namespace FP300Service
         public const String F_CURRENCY_CODE_NAME = "F.CURRENCY CODE";
         public const string EXCHANGE_RATE = "EXC RATE";
         public const String CURRENCY = "F.CURRENCY";
+        public const String FOODCARD = "FOOD CARD";
 
         public const String CATEGORY = "CATEGORY";
         public const String MAIN_GROUP = "MAIN GROUP";
@@ -130,6 +131,7 @@ namespace FP300Service
         public const String PLU_REPORT = "PLU REPORT";
         public const string X_REPORT = "X REPORT";
         public const String GET_REPORT = "GET REPORT";
+        public const String REPORT_CONTENT = "REPORT CONTENT";
         public const String RECEIPT_TOTAL_REPORT = "RECEIPTS TOTAL REPORT";
 
         public const String Z_REPORTS = "Z REPORTS";
@@ -229,6 +231,8 @@ namespace FP300Service
         public const String CREDITS_LOADING = "CREDITS LOADING";
         public const String CREDITS_LOADED = "CREDITS LOADED";
         public const String CREDITS = "CREDITS";
+
+        public const String FOODCARDS_LOADED = "FOOD CARDS LOADED";
 
         public const string JSON_FILE_NOT_EXISTS = "JSON FILE DOES NOT EXIST";
         public const String DISCOUNT_ACTIVE = "DISCOUNT ACTIVE";
@@ -350,6 +354,10 @@ namespace FP300Service
         public const String NOTE = "NOTE";
         public const String QUANTITY = "QUANTITY";
 
+        public const String RETURN_AMOUNT = "RETURN AMOUNT";
+        public const String RETURN_COUNT = "RETURN COUNT";
+        public const String RETURN_AFFECT_DRAWER = "RETURN AFFECT DRAWER";
+
         public const String TOTAL_INFO = "TOTAL INFO";
         public const String TOTAL_RECEIPT_COUNT = "TOTAL RECEIPT COUNT";
         public const String TOTAL_AMOUNT = "TOTAL AMOUNT";
@@ -430,9 +438,15 @@ namespace FP300Service
         public const string SERVICES_SEI = "SERVICES";
 
         public static string SERVICE_DEFINITION = "SERVICE DEFINITION";
+        public static string BRUT_AMOUNT = "BRUT AMOUNT";
         public static string GROSS_WAGES = "GROSS WAGES";
+        public static string WAGE_RATE = "WAGE RATE";
         public static string STOPPAGE_OTHER = "STOPPAGE OTHER %";
         public static string STOPPAGE_RATE = "STOPPAGE %";
+
+        public static string KEYPAD_OPTIONS = "KEYPAD OPTIONS";
+        public static string LOCK_KEYS = "LOCK KEYS";
+        public static string UNLOCK_KEYS = "UNLOCK KEYS";
 
         public const string ADDRESS_LINE = "ADDRESS LINE";
 
