@@ -857,9 +857,12 @@ namespace FP300Service
         public const string GET = "GETİR";
         public const string SET = "KAYDET";
 
-        public const string VERSION_INFO = "VERSİYON BİLGİSİ";
-        public const string ECR_INFO = "ÖKC BİLGİLERİ";
-        public const string LIBRARY_INFO = "KÜTÜPHANE BİLGİLERİ";
+        public const string GROUP_VERSION_INFO = "VERSİYON BİLGİLERİ";
+        public const string ECR_VERSION_INFO = "MALİ UYGULAMA VERSİYONU";
+        public const string LIBRARY_VERSION_INFO = "KÜTÜPHANE VERSİYONU";
+
+        public const string GROUP_OTHER = "DİĞER";
+        public const string DAILY_SUMMARY = "GÜNLÜK ÖZET";
 
         public const string COLLECT = "TAHSİL";
         public const string COLLECT_INFO = "TAHSİL BİLGİSİ";

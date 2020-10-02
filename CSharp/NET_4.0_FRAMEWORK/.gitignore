@@ -1,0 +1,8 @@
+*.suo
+*.sdf
+FP300Service/Properties/App.config
+**/.vs/
+**/Debug/
+**/obj/
+**/bin/
+**/Certificates/

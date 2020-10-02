@@ -41,11 +41,12 @@ namespace FP300Service.UserControls
             this.lblEjLimit.Text = FormMessage.LINE_COUNT + ":";
             this.btnSetEjLimit.Text = FormMessage.SET_EJ_LIMIT;
 
-            this.groupBoxECRInfo.Text = FormMessage.ECR_INFO;
-            this.buttonGetECRVersion.Text = FormMessage.VERSION_INFO;
+            this.groupBoxVersiyonInfo.Text = FormMessage.GROUP_VERSION_INFO;
+            this.btnGetECRVersion.Text = FormMessage.ECR_VERSION_INFO;
+            this.btnLibraryVersion.Text = FormMessage.LIBRARY_VERSION_INFO;
 
-            this.groupBoxLibraryInfo.Text = FormMessage.LIBRARY_INFO;
-            this.buttonLibraryVersion.Text = FormMessage.VERSION_INFO;
+            this.groupBoxOther.Text = FormMessage.GROUP_OTHER;
+            this.btnDailySummary.Text = FormMessage.DAILY_SUMMARY;
         }
 
 
@@ -68,22 +69,23 @@ namespace FP300Service.UserControls
             this.btnLastZInfo = new System.Windows.Forms.Button();
             this.btnLastReceiptInfo = new System.Windows.Forms.Button();
             this.tableLayoutPanelFiscalInfoUC = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBoxLibraryInfo = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonLibraryVersion = new System.Windows.Forms.Button();
-            this.groupBoxECRInfo = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonGetECRVersion = new System.Windows.Forms.Button();
+            this.groupBoxOther = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanelOther = new System.Windows.Forms.TableLayoutPanel();
+            this.btnLibraryVersion = new System.Windows.Forms.Button();
+            this.groupBoxVersiyonInfo = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanelVersiyonInfo = new System.Windows.Forms.TableLayoutPanel();
+            this.btnGetECRVersion = new System.Windows.Forms.Button();
+            this.btnDailySummary = new System.Windows.Forms.Button();
             this.gbcEjLimit.SuspendLayout();
             this.tableLayoutPanelEJLimit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrEjLine)).BeginInit();
             this.gbxStatusFuncs.SuspendLayout();
             this.tableLayoutPanelFiscalRcptInfo.SuspendLayout();
             this.tableLayoutPanelFiscalInfoUC.SuspendLayout();
-            this.groupBoxLibraryInfo.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.groupBoxECRInfo.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.groupBoxOther.SuspendLayout();
+            this.tableLayoutPanelOther.SuspendLayout();
+            this.groupBoxVersiyonInfo.SuspendLayout();
+            this.tableLayoutPanelVersiyonInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbcEjLimit
@@ -227,15 +229,28 @@ namespace FP300Service.UserControls
             this.btnLastReceiptInfo.UseVisualStyleBackColor = true;
             this.btnLastReceiptInfo.Click += new System.EventHandler(this.btnLastReceiptInfo_Click);
             // 
+            // btnDailySummary
+            // 
+            this.btnDailySummary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDailySummary.Location = new System.Drawing.Point(128, 2);
+            this.btnDailySummary.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDailySummary.Name = "btnDailySummary";
+            this.btnDailySummary.Size = new System.Drawing.Size(122, 81);
+            this.btnDailySummary.TabIndex = 7;
+            this.btnDailySummary.Text = "Günlük Özet";
+            this.btnDailySummary.UseVisualStyleBackColor = true;
+            this.btnDailySummary.Click += new System.EventHandler(this.btnDailySummary_Click);
+
+            // 
             // tableLayoutPanelFiscalInfoUC
             // 
             this.tableLayoutPanelFiscalInfoUC.ColumnCount = 2;
             this.tableLayoutPanelFiscalInfoUC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.49746F));
             this.tableLayoutPanelFiscalInfoUC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.50254F));
-            this.tableLayoutPanelFiscalInfoUC.Controls.Add(this.groupBoxLibraryInfo, 0, 3);
+            this.tableLayoutPanelFiscalInfoUC.Controls.Add(this.groupBoxOther, 0, 3);
             this.tableLayoutPanelFiscalInfoUC.Controls.Add(this.gbxStatusFuncs, 0, 0);
             this.tableLayoutPanelFiscalInfoUC.Controls.Add(this.gbcEjLimit, 0, 1);
-            this.tableLayoutPanelFiscalInfoUC.Controls.Add(this.groupBoxECRInfo, 0, 2);
+            this.tableLayoutPanelFiscalInfoUC.Controls.Add(this.groupBoxVersiyonInfo, 0, 2);
             this.tableLayoutPanelFiscalInfoUC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelFiscalInfoUC.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelFiscalInfoUC.Name = "tableLayoutPanelFiscalInfoUC";
@@ -248,79 +263,80 @@ namespace FP300Service.UserControls
             this.tableLayoutPanelFiscalInfoUC.Size = new System.Drawing.Size(591, 427);
             this.tableLayoutPanelFiscalInfoUC.TabIndex = 21;
             // 
-            // groupBoxLibraryInfo
+            // groupBoxOther
             // 
-            this.groupBoxLibraryInfo.Controls.Add(this.tableLayoutPanel2);
-            this.groupBoxLibraryInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxLibraryInfo.Location = new System.Drawing.Point(3, 321);
-            this.groupBoxLibraryInfo.Name = "groupBoxLibraryInfo";
-            this.groupBoxLibraryInfo.Size = new System.Drawing.Size(386, 103);
-            this.groupBoxLibraryInfo.TabIndex = 22;
-            this.groupBoxLibraryInfo.TabStop = false;
-            this.groupBoxLibraryInfo.Text = "Library Info";
+            this.groupBoxOther.Controls.Add(this.tableLayoutPanelOther);
+            this.groupBoxOther.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxOther.Location = new System.Drawing.Point(3, 321);
+            this.groupBoxOther.Name = "groupBoxLibraryInfo";
+            this.groupBoxOther.Size = new System.Drawing.Size(386, 103);
+            this.groupBoxOther.TabIndex = 22;
+            this.groupBoxOther.TabStop = false;
+            this.groupBoxOther.Text = "Diğer İşlemler";
             // 
-            // tableLayoutPanel2
+            // tableLayoutPanelOther
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
-            this.tableLayoutPanel2.Controls.Add(this.buttonLibraryVersion, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(380, 84);
-            this.tableLayoutPanel2.TabIndex = 0;
+            this.tableLayoutPanelOther.ColumnCount = 3;
+            this.tableLayoutPanelOther.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanelOther.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanelOther.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
+            this.tableLayoutPanelOther.Controls.Add(this.btnDailySummary, 0, 0);
+            this.tableLayoutPanelOther.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelOther.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanelOther.Name = "tableLayoutPanelOther";
+            this.tableLayoutPanelOther.RowCount = 1;
+            this.tableLayoutPanelOther.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelOther.Size = new System.Drawing.Size(380, 84);
+            this.tableLayoutPanelOther.TabIndex = 0;
             // 
-            // buttonLibraryVersion
+            // btnLibraryVersion
             // 
-            this.buttonLibraryVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonLibraryVersion.Location = new System.Drawing.Point(3, 3);
-            this.buttonLibraryVersion.Name = "buttonLibraryVersion";
-            this.buttonLibraryVersion.Size = new System.Drawing.Size(119, 78);
-            this.buttonLibraryVersion.TabIndex = 0;
-            this.buttonLibraryVersion.Text = "Version Info";
-            this.buttonLibraryVersion.UseVisualStyleBackColor = true;
-            this.buttonLibraryVersion.Click += new System.EventHandler(this.buttonLibraryVersion_Click);
+            this.btnLibraryVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLibraryVersion.Location = new System.Drawing.Point(3, 3);
+            this.btnLibraryVersion.Name = "btnLibraryVersion";
+            this.btnLibraryVersion.Size = new System.Drawing.Size(119, 78);
+            this.btnLibraryVersion.TabIndex = 0;
+            this.btnLibraryVersion.Text = "Kütüphane Versiyonu";
+            this.btnLibraryVersion.UseVisualStyleBackColor = true;
+            this.btnLibraryVersion.Click += new System.EventHandler(this.btnLibraryVersion_Click);
             // 
-            // groupBoxECRInfo
+            // groupBoxVersiyonInfo
             // 
-            this.groupBoxECRInfo.Controls.Add(this.tableLayoutPanel1);
-            this.groupBoxECRInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxECRInfo.Location = new System.Drawing.Point(3, 215);
-            this.groupBoxECRInfo.Name = "groupBoxECRInfo";
-            this.groupBoxECRInfo.Size = new System.Drawing.Size(386, 100);
-            this.groupBoxECRInfo.TabIndex = 21;
-            this.groupBoxECRInfo.TabStop = false;
-            this.groupBoxECRInfo.Text = "ECR Info";
+            this.groupBoxVersiyonInfo.Controls.Add(this.tableLayoutPanelVersiyonInfo);
+            this.groupBoxVersiyonInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxVersiyonInfo.Location = new System.Drawing.Point(3, 215);
+            this.groupBoxVersiyonInfo.Name = "groupBoxECRInfo";
+            this.groupBoxVersiyonInfo.Size = new System.Drawing.Size(386, 100);
+            this.groupBoxVersiyonInfo.TabIndex = 21;
+            this.groupBoxVersiyonInfo.TabStop = false;
+            this.groupBoxVersiyonInfo.Text = "Versiyon Bilgileri";
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanelVersiyonInfo
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
-            this.tableLayoutPanel1.Controls.Add(this.buttonGetECRVersion, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(380, 81);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanelVersiyonInfo.ColumnCount = 3;
+            this.tableLayoutPanelVersiyonInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanelVersiyonInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanelVersiyonInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
+            this.tableLayoutPanelVersiyonInfo.Controls.Add(this.btnGetECRVersion, 0, 0);
+            this.tableLayoutPanelVersiyonInfo.Controls.Add(this.btnLibraryVersion, 0, 0);
+            this.tableLayoutPanelVersiyonInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelVersiyonInfo.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanelVersiyonInfo.Name = "tableLayoutPanelVersiyonInfo";
+            this.tableLayoutPanelVersiyonInfo.RowCount = 1;
+            this.tableLayoutPanelVersiyonInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelVersiyonInfo.Size = new System.Drawing.Size(380, 81);
+            this.tableLayoutPanelVersiyonInfo.TabIndex = 0;
             // 
-            // buttonGetECRVersion
+            // btnGetECRVersion
             // 
-            this.buttonGetECRVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonGetECRVersion.Location = new System.Drawing.Point(3, 3);
-            this.buttonGetECRVersion.Name = "buttonGetECRVersion";
-            this.buttonGetECRVersion.Size = new System.Drawing.Size(119, 75);
-            this.buttonGetECRVersion.TabIndex = 0;
-            this.buttonGetECRVersion.Text = "Version Info";
-            this.buttonGetECRVersion.UseVisualStyleBackColor = true;
-            this.buttonGetECRVersion.Click += new System.EventHandler(this.buttonGetECRVersion_Click);
+            this.btnGetECRVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGetECRVersion.Location = new System.Drawing.Point(3, 3);
+            this.btnGetECRVersion.Name = "btnGetECRVersion";
+            this.btnGetECRVersion.Size = new System.Drawing.Size(119, 75);
+            this.btnGetECRVersion.TabIndex = 0;
+            this.btnGetECRVersion.Text = "Mali Uygulama Versiyonu";
+            this.btnGetECRVersion.UseVisualStyleBackColor = true;
+            this.btnGetECRVersion.Click += new System.EventHandler(this.btnGetECRVersion_Click);
             // 
             // FiscalInfoUC
             // 
@@ -336,10 +352,10 @@ namespace FP300Service.UserControls
             this.gbxStatusFuncs.ResumeLayout(false);
             this.tableLayoutPanelFiscalRcptInfo.ResumeLayout(false);
             this.tableLayoutPanelFiscalInfoUC.ResumeLayout(false);
-            this.groupBoxLibraryInfo.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.groupBoxECRInfo.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.groupBoxOther.ResumeLayout(false);
+            this.tableLayoutPanelOther.ResumeLayout(false);
+            this.groupBoxVersiyonInfo.ResumeLayout(false);
+            this.tableLayoutPanelVersiyonInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -359,12 +375,16 @@ namespace FP300Service.UserControls
         private TableLayoutPanel tableLayoutPanelEJLimit;
         private TableLayoutPanel tableLayoutPanelFiscalRcptInfo;
         private TableLayoutPanel tableLayoutPanelFiscalInfoUC;
-        private GroupBox groupBoxECRInfo;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Button buttonGetECRVersion;
-        private GroupBox groupBoxLibraryInfo;
-        private TableLayoutPanel tableLayoutPanel2;
-        private Button buttonLibraryVersion;
+
+        private GroupBox groupBoxVersiyonInfo;
+        private TableLayoutPanel tableLayoutPanelVersiyonInfo;
+        private Button btnGetECRVersion;
+        private Button btnLibraryVersion;
+
+        private GroupBox groupBoxOther;
+        private TableLayoutPanel tableLayoutPanelOther;
+        private Button btnDailySummary;
+
         private static FiscalCmd lastCmd;
         
         internal static TestUC Instance(IBridge iBridge)
@@ -377,9 +397,59 @@ namespace FP300Service.UserControls
             return statusForm;
         }
 
+        private void testPeriodic()
+        {
+            DateTime dateStart = DateTime.Now;
+            DateTime dateLastReceipt = DateTime.Now;
+            int counter = 0;
+            int errorCount = 0;
+            while (true)
+            {
+                try
+                {
+                    DateTime dateNow = DateTime.Now;
+                    if ((dateNow - dateStart).Seconds > 5 * 60)
+                    {
+                        break;
+                    }
+                    if ((dateNow - dateLastReceipt).Seconds > 50)
+                    {
+                        CPResponse response = new CPResponse(bridge.Printer.PrintDocumentHeader());
+
+                        response = new CPResponse(bridge.Printer.PrintDepartment(1, Decimal.Parse("2,831"), Decimal.Parse("1,28"), "DEPARTSMPLE", 1));
+                        response = new CPResponse(bridge.Printer.PrintPayment(1, 0, 5));
+
+                        response = new CPResponse(bridge.Printer.CloseReceipt(false));
+                        dateLastReceipt = dateNow;
+                    }
+                    else
+                    {
+                        CPResponse response = new CPResponse(bridge.Printer.CheckPrinterStatus());
+                        counter++;
+                        if (counter % 20 == 19)
+                        {
+                            response = new CPResponse(bridge.Printer.GetLastDocumentInfo(true));
+                        }
+                    }
+                    if (!System.IO.File.Exists("periodicStatus.test"))
+                    {
+                        break;
+                    }
+                    System.Threading.Thread.Sleep(1000);
+                }catch(Exception ex)
+                {
+                    errorCount++;
+                }
+            }
+        }
         private void btnLastZInfo_Click(object sender, EventArgs e)
         {
+            if (System.IO.File.Exists("periodicStatus.test"))
+            {
+                testPeriodic();
+            }
             lastCmd = FiscalCmd.LAST_Z_INFO;
+
             try
             {
                 SendCommand(new CPResponse(bridge.Printer.GetLastDocumentInfo(true)));
@@ -584,14 +654,14 @@ namespace FP300Service.UserControls
             SendCommand(new CPResponse(bridge.Printer.SetEJLimit((int)nmrEjLine.Value)));
         }
 
-        private void buttonGetECRVersion_Click(object sender, EventArgs e)
+        private void btnGetECRVersion_Click(object sender, EventArgs e)
         {
             try
             {
                 string version = bridge.Printer.GetECRVersion();
 
                 bridge.Log("***************************************************" + Environment.NewLine);
-                bridge.Log(String.Format(FormMessage.VERSION_INFO + ": {0}", version));
+                bridge.Log(String.Format(FormMessage.ECR_VERSION_INFO + ": {0}", version));
             }
             catch(Exception ex)
             {
@@ -599,14 +669,30 @@ namespace FP300Service.UserControls
             }
         }
 
-        private void buttonLibraryVersion_Click(object sender, EventArgs e)
+        private void btnLibraryVersion_Click(object sender, EventArgs e)
         {
             try
             {
                 string version = bridge.Printer.LibraryVersion;
 
                 bridge.Log("***************************************************" + Environment.NewLine);
-                bridge.Log(String.Format(FormMessage.VERSION_INFO + ": {0}", version));
+                bridge.Log(String.Format(FormMessage.ECR_VERSION_INFO + ": {0}", version));
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+        }
+
+        private void btnDailySummary_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string strJsonDailySummary = bridge.Printer.GetDailySummary();
+
+                bridge.Log("***************************************************" + Environment.NewLine);
+                bridge.Log(FormMessage.DAILY_SUMMARY + ":" + Environment.NewLine);
+                bridge.Log(strJsonDailySummary + Environment.NewLine);
             }
             catch (Exception ex)
             {

@@ -271,6 +271,20 @@ namespace FP300Service.UserControls
         private TableLayoutPanel tableLayoutPanel26;
         private Label labelStoppageAmount;
         private NumericUpDown numericUpDownStoppageAmount;
+        private TabPage tabPageReturnDoc;
+        private TableLayoutPanel tableLayoutPanel27;
+        private Button buttonStartReturnDoc;
+        private TableLayoutPanel tableLayoutPanel28;
+        private TableLayoutPanel tableLayoutPanel29;
+        private DateTimePicker dateTimePickerRetDoc;
+        private Label labelRetDocDT;
+        private TableLayoutPanel tableLayoutPanel30;
+        private TextBox textBoxRetDocSerial;
+        private Label labelRetDocSerial;
+        private TableLayoutPanel tableLayoutPanel31;
+        private TextBox textBoxRetDocORderNo;
+        private Label labelRetDocOrderNo;
+        private Button buttonAddCustomerRetDoc;
         private TabPage tabSlipExternal;
         private GroupBox gbxSlipContent;
         private GroupBox gbxSlipType;
@@ -400,6 +414,12 @@ namespace FP300Service.UserControls
             this.tabPageStoppage.Text = FormMessage.STOPPAGE;
             this.labelStoppageAmount.Text = FormMessage.AMOUNT;
             this.buttonStoppage.Text = FormMessage.SEND_STOPPAGE;
+            this.tabPageReturnDoc.Text = FormMessage.RETURN_DOCUMENT;
+            this.buttonStartReturnDoc.Text = FormMessage.START_DOCUMENT;
+            this.labelRetDocSerial.Text = FormMessage.DOCUMENT_SERIAL;
+            this.labelRetDocOrderNo.Text = FormMessage.DOCUMENT_ORDER_NO;
+            this.labelRetDocDT.Text = FormMessage.DATE;
+            this.buttonAddCustomerRetDoc.Text = FormMessage.ADD_CUSTOMER;
         }
 
         private int LoadCreditData()
@@ -562,6 +582,20 @@ namespace FP300Service.UserControls
             this.buttonPrintEDocumentSample = new System.Windows.Forms.Button();
             this.tabPageDataTest = new System.Windows.Forms.TabPage();
             this.buttonSendTestData = new System.Windows.Forms.Button();
+            this.tabPageReturnDoc = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonStartReturnDoc = new System.Windows.Forms.Button();
+            this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
+            this.dateTimePickerRetDoc = new System.Windows.Forms.DateTimePicker();
+            this.labelRetDocDT = new System.Windows.Forms.Label();
+            this.tableLayoutPanel30 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxRetDocSerial = new System.Windows.Forms.TextBox();
+            this.labelRetDocSerial = new System.Windows.Forms.Label();
+            this.tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxRetDocORderNo = new System.Windows.Forms.TextBox();
+            this.labelRetDocOrderNo = new System.Windows.Forms.Label();
+            this.buttonAddCustomerRetDoc = new System.Windows.Forms.Button();
             this.tbcFooter = new System.Windows.Forms.TabControl();
             this.tbpNotes = new System.Windows.Forms.TabPage();
             this.btnRemark = new System.Windows.Forms.Button();
@@ -738,6 +772,12 @@ namespace FP300Service.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCrrAccAmount)).BeginInit();
             this.tabPageEDocument.SuspendLayout();
             this.tabPageDataTest.SuspendLayout();
+            this.tabPageReturnDoc.SuspendLayout();
+            this.tableLayoutPanel27.SuspendLayout();
+            this.tableLayoutPanel28.SuspendLayout();
+            this.tableLayoutPanel29.SuspendLayout();
+            this.tableLayoutPanel30.SuspendLayout();
+            this.tableLayoutPanel31.SuspendLayout();
             this.tbcFooter.SuspendLayout();
             this.tbpNotes.SuspendLayout();
             this.tbpExtra.SuspendLayout();
@@ -804,6 +844,7 @@ namespace FP300Service.UserControls
             this.tbcStartDoc.Controls.Add(this.tabPageCrrAccountCollctn);
             this.tbcStartDoc.Controls.Add(this.tabPageEDocument);
             this.tbcStartDoc.Controls.Add(this.tabPageDataTest);
+            this.tbcStartDoc.Controls.Add(this.tabPageReturnDoc);
             this.tbcStartDoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcStartDoc.Location = new System.Drawing.Point(2, 1);
             this.tbcStartDoc.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -856,7 +897,7 @@ namespace FP300Service.UserControls
             this.tbStrtInvoice.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tbStrtInvoice.Name = "tbStrtInvoice";
             this.tbStrtInvoice.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tbStrtInvoice.Size = new System.Drawing.Size(463, 101);
+            this.tbStrtInvoice.Size = new System.Drawing.Size(461, 102);
             this.tbStrtInvoice.TabIndex = 1;
             this.tbStrtInvoice.Text = "INVOICE TYPES";
             this.tbStrtInvoice.UseVisualStyleBackColor = true;
@@ -873,7 +914,7 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(459, 99);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(457, 100);
             this.tableLayoutPanel10.TabIndex = 33;
             // 
             // btnStartInvoice
@@ -882,7 +923,7 @@ namespace FP300Service.UserControls
             this.btnStartInvoice.Location = new System.Drawing.Point(2, 1);
             this.btnStartInvoice.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnStartInvoice.Name = "btnStartInvoice";
-            this.btnStartInvoice.Size = new System.Drawing.Size(92, 97);
+            this.btnStartInvoice.Size = new System.Drawing.Size(91, 98);
             this.btnStartInvoice.TabIndex = 2;
             this.btnStartInvoice.Text = "START DOCUMENT";
             this.btnStartInvoice.UseVisualStyleBackColor = true;
@@ -895,12 +936,12 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel11.Controls.Add(this.tableLayoutPanel12, 0, 0);
             this.tableLayoutPanel11.Controls.Add(this.tableLayoutPanel13, 0, 1);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(99, 3);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(98, 3);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 2;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(357, 93);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(356, 94);
             this.tableLayoutPanel11.TabIndex = 3;
             // 
             // tableLayoutPanel12
@@ -919,7 +960,7 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(351, 40);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(350, 41);
             this.tableLayoutPanel12.TabIndex = 0;
             // 
             // lblDocTypeInv
@@ -937,7 +978,7 @@ namespace FP300Service.UserControls
             // 
             this.cbxInvTypes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbxInvTypes.FormattingEnabled = true;
-            this.cbxInvTypes.Location = new System.Drawing.Point(85, 9);
+            this.cbxInvTypes.Location = new System.Drawing.Point(85, 10);
             this.cbxInvTypes.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.cbxInvTypes.Name = "cbxInvTypes";
             this.cbxInvTypes.Size = new System.Drawing.Size(87, 21);
@@ -947,7 +988,7 @@ namespace FP300Service.UserControls
             // 
             this.lblInvSerial.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblInvSerial.AutoSize = true;
-            this.lblInvSerial.Location = new System.Drawing.Point(183, 13);
+            this.lblInvSerial.Location = new System.Drawing.Point(183, 14);
             this.lblInvSerial.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInvSerial.Name = "lblInvSerial";
             this.lblInvSerial.Size = new System.Drawing.Size(69, 13);
@@ -957,7 +998,7 @@ namespace FP300Service.UserControls
             // txtTCKN_VKN
             // 
             this.txtTCKN_VKN.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtTCKN_VKN.Location = new System.Drawing.Point(264, 10);
+            this.txtTCKN_VKN.Location = new System.Drawing.Point(263, 10);
             this.txtTCKN_VKN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtTCKN_VKN.MaxLength = 11;
             this.txtTCKN_VKN.Name = "txtTCKN_VKN";
@@ -977,11 +1018,11 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel13.Controls.Add(this.txtboxInvoiceSerialNo, 3, 0);
             this.tableLayoutPanel13.Controls.Add(this.label7, 2, 0);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 49);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 50);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 1;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(351, 41);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(350, 41);
             this.tableLayoutPanel13.TabIndex = 1;
             // 
             // label8
@@ -1006,7 +1047,7 @@ namespace FP300Service.UserControls
             // txtboxInvoiceSerialNo
             // 
             this.txtboxInvoiceSerialNo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxInvoiceSerialNo.Location = new System.Drawing.Point(264, 10);
+            this.txtboxInvoiceSerialNo.Location = new System.Drawing.Point(263, 10);
             this.txtboxInvoiceSerialNo.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtboxInvoiceSerialNo.MaxLength = 11;
             this.txtboxInvoiceSerialNo.Name = "txtboxInvoiceSerialNo";
@@ -1018,7 +1059,7 @@ namespace FP300Service.UserControls
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(181, 14);
+            this.label7.Location = new System.Drawing.Point(180, 14);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(74, 13);
@@ -1032,7 +1073,7 @@ namespace FP300Service.UserControls
             this.tabAdvance.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tabAdvance.Name = "tabAdvance";
             this.tabAdvance.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tabAdvance.Size = new System.Drawing.Size(463, 101);
+            this.tabAdvance.Size = new System.Drawing.Size(461, 102);
             this.tabAdvance.TabIndex = 2;
             this.tabAdvance.Text = "ADVANCE";
             this.tabAdvance.UseVisualStyleBackColor = true;
@@ -1049,7 +1090,7 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 1;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(459, 99);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(457, 100);
             this.tableLayoutPanel14.TabIndex = 25;
             // 
             // btnPaidDoc
@@ -1058,7 +1099,7 @@ namespace FP300Service.UserControls
             this.btnPaidDoc.Location = new System.Drawing.Point(2, 1);
             this.btnPaidDoc.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnPaidDoc.Name = "btnPaidDoc";
-            this.btnPaidDoc.Size = new System.Drawing.Size(100, 97);
+            this.btnPaidDoc.Size = new System.Drawing.Size(99, 98);
             this.btnPaidDoc.TabIndex = 3;
             this.btnPaidDoc.Text = "START DOCUMENT";
             this.btnPaidDoc.UseVisualStyleBackColor = true;
@@ -1076,20 +1117,20 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel15.Controls.Add(this.labelAdvanceName, 0, 1);
             this.tableLayoutPanel15.Controls.Add(this.lblNFTotal, 0, 2);
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(107, 3);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(106, 3);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
             this.tableLayoutPanel15.RowCount = 3;
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(349, 93);
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(348, 94);
             this.tableLayoutPanel15.TabIndex = 4;
             // 
             // labelAdvanceTCKN
             // 
             this.labelAdvanceTCKN.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelAdvanceTCKN.AutoSize = true;
-            this.labelAdvanceTCKN.Location = new System.Drawing.Point(44, 8);
+            this.labelAdvanceTCKN.Location = new System.Drawing.Point(44, 9);
             this.labelAdvanceTCKN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAdvanceTCKN.Name = "labelAdvanceTCKN";
             this.labelAdvanceTCKN.Size = new System.Drawing.Size(39, 13);
@@ -1100,7 +1141,7 @@ namespace FP300Service.UserControls
             // 
             this.nmrAdvanceAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.nmrAdvanceAmount.DecimalPlaces = 2;
-            this.nmrAdvanceAmount.Location = new System.Drawing.Point(165, 66);
+            this.nmrAdvanceAmount.Location = new System.Drawing.Point(164, 68);
             this.nmrAdvanceAmount.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.nmrAdvanceAmount.Maximum = new decimal(new int[] {
             9999999,
@@ -1120,7 +1161,7 @@ namespace FP300Service.UserControls
             // txtboxAdvanceName
             // 
             this.txtboxAdvanceName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxAdvanceName.Location = new System.Drawing.Point(165, 35);
+            this.txtboxAdvanceName.Location = new System.Drawing.Point(164, 36);
             this.txtboxAdvanceName.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtboxAdvanceName.MaxLength = 15;
             this.txtboxAdvanceName.Name = "txtboxAdvanceName";
@@ -1130,7 +1171,7 @@ namespace FP300Service.UserControls
             // txtboxAdvanceTCKN
             // 
             this.txtboxAdvanceTCKN.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxAdvanceTCKN.Location = new System.Drawing.Point(166, 5);
+            this.txtboxAdvanceTCKN.Location = new System.Drawing.Point(165, 5);
             this.txtboxAdvanceTCKN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtboxAdvanceTCKN.MaxLength = 11;
             this.txtboxAdvanceTCKN.Name = "txtboxAdvanceTCKN";
@@ -1141,7 +1182,7 @@ namespace FP300Service.UserControls
             // 
             this.labelAdvanceName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelAdvanceName.AutoSize = true;
-            this.labelAdvanceName.Location = new System.Drawing.Point(43, 38);
+            this.labelAdvanceName.Location = new System.Drawing.Point(43, 40);
             this.labelAdvanceName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAdvanceName.Name = "labelAdvanceName";
             this.labelAdvanceName.Size = new System.Drawing.Size(41, 13);
@@ -1152,7 +1193,7 @@ namespace FP300Service.UserControls
             // 
             this.lblNFTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNFTotal.AutoSize = true;
-            this.lblNFTotal.Location = new System.Drawing.Point(35, 70);
+            this.lblNFTotal.Location = new System.Drawing.Point(35, 71);
             this.lblNFTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNFTotal.Name = "lblNFTotal";
             this.lblNFTotal.Size = new System.Drawing.Size(57, 13);
@@ -1171,7 +1212,7 @@ namespace FP300Service.UserControls
             this.tbpStartParking.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tbpStartParking.Name = "tbpStartParking";
             this.tbpStartParking.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tbpStartParking.Size = new System.Drawing.Size(463, 101);
+            this.tbpStartParking.Size = new System.Drawing.Size(461, 102);
             this.tbpStartParking.TabIndex = 3;
             this.tbpStartParking.Text = "OTOPARK";
             this.tbpStartParking.UseVisualStyleBackColor = true;
@@ -1243,8 +1284,8 @@ namespace FP300Service.UserControls
             this.tabPageFood.Controls.Add(this.buttonStartFoodDoc);
             this.tabPageFood.Location = new System.Drawing.Point(4, 22);
             this.tabPageFood.Name = "tabPageFood";
-            this.tabPageFood.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageFood.Size = new System.Drawing.Size(463, 101);
+            this.tabPageFood.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageFood.Size = new System.Drawing.Size(461, 102);
             this.tabPageFood.TabIndex = 4;
             this.tabPageFood.Text = "FOOD";
             this.tabPageFood.UseVisualStyleBackColor = true;
@@ -1278,8 +1319,8 @@ namespace FP300Service.UserControls
             this.tabPageCollection.Controls.Add(this.buttonStartCllctnDoc);
             this.tabPageCollection.Location = new System.Drawing.Point(4, 22);
             this.tabPageCollection.Name = "tabPageCollection";
-            this.tabPageCollection.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageCollection.Size = new System.Drawing.Size(463, 101);
+            this.tabPageCollection.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCollection.Size = new System.Drawing.Size(461, 102);
             this.tabPageCollection.TabIndex = 5;
             this.tabPageCollection.Text = "COLLECTION INV";
             this.tabPageCollection.UseVisualStyleBackColor = true;
@@ -1297,7 +1338,7 @@ namespace FP300Service.UserControls
             // dateTimePickerCllctionInvDate
             // 
             this.dateTimePickerCllctionInvDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePickerCllctionInvDate.Location = new System.Drawing.Point(255, 75);
+            this.dateTimePickerCllctionInvDate.Location = new System.Drawing.Point(254, 76);
             this.dateTimePickerCllctionInvDate.Name = "dateTimePickerCllctionInvDate";
             this.dateTimePickerCllctionInvDate.Size = new System.Drawing.Size(86, 20);
             this.dateTimePickerCllctionInvDate.TabIndex = 42;
@@ -1447,8 +1488,8 @@ namespace FP300Service.UserControls
             this.tabPageCrrAccountCollctn.Controls.Add(this.tableLayoutPanel18);
             this.tabPageCrrAccountCollctn.Location = new System.Drawing.Point(4, 22);
             this.tabPageCrrAccountCollctn.Name = "tabPageCrrAccountCollctn";
-            this.tabPageCrrAccountCollctn.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageCrrAccountCollctn.Size = new System.Drawing.Size(463, 101);
+            this.tabPageCrrAccountCollctn.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCrrAccountCollctn.Size = new System.Drawing.Size(461, 102);
             this.tabPageCrrAccountCollctn.TabIndex = 6;
             this.tabPageCrrAccountCollctn.Text = "CUURENT ACCOUNT COLLECTION DOC";
             this.tabPageCrrAccountCollctn.UseVisualStyleBackColor = true;
@@ -1465,7 +1506,7 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel18.Name = "tableLayoutPanel18";
             this.tableLayoutPanel18.RowCount = 1;
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(457, 95);
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(455, 96);
             this.tableLayoutPanel18.TabIndex = 0;
             // 
             // btnPrintCurrAccHeader
@@ -1473,7 +1514,7 @@ namespace FP300Service.UserControls
             this.btnPrintCurrAccHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPrintCurrAccHeader.Location = new System.Drawing.Point(3, 3);
             this.btnPrintCurrAccHeader.Name = "btnPrintCurrAccHeader";
-            this.btnPrintCurrAccHeader.Size = new System.Drawing.Size(98, 89);
+            this.btnPrintCurrAccHeader.Size = new System.Drawing.Size(96, 90);
             this.btnPrintCurrAccHeader.TabIndex = 0;
             this.btnPrintCurrAccHeader.Text = "START DOCUMENT";
             this.btnPrintCurrAccHeader.UseVisualStyleBackColor = true;
@@ -1495,7 +1536,7 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel19.Controls.Add(this.labelCrrAccAmount, 0, 3);
             this.tableLayoutPanel19.Controls.Add(this.dateTimePickerCrrAccDate, 1, 4);
             this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel19.Location = new System.Drawing.Point(107, 3);
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(105, 3);
             this.tableLayoutPanel19.Name = "tableLayoutPanel19";
             this.tableLayoutPanel19.RowCount = 5;
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -1503,14 +1544,14 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(347, 89);
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(347, 90);
             this.tableLayoutPanel19.TabIndex = 1;
             // 
             // labelCrrAccDate
             // 
             this.labelCrrAccDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCrrAccDate.AutoSize = true;
-            this.labelCrrAccDate.Location = new System.Drawing.Point(68, 72);
+            this.labelCrrAccDate.Location = new System.Drawing.Point(68, 74);
             this.labelCrrAccDate.Name = "labelCrrAccDate";
             this.labelCrrAccDate.Size = new System.Drawing.Size(36, 13);
             this.labelCrrAccDate.TabIndex = 29;
@@ -1520,7 +1561,7 @@ namespace FP300Service.UserControls
             // 
             this.numericUpDownCrrAccAmount.DecimalPlaces = 2;
             this.numericUpDownCrrAccAmount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDownCrrAccAmount.Location = new System.Drawing.Point(175, 52);
+            this.numericUpDownCrrAccAmount.Location = new System.Drawing.Point(175, 55);
             this.numericUpDownCrrAccAmount.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.numericUpDownCrrAccAmount.Maximum = new decimal(new int[] {
             100000,
@@ -1540,7 +1581,7 @@ namespace FP300Service.UserControls
             // textBoxCrrAccDocSerial
             // 
             this.textBoxCrrAccDocSerial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCrrAccDocSerial.Location = new System.Drawing.Point(175, 35);
+            this.textBoxCrrAccDocSerial.Location = new System.Drawing.Point(175, 37);
             this.textBoxCrrAccDocSerial.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.textBoxCrrAccDocSerial.MaxLength = 48;
             this.textBoxCrrAccDocSerial.Name = "textBoxCrrAccDocSerial";
@@ -1550,7 +1591,7 @@ namespace FP300Service.UserControls
             // textBoxCrrAccCustName
             // 
             this.textBoxCrrAccCustName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCrrAccCustName.Location = new System.Drawing.Point(175, 18);
+            this.textBoxCrrAccCustName.Location = new System.Drawing.Point(175, 19);
             this.textBoxCrrAccCustName.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.textBoxCrrAccCustName.MaxLength = 48;
             this.textBoxCrrAccCustName.Name = "textBoxCrrAccCustName";
@@ -1581,7 +1622,7 @@ namespace FP300Service.UserControls
             // 
             this.labelCrrAccCustName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCrrAccCustName.AutoSize = true;
-            this.labelCrrAccCustName.Location = new System.Drawing.Point(35, 19);
+            this.labelCrrAccCustName.Location = new System.Drawing.Point(35, 20);
             this.labelCrrAccCustName.Name = "labelCrrAccCustName";
             this.labelCrrAccCustName.Size = new System.Drawing.Size(102, 13);
             this.labelCrrAccCustName.TabIndex = 1;
@@ -1591,7 +1632,7 @@ namespace FP300Service.UserControls
             // 
             this.labelCrrAccSerial.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCrrAccSerial.AutoSize = true;
-            this.labelCrrAccSerial.Location = new System.Drawing.Point(64, 36);
+            this.labelCrrAccSerial.Location = new System.Drawing.Point(64, 38);
             this.labelCrrAccSerial.Name = "labelCrrAccSerial";
             this.labelCrrAccSerial.Size = new System.Drawing.Size(45, 13);
             this.labelCrrAccSerial.TabIndex = 2;
@@ -1601,7 +1642,7 @@ namespace FP300Service.UserControls
             // 
             this.labelCrrAccAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCrrAccAmount.AutoSize = true;
-            this.labelCrrAccAmount.Location = new System.Drawing.Point(59, 53);
+            this.labelCrrAccAmount.Location = new System.Drawing.Point(59, 56);
             this.labelCrrAccAmount.Name = "labelCrrAccAmount";
             this.labelCrrAccAmount.Size = new System.Drawing.Size(54, 13);
             this.labelCrrAccAmount.TabIndex = 3;
@@ -1610,7 +1651,7 @@ namespace FP300Service.UserControls
             // dateTimePickerCrrAccDate
             // 
             this.dateTimePickerCrrAccDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePickerCrrAccDate.Location = new System.Drawing.Point(176, 71);
+            this.dateTimePickerCrrAccDate.Location = new System.Drawing.Point(176, 75);
             this.dateTimePickerCrrAccDate.Name = "dateTimePickerCrrAccDate";
             this.dateTimePickerCrrAccDate.Size = new System.Drawing.Size(168, 20);
             this.dateTimePickerCrrAccDate.TabIndex = 43;
@@ -1624,8 +1665,8 @@ namespace FP300Service.UserControls
             this.tabPageEDocument.Controls.Add(this.buttonPrintEDocumentSample);
             this.tabPageEDocument.Location = new System.Drawing.Point(4, 22);
             this.tabPageEDocument.Name = "tabPageEDocument";
-            this.tabPageEDocument.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageEDocument.Size = new System.Drawing.Size(463, 101);
+            this.tabPageEDocument.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageEDocument.Size = new System.Drawing.Size(461, 102);
             this.tabPageEDocument.TabIndex = 7;
             this.tabPageEDocument.Text = "E-BELGE";
             this.tabPageEDocument.UseVisualStyleBackColor = true;
@@ -1652,7 +1693,7 @@ namespace FP300Service.UserControls
             // 
             this.labelEDocumentDocType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelEDocumentDocType.AutoSize = true;
-            this.labelEDocumentDocType.Location = new System.Drawing.Point(188, 26);
+            this.labelEDocumentDocType.Location = new System.Drawing.Point(187, 27);
             this.labelEDocumentDocType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEDocumentDocType.Name = "labelEDocumentDocType";
             this.labelEDocumentDocType.Size = new System.Drawing.Size(68, 13);
@@ -1663,7 +1704,7 @@ namespace FP300Service.UserControls
             // 
             this.comboBoxEDocumentDocTypes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboBoxEDocumentDocTypes.FormattingEnabled = true;
-            this.comboBoxEDocumentDocTypes.Location = new System.Drawing.Point(282, 23);
+            this.comboBoxEDocumentDocTypes.Location = new System.Drawing.Point(281, 24);
             this.comboBoxEDocumentDocTypes.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.comboBoxEDocumentDocTypes.Name = "comboBoxEDocumentDocTypes";
             this.comboBoxEDocumentDocTypes.Size = new System.Drawing.Size(99, 21);
@@ -1672,7 +1713,7 @@ namespace FP300Service.UserControls
             // buttonPrintEDocumentSample
             // 
             this.buttonPrintEDocumentSample.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonPrintEDocumentSample.Location = new System.Drawing.Point(52, 23);
+            this.buttonPrintEDocumentSample.Location = new System.Drawing.Point(51, 24);
             this.buttonPrintEDocumentSample.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.buttonPrintEDocumentSample.Name = "buttonPrintEDocumentSample";
             this.buttonPrintEDocumentSample.Size = new System.Drawing.Size(110, 52);
@@ -1686,8 +1727,8 @@ namespace FP300Service.UserControls
             this.tabPageDataTest.Controls.Add(this.buttonSendTestData);
             this.tabPageDataTest.Location = new System.Drawing.Point(4, 22);
             this.tabPageDataTest.Name = "tabPageDataTest";
-            this.tabPageDataTest.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageDataTest.Size = new System.Drawing.Size(463, 101);
+            this.tabPageDataTest.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDataTest.Size = new System.Drawing.Size(461, 102);
             this.tabPageDataTest.TabIndex = 8;
             this.tabPageDataTest.Text = "DATA TEST";
             this.tabPageDataTest.UseVisualStyleBackColor = true;
@@ -1701,6 +1742,175 @@ namespace FP300Service.UserControls
             this.buttonSendTestData.Text = "SEND TEST DATA";
             this.buttonSendTestData.UseVisualStyleBackColor = true;
             this.buttonSendTestData.Click += new System.EventHandler(this.buttonSendTestData_Click);
+            // 
+            // tabPageReturnDoc
+            // 
+            this.tabPageReturnDoc.Controls.Add(this.tableLayoutPanel27);
+            this.tabPageReturnDoc.Location = new System.Drawing.Point(4, 22);
+            this.tabPageReturnDoc.Name = "tabPageReturnDoc";
+            this.tabPageReturnDoc.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageReturnDoc.Size = new System.Drawing.Size(461, 102);
+            this.tabPageReturnDoc.TabIndex = 10;
+            this.tabPageReturnDoc.Text = "RETURN DOC";
+            this.tabPageReturnDoc.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel27
+            // 
+            this.tableLayoutPanel27.ColumnCount = 2;
+            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel27.Controls.Add(this.buttonStartReturnDoc, 0, 0);
+            this.tableLayoutPanel27.Controls.Add(this.tableLayoutPanel28, 1, 0);
+            this.tableLayoutPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel27.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel27.Name = "tableLayoutPanel27";
+            this.tableLayoutPanel27.RowCount = 1;
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel27.Size = new System.Drawing.Size(455, 96);
+            this.tableLayoutPanel27.TabIndex = 1;
+            // 
+            // buttonStartReturnDoc
+            // 
+            this.buttonStartReturnDoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonStartReturnDoc.Location = new System.Drawing.Point(3, 3);
+            this.buttonStartReturnDoc.Name = "buttonStartReturnDoc";
+            this.buttonStartReturnDoc.Size = new System.Drawing.Size(85, 90);
+            this.buttonStartReturnDoc.TabIndex = 0;
+            this.buttonStartReturnDoc.Text = "START DOCUMENT";
+            this.buttonStartReturnDoc.UseVisualStyleBackColor = true;
+            this.buttonStartReturnDoc.Click += new System.EventHandler(this.buttonStartReturnDoc_Click);
+            // 
+            // tableLayoutPanel28
+            // 
+            this.tableLayoutPanel28.ColumnCount = 2;
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel28.Controls.Add(this.tableLayoutPanel29, 0, 1);
+            this.tableLayoutPanel28.Controls.Add(this.tableLayoutPanel30, 0, 0);
+            this.tableLayoutPanel28.Controls.Add(this.tableLayoutPanel31, 1, 0);
+            this.tableLayoutPanel28.Controls.Add(this.buttonAddCustomerRetDoc, 1, 1);
+            this.tableLayoutPanel28.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel28.Location = new System.Drawing.Point(94, 3);
+            this.tableLayoutPanel28.Name = "tableLayoutPanel28";
+            this.tableLayoutPanel28.RowCount = 2;
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel28.Size = new System.Drawing.Size(358, 90);
+            this.tableLayoutPanel28.TabIndex = 1;
+            // 
+            // tableLayoutPanel29
+            // 
+            this.tableLayoutPanel29.ColumnCount = 1;
+            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel29.Controls.Add(this.dateTimePickerRetDoc, 0, 1);
+            this.tableLayoutPanel29.Controls.Add(this.labelRetDocDT, 0, 0);
+            this.tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel29.Location = new System.Drawing.Point(3, 48);
+            this.tableLayoutPanel29.Name = "tableLayoutPanel29";
+            this.tableLayoutPanel29.RowCount = 2;
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel29.Size = new System.Drawing.Size(173, 39);
+            this.tableLayoutPanel29.TabIndex = 0;
+            // 
+            // dateTimePickerRetDoc
+            // 
+            this.dateTimePickerRetDoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePickerRetDoc.Location = new System.Drawing.Point(3, 22);
+            this.dateTimePickerRetDoc.Name = "dateTimePickerRetDoc";
+            this.dateTimePickerRetDoc.Size = new System.Drawing.Size(167, 20);
+            this.dateTimePickerRetDoc.TabIndex = 44;
+            // 
+            // labelRetDocDT
+            // 
+            this.labelRetDocDT.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelRetDocDT.AutoSize = true;
+            this.labelRetDocDT.Location = new System.Drawing.Point(68, 3);
+            this.labelRetDocDT.Name = "labelRetDocDT";
+            this.labelRetDocDT.Size = new System.Drawing.Size(36, 13);
+            this.labelRetDocDT.TabIndex = 30;
+            this.labelRetDocDT.Text = "DATE";
+            // 
+            // tableLayoutPanel30
+            // 
+            this.tableLayoutPanel30.ColumnCount = 1;
+            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel30.Controls.Add(this.textBoxRetDocSerial, 0, 1);
+            this.tableLayoutPanel30.Controls.Add(this.labelRetDocSerial, 0, 0);
+            this.tableLayoutPanel30.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel30.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel30.Name = "tableLayoutPanel30";
+            this.tableLayoutPanel30.RowCount = 2;
+            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel30.Size = new System.Drawing.Size(173, 39);
+            this.tableLayoutPanel30.TabIndex = 1;
+            // 
+            // textBoxRetDocSerial
+            // 
+            this.textBoxRetDocSerial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxRetDocSerial.Location = new System.Drawing.Point(2, 20);
+            this.textBoxRetDocSerial.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.textBoxRetDocSerial.MaxLength = 48;
+            this.textBoxRetDocSerial.Name = "textBoxRetDocSerial";
+            this.textBoxRetDocSerial.Size = new System.Drawing.Size(169, 20);
+            this.textBoxRetDocSerial.TabIndex = 32;
+            // 
+            // labelRetDocSerial
+            // 
+            this.labelRetDocSerial.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelRetDocSerial.AutoSize = true;
+            this.labelRetDocSerial.Location = new System.Drawing.Point(64, 3);
+            this.labelRetDocSerial.Name = "labelRetDocSerial";
+            this.labelRetDocSerial.Size = new System.Drawing.Size(45, 13);
+            this.labelRetDocSerial.TabIndex = 31;
+            this.labelRetDocSerial.Text = "SERIAL";
+            // 
+            // tableLayoutPanel31
+            // 
+            this.tableLayoutPanel31.ColumnCount = 1;
+            this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel31.Controls.Add(this.textBoxRetDocORderNo, 0, 1);
+            this.tableLayoutPanel31.Controls.Add(this.labelRetDocOrderNo, 0, 0);
+            this.tableLayoutPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel31.Location = new System.Drawing.Point(182, 3);
+            this.tableLayoutPanel31.Name = "tableLayoutPanel31";
+            this.tableLayoutPanel31.RowCount = 2;
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel31.Size = new System.Drawing.Size(173, 39);
+            this.tableLayoutPanel31.TabIndex = 0;
+            // 
+            // textBoxRetDocORderNo
+            // 
+            this.textBoxRetDocORderNo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxRetDocORderNo.Location = new System.Drawing.Point(2, 20);
+            this.textBoxRetDocORderNo.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.textBoxRetDocORderNo.MaxLength = 48;
+            this.textBoxRetDocORderNo.Name = "textBoxRetDocORderNo";
+            this.textBoxRetDocORderNo.Size = new System.Drawing.Size(169, 20);
+            this.textBoxRetDocORderNo.TabIndex = 33;
+            // 
+            // labelRetDocOrderNo
+            // 
+            this.labelRetDocOrderNo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelRetDocOrderNo.AutoSize = true;
+            this.labelRetDocOrderNo.Location = new System.Drawing.Point(54, 3);
+            this.labelRetDocOrderNo.Name = "labelRetDocOrderNo";
+            this.labelRetDocOrderNo.Size = new System.Drawing.Size(65, 13);
+            this.labelRetDocOrderNo.TabIndex = 32;
+            this.labelRetDocOrderNo.Text = "ORDER NO";
+            // 
+            // buttonAddCustomerRetDoc
+            // 
+            this.buttonAddCustomerRetDoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAddCustomerRetDoc.Location = new System.Drawing.Point(182, 48);
+            this.buttonAddCustomerRetDoc.Name = "buttonAddCustomerRetDoc";
+            this.buttonAddCustomerRetDoc.Size = new System.Drawing.Size(173, 39);
+            this.buttonAddCustomerRetDoc.TabIndex = 2;
+            this.buttonAddCustomerRetDoc.Text = "ADD CUSTOMER";
+            this.buttonAddCustomerRetDoc.UseVisualStyleBackColor = true;
+            this.buttonAddCustomerRetDoc.Click += new System.EventHandler(this.buttonAddCustomerRetDoc_Click);
             // 
             // tbcFooter
             // 
@@ -1757,7 +1967,7 @@ namespace FP300Service.UserControls
             this.tbpExtra.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tbpExtra.Name = "tbpExtra";
             this.tbpExtra.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tbpExtra.Size = new System.Drawing.Size(463, 73);
+            this.tbpExtra.Size = new System.Drawing.Size(461, 74);
             this.tbpExtra.TabIndex = 1;
             this.tbpExtra.Text = "FOOTER NOTE EXTRA";
             this.tbpExtra.UseVisualStyleBackColor = true;
@@ -1778,8 +1988,8 @@ namespace FP300Service.UserControls
             this.tabPageBarcode.Controls.Add(this.tableLayoutPanel16);
             this.tabPageBarcode.Location = new System.Drawing.Point(4, 22);
             this.tabPageBarcode.Name = "tabPageBarcode";
-            this.tabPageBarcode.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageBarcode.Size = new System.Drawing.Size(463, 73);
+            this.tabPageBarcode.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageBarcode.Size = new System.Drawing.Size(461, 74);
             this.tabPageBarcode.TabIndex = 2;
             this.tabPageBarcode.Text = "BARCODE";
             this.tabPageBarcode.UseVisualStyleBackColor = true;
@@ -1796,7 +2006,7 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
             this.tableLayoutPanel16.RowCount = 1;
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel16.Size = new System.Drawing.Size(457, 67);
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(455, 68);
             this.tableLayoutPanel16.TabIndex = 0;
             // 
             // btnRcptBarcode
@@ -1805,7 +2015,7 @@ namespace FP300Service.UserControls
             this.btnRcptBarcode.Location = new System.Drawing.Point(2, 1);
             this.btnRcptBarcode.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnRcptBarcode.Name = "btnRcptBarcode";
-            this.btnRcptBarcode.Size = new System.Drawing.Size(96, 65);
+            this.btnRcptBarcode.Size = new System.Drawing.Size(96, 66);
             this.btnRcptBarcode.TabIndex = 24;
             this.btnRcptBarcode.Text = "PRINT BARCODE";
             this.btnRcptBarcode.UseVisualStyleBackColor = true;
@@ -1826,14 +2036,14 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel17.RowCount = 2;
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(351, 61);
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(349, 62);
             this.tableLayoutPanel17.TabIndex = 25;
             // 
             // labelBarcode
             // 
             this.labelBarcode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelBarcode.AutoSize = true;
-            this.labelBarcode.Location = new System.Drawing.Point(56, 39);
+            this.labelBarcode.Location = new System.Drawing.Point(56, 40);
             this.labelBarcode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelBarcode.Name = "labelBarcode";
             this.labelBarcode.Size = new System.Drawing.Size(62, 13);
@@ -1844,7 +2054,7 @@ namespace FP300Service.UserControls
             // 
             this.labelBarcodeType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelBarcodeType.AutoSize = true;
-            this.labelBarcodeType.Location = new System.Drawing.Point(42, 8);
+            this.labelBarcodeType.Location = new System.Drawing.Point(42, 9);
             this.labelBarcodeType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelBarcodeType.Name = "labelBarcodeType";
             this.labelBarcodeType.Size = new System.Drawing.Size(90, 13);
@@ -1855,7 +2065,7 @@ namespace FP300Service.UserControls
             // 
             this.comboBoxBarcodeTypes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboBoxBarcodeTypes.FormattingEnabled = true;
-            this.comboBoxBarcodeTypes.Location = new System.Drawing.Point(201, 4);
+            this.comboBoxBarcodeTypes.Location = new System.Drawing.Point(200, 5);
             this.comboBoxBarcodeTypes.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.comboBoxBarcodeTypes.Name = "comboBoxBarcodeTypes";
             this.comboBoxBarcodeTypes.Size = new System.Drawing.Size(123, 21);
@@ -1864,7 +2074,7 @@ namespace FP300Service.UserControls
             // txtRcptBarcode
             // 
             this.txtRcptBarcode.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtRcptBarcode.Location = new System.Drawing.Point(177, 35);
+            this.txtRcptBarcode.Location = new System.Drawing.Point(176, 36);
             this.txtRcptBarcode.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtRcptBarcode.MaxLength = 25;
             this.txtRcptBarcode.Name = "txtRcptBarcode";
@@ -1876,8 +2086,8 @@ namespace FP300Service.UserControls
             this.tabPageStoppage.Controls.Add(this.tableLayoutPanel25);
             this.tabPageStoppage.Location = new System.Drawing.Point(4, 22);
             this.tabPageStoppage.Name = "tabPageStoppage";
-            this.tabPageStoppage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageStoppage.Size = new System.Drawing.Size(463, 73);
+            this.tabPageStoppage.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageStoppage.Size = new System.Drawing.Size(461, 74);
             this.tabPageStoppage.TabIndex = 3;
             this.tabPageStoppage.Text = "STOPPAGE";
             this.tabPageStoppage.UseVisualStyleBackColor = true;
@@ -1894,7 +2104,7 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel25.Name = "tableLayoutPanel25";
             this.tableLayoutPanel25.RowCount = 1;
             this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel25.Size = new System.Drawing.Size(457, 67);
+            this.tableLayoutPanel25.Size = new System.Drawing.Size(455, 68);
             this.tableLayoutPanel25.TabIndex = 0;
             // 
             // buttonStoppage
@@ -1902,7 +2112,7 @@ namespace FP300Service.UserControls
             this.buttonStoppage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonStoppage.Location = new System.Drawing.Point(3, 3);
             this.buttonStoppage.Name = "buttonStoppage";
-            this.buttonStoppage.Size = new System.Drawing.Size(85, 61);
+            this.buttonStoppage.Size = new System.Drawing.Size(85, 62);
             this.buttonStoppage.TabIndex = 0;
             this.buttonStoppage.Text = "SEND STOPPAGE";
             this.buttonStoppage.UseVisualStyleBackColor = true;
@@ -1921,14 +2131,14 @@ namespace FP300Service.UserControls
             this.tableLayoutPanel26.RowCount = 2;
             this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel26.Size = new System.Drawing.Size(360, 61);
+            this.tableLayoutPanel26.Size = new System.Drawing.Size(358, 62);
             this.tableLayoutPanel26.TabIndex = 1;
             // 
             // labelStoppageAmount
             // 
             this.labelStoppageAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelStoppageAmount.AutoSize = true;
-            this.labelStoppageAmount.Location = new System.Drawing.Point(63, 8);
+            this.labelStoppageAmount.Location = new System.Drawing.Point(62, 9);
             this.labelStoppageAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelStoppageAmount.Name = "labelStoppageAmount";
             this.labelStoppageAmount.Size = new System.Drawing.Size(54, 13);
@@ -1939,7 +2149,7 @@ namespace FP300Service.UserControls
             // 
             this.numericUpDownStoppageAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numericUpDownStoppageAmount.DecimalPlaces = 2;
-            this.numericUpDownStoppageAmount.Location = new System.Drawing.Point(225, 5);
+            this.numericUpDownStoppageAmount.Location = new System.Drawing.Point(223, 5);
             this.numericUpDownStoppageAmount.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.numericUpDownStoppageAmount.Maximum = new decimal(new int[] {
             100000,
@@ -2308,7 +2518,7 @@ namespace FP300Service.UserControls
             this.tbpVoidSale.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tbpVoidSale.Name = "tbpVoidSale";
             this.tbpVoidSale.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tbpVoidSale.Size = new System.Drawing.Size(463, 116);
+            this.tbpVoidSale.Size = new System.Drawing.Size(461, 117);
             this.tbpVoidSale.TabIndex = 1;
             this.tbpVoidSale.Text = "VOID SALE";
             this.tbpVoidSale.UseVisualStyleBackColor = true;
@@ -2435,7 +2645,7 @@ namespace FP300Service.UserControls
             this.tbpAdj.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tbpAdj.Name = "tbpAdj";
             this.tbpAdj.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tbpAdj.Size = new System.Drawing.Size(463, 116);
+            this.tbpAdj.Size = new System.Drawing.Size(461, 117);
             this.tbpAdj.TabIndex = 2;
             this.tbpAdj.Text = "ADJUSTMENT";
             this.tbpAdj.UseVisualStyleBackColor = true;
@@ -2535,7 +2745,7 @@ namespace FP300Service.UserControls
             this.tpgSaleDept.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tpgSaleDept.Name = "tpgSaleDept";
             this.tpgSaleDept.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tpgSaleDept.Size = new System.Drawing.Size(463, 116);
+            this.tpgSaleDept.Size = new System.Drawing.Size(461, 117);
             this.tpgSaleDept.TabIndex = 3;
             this.tpgSaleDept.Text = "DEPT SALE";
             this.tpgSaleDept.UseVisualStyleBackColor = true;
@@ -2895,7 +3105,7 @@ namespace FP300Service.UserControls
             this.tbpPayEFT.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tbpPayEFT.Name = "tbpPayEFT";
             this.tbpPayEFT.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tbpPayEFT.Size = new System.Drawing.Size(463, 86);
+            this.tbpPayEFT.Size = new System.Drawing.Size(461, 87);
             this.tbpPayEFT.TabIndex = 1;
             this.tbpPayEFT.Text = "EFT PAYMENT";
             this.tbpPayEFT.UseVisualStyleBackColor = true;
@@ -3020,7 +3230,7 @@ namespace FP300Service.UserControls
             this.tbpVoidPay.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tbpVoidPay.Name = "tbpVoidPay";
             this.tbpVoidPay.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tbpVoidPay.Size = new System.Drawing.Size(463, 86);
+            this.tbpVoidPay.Size = new System.Drawing.Size(461, 87);
             this.tbpVoidPay.TabIndex = 2;
             this.tbpVoidPay.Text = "VOID PAYMENT";
             this.tbpVoidPay.UseVisualStyleBackColor = true;
@@ -3174,7 +3384,7 @@ namespace FP300Service.UserControls
             this.tabRefund.Controls.Add(this.btnRefund);
             this.tabRefund.Location = new System.Drawing.Point(4, 22);
             this.tabRefund.Name = "tabRefund";
-            this.tabRefund.Size = new System.Drawing.Size(463, 86);
+            this.tabRefund.Size = new System.Drawing.Size(461, 87);
             this.tabRefund.TabIndex = 3;
             this.tabRefund.Text = "EFT REFUND";
             this.tabRefund.UseVisualStyleBackColor = true;
@@ -3240,7 +3450,7 @@ namespace FP300Service.UserControls
             this.tabPageBankList.Controls.Add(this.btnBankList);
             this.tabPageBankList.Location = new System.Drawing.Point(4, 22);
             this.tabPageBankList.Name = "tabPageBankList";
-            this.tabPageBankList.Size = new System.Drawing.Size(463, 86);
+            this.tabPageBankList.Size = new System.Drawing.Size(461, 87);
             this.tabPageBankList.TabIndex = 4;
             this.tabPageBankList.Text = "BANK LIST";
             this.tabPageBankList.UseVisualStyleBackColor = true;
@@ -3272,8 +3482,8 @@ namespace FP300Service.UserControls
             this.tabPageEftSlipCopy.Controls.Add(this.label17);
             this.tabPageEftSlipCopy.Location = new System.Drawing.Point(4, 22);
             this.tabPageEftSlipCopy.Name = "tabPageEftSlipCopy";
-            this.tabPageEftSlipCopy.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageEftSlipCopy.Size = new System.Drawing.Size(463, 86);
+            this.tabPageEftSlipCopy.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageEftSlipCopy.Size = new System.Drawing.Size(461, 87);
             this.tabPageEftSlipCopy.TabIndex = 5;
             this.tabPageEftSlipCopy.Text = "EFT SLIPCOPY";
             this.tabPageEftSlipCopy.UseVisualStyleBackColor = true;
@@ -3407,7 +3617,7 @@ namespace FP300Service.UserControls
             this.tabSlipExternal.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabSlipExternal.Name = "tabSlipExternal";
             this.tabSlipExternal.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabSlipExternal.Size = new System.Drawing.Size(463, 86);
+            this.tabSlipExternal.Size = new System.Drawing.Size(461, 87);
             this.tabSlipExternal.TabIndex = 6;
             this.tabSlipExternal.Text = "EXTERNAL SLIP";
             this.tabSlipExternal.UseVisualStyleBackColor = true;
@@ -3733,6 +3943,15 @@ namespace FP300Service.UserControls
             this.tabPageEDocument.ResumeLayout(false);
             this.tabPageEDocument.PerformLayout();
             this.tabPageDataTest.ResumeLayout(false);
+            this.tabPageReturnDoc.ResumeLayout(false);
+            this.tableLayoutPanel27.ResumeLayout(false);
+            this.tableLayoutPanel28.ResumeLayout(false);
+            this.tableLayoutPanel29.ResumeLayout(false);
+            this.tableLayoutPanel29.PerformLayout();
+            this.tableLayoutPanel30.ResumeLayout(false);
+            this.tableLayoutPanel30.PerformLayout();
+            this.tableLayoutPanel31.ResumeLayout(false);
+            this.tableLayoutPanel31.PerformLayout();
             this.tbcFooter.ResumeLayout(false);
             this.tbpNotes.ResumeLayout(false);
             this.tbpNotes.PerformLayout();
@@ -5356,6 +5575,8 @@ namespace FP300Service.UserControls
             }
         }
 
+        private static Hugin.Common.Customer customer = null;
+
         private void buttonStoppage_Click(object sender, EventArgs e)
         {
             try
@@ -5374,6 +5595,57 @@ namespace FP300Service.UserControls
             catch (Exception ex)
             {
                 bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+        }
+
+        private void buttonAddCustomerRetDoc_Click(object sender, EventArgs e)
+        {
+            customer = null;
+            CustomerForm cf = new CustomerForm();
+            try
+            {
+                if (cf.ShowDialog() == DialogResult.OK)
+                {
+                    customer = CustomerForm.CurrentCustomer;
+                    this.buttonAddCustomerRetDoc.Text = FormMessage.UPDATE_CUSTOMER;
+                }
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+                this.buttonAddCustomerRetDoc.Text = FormMessage.ADD_CUSTOMER;
+            }
+        }
+
+        private void buttonStartReturnDoc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string docSerial = textBoxRetDocSerial.Text;
+                string docOrderNo = textBoxRetDocORderNo.Text;
+                DateTime invoiceDT = dateTimePickerRetDoc.Value;
+
+                CPResponse response = new CPResponse(bridge.Printer.PrintReturnDocumentHeader(invoiceDT, docSerial, docOrderNo, customer));
+
+                if (response.ErrorCode == 0)
+                {
+                    string docNo = response.GetNextParam();
+                    string ZNo = response.GetNextParam();
+
+                    bridge.Log(String.Format("BELGE NO       :{0}", docNo));
+                    bridge.Log(String.Format("Z NO           :{0}", ZNo));
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                bridge.Log(FormMessage.OPERATION_FAILS + ": " + ex.Message);
+            }
+            finally
+            {
+                customer = null;
+                this.buttonAddCustomerRetDoc.Text = FormMessage.ADD_CUSTOMER;
             }
         }
 
